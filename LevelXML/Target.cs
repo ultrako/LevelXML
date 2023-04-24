@@ -1,5 +1,5 @@
 namespace HappyWheels;
-public class Target : LevelXMLTag
+public class Target<T> : LevelXMLTag where T : Entity
 {
 	public Entity Targeted {get; set;}
 	// DONT USE ACTION HERE
