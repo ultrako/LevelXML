@@ -1,11 +1,8 @@
 ﻿using System.Xml.Linq;
 namespace HappyWheels;
 // This class represents any xml tag <> that can go into the import box in Happy Wheels.
-public abstract class LevelXMLTag
+public abstract class LevelXMLTag : XElement
 {
-	// This isn't the class name, this is the name in the tag,
-	// like <sh t="0"> would have a name of "sh"
-	public abstract string Name {get;}
 	public static XElement StrToXElement(string xml) {
 		return XElement.Parse(xml);
 	}
@@ -14,41 +11,45 @@ public abstract class LevelXMLTag
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }
 	}
-	public static float? getFloatOrNull(XElement elt, string attr) 
+	public float? GetFloatOrNull(string attr) { return GetFloatOrNull(this, attr); }
+	public static float? GetFloatOrNull(XElement elt, string attr) 
 	{
 		if (getStringOrNull(elt, attr) is string val)
 		{
 			float result;
 			if (float.TryParse(val, out result)) {
 				return result;
-			}
+			} else { return float.NaN; }
 		}
 		return null;
 	}
-	public static bool? getBoolOrNull(XElement elt, string attr)
+	// In happy wheels, bools can be either true, false, or NaN
+	// :(
+	// So here's an enum
+	public enum HWBool 
 	{
-		bool? result = null;
+		False,
+		True,
+		NaN
+	}
+	public HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this, attr); }
+	public static HWBool? GetBoolOrNull(XElement elt, string attr)
+	{
+		HWBool? result = null;
 		if (getStringOrNull(elt, attr) is string val)
 		{
-			if (val == "t") { result = true; }
-			else if (val == "f") { result = false; }
+			if (val == "t") { result = HWBool.True; }
+			else if (val == "f") { result = HWBool.False; }
+			else { result = HWBool.NaN; }
 		}
 		return result;
 	}
-	public static string FormatBool(bool? b)
+	public static string FormatBool(HWBool? b)
 	{
-		if ((bool)b!) { return "t"; } else { return "f"; }
+		// Bool values in happy wheels can hold 3 things
+		if (b is HWBool.True) { return "t"; } 
+		else if (b is HWBool.False) { return "f"; }
+		else { return "NaN"; }
 	}
-	public XElement ToXElement(uint? index=null) {
-		return new XElement(Name, getContents());
-	}
-	// Some classes will need an index to set all of their attributes
-	protected abstract List<XAttribute> getAttributes(int? index=null);
-	protected abstract List<XElement> getChildren();
-	protected List<object> getContents() {
-		IEnumerable<object> contents = new List<object> ();
-		contents = contents.Append(getAttributes());
-		contents = contents.Append(getChildren());
-		return contents.ToList();
-	}
+	protected LevelXMLTag(XName name, params object?[] content) : base(name, content) {}
 }
