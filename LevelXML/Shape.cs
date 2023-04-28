@@ -18,7 +18,7 @@ public abstract class Shape : Entity
 	{
 		// If Interactive is true, then the XAttribute isn't set
 		get { return GetBoolOrNull("i") ?? HWBool.True; }
-		set { if (value is HWBool.False) { SetAttributeValue("i", FormatBool(HWBool.False)); }; }
+		set { if (value is HWBool.False) { elt.SetAttributeValue("i", FormatBool(HWBool.False)); }; }
 	}
 	// For shapes, x and y are p0 and p1
 	public override float? x
@@ -30,7 +30,7 @@ public abstract class Shape : Entity
 			{
 				throw new Exception("This would make the shape disappear!");
 			}
-			else { SetAttributeValue("p0", value); }
+			else { elt.SetAttributeValue("p0", value); }
 		}
 	}
 	public override float? y
@@ -42,7 +42,7 @@ public abstract class Shape : Entity
 			{
 				throw new Exception("This would make the shape disappear!");
 			}
-			else { SetAttributeValue("p1", value); }
+			else { elt.SetAttributeValue("p1", value); }
 		}
 	}
 	// All shapes have Width and Height, just that some are set differently
@@ -58,18 +58,18 @@ public abstract class Shape : Entity
 			{
 				throw new Exception("That would make the shape disappear!");
 			}
-			SetAttributeValue("p4", Math.Clamp(val,-180,180)); 
+			elt.SetAttributeValue("p4", Math.Clamp(val,-180,180)); 
 		}
 	}
 	public HWBool? Fixed
 	{
 		get { return GetBoolOrNull("p5"); }
-		set { SetAttributeValue("p5", FormatBool(value ?? HWBool.True)); }
+		set { elt.SetAttributeValue("p5", FormatBool(value ?? HWBool.True)); }
 	}
 	public HWBool? Sleeping
 	{
 		get { return GetBoolOrNull("p6"); }
-		set { SetAttributeValue("p6", FormatBool(value ?? HWBool.False)); }
+		set { elt.SetAttributeValue("p6", FormatBool(value ?? HWBool.False)); }
 	}
 	public float? Density
 	{
@@ -80,7 +80,7 @@ public abstract class Shape : Entity
 			// I am hoping clamp doesn't mess with NaN as we do sometimes want
 			// NaN density entities
 			val = (float)Math.Clamp(val, 0.1, 100.0);
-			SetAttributeValue("p7", val);
+			elt.SetAttributeValue("p7", val);
 		}
 	}
 	// Representing a RGB color with a float is weird, yes
@@ -92,7 +92,7 @@ public abstract class Shape : Entity
 		set 
 		{
 			float val = value ?? 4032711;
-			SetAttributeValue("p8", val); 
+			elt.SetAttributeValue("p8", val); 
 		}
 	}
 	public float? OutlineColor
@@ -101,7 +101,7 @@ public abstract class Shape : Entity
 		set 
 		{ 
 			float val = value ?? -1;
-			SetAttributeValue("p9", val); 
+			elt.SetAttributeValue("p9", val); 
 		}
 	}
 	public float? Opacity
@@ -112,7 +112,7 @@ public abstract class Shape : Entity
 			// If the opacity isn't set, the import box sets it to 100
 			float val = value ?? 100;
 			// If the opacity is set to NaN, the import box sets it to 0
-			SetAttributeValue("p10", Math.Clamp(val, 0, 100));
+			elt.SetAttributeValue("p10", Math.Clamp(val, 0, 100));
 		}
 	}
 	public float? Collision 
@@ -124,7 +124,7 @@ public abstract class Shape : Entity
 			float val = value ?? 1;
 			// Technically if this is set to NaN this ends up being 0,
 			// but collision 0 has the exact same behavior as collision 1
-			SetAttributeValue("p11", Math.Clamp(val, 1, 7));
+			elt.SetAttributeValue("p11", Math.Clamp(val, 1, 7));
 		}
 	}
 	// Only circles actually have this, but we're like one thing away from having commonality
@@ -134,25 +134,25 @@ public abstract class Shape : Entity
 		set
 		{
 			int val = value ?? 0;
-			SetAttributeValue("p12", (uint)Math.Clamp(val, 0, 100));
+			elt.SetAttributeValue("p12", (uint)Math.Clamp(val, 0, 100));
 		}
 	}
-	protected void setParams(XElement elt)
+	protected void setParams(XElement e)
 	{
-		SetAttributeValue("t", Type);
-		Interactive = GetBoolOrNull(elt, "i");
-        x = GetFloatOrNull(elt, "p0");
-        y = GetFloatOrNull(elt, "p1");
-        Width = GetFloatOrNull(elt, "p2");
-        Height = GetFloatOrNull(elt, "p3");
-        Rotation = GetFloatOrNull(elt, "p4");
-        Fixed = GetBoolOrNull(elt, "p5");
-        Sleeping = GetBoolOrNull(elt, "p6");
-        Density = GetFloatOrNull(elt, "p7");
-        FillColor = GetFloatOrNull(elt, "p8");
-        OutlineColor = GetFloatOrNull(elt, "p9");
-        Opacity = GetFloatOrNull(elt, "p10");
-        Collision = GetFloatOrNull(elt, "p11");
+		elt.SetAttributeValue("t", Type);
+		Interactive = GetBoolOrNull(e, "i");
+        x = GetFloatOrNull(e, "p0");
+        y = GetFloatOrNull(e, "p1");
+        Width = GetFloatOrNull(e, "p2");
+        Height = GetFloatOrNull(e, "p3");
+        Rotation = GetFloatOrNull(e, "p4");
+        Fixed = GetBoolOrNull(e, "p5");
+        Sleeping = GetBoolOrNull(e, "p6");
+        Density = GetFloatOrNull(e, "p7");
+        FillColor = GetFloatOrNull(e, "p8");
+        OutlineColor = GetFloatOrNull(e, "p9");
+        Opacity = GetFloatOrNull(e, "p10");
+        Collision = GetFloatOrNull(e, "p11");
 	}
-	protected Shape(params object?[] contents) : base("sh", contents) {}
+	internal Shape(params object?[] contents) : base("sh", contents) {}
 }

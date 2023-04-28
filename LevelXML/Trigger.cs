@@ -13,7 +13,7 @@ class Trigger : Entity
 			// Having triggers at NaN locations is actually useful;
 			// they can still be pointed to by triggers and activate other triggers.
 			float val = value ?? float.NaN;
-			SetAttributeValue("x", val);
+			elt.SetAttributeValue("x", val);
 		}
 	}
 	public override float? y
@@ -22,7 +22,7 @@ class Trigger : Entity
 		set
 		{
 			float val = value ?? float.NaN;
-			SetAttributeValue("y", val);
+			elt.SetAttributeValue("y", val);
 		}
 	}
 	// Targets may come in either the <xml tag> or as a params arg to the constructor

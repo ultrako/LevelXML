@@ -1,25 +1,31 @@
 ﻿using System.Xml.Linq;
 namespace HappyWheels;
 // This class represents any xml tag <> that can go into the import box in Happy Wheels.
-public abstract class LevelXMLTag : XElement
+public abstract class LevelXMLTag
 {
-	public static XElement StrToXElement(string xml) {
+	internal XElement elt {get; set;}
+	protected static XElement StrToXElement(string xml) {
 		return XElement.Parse(xml);
 	}
+	private string? getStringOrNull(string attr) { return getStringOrNull(this.elt, attr); }
 	private static string? getStringOrNull(XElement elt, string attr)
 	{
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }
 	}
-	public float? GetFloatOrNull(string attr) { return GetFloatOrNull(this, attr); }
-	public static float? GetFloatOrNull(XElement elt, string attr) 
+	protected static float ParseFloat(string val)
+	{
+		float result;
+		if (float.TryParse(val, out result)) {
+			return result;
+		} else { return float.NaN; }
+	}
+	protected float? GetFloatOrNull(string attr) { return GetFloatOrNull(this.elt, attr); }
+	protected static float? GetFloatOrNull(XElement elt, string attr) 
 	{
 		if (getStringOrNull(elt, attr) is string val)
 		{
-			float result;
-			if (float.TryParse(val, out result)) {
-				return result;
-			} else { return float.NaN; }
+			return ParseFloat(val);
 		}
 		return null;
 	}
@@ -32,8 +38,8 @@ public abstract class LevelXMLTag : XElement
 		True,
 		NaN
 	}
-	public HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this, attr); }
-	public static HWBool? GetBoolOrNull(XElement elt, string attr)
+	protected HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this.elt, attr); }
+	protected static HWBool? GetBoolOrNull(XElement elt, string attr)
 	{
 		HWBool? result = null;
 		if (getStringOrNull(elt, attr) is string val)
@@ -44,12 +50,30 @@ public abstract class LevelXMLTag : XElement
 		}
 		return result;
 	}
-	public static string FormatBool(HWBool? b)
+	protected static string FormatBool(HWBool? b)
 	{
 		// Bool values in happy wheels can hold 3 things
 		if (b is HWBool.True) { return "t"; } 
 		else if (b is HWBool.False) { return "f"; }
 		else { return "NaN"; }
 	}
-	protected LevelXMLTag(XName name, params object?[] content) : base(name, content) {}
+	// All levelXML tags have a Name
+	public string Name
+	{
+		get { return elt.Name.ToString(); }
+		set { elt.Name = Name; }
+	}
+	// Certain LevelXML tags don't make any sense outside of the context of a level
+	// Like joints, triggers, or blank art shapes
+	// They need a function that takes Entities and returns the index of where
+	// those entities are in their depth one tag
+	protected virtual void PlaceInLevel(Func<Entity, int> mapper=default!) {}
+	new public string ToString() {
+		PlaceInLevel();
+		return elt.ToString();
+	}
+	protected LevelXMLTag(XName name, params object?[] content)
+	{
+		elt = new XElement(name, content);
+	}
 }

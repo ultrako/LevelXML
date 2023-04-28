@@ -26,4 +26,15 @@ public abstract class Entity : LevelXMLTag
 	}
 	*/
 	protected Entity(XName name, params object?[] content) : base(name, content) {}
+	// They also all need a FromXElement function because depth one tags need to construct them
+	internal static Entity FromXElement(XElement element)
+    {
+		return element.Name.ToString() switch {
+			"sh" => GetFloatOrNull(element, "t") switch {
+				0 => new Rectangle(element),
+				_ => throw new Exception("Shape type doesn't exist!"),
+			},
+			_ => throw new Exception("XML tag type isn't an entity!"),
+		};
+    }
 }
