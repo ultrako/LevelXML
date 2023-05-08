@@ -20,6 +20,9 @@ public abstract class LevelXMLTag
 			return result;
 		} else { return float.NaN; }
 	}
+	// We're going to represent all the enum-like types in happy wheels with floats,
+	// because they can sometimes hold NaN. And sometimes NaN does unique things for
+	// level creators, so we won't occlude all of that from the get-go.
 	protected float? GetFloatOrNull(string attr) { return GetFloatOrNull(this.elt, attr); }
 	protected static float? GetFloatOrNull(XElement elt, string attr) 
 	{
@@ -67,9 +70,10 @@ public abstract class LevelXMLTag
 	// Like joints, triggers, or blank art shapes
 	// They need a function that takes Entities and returns the index of where
 	// those entities are in their depth one tag
-	protected virtual void PlaceInLevel(Func<Entity, int> mapper=default!) {}
-	new public string ToString() {
-		PlaceInLevel();
+	internal virtual void PlaceInLevel(Func<Entity, int> mapper) {}
+	new public string ToString() { return ToString(mapper: default!); }
+	public string ToString(Func<Entity, int> mapper) {
+		PlaceInLevel(mapper);
 		return elt.ToString();
 	}
 	protected LevelXMLTag(XName name, params object?[] content)

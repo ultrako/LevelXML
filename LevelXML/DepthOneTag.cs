@@ -27,19 +27,21 @@ public class DepthOneTag<T> : LevelXMLTag where T : Entity
 		{typeof(Joint), "joints"},
 		{typeof(Trigger), "triggers"},
 	};
-	protected override void PlaceInLevel(Func<Entity, int> mapper=default!)
+	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
 		elt.RemoveNodes();
 		foreach (Entity entity in lst)
 		{
+			entity.PlaceInLevel(mapper);
 			elt.Add(entity.elt);
 		}
 	}
 	public DepthOneTag(string xml) : this(StrToXElement(xml)) {}
 	DepthOneTag(XElement e) : 
-		this(content: e.Elements().Select(
-			element => Entity.FromXElement(element) as T
-		).ToArray()) 
+		this(content: e.Elements()
+			.Select(element => Entity.FromXElement(element) as T)
+			.Where(item => item is not null).Select(item => item!)
+			.ToArray()) 
 	{}
 	public DepthOneTag(params T[] content) : base (EntityToDepthOneTagName[typeof(T)]) 
 	{
