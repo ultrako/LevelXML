@@ -4,22 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 namespace HappyWheels;
 
-// Now, <shapes>, <groups>, etc, tags don't really do everything that Xlst.Elements do.
-// They don't have any attributes, and they're basically just glorified lists.
-// We'll have them inherit from LevelXMLTag but implement IList, so that we
-// can print them easily, but also use them like lists.
-
-// Just kidding I don't want to implement all of IList
-// I'll just pick and choose a few methods on that interface
-
-public class DepthOneTag<T> : LevelXMLTag where T : Entity
+// Also making an abstract DepthOneTag so that I can have a list of them,
+// for cleaner code in Level.cs
+abstract public class DepthOneTag : LevelXMLTag
 {
-	private List<T> lst;
-	public void Add(T entity) { lst.Add(entity); }
-	public bool Remove(T entity) { return lst.Remove(entity); }
-	public int IndexOf(T entity) { return lst.IndexOf(entity); }
-	public T this[int index] { get { return lst[index]; } set { lst[index] = value; } }
-	static Dictionary<Type, string> EntityToDepthOneTagName = new()
+	protected static Dictionary<Type, string> EntityToDepthOneTagName = new()
 	{
 		{typeof(Shape), "shapes"},
 		{typeof(Special), "specials"},
@@ -27,6 +16,19 @@ public class DepthOneTag<T> : LevelXMLTag where T : Entity
 		{typeof(Joint), "joints"},
 		{typeof(Trigger), "triggers"},
 	};
+	protected DepthOneTag(XName name) : base(name) {}
+}
+
+// Now, <shapes>, <groups>, etc, tags don't really do everything that Xlst.Elements do.
+// They don't have any attributes, and they're basically just glorified lists.
+
+public class DepthOneTag<T> : DepthOneTag where T : Entity
+{
+	private List<T> lst;
+	public void Add(T entity) { lst.Add(entity); }
+	public bool Remove(T entity) { return lst.Remove(entity); }
+	public int IndexOf(T entity) { return lst.IndexOf(entity); }
+	public T this[int index] { get { return lst[index]; } set { lst[index] = value; } }
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
 		elt.RemoveNodes();

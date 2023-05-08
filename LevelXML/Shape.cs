@@ -17,7 +17,7 @@ public abstract class Shape : Entity
 	public HWBool? Interactive
 	{
 		// If Interactive is true, then the XAttribute isn't set
-		get { return GetBoolOrNull("i") ?? HWBool.True; }
+		get { return GetBoolOrNull("i"); }
 		set { if (value is HWBool.False) { elt.SetAttributeValue("i", FormatBool(HWBool.False)); }; }
 	}
 	// For shapes, x and y are p0 and p1
