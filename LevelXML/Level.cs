@@ -1,8 +1,19 @@
 using System.Xml.Linq;
 namespace HappyWheels;
 
+/// <summary>
+/// The Level class represents a Happy Wheels level.
+/// </summary>
+/// <remarks>
+/// As this extends LevelXMLTag,
+/// ToString() will print out the LevelXML that represents this level,
+/// ready to be pasted into the happy wheels import box.
+/// </remarks>
 public class Level : LevelXMLTag
 {
+	///<summary>
+	/// The info tag has information about the character and the background of the level
+	///</summary>
 	public Info Info;
 	public DepthOneTag<Shape>? Shapes;
 	public DepthOneTag<Special>? Specials;
@@ -74,13 +85,12 @@ public class Level : LevelXMLTag
 			return lst.get(index);
 		}
 	}
-	// I expect to make meta-levels that don't actually stand by themselves,
-	// but are meant to be combined into another level; in that case I'll have several
-	// lists of Entities
-	public Level(Info info=default!, params List<Entity>[] lists) : 
-		this(info: info, entities: lists.SelectMany(lst => lst).ToArray()) {}
-	// The most convenient way to construct a level is to give a info tag,
-	// and a list of entities.
+	/// <summary>
+	/// This constructor makes a Level from an Info tag and several Entities 
+	/// (which are shapes, specials, groups, joints, and triggers).
+	/// If no info tag is supplied, then the default one from opening the level
+	/// editor and just hitting save is set.
+	/// </summary>
 	public Level(Info info=default!, params Entity[] entities) :
 		this(info : info,
 			shapes : entities.Where(entity => entity is Shape).Select(entity => (entity as Shape)!).ToArray(),
@@ -88,7 +98,7 @@ public class Level : LevelXMLTag
 			groups : entities.Where(entity => entity is Group).Select(entity => (entity as Group)!).ToArray(),
 			joints : entities.Where(entity => entity is Joint).Select(entity => (entity as Joint)!).ToArray(),
 			triggers : entities.Where(entity => entity is Trigger).Select(entity => (entity as Trigger)!).ToArray()) {}
-	public Level(Info info=default!, 
+	private Level(Info info=default!, 
 		Shape[]? shapes = null,
 		Special[]? specials = null,
 		Group[]? groups = null,
@@ -104,6 +114,11 @@ public class Level : LevelXMLTag
 		if (triggers is not null && triggers.Length != 0) { Triggers = new(triggers); }
 		elt = new("levelXML");
 	}
+	/// <summary>
+	/// This constructor makes a Level from a valid levelXML string.
+	/// If there are problems with your LevelXML, this constructor
+	/// will throw an exception.
+	/// </summary>
 	public Level(string xml) : this(StrToXElement(xml)) {}
 	internal Level(XElement e) : base("levelXML")
 	{

@@ -1,0 +1,775 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Trigger
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Trigger
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="HappyWheels.Trigger">
+
+
+
+  <h1 id="HappyWheels_Trigger" data-uid="HappyWheels.Trigger" class="text-break">
+    Class Trigger
+  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="HappyWheels.html">HappyWheels</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>HappyWheels.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Trigger : Entity</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="HappyWheels.LevelXMLTag.html">LevelXMLTag</a></div>
+      <div><a class="xref" href="HappyWheels.Entity.html">Entity</a></div>
+      <div><span class="xref">Trigger</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_StrToXElement_System_String_">LevelXMLTag.StrToXElement(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_ParseFloat_System_String_">LevelXMLTag.ParseFloat(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_GetFloatOrNull_System_String_">LevelXMLTag.GetFloatOrNull(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_GetFloatOrNull_System_Xml_Linq_XElement_System_String_">LevelXMLTag.GetFloatOrNull(XElement, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_GetBoolOrNull_System_String_">LevelXMLTag.GetBoolOrNull(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_GetBoolOrNull_System_Xml_Linq_XElement_System_String_">LevelXMLTag.GetBoolOrNull(XElement, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_FormatBool_System_Nullable_HappyWheels_LevelXMLTag_HWBool__">LevelXMLTag.FormatBool(LevelXMLTag.HWBool?)</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_Name">LevelXMLTag.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_ToString">LevelXMLTag.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="HappyWheels.LevelXMLTag.html#HappyWheels_LevelXMLTag_ToString_System_Func_HappyWheels_Entity_System_Int32__">LevelXMLTag.ToString(Func&lt;Entity, int&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="HappyWheels_Trigger__ctor_" data-uid="HappyWheels.Trigger.#ctor*"></a>
+
+  <h3 id="HappyWheels_Trigger__ctor_System_String_System_Func_System_Xml_Linq_XElement_HappyWheels_Entity__HappyWheels_Target___" data-uid="HappyWheels.Trigger.#ctor(System.String,System.Func{System.Xml.Linq.XElement,HappyWheels.Entity},HappyWheels.Target[])">
+  Trigger(string, Func&lt;XElement, Entity&gt;, params Target[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Trigger(string xml = &quot;&lt;t x=\&quot;0\&quot; y=\&quot;0\&quot; w=\&quot;100\&quot; h=\&quot;100\&quot; a=\&quot;0\&quot; b=\&quot;1\&quot; t=\&quot;1\&quot; r=\&quot;1\&quot; sd=\&quot;f\&quot; d=\&quot;0\&quot;/&gt;&quot;, Func&lt;XElement, Entity&gt; ReverseMapper = null, params Target[] targets)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>xml</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>ReverseMapper</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.xml.linq.xelement">XElement</a>, <a class="xref" href="HappyWheels.Entity.html">Entity</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>targets</code> <a class="xref" href="HappyWheels.Target.html">Target</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="HappyWheels_Trigger_EditorDefault" data-uid="HappyWheels.Trigger.EditorDefault">
+  EditorDefault
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string EditorDefault = &quot;&lt;t x=\&quot;0\&quot; y=\&quot;0\&quot; w=\&quot;100\&quot; h=\&quot;100\&quot; a=\&quot;0\&quot; b=\&quot;1\&quot; t=\&quot;1\&quot; r=\&quot;1\&quot; sd=\&quot;f\&quot; d=\&quot;0\&quot;/&gt;&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="HappyWheels_Trigger_Action_" data-uid="HappyWheels.Trigger.Action*"></a>
+
+  <h3 id="HappyWheels_Trigger_Action" data-uid="HappyWheels.Trigger.Action">
+  Action
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? Action { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Delay_" data-uid="HappyWheels.Trigger.Delay*"></a>
+
+  <h3 id="HappyWheels_Trigger_Delay" data-uid="HappyWheels.Trigger.Delay">
+  Delay
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? Delay { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Height_" data-uid="HappyWheels.Trigger.Height*"></a>
+
+  <h3 id="HappyWheels_Trigger_Height" data-uid="HappyWheels.Trigger.Height">
+  Height
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? Height { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Interval_" data-uid="HappyWheels.Trigger.Interval*"></a>
+
+  <h3 id="HappyWheels_Trigger_Interval" data-uid="HappyWheels.Trigger.Interval">
+  Interval
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? Interval { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Item_" data-uid="HappyWheels.Trigger.Item*"></a>
+
+  <h3 id="HappyWheels_Trigger_Item_System_Int32_" data-uid="HappyWheels.Trigger.Item(System.Int32)">
+  this[int]
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Target this[int index] { get; set; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="HappyWheels.Target.html">Target</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_RepeatType_" data-uid="HappyWheels.Trigger.RepeatType*"></a>
+
+  <h3 id="HappyWheels_Trigger_RepeatType" data-uid="HappyWheels.Trigger.RepeatType">
+  RepeatType
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? RepeatType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Rotation_" data-uid="HappyWheels.Trigger.Rotation*"></a>
+
+  <h3 id="HappyWheels_Trigger_Rotation" data-uid="HappyWheels.Trigger.Rotation">
+  Rotation
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? Rotation { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_StartDisabled_" data-uid="HappyWheels.Trigger.StartDisabled*"></a>
+
+  <h3 id="HappyWheels_Trigger_StartDisabled" data-uid="HappyWheels.Trigger.StartDisabled">
+  StartDisabled
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LevelXMLTag.HWBool? StartDisabled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="HappyWheels.LevelXMLTag.html">LevelXMLTag</a>.<a class="xref" href="HappyWheels.LevelXMLTag.HWBool.html">HWBool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_TriggeredBy_" data-uid="HappyWheels.Trigger.TriggeredBy*"></a>
+
+  <h3 id="HappyWheels_Trigger_TriggeredBy" data-uid="HappyWheels.Trigger.TriggeredBy">
+  TriggeredBy
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? TriggeredBy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Width_" data-uid="HappyWheels.Trigger.Width*"></a>
+
+  <h3 id="HappyWheels_Trigger_Width" data-uid="HappyWheels.Trigger.Width">
+  Width
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? Width { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_x_" data-uid="HappyWheels.Trigger.x*"></a>
+
+  <h3 id="HappyWheels_Trigger_x" data-uid="HappyWheels.Trigger.x">
+  x
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float? x { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_y_" data-uid="HappyWheels.Trigger.y*"></a>
+
+  <h3 id="HappyWheels_Trigger_y" data-uid="HappyWheels.Trigger.y">
+  y
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float? y { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="HappyWheels_Trigger_Add_" data-uid="HappyWheels.Trigger.Add*"></a>
+
+  <h3 id="HappyWheels_Trigger_Add_HappyWheels_Target_" data-uid="HappyWheels.Trigger.Add(HappyWheels.Target)">
+  Add(Target)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(Target target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="HappyWheels.Target.html">Target</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_IndexOf_" data-uid="HappyWheels.Trigger.IndexOf*"></a>
+
+  <h3 id="HappyWheels_Trigger_IndexOf_HappyWheels_Target_" data-uid="HappyWheels.Trigger.IndexOf(HappyWheels.Target)">
+  IndexOf(Target)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IndexOf(Target target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="HappyWheels.Target.html">Target</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_Remove_" data-uid="HappyWheels.Trigger.Remove*"></a>
+
+  <h3 id="HappyWheels_Trigger_Remove_HappyWheels_Target_" data-uid="HappyWheels.Trigger.Remove(HappyWheels.Target)">
+  Remove(Target)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Remove(Target target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="HappyWheels.Target.html">Target</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="HappyWheels_Trigger_setParams_" data-uid="HappyWheels.Trigger.setParams*"></a>
+
+  <h3 id="HappyWheels_Trigger_setParams_System_Xml_Linq_XElement_" data-uid="HappyWheels.Trigger.setParams(System.Xml.Linq.XElement)">
+  setParams(XElement)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void setParams(XElement e)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.xml.linq.xelement">XElement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
