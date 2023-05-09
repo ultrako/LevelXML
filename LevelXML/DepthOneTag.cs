@@ -17,6 +17,8 @@ abstract public class DepthOneTag : LevelXMLTag
 		{typeof(Trigger), "triggers"},
 	};
 	protected DepthOneTag(XName name) : base(name) {}
+	// In case you only have this abstract class and at least want an Entity back
+	abstract internal Entity get(int index);
 }
 
 // Now, <shapes>, <groups>, etc, tags don't really do everything that Xlst.Elements do.
@@ -29,6 +31,7 @@ public class DepthOneTag<T> : DepthOneTag where T : Entity
 	public bool Remove(T entity) { return lst.Remove(entity); }
 	public int IndexOf(T entity) { return lst.IndexOf(entity); }
 	public T this[int index] { get { return lst[index]; } set { lst[index] = value; } }
+	internal override Entity get(int index) { return lst[index]; }
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
 		elt.RemoveNodes();
@@ -39,9 +42,9 @@ public class DepthOneTag<T> : DepthOneTag where T : Entity
 		}
 	}
 	public DepthOneTag(string xml) : this(StrToXElement(xml)) {}
-	DepthOneTag(XElement e) : 
+	internal DepthOneTag(XElement e, Func<XElement, Entity> ReverseMapper=default!) : 
 		this(content: e.Elements()
-			.Select(element => Entity.FromXElement(element) as T)
+			.Select(element => Entity.FromXElement(element, ReverseMapper) as T)
 			.Where(item => item is not null).Select(item => item!)
 			.ToArray()) 
 	{}
