@@ -19,6 +19,7 @@ abstract public class DepthOneTag : LevelXMLTag
 	protected DepthOneTag(XName name) : base(name) {}
 	// In case you only have this abstract class and at least want an Entity back
 	abstract internal Entity get(int index);
+	abstract internal void finishConstruction();
 }
 
 // Now, <shapes>, <groups>, etc, tags don't really do everything that Xlst.Elements do.
@@ -32,6 +33,7 @@ public class DepthOneTag<T> : DepthOneTag where T : Entity
 	public int IndexOf(T entity) { return lst.IndexOf(entity); }
 	public T this[int index] { get { return lst[index]; } set { lst[index] = value; } }
 	internal override Entity get(int index) { return lst[index]; }
+	internal override void finishConstruction() { lst.ForEach(entity => entity.finishConstruction()); }
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
 		elt.RemoveNodes();

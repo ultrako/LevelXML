@@ -53,15 +53,22 @@ public class Level : LevelXMLTag
 			_ => -1,
 		};
 	}
+	private AutoResetEvent depthOneTagsReady = new(false);
 	private Entity reverseMapper(XElement e)
 	{
 		int index = Int32.Parse(e.Attribute("i")!.Value)!;
 		Type entityType = NameToEntityType[e.Name.ToString()];
-		Console.WriteLine($"Trying to get the {index}th {entityType}");
+		//Console.WriteLine($"Trying to get the {index}th {entityType}");
+		// Wait until the class sets that the tags are ready to index through
+		// This is needed because the constructors of these entities use the reverse mapper,
+		// but we haven't made a depthOneTag until we've constructed all of its Entities.
+		// The consequence is that the constructors for Entities can't wait for
+		// this function to finish.
+		depthOneTagsReady.WaitOne();
 		DepthOneTag? lst = TypeToDepthOneTag(entityType);
 		if (lst is null)
 		{
-			throw new Exception("Tried to index into a depth one tag we haven't finished constructing!");
+			throw new Exception("Tried to index into a depth one tag we didn't construct!");
 		} else
 		{
 			return lst.get(index);
@@ -119,5 +126,8 @@ public class Level : LevelXMLTag
 		if (JointsTag is not null) { Joints = new DepthOneTag<Joint>(JointsTag); }
 		XElement? TriggersTag = e.Element("triggers");
 		if (TriggersTag is not null) { Triggers = new DepthOneTag<Trigger>(TriggersTag, ReverseMapper: reverseMapper); }
+		// At this point the depth one tags can be indexed through
+		depthOneTagsReady.Set();
+		if (Triggers is not null) { Triggers.finishConstruction(); }
 	}
 }

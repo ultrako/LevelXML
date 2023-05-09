@@ -38,4 +38,5 @@ public abstract class Entity : LevelXMLTag
 			_ => throw new Exception("XML tag type isn't an entity!"),
 		};
     }
+	internal virtual void finishConstruction() {}
 }
