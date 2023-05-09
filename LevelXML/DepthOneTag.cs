@@ -43,14 +43,14 @@ public class DepthOneTag<T> : DepthOneTag where T : Entity
 			elt.Add(entity.elt);
 		}
 	}
-	public DepthOneTag(string xml) : this(StrToXElement(xml)) {}
+	internal DepthOneTag(string xml) : this(StrToXElement(xml)) {}
 	internal DepthOneTag(XElement e, Func<XElement, Entity> ReverseMapper=default!) : 
 		this(content: e.Elements()
 			.Select(element => Entity.FromXElement(element, ReverseMapper) as T)
 			.Where(item => item is not null).Select(item => item!)
 			.ToArray()) 
 	{}
-	public DepthOneTag(params T[] content) : base (EntityToDepthOneTagName[typeof(T)]) 
+	internal DepthOneTag(params T[] content) : base (EntityToDepthOneTagName[typeof(T)]) 
 	{
 		lst = new(content);
 	}
