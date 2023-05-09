@@ -178,4 +178,8 @@ public class Trigger : Entity
 		// If your trigger has elements, you need to pass a ReverseMapper to parse them
 		lst = new(targets.Concat(e.Elements().Select(targetTag => Target.FromXElement(targetTag, ReverseMapper))).ToArray());
 	}
+	internal override void finishConstruction()
+	{
+		lst.ForEach(target => target.finishConstruction());
+	}
 }

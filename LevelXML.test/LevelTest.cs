@@ -51,7 +51,6 @@ public class LevelTest
         </t>
     </triggers>
 </levelXML>");
-		//Console.WriteLine(level.ToString());
 		Assert.Equal(level.Shapes![0]!, level.Triggers![0]![0]!.Targeted);
 	}
 	[Fact]
@@ -67,7 +66,6 @@ public class LevelTest
 		</t>
 	</triggers>
 </levelXML>");
-		Console.WriteLine(level.ToString());
 		Assert.Equal(level.Triggers![0]!, level.Triggers![0]![0]!.Targeted);
 	}
 }
