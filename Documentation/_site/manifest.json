@@ -1,0 +1,382 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/ultrako/work/happywheels/csharp/HappyWheels/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Activate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Activate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.AwakeFromSleep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.AwakeFromSleep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.ChangeOpacity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.ChangeOpacity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.DepthOneTag-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.DepthOneTag-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.DepthOneTag.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.DepthOneTag.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Disable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Disable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Enable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Enable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Entity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Entity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Group.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Group.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Info.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Info.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Joint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Joint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Level.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Level.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.LevelXMLTag.HWBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.LevelXMLTag.HWBool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.LevelXMLTag.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.LevelXMLTag.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Rectangle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Rectangle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Shape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Shape.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Special.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Special.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Target-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Target-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Target.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Target.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Test.InfoTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Test.InfoTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Test.LevelTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Test.LevelTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Test.TriggerTargetTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Test.TriggerTargetTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Test.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Test.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.Trigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.Trigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.TriggerAction-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.TriggerAction-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.test.ShapeTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.test.ShapeTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.test.TargetTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.test.TargetTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.test.TriggerTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.test.TriggerTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.test.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.test.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HappyWheels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HappyWheels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
