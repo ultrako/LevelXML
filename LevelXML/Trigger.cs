@@ -166,8 +166,8 @@ public class Trigger : Entity
 	// Targets may come in either the <xml tag> or as a params arg to the constructor
 	// If it's in the xml tag, targets have indexes, so it needs the level to be able
 	// to have object references (as this class requires)
-	public Trigger(string xml=EditorDefault, params Target[] targets) : this(StrToXElement(xml), targets: targets) {}
-	internal Trigger(XElement e, params Target[] targets) : base("t", e.Elements(), targets)
+	public Trigger(string xml=EditorDefault, Func<XElement, Entity> ReverseMapper=default!, params Target[] targets) : this(StrToXElement(xml), ReverseMapper, targets: targets) {}
+	internal Trigger(XElement e, Func<XElement, Entity> ReverseMapper=default!, params Target[] targets) : base("t", e.Elements(), targets)
 	{
 		if (e.Name.ToString() != "t")
 		{
@@ -175,6 +175,7 @@ public class Trigger : Entity
 		}
 		elt = new XElement(e.Name.ToString());
 		setParams(e);
-		lst = new(targets);
+		// If your trigger has elements, you need to pass a ReverseMapper to parse them
+		lst = new(targets.Concat(e.Elements().Select(targetTag => Target.FromXElement(targetTag, ReverseMapper))).ToArray());
 	}
 }

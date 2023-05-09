@@ -13,7 +13,7 @@ public abstract class TriggerAction<T> : LevelXMLTag where T : Entity
 		float? ActionType = GetFloatOrNull(element, "i");
 		// Why am I switching on nameof(T) ?
 		// Because C# doesn't support template specialization.
-		return nameof(T) switch {
+		return typeof(T).Name switch {
 			nameof(Shape) => ActionType switch {
 				0 => (new AwakeFromSleep() as TriggerAction<T>)!,
 				3 => (new ChangeOpacity(element) as TriggerAction<T>)!,
@@ -25,7 +25,7 @@ public abstract class TriggerAction<T> : LevelXMLTag where T : Entity
 				2 => (new Enable() as TriggerAction<T>)!,
 				_ => throw new Exception("Invalid id for an action targeting a trigger!"),
 			},
-			_ => throw new Exception("Entity type not supported!"),
+			_ => throw new Exception($"Entity type {typeof(T).Name} not supported!"),
 		};
 	}
 }

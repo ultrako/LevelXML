@@ -9,6 +9,18 @@ public abstract class Target : LevelXMLTag
 { 
 	public Entity Targeted {get; set;}
 	protected Target(Entity e) : base(e.elt.Name) { Targeted = e; }
+	internal static Target FromXElement(XElement e, Func<XElement, Entity> ReverseMapper)
+	{
+		return e.Name.ToString() switch
+		{
+			"sh" => new Target<Shape>(e, ReverseMapper),
+			"sp" => new Target<Special>(e, ReverseMapper),
+			"g" => new Target<Group>(e, ReverseMapper),
+			"j" => new Target<Joint>(e, ReverseMapper),
+			"t" => new Target<Trigger>(e, ReverseMapper),
+			_ => throw new Exception("Invalid name for a trigger target!"),
+		};
+	}
 }
 
 public class Target<T> : Target where T : Entity
@@ -40,15 +52,16 @@ public class Target<T> : Target where T : Entity
 			// the same as just setting one action
 			throw new Exception("Triggers can only have one action applied to them per source trigger!");
 		}
-		Targeted = targeted;
 		lst = new(actions);
 	}
-	// I think we'll just have Level deal with turning XElement targets into Target objects
-	// Otherwise, it's just "pass me the function that turns an XElement into an Entity"
-	/*
-	internal Target(string xml, Func<int, Entity?> mapper) : this(StrToXElement(xml), mapper) {}
-	internal Target(XElement e, Func<int, Entity?> mapper) : base(e.Name)
+	// Mapper usually gives indices from Entities.
+	// ReverseMapper gives Entities from XElements with a name and a index
+	internal Target(XElement e, Func<XElement, Entity> ReverseMapper) :
+		base(ReverseMapper(e))
 	{
+		TriggerAction<T>[] actions = e.Elements()
+			.Select(tag => TriggerAction<T>.FromXElement(tag))
+			.ToArray();
+		lst = new(actions);
 	}
-	*/
 }
