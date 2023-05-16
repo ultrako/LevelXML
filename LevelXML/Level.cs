@@ -11,9 +11,9 @@ namespace HappyWheels;
 /// </remarks>
 public class Level : LevelXMLTag
 {
-	///<summary>
-	/// The info tag has information about the character and the background of the level
-	///</summary>
+	/// <summary>
+	/// The &lt;info&gt; tag 
+	/// </summary>
 	public Info Info;
 	private DepthOneTag<Shape> ShapesTag;
 	public IList<Shape> Shapes { get { return ShapesTag; } }

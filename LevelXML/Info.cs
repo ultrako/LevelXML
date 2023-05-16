@@ -2,6 +2,9 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
+/// <summary>
+/// The Info tag has information about the character and the background of the level
+/// </summary>
 public class Info : LevelXMLTag
 {
 	public const string EditorDefault = @"<info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
@@ -13,6 +16,9 @@ public class Info : LevelXMLTag
 			elt.SetAttributeValue("v", value!);
 		}
 	}
+	/// <summary>
+	/// The x coordinate of the player in the level
+	/// </summary>
 	public float? x
 	{
 		get { return GetFloatOrNull("x"); }
