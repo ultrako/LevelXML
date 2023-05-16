@@ -15,18 +15,23 @@ public class Level : LevelXMLTag
 	/// The info tag has information about the character and the background of the level
 	///</summary>
 	public Info Info;
-	public DepthOneTag<Shape>? Shapes;
-	public DepthOneTag<Special>? Specials;
-	public DepthOneTag<Group>? Groups;
-	public DepthOneTag<Joint>? Joints;
-	public DepthOneTag<Trigger>? Triggers;
+	private DepthOneTag<Shape> ShapesTag;
+	public IList<Shape> Shapes { get { return ShapesTag; } }
+	private DepthOneTag<Special> SpecialsTag;
+	public IList<Special> Specials { get { return SpecialsTag; } }
+	private DepthOneTag<Group> GroupsTag;
+	public IList<Group> Groups { get { return GroupsTag; } }
+	private DepthOneTag<Joint> JointsTag;
+	public IList<Joint> Joints { get { return JointsTag; } }
+	private DepthOneTag<Trigger> TriggersTag;
+	public IList<Trigger> Triggers { get { return TriggersTag; } }
 	internal override void PlaceInLevel(Func<Entity, int> _)
 	{
 		elt.RemoveNodes();
 		elt.Add(Info.elt);
-		foreach (DepthOneTag? tag in new List<DepthOneTag?> {Shapes, Specials, Groups, Joints, Triggers})
+		foreach (DepthOneTag tag in new List<DepthOneTag> {ShapesTag, SpecialsTag, GroupsTag, JointsTag, TriggersTag})
 		{
-			if (tag is not null)
+			if (tag.Count > 0)
 			{
 				tag.PlaceInLevel(mapper);
 				elt.Add(tag.elt);
@@ -44,11 +49,11 @@ public class Level : LevelXMLTag
 	private DepthOneTag? TypeToDepthOneTag(Type t)
 	{
 		return t.Name switch {
-			nameof(Shape) => Shapes,
-			nameof(Special) => Specials,
-			nameof(Group) => Groups,
-			nameof(Joint) => Joints,
-			nameof(Trigger) => Triggers,
+			nameof(Shape) => ShapesTag,
+			nameof(Special) => SpecialsTag,
+			nameof(Group) => GroupsTag,
+			nameof(Joint) => JointsTag,
+			nameof(Trigger) => TriggersTag,
 			_ => throw new Exception($"Levels don't hold the type {t.Name}!"),
 		};
 	}
@@ -56,11 +61,11 @@ public class Level : LevelXMLTag
 	{
 		return e switch
 		{
-			Shape s => (Shapes ?? new DepthOneTag<Shape>()).IndexOf(s),
-			Special s => (Specials ?? new DepthOneTag<Special>()).IndexOf(s),
-			Group s => (Groups ?? new DepthOneTag<Group>()).IndexOf(s),
-			Joint s => (Joints ?? new DepthOneTag<Joint>()).IndexOf(s),
-			Trigger s => (Triggers ?? new DepthOneTag<Trigger>()).IndexOf(s),
+			Shape s => (ShapesTag ?? new DepthOneTag<Shape>()).IndexOf(s),
+			Special s => (SpecialsTag ?? new DepthOneTag<Special>()).IndexOf(s),
+			Group s => (GroupsTag ?? new DepthOneTag<Group>()).IndexOf(s),
+			Joint s => (JointsTag ?? new DepthOneTag<Joint>()).IndexOf(s),
+			Trigger s => (TriggersTag ?? new DepthOneTag<Trigger>()).IndexOf(s),
 			_ => -1,
 		};
 	}
@@ -107,11 +112,11 @@ public class Level : LevelXMLTag
 		: base("levelXML")
 	{
 		Info = info ?? new Info();
-		if (shapes is not null && shapes.Length != 0) { Shapes = new(shapes); }
-		if (specials is not null && specials.Length != 0) { Specials = new(specials); }
-		if (groups is not null && groups.Length != 0) { Groups = new(groups); }
-		if (joints is not null && joints.Length != 0) { Joints = new(joints); }
-		if (triggers is not null && triggers.Length != 0) { Triggers = new(triggers); }
+ 		ShapesTag = new(shapes);
+		SpecialsTag = new(specials);
+		GroupsTag = new(groups);
+		JointsTag = new(joints);
+		TriggersTag = new(triggers);
 		elt = new("levelXML");
 	}
 	/// <summary>
@@ -131,18 +136,18 @@ public class Level : LevelXMLTag
 			throw new Exception("Level is missing an info tag!"); 
 		}
 		Info = new(InfoTag);
-		XElement? ShapesTag = e.Element("shapes");
-		if (ShapesTag is not null) { Shapes = new DepthOneTag<Shape>(ShapesTag); }
-		XElement? SpecialsTag = e.Element("specials");
-		if (SpecialsTag is not null) { Specials = new DepthOneTag<Special>(SpecialsTag); }
-		XElement? GroupsTag = e.Element("groups");
-		if (GroupsTag is not null) { Groups = new DepthOneTag<Group>(GroupsTag); }
-		XElement? JointsTag = e.Element("joints");
-		if (JointsTag is not null) { Joints = new DepthOneTag<Joint>(JointsTag); }
-		XElement? TriggersTag = e.Element("triggers");
-		if (TriggersTag is not null) { Triggers = new DepthOneTag<Trigger>(TriggersTag, ReverseMapper: reverseMapper); }
+		XElement? ShapesElement = e.Element("shapes");
+		ShapesTag = new DepthOneTag<Shape>(ShapesElement);
+		XElement? SpecialsElement = e.Element("specials");
+		SpecialsTag = new DepthOneTag<Special>(SpecialsElement);
+		XElement? GroupsElement = e.Element("groups");
+		GroupsTag = new DepthOneTag<Group>(GroupsElement);
+		XElement? JointsElement = e.Element("joints");
+		JointsTag = new DepthOneTag<Joint>(JointsElement);
+		XElement? TriggersElement = e.Element("triggers");
+		TriggersTag = new DepthOneTag<Trigger>(TriggersElement, ReverseMapper: reverseMapper);
 		// At this point the depth one tags can be indexed through
 		depthOneTagsReady.Set();
-		if (Triggers is not null) { Triggers.finishConstruction(); }
+		TriggersTag.finishConstruction();
 	}
 }
