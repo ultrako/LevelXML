@@ -6,7 +6,7 @@ namespace HappyWheels;
 
 // Also making an abstract DepthOneTag so that I can have a list of them,
 // for cleaner code in Level.cs
-abstract public class DepthOneTag : LevelXMLTag
+abstract internal class DepthOneTag : LevelXMLTag
 {
 	protected static Dictionary<Type, string> EntityToDepthOneTagName = new()
 	{
@@ -26,7 +26,7 @@ abstract public class DepthOneTag : LevelXMLTag
 // Now, <shapes>, <groups>, etc, tags don't really do everything that Xlst.Elements do.
 // They don't have any attributes, and they're basically just glorified lists.
 
-public class DepthOneTag<T> : DepthOneTag, IList<T> where T : Entity
+internal class DepthOneTag<T> : DepthOneTag, IList<T> where T : Entity
 {
 	private List<T> lst;
 	public void Add(T entity) { lst.Add(entity); }
