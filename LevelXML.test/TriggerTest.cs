@@ -46,6 +46,10 @@ public class TriggerTest
 		Assert.Equal(@"<t x=""0"" y=""0"" w=""5000"" h=""5000"" a=""0"" b=""6"" t=""1"" r=""4"" sd=""f"" i=""NaN"" d=""30"" />",
 			trigger.ToString(), ignoreWhiteSpaceDifferences: true);
 	}
+	// Being able to set the mapper in ToString makes no sense as an interface,
+	// so we shouldn't test it.
+	// Move the test up to LevelTest.cs
+	/*
 	[Fact]
 	public void TriggerWithTargets()
 	{
@@ -61,4 +65,5 @@ public class TriggerTest
 			trigger.ToString(mapper: elt => elt.GetHashCode()),
 			ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
 	}
+	*/
 }
