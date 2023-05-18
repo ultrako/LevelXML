@@ -35,11 +35,54 @@ public abstract class LevelXMLTag
 	// In happy wheels, bools can be either true, false, or NaN
 	// :(
 	// So here's an enum
-	public enum HWBool 
+	public struct HWBool 
 	{
-		False,
-		True,
-		NaN
+		readonly object val;
+		public static readonly HWBool True = true;
+		public static readonly HWBool False = false;
+		public static readonly HWBool NaN = float.NaN;
+		private HWBool(bool b) { this.val = b; }
+		//private HWBool(float f) { this.val = f; }
+		public static implicit operator bool(HWBool hwb)
+		{
+			if (hwb == HWBool.True) { return true; }
+			else { return false; }
+		}
+		public static implicit operator HWBool(bool b)
+		{
+			return new HWBool(b);
+		}
+		public static implicit operator HWBool(float f)
+		{
+			return NaN;
+		}
+		public static bool operator ==(HWBool lhs, HWBool rhs) 
+		{ 
+			if (lhs.val is bool lval)
+			{
+				if (rhs.val is bool rval) { return lval == rval; }
+				else { return false; }
+			} else if (rhs.val is bool _) { return false; }
+			else { return true; }
+		}
+		public static bool operator !=(HWBool lhs, HWBool rhs)
+		{
+			return !(lhs == rhs);
+		}
+		public override int GetHashCode() { return val.GetHashCode(); }
+		public override bool Equals(Object? that)
+		{
+			if (that is HWBool t) 
+			{
+				return this == t; 
+			} else { return false; }
+		}
+		public override string ToString()
+		{
+			if (this == true) { return "t"; }
+			else if (this == false) { return "f"; }
+			else { return "NaN"; }
+		}
 	}
 	protected HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this.elt, attr); }
 	protected static HWBool? GetBoolOrNull(XElement elt, string attr)
@@ -52,13 +95,6 @@ public abstract class LevelXMLTag
 			else { result = HWBool.NaN; }
 		}
 		return result;
-	}
-	protected static string FormatBool(HWBool? b)
-	{
-		// Bool values in happy wheels can hold 3 things
-		if (b is HWBool.True) { return "t"; } 
-		else if (b is HWBool.False) { return "f"; }
-		else { return "NaN"; }
 	}
 	// All levelXML tags have a Name
 	public string Name
