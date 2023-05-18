@@ -18,7 +18,7 @@ public abstract class Shape : Entity
 	{
 		// If Interactive is true, then the XAttribute isn't set
 		get { return GetBoolOrNull("i"); }
-		set { if (value is HWBool.False) { elt.SetAttributeValue("i", FormatBool(HWBool.False)); }; }
+		set { if (value == false) { elt.SetAttributeValue("i", value); }; }
 	}
 	// For shapes, x and y are p0 and p1
 	public override float? x
@@ -64,12 +64,12 @@ public abstract class Shape : Entity
 	public HWBool? Fixed
 	{
 		get { return GetBoolOrNull("p5"); }
-		set { elt.SetAttributeValue("p5", FormatBool(value ?? HWBool.True)); }
+		set { elt.SetAttributeValue("p5", value ?? HWBool.True); }
 	}
 	public HWBool? Sleeping
 	{
 		get { return GetBoolOrNull("p6"); }
-		set { elt.SetAttributeValue("p6", FormatBool(value ?? HWBool.False)); }
+		set { elt.SetAttributeValue("p6", value ?? HWBool.False); }
 	}
 	public float? Density
 	{

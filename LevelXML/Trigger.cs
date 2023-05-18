@@ -7,6 +7,7 @@ public class Trigger : Entity
 	@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0""/>";
 	private List<Target> lst;
 	public void Add(Target target) { lst.Add(target); }
+	public void Insert(int index, Target target) { lst.Insert(index, target); }
 	public void Remove(Target target) { lst.Remove(target); }
 	public void IndexOf(Target target) { lst.IndexOf(target); }
 	public Target this[int index] { get { return lst[index]; } set { lst[index] = value; } }
@@ -109,13 +110,13 @@ public class Trigger : Entity
 		get { return GetBoolOrNull("sd") ?? HWBool.False; }
 		set
 		{
-			if (value is HWBool.True)
+			if (value == true)
 			{
-				elt.SetAttributeValue("sd", FormatBool(HWBool.True));
+				elt.SetAttributeValue("sd", HWBool.True);
 			}
 			else
 			{
-				elt.SetAttributeValue("sd", FormatBool(HWBool.False));
+				elt.SetAttributeValue("sd", HWBool.False);
 			}
 		}
 	}

@@ -51,9 +51,9 @@ public class Info : LevelXMLTag
 		get { return GetBoolOrNull("f"); }
 		set
 		{
-			HWBool val = value ?? HWBool.False;
-			if (val is HWBool.NaN) { val = HWBool.False; }
-			elt.SetAttributeValue("f", FormatBool(val));
+			HWBool val = value ?? false;
+			if (val == HWBool.NaN) { val = false; }
+			elt.SetAttributeValue("f", val);
 		}
 	}
 	public HWBool? VehicleHidden
@@ -62,8 +62,8 @@ public class Info : LevelXMLTag
 		set
 		{
 			HWBool val = value ?? HWBool.False;
-			if (val is HWBool.NaN) { val = HWBool.False; }
-			elt.SetAttributeValue("h", FormatBool(val));
+			if (val == HWBool.NaN) { val = false; }
+			elt.SetAttributeValue("h", val);
 		}
 	}
 	public float? Background
