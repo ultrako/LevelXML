@@ -14,15 +14,15 @@ public class ChangeOpacity : TriggerAction<Shape>
 {
 	public static string EditorDefault =
 	@"<a i=""3"" p0=""100"" p1=""1"" />";
-	public float? Opacity
+	public double? Opacity
 	{
-		get { return GetFloatOrNull("p0"); }
+		get { return GetDoubleOrNull("p0"); }
 		// Test if this is the level editor behavior
 		set { elt.SetAttributeValue("p0", Math.Clamp(value ?? 100, 0, 100)); }
 	}
-	public float? Duration
+	public double? Duration
 	{
-		get { return GetFloatOrNull("p1"); }
+		get { return GetDoubleOrNull("p1"); }
 		set { elt.SetAttributeValue("p1", value); }
 	}
 	public ChangeOpacity() : this(EditorDefault) {}
@@ -30,7 +30,7 @@ public class ChangeOpacity : TriggerAction<Shape>
 	internal ChangeOpacity(XElement e)
 	{
 		elt.SetAttributeValue("i", 3);
-		Opacity = GetFloatOrNull(e, "p0");
-		Duration = GetFloatOrNull(e, "p1");
+		Opacity = GetDoubleOrNull(e, "p0");
+		Duration = GetDoubleOrNull(e, "p1");
 	}
 }

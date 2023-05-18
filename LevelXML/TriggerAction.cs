@@ -10,7 +10,7 @@ public abstract class TriggerAction<T> : LevelXMLTag where T : Entity
 		{
 			throw new Exception("Did not give a trigger action!");
 		}
-		float? ActionType = GetFloatOrNull(element, "i");
+		double? ActionType = GetDoubleOrNull(element, "i");
 		// Why am I switching on nameof(T) ?
 		// Because C# doesn't support template specialization.
 		return typeof(T).Name switch {
