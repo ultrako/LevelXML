@@ -21,24 +21,24 @@ public abstract class Shape : Entity
 		set { if (value == false) { elt.SetAttributeValue("i", value); }; }
 	}
 	// For shapes, x and y are p0 and p1
-	public override float? x
+	public override double? x
 	{
-		get { return GetFloatOrNull("p0"); }
+		get { return GetDoubleOrNull("p0"); }
 		set
 		{
-			if (value is null || float.IsNaN((float)value!))
+			if (value is null || double.IsNaN((double)value!))
 			{
 				throw new Exception("This would make the shape disappear!");
 			}
 			else { elt.SetAttributeValue("p0", value); }
 		}
 	}
-	public override float? y
+	public override double? y
 	{
-		get { return GetFloatOrNull("p1"); }
+		get { return GetDoubleOrNull("p1"); }
 		set
 		{
-			if (value is null || float.IsNaN((float)value!))
+			if (value is null || double.IsNaN((double)value!))
 			{
 				throw new Exception("This would make the shape disappear!");
 			}
@@ -46,15 +46,15 @@ public abstract class Shape : Entity
 		}
 	}
 	// All shapes have Width and Height, just that some are set differently
-	public abstract float? Width {get; set;}
-	public abstract float? Height {get; set;}
-	public float? Rotation
+	public abstract double? Width {get; set;}
+	public abstract double? Height {get; set;}
+	public double? Rotation
 	{
-		get { return GetFloatOrNull("p4"); }
+		get { return GetDoubleOrNull("p4"); }
 		set 
 		{ 
-			float val = value ?? 0;
-			if (float.IsNaN(val)) 
+			double val = value ?? 0;
+			if (double.IsNaN(val)) 
 			{
 				throw new Exception("That would make the shape disappear!");
 			}
@@ -71,57 +71,57 @@ public abstract class Shape : Entity
 		get { return GetBoolOrNull("p6"); }
 		set { elt.SetAttributeValue("p6", value ?? HWBool.False); }
 	}
-	public float? Density
+	public double? Density
 	{
-		get { return GetFloatOrNull("p7"); }
+		get { return GetDoubleOrNull("p7"); }
 		set
 		{
-			float val = value ?? 1;
+			double val = value ?? 1;
 			// I am hoping clamp doesn't mess with NaN as we do sometimes want
 			// NaN density entities
-			val = (float)Math.Clamp(val, 0.1, 100.0);
+			val = (double)Math.Clamp(val, 0.1, 100.0);
 			elt.SetAttributeValue("p7", val);
 		}
 	}
-	// Representing a RGB color with a float is weird, yes
+	// Representing a RGB color with a double is weird, yes
 	// It's just that in happy wheels anything can be NaN
-	// But in c#, NaN is only a value in floats or doubles
-	public float? FillColor
+	// But in c#, NaN is only a value in doubles or doubles
+	public double? FillColor
 	{
-		get { return GetFloatOrNull("p8"); }
+		get { return GetDoubleOrNull("p8"); }
 		set 
 		{
-			float val = value ?? 4032711;
+			double val = value ?? 4032711;
 			elt.SetAttributeValue("p8", val); 
 		}
 	}
-	public float? OutlineColor
+	public double? OutlineColor
 	{
-		get { return GetFloatOrNull("p9"); }
+		get { return GetDoubleOrNull("p9"); }
 		set 
 		{ 
-			float val = value ?? -1;
+			double val = value ?? -1;
 			elt.SetAttributeValue("p9", val); 
 		}
 	}
-	public float? Opacity
+	public double? Opacity
 	{
-		get { return GetFloatOrNull("p10"); }
+		get { return GetDoubleOrNull("p10"); }
 		set
 		{
 			// If the opacity isn't set, the import box sets it to 100
-			float val = value ?? 100;
+			double val = value ?? 100;
 			// If the opacity is set to NaN, the import box sets it to 0
 			elt.SetAttributeValue("p10", Math.Clamp(val, 0, 100));
 		}
 	}
-	public float? Collision 
+	public double? Collision 
 	{
-		get { return GetFloatOrNull("p11"); }
+		get { return GetDoubleOrNull("p11"); }
 		set
 		{
 			// If this isn't set, it defaults to 1
-			float val = value ?? 1;
+			double val = value ?? 1;
 			// Technically if this is set to NaN this ends up being 0,
 			// but collision 0 has the exact same behavior as collision 1
 			elt.SetAttributeValue("p11", Math.Clamp(val, 1, 7));
@@ -130,7 +130,7 @@ public abstract class Shape : Entity
 	// Only circles actually have this, but we're like one thing away from having commonality
 	// in every single Shape
 	public int? Cutout {
-		get { return (int?)GetFloatOrNull("p12"); }
+		get { return (int?)GetDoubleOrNull("p12"); }
 		set
 		{
 			int val = value ?? 0;
@@ -141,18 +141,18 @@ public abstract class Shape : Entity
 	{
 		elt.SetAttributeValue("t", Type);
 		Interactive = GetBoolOrNull(e, "i");
-        x = GetFloatOrNull(e, "p0");
-        y = GetFloatOrNull(e, "p1");
-        Width = GetFloatOrNull(e, "p2");
-        Height = GetFloatOrNull(e, "p3");
-        Rotation = GetFloatOrNull(e, "p4");
+        x = GetDoubleOrNull(e, "p0");
+        y = GetDoubleOrNull(e, "p1");
+        Width = GetDoubleOrNull(e, "p2");
+        Height = GetDoubleOrNull(e, "p3");
+        Rotation = GetDoubleOrNull(e, "p4");
         Fixed = GetBoolOrNull(e, "p5");
         Sleeping = GetBoolOrNull(e, "p6");
-        Density = GetFloatOrNull(e, "p7");
-        FillColor = GetFloatOrNull(e, "p8");
-        OutlineColor = GetFloatOrNull(e, "p9");
-        Opacity = GetFloatOrNull(e, "p10");
-        Collision = GetFloatOrNull(e, "p11");
+        Density = GetDoubleOrNull(e, "p7");
+        FillColor = GetDoubleOrNull(e, "p8");
+        OutlineColor = GetDoubleOrNull(e, "p9");
+        Opacity = GetDoubleOrNull(e, "p10");
+        Collision = GetDoubleOrNull(e, "p11");
 	}
 	internal Shape(params object?[] contents) : base("sh", contents) {}
 }

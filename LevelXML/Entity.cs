@@ -7,21 +7,21 @@ public abstract class Entity : LevelXMLTag
 	// For entities, there isn't really an editor default for x and y coords,
 	// as it depends on where the cursor was when you make it in the editor,
 	// but for convenience we'll make it 0,0
-	public abstract float? x {get; set;}
-	public abstract float? y {get; set;}
+	public abstract double? x {get; set;}
+	public abstract double? y {get; set;}
 	/*
-	private float _x;
-	private float _y;
-	public float? x 
+	private double _x;
+	private double _y;
+	public double? x 
 	{
 		get { return _x; } 
 		set 
 		{
-			if (value is null || float.IsNaN((float)value!))
+			if (value is null || double.IsNaN((double)value!))
 			{
 				throw new Exception("This would make the entity disappear!");
 			} 
-			else { _x = (float)value!; }
+			else { _x = (double)value!; }
 		}
 	}
 	*/
@@ -30,7 +30,7 @@ public abstract class Entity : LevelXMLTag
 	internal static Entity FromXElement(XElement element, Func<XElement, Entity> ReverseMapper=default!)
     {
 		return element.Name.ToString() switch {
-			"sh" => GetFloatOrNull(element, "t") switch {
+			"sh" => GetDoubleOrNull(element, "t") switch {
 				0 => new Rectangle(element),
 				_ => throw new Exception("Shape type doesn't exist!"),
 			},

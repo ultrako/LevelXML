@@ -8,41 +8,42 @@ namespace HappyWheels;
 public class Info : LevelXMLTag
 {
 	public const string EditorDefault = @"<info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
-	public float? Version
+	public double? Version
 	{
-		get { return GetFloatOrNull("v"); }
+		get { return GetDoubleOrNull("v"); }
 		set
 		{
-			elt.SetAttributeValue("v", value!);
+			// Hardcoded because it does nothing
+			elt.SetAttributeValue("v", "1.94");
 		}
 	}
 	/// <summary>
 	/// The x coordinate of the player in the level
 	/// </summary>
-	public float? x
+	public double? x
 	{
-		get { return GetFloatOrNull("x"); }
+		get { return GetDoubleOrNull("x"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("x", val);
 		}
 	}
-	public float? y
+	public double? y
 	{
-		get { return GetFloatOrNull("y"); }
+		get { return GetDoubleOrNull("y"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("y", val);
 		}
 	}
-	public float? Character
+	public double? Character
 	{
-		get { return GetFloatOrNull("c"); }
+		get { return GetDoubleOrNull("c"); }
 		set
 		{
-			float val = value ?? 1;
+			double val = value ?? 1;
 			elt.SetAttributeValue("c", Math.Clamp(val, 1, 11));
 		}
 	}
@@ -66,28 +67,28 @@ public class Info : LevelXMLTag
 			elt.SetAttributeValue("h", val);
 		}
 	}
-	public float? Background
+	public double? Background
 	{
-		get { return GetFloatOrNull("bg"); }
+		get { return GetDoubleOrNull("bg"); }
 		set
 		{
 			// Invalid values here make a level that's pretty buggy in the editor
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("bg", val);
 		}
 	}
-	public float? BackgroundColor
+	public double? BackgroundColor
 	{
-		get { return GetFloatOrNull("bgc"); }
+		get { return GetDoubleOrNull("bgc"); }
 		set
 		{
-			float val = value ?? 16777215;
+			double val = value ?? 16777215;
 			elt.SetAttributeValue("bgc", val);
 		}
 	}
-	public float? E
+	public double? E
 	{
-		get { return GetFloatOrNull("e"); }
+		get { return GetDoubleOrNull("e"); }
 		set
 		{
 			if (value != 1)
@@ -100,16 +101,16 @@ public class Info : LevelXMLTag
 	protected void setParams(XElement e)
 	{
 		Version = 1.94f;
-		x = GetFloatOrNull(e, "x");
-		y = GetFloatOrNull(e, "y");
-		Character = GetFloatOrNull(e, "c");
+		x = GetDoubleOrNull(e, "x");
+		y = GetDoubleOrNull(e, "y");
+		Character = GetDoubleOrNull(e, "c");
 		ForcedCharacter = GetBoolOrNull(e, "f");
 		VehicleHidden = GetBoolOrNull(e, "h");
-		Background = GetFloatOrNull(e, "bg");
-		BackgroundColor = GetFloatOrNull(e, "bgc");
+		Background = GetDoubleOrNull(e, "bg");
+		BackgroundColor = GetDoubleOrNull(e, "bgc");
 		// Unfortunate naming here
 		// idk what Jim Bonacci meant by "e"
-		this.E = GetFloatOrNull(e, "e");
+		this.E = GetDoubleOrNull(e, "e");
 	}
 	public Info(string xml=EditorDefault) : this (StrToXElement(xml)) {}
 	internal Info(XElement e) : base("info")

@@ -13,22 +13,22 @@ public abstract class LevelXMLTag
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }
 	}
-	protected static float ParseFloat(string val)
+	protected static double ParseDouble(string val)
 	{
-		float result;
-		if (float.TryParse(val, out result)) {
+		double result;
+		if (double.TryParse(val, out result)) {
 			return result;
-		} else { return float.NaN; }
+		} else { return double.NaN; }
 	}
-	// We're going to represent all the enum-like types in happy wheels with floats,
+	// We're going to represent all the enum-like types in happy wheels with doubles,
 	// because they can sometimes hold NaN. And sometimes NaN does unique things for
 	// level creators, so we won't occlude all of that from the get-go.
-	protected float? GetFloatOrNull(string attr) { return GetFloatOrNull(this.elt, attr); }
-	protected static float? GetFloatOrNull(XElement elt, string attr) 
+	protected double? GetDoubleOrNull(string attr) { return GetDoubleOrNull(this.elt, attr); }
+	protected static double? GetDoubleOrNull(XElement elt, string attr) 
 	{
 		if (getStringOrNull(elt, attr) is string val)
 		{
-			return ParseFloat(val);
+			return ParseDouble(val);
 		}
 		return null;
 	}
@@ -40,9 +40,9 @@ public abstract class LevelXMLTag
 		readonly object val;
 		public static readonly HWBool True = true;
 		public static readonly HWBool False = false;
-		public static readonly HWBool NaN = float.NaN;
+		public static readonly HWBool NaN = double.NaN;
 		private HWBool(bool b) { this.val = b; }
-		//private HWBool(float f) { this.val = f; }
+		//private HWBool(double f) { this.val = f; }
 		public static implicit operator bool(HWBool hwb)
 		{
 			if (hwb == HWBool.True) { return true; }
@@ -52,7 +52,7 @@ public abstract class LevelXMLTag
 		{
 			return new HWBool(b);
 		}
-		public static implicit operator HWBool(float f)
+		public static implicit operator HWBool(double f)
 		{
 			return NaN;
 		}

@@ -11,62 +11,62 @@ public class Trigger : Entity
 	public void Remove(Target target) { lst.Remove(target); }
 	public void IndexOf(Target target) { lst.IndexOf(target); }
 	public Target this[int index] { get { return lst[index]; } set { lst[index] = value; } }
-	public override float? x
+	public override double? x
 	{
-		get { return GetFloatOrNull("x"); }
+		get { return GetDoubleOrNull("x"); }
 		set
 		{
 			// Having triggers at NaN locations is actually useful;
 			// they can still be pointed to by triggers and activate other triggers.
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("x", val);
 		}
 	}
-	public override float? y
+	public override double? y
 	{
-		get { return GetFloatOrNull("y"); }
+		get { return GetDoubleOrNull("y"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("y", val);
 		}
 	}
-	public float? Width
+	public double? Width
 	{
-		get { return GetFloatOrNull("w"); }
+		get { return GetDoubleOrNull("w"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("w", Math.Clamp(val, 5, 5000));
 		}
 	}
-	public float? Height
+	public double? Height
 	{
-		get { return GetFloatOrNull("h"); }
+		get { return GetDoubleOrNull("h"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("h", Math.Clamp(val, 5, 5000));
 		}
 	}
-	public float? Rotation
+	public double? Rotation
 	{
-		get { return GetFloatOrNull("a"); }
+		get { return GetDoubleOrNull("a"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("a", val);
 		}
 	}
-	public float? TriggeredBy
+	public double? TriggeredBy
 	{
-		get { return GetFloatOrNull("b"); }
+		get { return GetDoubleOrNull("b"); }
 		set
 		{
 			// Having NaN in triggeredBy is fine, 
 			// it just works like "triggered only by other triggers"
-			float val = value ?? float.NaN;
-			if (float.IsNaN(val)) 
+			double val = value ?? double.NaN;
+			if (double.IsNaN(val)) 
 			{ 
 				elt.SetAttributeValue("b", val); 
 			}
@@ -76,28 +76,28 @@ public class Trigger : Entity
 			}
 		}
 	}
-	public float? Action
+	public double? Action
 	{
-		get { return GetFloatOrNull("t"); }
+		get { return GetDoubleOrNull("t"); }
 		set
 		{
 			// If it's not there, or set to NaN, or set out of range, the level freezes on start
 			// So we'll throw an exception for bad values of t
-			if (value is null || float.IsNaN((float)value!) || (value < 1) || (value > 3) )
+			if (value is null || double.IsNaN((double)value!) || (value < 1) || (value > 3) )
 			{
 				throw new Exception("This trigger would cause the level to freeze on start!");
 			}
-			float val = (float)value!;
+			double val = (double)value!;
 			elt.SetAttributeValue("t", (int)Math.Clamp(val, 1, 3));
 		}
 	}
-	public float? RepeatType
+	public double? RepeatType
 	{
-		get { return GetFloatOrNull("r"); }
+		get { return GetDoubleOrNull("r"); }
 		set
 		{
 			// If this is null or NaN or 0, then the trigger can't ever be activated
-			if (value is null || float.IsNaN((float)value!))
+			if (value is null || double.IsNaN((double)value!))
 			{
 				throw new Exception("This trigger could not ever get activated!");
 			}
@@ -120,40 +120,40 @@ public class Trigger : Entity
 			}
 		}
 	}
-	public float? Interval
+	public double? Interval
 	{
-		get { return GetFloatOrNull("i"); }
+		get { return GetDoubleOrNull("i"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("i", val);
 		}
 	}
-	public float? Delay
+	public double? Delay
 	{
-		get { return GetFloatOrNull("d"); }
+		get { return GetDoubleOrNull("d"); }
 		set
 		{
-			float val = value ?? float.NaN;
+			double val = value ?? double.NaN;
 			elt.SetAttributeValue("d", Math.Clamp(val, 0, 30));
 		}
 	}
 	protected void setParams(XElement e)
 	{
-		x = GetFloatOrNull(e, "x");
-		y = GetFloatOrNull(e, "y");
-		Width = GetFloatOrNull(e, "w");
-		Height = GetFloatOrNull(e, "h");
-		Rotation = GetFloatOrNull(e, "a");
-		TriggeredBy = GetFloatOrNull(e, "b");
-		Action = GetFloatOrNull(e, "t");
-		RepeatType = GetFloatOrNull(e, "r");
+		x = GetDoubleOrNull(e, "x");
+		y = GetDoubleOrNull(e, "y");
+		Width = GetDoubleOrNull(e, "w");
+		Height = GetDoubleOrNull(e, "h");
+		Rotation = GetDoubleOrNull(e, "a");
+		TriggeredBy = GetDoubleOrNull(e, "b");
+		Action = GetDoubleOrNull(e, "t");
+		RepeatType = GetDoubleOrNull(e, "r");
 		StartDisabled = GetBoolOrNull(e, "sd");
 		if (RepeatType == 4) 
 		{
-			Interval = GetFloatOrNull(e, "i");
+			Interval = GetDoubleOrNull(e, "i");
 		}
-		Delay = GetFloatOrNull(e, "d");
+		Delay = GetDoubleOrNull(e, "d");
 	}
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
