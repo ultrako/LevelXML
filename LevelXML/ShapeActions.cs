@@ -34,3 +34,10 @@ public class ChangeOpacity : TriggerAction<Shape>
 		Duration = GetDoubleOrNull(e, "p1");
 	}
 }
+public class DeleteShape : TriggerAction<Shape>
+{
+	public DeleteShape()
+	{
+		elt.SetAttributeValue("i", 6);
+	}
+}
