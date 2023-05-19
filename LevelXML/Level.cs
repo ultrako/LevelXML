@@ -31,9 +31,10 @@ public class Level : LevelXMLTag
 		elt.Add(Info.elt);
 		foreach (DepthOneTag tag in new List<DepthOneTag> {ShapesTag, SpecialsTag, GroupsTag, JointsTag, TriggersTag})
 		{
+			TriggersTag.PlaceInLevel(mapper);
+			ShapesTag.PlaceInLevel(vertMapper);
 			if (tag.Count > 0)
 			{
-				tag.PlaceInLevel(mapper);
 				elt.Add(tag.elt);
 			}
 		}
@@ -55,6 +56,15 @@ public class Level : LevelXMLTag
 			nameof(Joint) => JointsTag,
 			nameof(Trigger) => TriggersTag,
 			_ => throw new Exception($"Levels don't hold the type {t.Name}!"),
+		};
+	}
+	private int vertMapper(Entity e)
+	{
+		return e switch
+		{
+			Art a => Shapes.Where(shape => shape is Art).ToList().FindIndex(other => other == a),
+			Polygon p => Shapes.Where(shape => shape is Polygon).ToList().FindIndex(other => other == p),
+			_ => -1,
 		};
 	}
 	private int mapper(Entity e)
