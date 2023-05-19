@@ -138,6 +138,22 @@ public class Trigger : Entity
 			elt.SetAttributeValue("d", Math.Clamp(val, 0, 30));
 		}
 	}
+	public double? Sound
+	{
+		get { return GetDoubleOrNull("s"); }
+		set
+		{
+			// I forget the exact number, it's not 341, check this later
+			if (value < 0 || value > 341)
+			{
+				throw new Exception("Sound number is invalid!");
+			}
+			if (value is not null)
+			{
+				elt.SetAttributeValue("s", value);
+			}
+		}
+	}
 	protected void setParams(XElement e)
 	{
 		x = GetDoubleOrNull(e, "x");

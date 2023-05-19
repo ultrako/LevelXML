@@ -25,6 +25,12 @@ public class ChangeOpacity : TriggerAction<Shape>
 		get { return GetDoubleOrNull("p1"); }
 		set { elt.SetAttributeValue("p1", value); }
 	}
+	public ChangeOpacity(double Opacity, double Duration)
+	{
+		elt.SetAttributeValue("i", 3);
+		this.Opacity = Opacity;
+		this.Duration = Duration;
+	}
 	public ChangeOpacity() : this(EditorDefault) {}
 	public ChangeOpacity(string xml) : this(StrToXElement(xml)) {}
 	internal ChangeOpacity(XElement e)

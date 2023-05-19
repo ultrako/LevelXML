@@ -54,4 +54,13 @@ public class ShapeTest
 		Assert.Equal(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""5000"" p3=""5000"" p4=""180"" p5=""t"" p6=""f"" p7=""100"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""7"" />",
 			rect.ToString(), ignoreWhiteSpaceDifferences: true);
 	}
+	[Fact]
+	public void ArtShapeTestNoIDCollision()
+	{
+		Art art1 = new();
+		art1.Vertices.Add((3,0));
+		Art art2 = new();
+		Level level = new(info: default!, art1, art2);
+		//Console.WriteLine(level.ToString());
+	}
 }
