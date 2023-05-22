@@ -69,7 +69,7 @@ public class Level : LevelXMLTag
 	}
 	private int mapper(Entity e)
 	{
-		return e switch
+		int index = e switch
 		{
 			Shape s => (ShapesTag ?? new DepthOneTag<Shape>()).IndexOf(s),
 			Special s => (SpecialsTag ?? new DepthOneTag<Special>()).IndexOf(s),
@@ -78,6 +78,10 @@ public class Level : LevelXMLTag
 			Trigger s => (TriggersTag ?? new DepthOneTag<Trigger>()).IndexOf(s),
 			_ => -1,
 		};
+		if (index < 0)
+		{
+			throw new Exception($"Entity {e.GetHashCode()} pointed to something that wasn't in the level!");
+		}
 	}
 	private AutoResetEvent depthOneTagsReady = new(false);
 	private Entity reverseMapper(XElement e)
