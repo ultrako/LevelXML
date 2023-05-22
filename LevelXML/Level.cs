@@ -82,6 +82,7 @@ public class Level : LevelXMLTag
 		{
 			throw new Exception($"Entity {e.GetHashCode()} pointed to something that wasn't in the level!");
 		}
+		return index;
 	}
 	private AutoResetEvent depthOneTagsReady = new(false);
 	private Entity reverseMapper(XElement e)
