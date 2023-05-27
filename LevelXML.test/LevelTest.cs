@@ -68,4 +68,13 @@ public class LevelTest
 </levelXML>");
 		Assert.Equal(level.Triggers![0]!, level.Triggers![0]![0]!.Targeted);
 	}
+	[Fact]
+	public void TestLevelWithGroup()
+	{
+		Rectangle rect = new();
+		rect.Fixed = false;
+		Group group = new(rect);
+		Level level = new(info:default!, group);
+		Console.WriteLine(level.ToString());
+	}
 }

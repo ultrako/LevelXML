@@ -30,14 +30,17 @@ public class Level : LevelXMLTag
 		elt.RemoveNodes();
 		elt.Add(Info.elt);
 		foreach (DepthOneTag tag in new List<DepthOneTag> {ShapesTag, SpecialsTag, GroupsTag, JointsTag, TriggersTag})
-		{
-			TriggersTag.PlaceInLevel(mapper);
-			ShapesTag.PlaceInLevel(vertMapper);
+		{	
 			if (tag.Count > 0)
 			{
 				elt.Add(tag.elt);
 			}
 		}
+		JointsTag.PlaceInLevel(mapper);
+		TriggersTag.PlaceInLevel(mapper);
+		SpecialsTag.PlaceInLevel(mapper);
+		ShapesTag.PlaceInLevel(vertMapper);
+		GroupsTag.PlaceInLevel(vertMapper);
 	}
 	private Dictionary<string, Type> NameToEntityType = new()
 	{
