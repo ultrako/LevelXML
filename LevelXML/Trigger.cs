@@ -154,6 +154,28 @@ public class Trigger : Entity
 			}
 		}
 	}
+	public double? SoundLocation
+	{
+		get { return GetDoubleOrNull("l"); }
+		set
+		{
+			if (value is double val)
+			{
+				elt.SetAttributeValue("l", (int)Math.Clamp(val, 1.0, 2.0));
+			}
+		}
+	}
+	public double? Volume
+	{
+		get { return GetDoubleOrNull("v"); }
+		set
+		{
+			if (value is double val)
+			{
+				elt.SetAttributeValue("v", Math.Clamp(val, 0.0, 1.0));
+			}
+		}
+	}
 	protected void setParams(XElement e)
 	{
 		x = GetDoubleOrNull(e, "x");
