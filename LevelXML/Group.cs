@@ -82,6 +82,19 @@ public class Group : Entity, IList<Entity>
 			elt.SetAttributeValue("y", val);
 		}
 	}
+	public double? Rotation
+	{
+		get { return GetDoubleOrNull("r"); }
+		set 
+		{ 
+			double val = value ?? 0;
+			if (double.IsNaN(val)) 
+			{
+				throw new Exception("That would make the group disappear!");
+			}
+			elt.SetAttributeValue("r", Math.Clamp(val,-180,180)); 
+		}
+	}
 	public double? OriginX
 	{
 		get { return GetDoubleOrNull("ox");}
@@ -160,6 +173,7 @@ public class Group : Entity, IList<Entity>
 	{
 		x = GetDoubleOrNull(e, "x");
 		y = GetDoubleOrNull(e, "y");
+		Rotation = GetDoubleOrNull(e, "r");
 		OriginX = GetDoubleOrNull(e, "ox");
 		OriginY = GetDoubleOrNull(e, "oy");
 		Sleeping = GetBoolOrNull(e, "s");
