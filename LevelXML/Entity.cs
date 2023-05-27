@@ -30,11 +30,17 @@ public abstract class Entity : LevelXMLTag
 	internal static Entity FromXElement(XElement element, Func<XElement, Entity> ReverseMapper=default!)
     {
 		return element.Name.ToString() switch {
-			"sh" => GetDoubleOrNull(element, "t") switch {
+			"sh" => GetDoubleOrNull(element, "t") switch 
+			{
 				0 => new Rectangle(element),
 				_ => throw new Exception("Shape type doesn't exist!"),
 			},
 			"t" => new Trigger(element, ReverseMapper),
+			"sp" => GetDoubleOrNull(element, "t") switch 
+			{
+				16 => new TextBox(element),
+				_ => throw new Exception("Special type doesn't exist!")
+			},
 			_ => throw new Exception("XML tag type isn't an entity!"),
 		};
     }
