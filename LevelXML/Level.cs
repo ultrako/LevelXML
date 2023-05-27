@@ -65,9 +65,21 @@ public class Level : LevelXMLTag
 	{
 		return e switch
 		{
-			Art a => Shapes.Where(shape => shape is Art).ToList().FindIndex(other => other == a),
-			Polygon p => Shapes.Where(shape => shape is Polygon).ToList().FindIndex(other => other == p),
-			_ => -1,
+			Art a => 
+				Shapes
+				.Where(shape => shape is Art)
+				.Concat(Groups.SelectMany(group => group)
+				.Where(entity => entity is Art))
+				.ToList()
+				.FindIndex(other => other == a),
+			Polygon p => 
+				Shapes
+				.Where(shape => shape is Polygon)
+				.Concat(Groups.SelectMany(group => group)
+				.Where(entity => entity is Polygon))
+				.ToList()
+				.FindIndex(other => other == p),
+			_ => throw new Exception("Art shape pointed to by another art shape was not found!"),
 		};
 	}
 	private int mapper(Entity e)

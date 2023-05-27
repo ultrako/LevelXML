@@ -69,12 +69,23 @@ public class LevelTest
 		Assert.Equal(level.Triggers![0]!, level.Triggers![0]![0]!.Targeted);
 	}
 	[Fact]
-	public void TestLevelWithGroup()
+	public void TestLevelWithGroupThatHasArtShape()
 	{
-		Rectangle rect = new();
-		rect.Fixed = false;
-		Group group = new(rect);
-		Level level = new(info:default!, group);
-		Console.WriteLine(level.ToString());
+		Art art = new();
+		art.Vertices.Add((3,0));
+		Group group = new(art);
+		Level level = new(info: default!, group);
+		string expected = @"<levelXML>
+  <info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <groups>
+    <g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""0"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"">
+      <sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+        <v f=""t"" id=""0"" n=""1"" v0=""3_0"" />
+      </sh>
+    </g>
+  </groups>
+</levelXML>";
+		string actual = level.ToString();
+		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
 	}
 }
