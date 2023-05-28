@@ -1,16 +1,25 @@
 using System.Xml.Linq;
+using System.Collections;
 
 namespace HappyWheels;
-public class Trigger : Entity
+public class Trigger : Entity, IList<Target>
 {
 	public const string EditorDefault =
 	@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0""/>";
 	private List<Target> lst;
 	public void Add(Target target) { lst.Add(target); }
 	public void Insert(int index, Target target) { lst.Insert(index, target); }
-	public void Remove(Target target) { lst.Remove(target); }
-	public void IndexOf(Target target) { lst.IndexOf(target); }
+	public bool Remove(Target target) { return lst.Remove(target); }
+	public void RemoveAt(int index) { lst.RemoveAt(index);}
+	public void Clear() { lst.Clear(); }
+	public bool Contains(Target target) { return lst.Contains(target); }
+	public void CopyTo(Target[] targets, int size) { CopyTo(targets, size); }
+	public int IndexOf(Target target) { return lst.IndexOf(target); }
+	public int Count => lst.Count;
+	public bool IsReadOnly => false;
 	public Target this[int index] { get { return lst[index]; } set { lst[index] = value; } }
+	IEnumerator<Target> IEnumerable<Target>.GetEnumerator() { return lst.GetEnumerator(); }
+	IEnumerator IEnumerable.GetEnumerator() { return lst.GetEnumerator();}
 	public override double? x
 	{
 		get { return GetDoubleOrNull("x"); }
