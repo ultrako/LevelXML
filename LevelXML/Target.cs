@@ -1,5 +1,5 @@
 using System.Xml.Linq;
-
+using System.Collections;
 namespace HappyWheels;
 
 // Weird rules about covariance make it so I can't have a list of Target<T> with varying T,
@@ -8,6 +8,7 @@ namespace HappyWheels;
 public abstract class Target : LevelXMLTag 
 { 
 	public Entity Targeted {get; set;} = default!;
+	public abstract IEnumerator<TriggerAction> GetEnumerator();
 	protected Target(Entity e) : base(e.elt.Name) { Targeted = e; }
 	private Task? setTargeted;
 	protected Target(XElement e, Func<XElement, Entity> ReverseMapper) : base(e.Name)
@@ -39,6 +40,7 @@ public class Target<T> : Target where T : Entity
 	public void Add(TriggerAction<T> action) { lst.Add(action); }
 	public void Remove(TriggerAction<T> action) { lst.Remove(action); }
 	public void IndexOf(TriggerAction<T> action) { lst.IndexOf(action); }
+	public override IEnumerator<TriggerAction> GetEnumerator() { return lst.GetEnumerator(); }
 	public TriggerAction<T> this[int index] { get { return lst[index]; } set { lst[index] = value; } }
 
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
