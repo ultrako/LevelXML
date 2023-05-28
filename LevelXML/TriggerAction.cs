@@ -1,9 +1,12 @@
 using System.Xml.Linq;
 namespace HappyWheels;
-
-public abstract class TriggerAction<T> : LevelXMLTag where T : Entity
+public abstract class TriggerAction : LevelXMLTag
 {
 	protected TriggerAction() : base("a") {}
+}
+public abstract class TriggerAction<T> : TriggerAction where T : Entity
+{
+	protected TriggerAction() : base() {}
 	internal static TriggerAction<T> FromXElement(XElement element)
 	{
 		if (element.Name.ToString() != "a")
