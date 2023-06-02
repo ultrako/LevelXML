@@ -1,4 +1,8 @@
 namespace HappyWheels;
+///<summary>
+/// Specials are entities that have coded behavior besides just collision,
+/// like homing mines that follow players or spike sets that stab.
+///</summary>
 public abstract class Special : Entity
 {
 	public abstract uint Type {get;}

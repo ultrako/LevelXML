@@ -4,10 +4,13 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
 namespace HappyWheels;
-// Shapes are either rectangles, triangles, circles, polygons, or art.
+///<summary>
+/// Shapes are simple entities that can have collision.
+/// Shapes are either rectangles, triangles, circles, polygons, or art.
+///</summary>
 public abstract class Shape : Entity
 {
-	public abstract uint Type {get;}
+	internal abstract uint Type {get;}
 	
 	// The pattern of nullable properties that usually set their
 	// backing field to non null (or throw),

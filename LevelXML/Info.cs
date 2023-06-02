@@ -5,10 +5,10 @@ namespace HappyWheels;
 /// <summary>
 /// The Info tag has information about the character and the background of the level
 /// </summary>
-public class Info : LevelXMLTag
+internal class Info : LevelXMLTag
 {
 	public const string EditorDefault = @"<info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
-	public double? Version
+	internal double? Version
 	{
 		get { return GetDoubleOrNull("v"); }
 		set
@@ -86,7 +86,7 @@ public class Info : LevelXMLTag
 			elt.SetAttributeValue("bgc", val);
 		}
 	}
-	public double? E
+	internal double? E
 	{
 		get { return GetDoubleOrNull("e"); }
 		set

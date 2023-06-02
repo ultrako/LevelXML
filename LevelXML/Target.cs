@@ -4,11 +4,19 @@ namespace HappyWheels;
 
 // Weird rules about covariance make it so I can't have a list of Target<T> with varying T,
 // so I'll just make an abstract class Target that Target<T> derives from
+///<summary>
+/// A Target is an Entity and a list of actions that a trigger does to that Entity.
+/// Triggers cannot interleave actions between two different entities.
+///</summary>
 
 public abstract class Target : LevelXMLTag 
 { 
 	public Entity Targeted {get; set;} = default!;
 	public abstract IEnumerator<TriggerAction> GetEnumerator();
+	public abstract void Add(TriggerAction action);
+	public abstract bool Remove(TriggerAction action);
+	public abstract int IndexOf(TriggerAction action);
+	public abstract TriggerAction this[int index] {get; set;}
 	protected Target(Entity e) : base(e.elt.Name) { Targeted = e; }
 	private Task? setTargeted;
 	protected Target(XElement e, Func<XElement, Entity> ReverseMapper) : base(e.Name)
@@ -37,11 +45,54 @@ public class Target<T> : Target where T : Entity
 {
 	private List<TriggerAction<T>> lst;
 
-	public void Add(TriggerAction<T> action) { lst.Add(action); }
-	public void Remove(TriggerAction<T> action) { lst.Remove(action); }
-	public void IndexOf(TriggerAction<T> action) { lst.IndexOf(action); }
+	public override void Add(TriggerAction action) {
+		// A trigger can only do one thing to another trigger
+		if (typeof(T) == typeof(Trigger))
+		{
+			if (lst.Count > 0)
+			{
+				throw new Exception("Tried to add a second action to a trigger!");
+			}
+		}
+		if (action is TriggerAction<T> act)
+		{
+			lst.Add(act); 
+		} else
+		{
+			throw new Exception("Tried to add an action of the wrong Entity type!");
+		}
+	}
+	public override bool Remove(TriggerAction action) 
+	{
+		if (action is TriggerAction<T> act)
+		{
+			return lst.Remove(act); 
+		}
+		return false;
+	}
+	public override int IndexOf(TriggerAction action) 
+	{ 
+		if (action is TriggerAction<T> act)
+		{
+			return lst.IndexOf(act);
+		}
+		return -1;
+	}
 	public override IEnumerator<TriggerAction> GetEnumerator() { return lst.GetEnumerator(); }
-	public TriggerAction<T> this[int index] { get { return lst[index]; } set { lst[index] = value; } }
+	public override TriggerAction this[int index] 
+	{ 
+		get { return lst[index]; } 
+		set 
+		{
+			if (value is TriggerAction<T> act)
+			{
+				lst[index] = act;
+			} else
+			{
+				throw new Exception("Tried to add an action of the wrong Entity type!");
+			}
+		} 
+	}
 
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
@@ -52,6 +103,9 @@ public class Target<T> : Target where T : Entity
 			elt.Add(action.elt);
 		}
 	}
+	///<summary>
+	/// You can construct a Target[T] out of an Entity of type T and a list of Action[T]
+	///</summary>
 
 	public Target(T targeted, params TriggerAction<T>[] actions) : 
 	base(targeted) 

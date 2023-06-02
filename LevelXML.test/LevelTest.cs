@@ -12,14 +12,14 @@ public class LevelTest
 		Assert.Equal(@"<levelXML>
     <info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
 </levelXML>",
-		level.ToString(), ignoreWhiteSpaceDifferences: true, ignoreLineEndingDifferences: true);
+		level.ToXML(), ignoreWhiteSpaceDifferences: true, ignoreLineEndingDifferences: true);
 	}
 	[Fact]
 	public void TestCreateLevelWithTriggerToRectangle()
 	{
 		Rectangle rect = new();
 		Trigger trigger = new(targets: new Target<Shape>(rect, new AwakeFromSleep()));
-		Level level = new(info: default!, rect, trigger);
+		Level level = new(rect, trigger);
 		Assert.Equal(@"<levelXML>
 	<info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
 	<shapes>
@@ -33,7 +33,7 @@ public class LevelTest
 		</t>
 	</triggers>
 </levelXML>",
-		level.ToString(), ignoreWhiteSpaceDifferences: true, ignoreLineEndingDifferences: true);
+		level.ToXML(), ignoreWhiteSpaceDifferences: true, ignoreLineEndingDifferences: true);
 	}
 	[Fact]
 	public void ParseLevelWithTriggerToRectangle()
@@ -74,7 +74,7 @@ public class LevelTest
 		Art art = new();
 		art.Vertices.Add((3,0));
 		Group group = new(art);
-		Level level = new(info: default!, group);
+		Level level = new(group);
 		string expected = @"<levelXML>
   <info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
   <groups>
@@ -85,7 +85,28 @@ public class LevelTest
     </g>
   </groups>
 </levelXML>";
-		string actual = level.ToString();
+		string actual = level.ToXML();
+		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
+	}
+	[Fact]
+	public void ArtShapeTestNoIDCollision()
+	{
+		Art art1 = new();
+		art1.Vertices.Add((3,0));
+		Art art2 = new();
+		Level level = new(art1, art2);
+		string expected =@"<levelXML>
+  <info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <shapes>
+    <sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+      <v f=""t"" id=""0"" n=""1"" v0=""3_0"" />
+    </sh>
+    <sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+      <v f=""t"" id=""1"" n=""0"" />
+    </sh>
+  </shapes>
+</levelXML>";
+		string actual = level.ToXML();
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
 	}
 }

@@ -4,8 +4,6 @@ using System;
 namespace HappyWheels.test;
 
 public class TargetTest {
-	// Using mapper param in ToString is no longer part of the interface
-	/*
 	[Fact]
 	public void AwakeFromSleepTargetTest()
 	{
@@ -14,9 +12,7 @@ public class TargetTest {
 		Assert.Equal(@"<sh i=""" + rect.GetHashCode() + @""">
  <a i=""0"" />
 </sh>",
-			target.ToString(mapper: entity => entity.GetHashCode()),
+			target.ToXML(mapper: entity => entity.GetHashCode()),
 			ignoreWhiteSpaceDifferences: true, ignoreLineEndingDifferences: true);
-		//Console.WriteLine(target.ToString(mapper: entity => entity.GetHashCode()));
 	}
-	*/
 }

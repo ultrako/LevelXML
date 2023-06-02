@@ -1,6 +1,8 @@
 ﻿using System.Xml.Linq;
 namespace HappyWheels;
-// This class represents any xml tag <> that can go into the import box in Happy Wheels.
+///<summary>
+/// This class represents any xml tag that can go into the import box in Happy Wheels.
+///</summary>
 public abstract class LevelXMLTag
 {
 	internal XElement elt {get; set;}
@@ -32,14 +34,20 @@ public abstract class LevelXMLTag
 		}
 		return null;
 	}
-	// In happy wheels, bools can be either true, false, or NaN
-	// :(
-	// So here's an enum
+	///<summary>
+	/// In happy wheels, bools can be either true, false, or NaN
+	/// This has implicit conversions, so whenever a property
+	/// has the type HWBool, just use regular bools instead.
+	///<summary>
 	public struct HWBool 
 	{
 		readonly object val;
 		public static readonly HWBool True = true;
 		public static readonly HWBool False = false;
+		///<summary>
+		/// If you specifically need to set a happy wheels boolean value to NaN,
+		/// then use this static constant.
+		///</summary>
 		public static readonly HWBool NaN = double.NaN;
 		private HWBool(bool b) { this.val = b; }
 		//private HWBool(double f) { this.val = f; }
@@ -96,19 +104,17 @@ public abstract class LevelXMLTag
 		}
 		return result;
 	}
-	// All levelXML tags have a Name
-	public string Name
-	{
-		get { return elt.Name.ToString(); }
-		set { elt.Name = Name; }
-	}
 	// Certain LevelXML tags don't make any sense outside of the context of a level
 	// Like joints, triggers, or blank art shapes
 	// They need a function that takes Entities and returns the index of where
 	// those entities are in their depth one tag
 	internal virtual void PlaceInLevel(Func<Entity, int> mapper) {}
-	new public virtual string ToString() { return ToString(mapper: default!); }
-	internal virtual string ToString(Func<Entity, int> mapper) {
+	///<summary>
+	/// This converts a levelXMLTag object into the valid levelXML tags
+	/// that represent that object
+	///</summary>
+	public virtual string ToXML() { return ToXML(mapper: default!); }
+	internal virtual string ToXML(Func<Entity, int> mapper) {
 		PlaceInLevel(mapper);
 		return elt.ToString();
 	}
