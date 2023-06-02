@@ -20,7 +20,7 @@ internal class Info : LevelXMLTag
 	/// <summary>
 	/// The x coordinate of the player in the level
 	/// </summary>
-	public double? x
+	public double? X
 	{
 		get { return GetDoubleOrNull("x"); }
 		set
@@ -29,7 +29,7 @@ internal class Info : LevelXMLTag
 			elt.SetAttributeValue("x", val);
 		}
 	}
-	public double? y
+	public double? Y
 	{
 		get { return GetDoubleOrNull("y"); }
 		set
@@ -101,8 +101,8 @@ internal class Info : LevelXMLTag
 	protected void setParams(XElement e)
 	{
 		Version = 1.94f;
-		x = GetDoubleOrNull(e, "x");
-		y = GetDoubleOrNull(e, "y");
+		X = GetDoubleOrNull(e, "x");
+		Y = GetDoubleOrNull(e, "y");
 		Character = GetDoubleOrNull(e, "c");
 		ForcedCharacter = GetBoolOrNull(e, "f");
 		VehicleHidden = GetBoolOrNull(e, "h");

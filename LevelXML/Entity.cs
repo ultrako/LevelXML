@@ -7,8 +7,8 @@ public abstract class Entity : LevelXMLTag
 	// For entities, there isn't really an editor default for x and y coords,
 	// as it depends on where the cursor was when you make it in the editor,
 	// but for convenience we'll make it 0,0
-	public abstract double? x {get; set;}
-	public abstract double? y {get; set;}
+	public abstract double? X {get; set;}
+	public abstract double? Y {get; set;}
 	/*
 	private double _x;
 	private double _y;

@@ -6,7 +6,7 @@ namespace HappyWheels;
 public abstract class Special : Entity
 {
 	public abstract uint Type {get;}
-	public override double? x
+	public override double? X
 	{
 		get { return GetDoubleOrNull("p0"); }
 		set
@@ -18,7 +18,7 @@ public abstract class Special : Entity
 			else { elt.SetAttributeValue("p0", value); }
 		}
 	}
-	public override double? y
+	public override double? Y
 	{
 		get { return GetDoubleOrNull("p1"); }
 		set

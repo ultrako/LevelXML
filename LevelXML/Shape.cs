@@ -24,7 +24,7 @@ public abstract class Shape : Entity
 		set { if (value == false) { elt.SetAttributeValue("i", value); }; }
 	}
 	// For shapes, x and y are p0 and p1
-	public override double? x
+	public override double? X
 	{
 		get { return GetDoubleOrNull("p0"); }
 		set
@@ -36,7 +36,7 @@ public abstract class Shape : Entity
 			else { elt.SetAttributeValue("p0", value); }
 		}
 	}
-	public override double? y
+	public override double? Y
 	{
 		get { return GetDoubleOrNull("p1"); }
 		set
@@ -144,8 +144,8 @@ public abstract class Shape : Entity
 	{
 		elt.SetAttributeValue("t", Type);
 		Interactive = GetBoolOrNull(e, "i");
-        x = GetDoubleOrNull(e, "p0");
-        y = GetDoubleOrNull(e, "p1");
+        X = GetDoubleOrNull(e, "p0");
+        Y = GetDoubleOrNull(e, "p1");
         Width = GetDoubleOrNull(e, "p2");
         Height = GetDoubleOrNull(e, "p3");
         Rotation = GetDoubleOrNull(e, "p4");

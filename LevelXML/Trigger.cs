@@ -38,7 +38,7 @@ public class Trigger : Entity, IList<Target>
 	public Target this[int index] { get { return lst[index]; } set { lst[index] = value; } }
 	IEnumerator<Target> IEnumerable<Target>.GetEnumerator() { return lst.GetEnumerator(); }
 	IEnumerator IEnumerable.GetEnumerator() { return lst.GetEnumerator();}
-	public override double? x
+	public override double? X
 	{
 		get { return GetDoubleOrNull("x"); }
 		set
@@ -49,7 +49,7 @@ public class Trigger : Entity, IList<Target>
 			elt.SetAttributeValue("x", val);
 		}
 	}
-	public override double? y
+	public override double? Y
 	{
 		get { return GetDoubleOrNull("y"); }
 		set
@@ -205,8 +205,8 @@ public class Trigger : Entity, IList<Target>
 	}
 	protected void setParams(XElement e)
 	{
-		x = GetDoubleOrNull(e, "x");
-		y = GetDoubleOrNull(e, "y");
+		X = GetDoubleOrNull(e, "x");
+		Y = GetDoubleOrNull(e, "y");
 		Width = GetDoubleOrNull(e, "w");
 		Height = GetDoubleOrNull(e, "h");
 		Rotation = GetDoubleOrNull(e, "a");
