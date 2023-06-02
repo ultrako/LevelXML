@@ -6,7 +6,7 @@ public class Activate : TriggerAction<Trigger>
 {
 	public Activate()
 	{
-		elt.SetAttributeValue("i", 0);
+		Elt.SetAttributeValue("i", 0);
 	}
 }
 
@@ -14,7 +14,7 @@ public class Disable : TriggerAction<Trigger>
 {
 	public Disable()
 	{
-		elt.SetAttributeValue("i", 1);
+		Elt.SetAttributeValue("i", 1);
 	}
 }
 
@@ -22,6 +22,6 @@ public class Enable : TriggerAction<Trigger>
 {
 	public Enable()
 	{
-		elt.SetAttributeValue("i", 2);
+		Elt.SetAttributeValue("i", 2);
 	}
 }

@@ -18,7 +18,7 @@ public class Art : Shape
 			if (double.IsNaN(val)) {
 				throw new Exception("This would make the art shape disappear!");
 			} 
-			elt.SetAttributeValue("p2", val);
+			Elt.SetAttributeValue("p2", val);
 		}
 	}
 	public override double? Height
@@ -30,13 +30,13 @@ public class Art : Shape
 			if (double.IsNaN(val)) {
 				throw new Exception("This would make the art shape disappear!");
 			} 
-			elt.SetAttributeValue("p3", val);
+			Elt.SetAttributeValue("p3", val);
 		}
 	}
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
-		elt.RemoveNodes();
-		elt.Add(Vertices.elt);
+		Elt.RemoveNodes();
+		Elt.Add(Vertices.Elt);
 		Vertices.PlaceInLevel(this, mapper);
 	}
 	public Art() : this(EditorDefault) {}
@@ -47,8 +47,8 @@ public class Art : Shape
 		{
 			throw new Exception("Did not give an art shape to the constructor!");
 		}
-		elt = new XElement(e.Name.ToString());
-		setParams(e);
+		Elt = new XElement(e.Name.ToString());
+		SetParams(e);
 		// Replace this with the constructor that takes an XElement when you make it
 		Vertices = new();
 	}

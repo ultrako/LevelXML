@@ -19,7 +19,7 @@ public class TextBox : Special
 			{
 				throw new Exception("That would make the text box disappear!");
 			}
-			elt.SetAttributeValue("p2", Math.Clamp(val,-180,180)); 
+			Elt.SetAttributeValue("p2", Math.Clamp(val,-180,180)); 
 		}
 	}
 	public double? Color
@@ -27,7 +27,7 @@ public class TextBox : Special
 		get { return GetDoubleOrNull("p3");}
 		set
 		{
-			elt.SetAttributeValue("p3", value ?? 0);
+			Elt.SetAttributeValue("p3", value ?? 0);
 		}
 	}
     public double? Font
@@ -35,7 +35,7 @@ public class TextBox : Special
         get { return GetDoubleOrNull("p4");}
         set
         {
-            elt.SetAttributeValue("p4", Math.Clamp((value ?? 1), 1, 5));
+            Elt.SetAttributeValue("p4", Math.Clamp((value ?? 1), 1, 5));
         }
     }
     public double? FontSize
@@ -43,7 +43,7 @@ public class TextBox : Special
         get { return GetDoubleOrNull("p5");}
         set
         {
-            elt.SetAttributeValue("p5", Math.Clamp((value ?? 10), 10, 100));
+            Elt.SetAttributeValue("p5", Math.Clamp((value ?? 10), 10, 100));
         }
     }
     public double? Alignment
@@ -51,7 +51,7 @@ public class TextBox : Special
         get { return GetDoubleOrNull("p6");}
         set
         {
-            elt.SetAttributeValue("p6", Math.Clamp((value ?? 1), 1, 3));
+            Elt.SetAttributeValue("p6", Math.Clamp((value ?? 1), 1, 3));
         }
     }
     public double? Opacity
@@ -62,7 +62,7 @@ public class TextBox : Special
 			// If the opacity isn't set, the import box sets it to 100
 			double val = value ?? 100;
 			// If the opacity is set to NaN, the import box sets it to 0
-			elt.SetAttributeValue("p8", Math.Clamp(val, 0, 100));
+			Elt.SetAttributeValue("p8", Math.Clamp(val, 0, 100));
 		}
 	}
     public string Content
@@ -76,9 +76,9 @@ public class TextBox : Special
             (contentElement.FirstNode as XCData)!.Value = value;
         }
     }
-    private void setParams(XElement e)
+    private void SetParams(XElement e)
     {
-        elt.SetAttributeValue("t", Type);
+        Elt.SetAttributeValue("t", Type);
         X = GetDoubleOrNull(e, "p0");
         Y = GetDoubleOrNull(e, "p1");
         Rotation = GetDoubleOrNull(e, "p2");
@@ -96,10 +96,10 @@ public class TextBox : Special
 			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
 			throw new Exception("Did not give a textbox to the constructor!");
 		}
-		elt = new XElement(e.Name.ToString());
+		Elt = new XElement(e.Name.ToString());
         contentElement = new("p7", new XCData(""));
-        elt.Add(contentElement);
-		setParams(e);
+        Elt.Add(contentElement);
+		SetParams(e);
 	}
     public TextBox() : this(EditorDefault) {}
 	public TextBox(string xml) : this(StrToXElement(xml)) {}

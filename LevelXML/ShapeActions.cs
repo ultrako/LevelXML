@@ -8,7 +8,7 @@ public class AwakeFromSleep : TriggerAction<Shape>
 {
 	public AwakeFromSleep()
 	{
-		elt.SetAttributeValue("i", 0);
+		Elt.SetAttributeValue("i", 0);
 	}
 }
 
@@ -20,16 +20,16 @@ public class ChangeShapeOpacity : TriggerAction<Shape>
 	{
 		get { return GetDoubleOrNull("p0"); }
 		// Test if this is the level editor behavior
-		set { elt.SetAttributeValue("p0", Math.Clamp(value ?? 100, 0, 100)); }
+		set { Elt.SetAttributeValue("p0", Math.Clamp(value ?? 100, 0, 100)); }
 	}
 	public double? Duration
 	{
 		get { return GetDoubleOrNull("p1"); }
-		set { elt.SetAttributeValue("p1", value); }
+		set { Elt.SetAttributeValue("p1", value); }
 	}
 	public ChangeShapeOpacity(double Opacity, double Duration)
 	{
-		elt.SetAttributeValue("i", 3);
+		Elt.SetAttributeValue("i", 3);
 		this.Opacity = Opacity;
 		this.Duration = Duration;
 	}
@@ -37,7 +37,7 @@ public class ChangeShapeOpacity : TriggerAction<Shape>
 	public ChangeShapeOpacity(string xml) : this(StrToXElement(xml)) {}
 	internal ChangeShapeOpacity(XElement e)
 	{
-		elt.SetAttributeValue("i", 3);
+		Elt.SetAttributeValue("i", 3);
 		Opacity = GetDoubleOrNull(e, "p0");
 		Duration = GetDoubleOrNull(e, "p1");
 	}
@@ -46,6 +46,6 @@ public class DeleteShape : TriggerAction<Shape>
 {
 	public DeleteShape()
 	{
-		elt.SetAttributeValue("i", 6);
+		Elt.SetAttributeValue("i", 6);
 	}
 }
