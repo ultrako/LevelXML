@@ -2,12 +2,30 @@ using System.Xml.Linq;
 using System.Collections;
 
 namespace HappyWheels;
+///<summary>
+/// A trigger is an entity that under certain circumstances can be activated,
+/// and when it does, it goes through and applies its list of Targets.
+///</summary>
 public class Trigger : Entity, IList<Target>
 {
 	public const string EditorDefault =
 	@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0""/>";
 	private List<Target> lst;
-	public void Add(Target target) { lst.Add(target); }
+	public void Add(Target target) {
+		Target? sameTarget = lst
+			.Where(other => other.Targeted == target.Targeted)
+			.FirstOrDefault();
+		if (sameTarget is not null)
+		{
+			foreach (TriggerAction action in target)
+			{
+				sameTarget.Add(action);
+			}
+		} else
+		{
+			lst.Add(target); 
+		}
+	}
 	public void Insert(int index, Target target) { lst.Insert(index, target); }
 	public bool Remove(Target target) { return lst.Remove(target); }
 	public void RemoveAt(int index) { lst.RemoveAt(index);}

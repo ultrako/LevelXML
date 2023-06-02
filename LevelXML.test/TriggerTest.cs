@@ -17,21 +17,21 @@ public class TriggerTest
 		// And we won't allow r to not be set because then the trigger is useless.
 		Trigger trigger = new(@"<t t=""1"" r=""1"" />");
 		Assert.Equal(@"<t x=""NaN"" y=""NaN"" w=""NaN"" h=""NaN"" a=""NaN"" b=""NaN"" t=""1"" r=""1"" sd=""f"" d=""NaN"" />",
-			trigger.ToString(), ignoreWhiteSpaceDifferences: true);
+			trigger.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
 	[Fact]
 	public void TriggerTestNaN()
 	{
 		Trigger trigger = new(@"<t x=""NaN"" y=""NaN"" w=""NaN"" h=""NaN"" a=""NaN"" b=""NaN"" t=""1"" r=""1"" sd=""NaN"" d=""NaN""/>");
 		Assert.Equal(@"<t x=""NaN"" y=""NaN"" w=""NaN"" h=""NaN"" a=""NaN"" b=""NaN"" t=""1"" r=""1"" sd=""f"" d=""NaN"" />",
-			trigger.ToString(), ignoreWhiteSpaceDifferences: true);
+			trigger.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
 	[Fact]
 	public void TriggerTestLowValues()
 	{
 		Trigger trigger = new(@"<t x=""0"" y=""0"" w=""-1000"" h=""-1000"" a=""0"" b=""-1000"" t=""1"" r=""-1000"" sd=""f"" d=""-1000""/>");
 		Assert.Equal(@"<t x=""0"" y=""0"" w=""5"" h=""5"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"" />",
-			trigger.ToString(), ignoreWhiteSpaceDifferences: true);
+			trigger.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
 	[Fact]
 	public void TriggerTestHighValues()
@@ -44,12 +44,10 @@ public class TriggerTest
 		// plus "undefined" is the same as NaN in every single way
 		Trigger trigger = new(@"<t x=""0"" y=""0"" w=""99999"" h=""99999"" a=""0"" b=""99999"" t=""1"" r=""99999"" sd=""f"" d=""99999""/>");
 		Assert.Equal(@"<t x=""0"" y=""0"" w=""5000"" h=""5000"" a=""0"" b=""6"" t=""1"" r=""4"" sd=""f"" i=""NaN"" d=""30"" />",
-			trigger.ToString(), ignoreWhiteSpaceDifferences: true);
+			trigger.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
-	// Being able to set the mapper in ToString makes no sense as an interface,
-	// so we shouldn't test it.
-	// Move the test up to LevelTest.cs
-	/*
+	
+	
 	[Fact]
 	public void TriggerWithTargets()
 	{
@@ -62,8 +60,26 @@ public class TriggerTest
 		<a i=""0"" />
 	</sh>
 </t>",
-			trigger.ToString(mapper: elt => elt.GetHashCode()),
+			trigger.ToXML(mapper: elt => elt.GetHashCode()),
 			ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
 	}
-	*/
+	[Fact]
+	public void AddTwoTargetsToSameRectangle()
+	{
+		Rectangle rect = new();
+		Trigger trigger = new();
+		trigger.Add(new Target<Shape>(rect, new AwakeFromSleep()));
+		trigger.Add(new Target<Shape>(rect, new ChangeShapeOpacity(0, 0)));
+		// We can't assert equality on two TriggerActions because I haven't defined = operators for them
+		Assert.IsType<ChangeShapeOpacity>(trigger[0][1]);
+	}
+	[Fact]
+	public void AddTwoTargetsToSameTrigger()
+	{
+		Trigger trigger = new();
+		Trigger otherTrigger = new();
+		trigger.Add(new Target<Trigger>(otherTrigger, new Enable()));
+		Assert.Throws<Exception>(() => trigger.Add(new Target<Trigger>(otherTrigger, new Enable())));
+	}
+	
 }

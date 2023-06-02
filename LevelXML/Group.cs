@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Xml.Linq;
 namespace HappyWheels;
-// A group contains Shapes and non interactive Specials
+///<summary>
+/// A group is a list of Shapes and non interactive Specials that all move together.
+///</summary>
 public class Group : Entity, IList<Entity>
 {
 	// So there's no such thing as a "make new empty group" button in the editor,

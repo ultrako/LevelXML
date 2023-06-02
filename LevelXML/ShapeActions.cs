@@ -1,7 +1,9 @@
 namespace HappyWheels;
 using System.Xml.Linq;
 
-// The action AwakeFromSleep doesn't have any params to it
+///<summary>
+/// If the object is sleeping, this awakes it from sleep.
+///</summary>
 public class AwakeFromSleep : TriggerAction<Shape>
 {
 	public AwakeFromSleep()
@@ -10,7 +12,7 @@ public class AwakeFromSleep : TriggerAction<Shape>
 	}
 }
 
-public class ChangeOpacity : TriggerAction<Shape>
+public class ChangeShapeOpacity : TriggerAction<Shape>
 {
 	public static string EditorDefault =
 	@"<a i=""3"" p0=""100"" p1=""1"" />";
@@ -25,15 +27,15 @@ public class ChangeOpacity : TriggerAction<Shape>
 		get { return GetDoubleOrNull("p1"); }
 		set { elt.SetAttributeValue("p1", value); }
 	}
-	public ChangeOpacity(double Opacity, double Duration)
+	public ChangeShapeOpacity(double Opacity, double Duration)
 	{
 		elt.SetAttributeValue("i", 3);
 		this.Opacity = Opacity;
 		this.Duration = Duration;
 	}
-	public ChangeOpacity() : this(EditorDefault) {}
-	public ChangeOpacity(string xml) : this(StrToXElement(xml)) {}
-	internal ChangeOpacity(XElement e)
+	public ChangeShapeOpacity() : this(EditorDefault) {}
+	public ChangeShapeOpacity(string xml) : this(StrToXElement(xml)) {}
+	internal ChangeShapeOpacity(XElement e)
 	{
 		elt.SetAttributeValue("i", 3);
 		Opacity = GetDoubleOrNull(e, "p0");
