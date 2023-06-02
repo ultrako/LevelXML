@@ -64,7 +64,7 @@ public class Group : Entity, IList<Entity>
 			lst[index] = value; 
 		} 
 	}
-	public override double? x
+	public override double? X
 	{
 		get { return GetDoubleOrNull("x"); }
 		set
@@ -75,7 +75,7 @@ public class Group : Entity, IList<Entity>
 			elt.SetAttributeValue("x", val);
 		}
 	}
-	public override double? y
+	public override double? Y
 	{
 		get { return GetDoubleOrNull("y"); }
 		set
@@ -173,8 +173,8 @@ public class Group : Entity, IList<Entity>
 	}
 	private void setParams(XElement e)
 	{
-		x = GetDoubleOrNull(e, "x");
-		y = GetDoubleOrNull(e, "y");
+		X = GetDoubleOrNull(e, "x");
+		Y = GetDoubleOrNull(e, "y");
 		Rotation = GetDoubleOrNull(e, "r");
 		OriginX = GetDoubleOrNull(e, "ox");
 		OriginY = GetDoubleOrNull(e, "oy");

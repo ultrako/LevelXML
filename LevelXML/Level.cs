@@ -19,8 +19,8 @@ public class Level : LevelXMLTag
 	public IList<Joint> Joints { get { return JointsTag; } }
 	public IList<Trigger> Triggers { get { return TriggersTag; } }
 	// These are never null but you can't use ! on a struct data type
-	public double x { get {return info.x ?? 0;} set { info.x = value;} }
-	public double y { get {return info.y ?? 0;} set { info.y = value;} }
+	public double X { get {return info.X ?? 0;} set { info.X = value;} }
+	public double Y { get {return info.Y ?? 0;} set { info.Y = value;} }
 	public double Character { get { return info.Character ?? 0; } set { info.Character = value;} }
 	public HWBool ForcedCharacter { get { return info.ForcedCharacter ?? false; } set { info.ForcedCharacter = value;}}
 	public HWBool VehicleHidden { get { return info.VehicleHidden ?? false; } set { info.VehicleHidden = value;}}

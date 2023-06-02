@@ -79,8 +79,8 @@ public class TextBox : Special
     private void setParams(XElement e)
     {
         elt.SetAttributeValue("t", Type);
-        x = GetDoubleOrNull(e, "p0");
-        y = GetDoubleOrNull(e, "p1");
+        X = GetDoubleOrNull(e, "p0");
+        Y = GetDoubleOrNull(e, "p1");
         Rotation = GetDoubleOrNull(e, "p2");
         Color = GetDoubleOrNull(e, "p3");
         Font = GetDoubleOrNull(e, "p4");
