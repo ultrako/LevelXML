@@ -72,7 +72,7 @@ public class LevelTest
 	public void TestLevelWithGroupThatHasArtShape()
 	{
 		Art art = new();
-		art.Vertices.Add((3,0));
+		art.Add(new(new(3,0)));
 		Group group = new(art);
 		Level level = new(group);
 		string expected = @"<levelXML>
@@ -92,7 +92,7 @@ public class LevelTest
 	public void ArtShapeTestNoIDCollision()
 	{
 		Art art1 = new();
-		art1.Vertices.Add((3,0));
+		art1.Add(new(new(3,0)));
 		Art art2 = new();
 		Level level = new(art1, art2);
 		string expected =@"<levelXML>

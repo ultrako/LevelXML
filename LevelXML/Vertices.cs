@@ -1,12 +1,25 @@
 
 using System.Xml.Linq;
+using System.Collections;
 namespace HappyWheels;
-///<summary>
-/// Polygons and Art shapes have a list of Vertices, defined by quadratic bezier curves.
-///</summary>
 
-public class Vertices : LevelXMLTag 
-{ 
+internal class Vertices : LevelXMLTag, IList<Vertex>
+{
+	public void Add( Vertex v ) { verts.Add(v); }
+	public int IndexOf(Vertex v) { return verts.IndexOf(v); }
+	public void Insert(int index, Vertex v) { verts.Insert(index, v); }
+	public void RemoveAt(int index) { verts.RemoveAt(index); }
+	public Vertex this[int index] { get {return verts[index]; } set { verts[index] = value; } }
+	public void Clear() { verts.Clear(); }
+	public bool Contains(Vertex v) { return verts.Contains(v); }
+	public void CopyTo(Vertex[] array, int index) { verts.CopyTo(array, index); }
+	public bool Remove(Vertex v) { return verts.Remove(v); }
+	public int Count => verts.Count;
+	public bool IsReadOnly => false;
+	IEnumerator<Vertex> IEnumerable<Vertex>.GetEnumerator() { return verts.GetEnumerator(); }
+	IEnumerator IEnumerable.GetEnumerator() { return verts.GetEnumerator(); }
+
+
 	public HWBool? Connected
 	{
 		get { return GetBoolOrNull("f"); }
@@ -16,27 +29,17 @@ public class Vertices : LevelXMLTag
 			Elt.SetAttributeValue("f", val);
 		}
 	}
-	private List<(double, double, double?, double?, double?, double?)> verts;
-	///<summary>
-	/// Add an (x,y) point to a list of vertices
-	///</summary>
-	public void Add( (double, double) coord ) 
-	{ 
-		verts.Add((coord.Item1, coord.Item2, null, null, null, null)); 
-	}
-	public void Add( (double, double, double?, double?, double?, double?) coord ) { verts.Add(coord); }
+	private List<Vertex> verts;
 	internal void PlaceInLevel(Entity parent, Func<Entity, int> mapper)
 	{
 		Elt.SetAttributeValue("id", mapper(parent));
 		Elt.SetAttributeValue("n", verts.Count);
 		int index = 0;
-		foreach ((double x, double y, double? dx0, double? dy0, double? dx1, double? dy1) in verts)
+		foreach (Vertex v in verts)
 		{
-			string coord_full = $"{x}_{y}";
-			if (dx0 is not null) { coord_full += $"_{dx0}"; }
-			if (dy0 is not null) { coord_full += $"_{dy0}"; }
-			if (dx1 is not null) { coord_full += $"_{dx1}"; }
-			if (dy1 is not null) { coord_full += $"_{dy1}"; }
+			string coord_full = $"{v.position.X}_{v.position.Y}";
+			if (v.handle0 is not null) { coord_full += $"{v.handle0.X}_{v.handle0.Y}"; }
+			if (v.handle1 is not null) { coord_full += $"{v.handle1.X}_{v.handle1.Y}"; }
 			Elt.SetAttributeValue($"v{index}", coord_full);
 			index += 1;
 		}
