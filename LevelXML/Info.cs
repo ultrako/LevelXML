@@ -14,7 +14,7 @@ internal class Info : LevelXMLTag
 		set
 		{
 			// Hardcoded because it does nothing
-			elt.SetAttributeValue("v", "1.94");
+			Elt.SetAttributeValue("v", "1.94");
 		}
 	}
 	/// <summary>
@@ -26,7 +26,7 @@ internal class Info : LevelXMLTag
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("x", val);
+			Elt.SetAttributeValue("x", val);
 		}
 	}
 	public double? Y
@@ -35,7 +35,7 @@ internal class Info : LevelXMLTag
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("y", val);
+			Elt.SetAttributeValue("y", val);
 		}
 	}
 	public double? Character
@@ -44,7 +44,7 @@ internal class Info : LevelXMLTag
 		set
 		{
 			double val = value ?? 1;
-			elt.SetAttributeValue("c", Math.Clamp(val, 1, 11));
+			Elt.SetAttributeValue("c", Math.Clamp(val, 1, 11));
 		}
 	}
 	public HWBool? ForcedCharacter
@@ -54,7 +54,7 @@ internal class Info : LevelXMLTag
 		{
 			HWBool val = value ?? false;
 			if (val == HWBool.NaN) { val = false; }
-			elt.SetAttributeValue("f", val);
+			Elt.SetAttributeValue("f", val);
 		}
 	}
 	public HWBool? VehicleHidden
@@ -64,7 +64,7 @@ internal class Info : LevelXMLTag
 		{
 			HWBool val = value ?? HWBool.False;
 			if (val == HWBool.NaN) { val = false; }
-			elt.SetAttributeValue("h", val);
+			Elt.SetAttributeValue("h", val);
 		}
 	}
 	public double? Background
@@ -74,7 +74,7 @@ internal class Info : LevelXMLTag
 		{
 			// Invalid values here make a level that's pretty buggy in the editor
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("bg", val);
+			Elt.SetAttributeValue("bg", val);
 		}
 	}
 	public double? BackgroundColor
@@ -83,7 +83,7 @@ internal class Info : LevelXMLTag
 		set
 		{
 			double val = value ?? 16777215;
-			elt.SetAttributeValue("bgc", val);
+			Elt.SetAttributeValue("bgc", val);
 		}
 	}
 	internal double? E
@@ -95,7 +95,7 @@ internal class Info : LevelXMLTag
 			{
 				throw new Exception("This would make the level not import!");
 			}
-			elt.SetAttributeValue("e", value!);
+			Elt.SetAttributeValue("e", value!);
 		}
 	}
 	protected void setParams(XElement e)
@@ -115,7 +115,7 @@ internal class Info : LevelXMLTag
 	public Info(string xml=EditorDefault) : this (StrToXElement(xml)) {}
 	internal Info(XElement e) : base("info")
 	{
-		elt = new XElement(e.Name.ToString());
+		Elt = new XElement(e.Name.ToString());
 		setParams(e);
 	}
 }

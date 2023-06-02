@@ -46,7 +46,7 @@ public class Trigger : Entity, IList<Target>
 			// Having triggers at NaN locations is actually useful;
 			// they can still be pointed to by triggers and activate other triggers.
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("x", val);
+			Elt.SetAttributeValue("x", val);
 		}
 	}
 	public override double? Y
@@ -55,7 +55,7 @@ public class Trigger : Entity, IList<Target>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("y", val);
+			Elt.SetAttributeValue("y", val);
 		}
 	}
 	public double? Width
@@ -64,7 +64,7 @@ public class Trigger : Entity, IList<Target>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("w", Math.Clamp(val, 5, 5000));
+			Elt.SetAttributeValue("w", Math.Clamp(val, 5, 5000));
 		}
 	}
 	public double? Height
@@ -73,7 +73,7 @@ public class Trigger : Entity, IList<Target>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("h", Math.Clamp(val, 5, 5000));
+			Elt.SetAttributeValue("h", Math.Clamp(val, 5, 5000));
 		}
 	}
 	public double? Rotation
@@ -82,7 +82,7 @@ public class Trigger : Entity, IList<Target>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("a", val);
+			Elt.SetAttributeValue("a", val);
 		}
 	}
 	public double? TriggeredBy
@@ -95,11 +95,11 @@ public class Trigger : Entity, IList<Target>
 			double val = value ?? double.NaN;
 			if (double.IsNaN(val)) 
 			{ 
-				elt.SetAttributeValue("b", val); 
+				Elt.SetAttributeValue("b", val); 
 			}
 			else 
 			{
-				elt.SetAttributeValue("b", (int)Math.Clamp(val, 1, 6));
+				Elt.SetAttributeValue("b", (int)Math.Clamp(val, 1, 6));
 			}
 		}
 	}
@@ -115,7 +115,7 @@ public class Trigger : Entity, IList<Target>
 				throw new Exception("This trigger would cause the level to freeze on start!");
 			}
 			double val = (double)value!;
-			elt.SetAttributeValue("t", (int)Math.Clamp(val, 1, 3));
+			Elt.SetAttributeValue("t", (int)Math.Clamp(val, 1, 3));
 		}
 	}
 	public double? RepeatType
@@ -129,7 +129,7 @@ public class Trigger : Entity, IList<Target>
 				throw new Exception("This trigger could not ever get activated!");
 			}
 			int val = (int)value!;
-			elt.SetAttributeValue("r", Math.Clamp(val, 1, 4));
+			Elt.SetAttributeValue("r", Math.Clamp(val, 1, 4));
 		}
 	}
 	public HWBool? StartDisabled
@@ -139,11 +139,11 @@ public class Trigger : Entity, IList<Target>
 		{
 			if (value == true)
 			{
-				elt.SetAttributeValue("sd", HWBool.True);
+				Elt.SetAttributeValue("sd", HWBool.True);
 			}
 			else
 			{
-				elt.SetAttributeValue("sd", HWBool.False);
+				Elt.SetAttributeValue("sd", HWBool.False);
 			}
 		}
 	}
@@ -153,7 +153,7 @@ public class Trigger : Entity, IList<Target>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("i", val);
+			Elt.SetAttributeValue("i", val);
 		}
 	}
 	public double? Delay
@@ -162,7 +162,7 @@ public class Trigger : Entity, IList<Target>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("d", Math.Clamp(val, 0, 30));
+			Elt.SetAttributeValue("d", Math.Clamp(val, 0, 30));
 		}
 	}
 	public double? Sound
@@ -177,7 +177,7 @@ public class Trigger : Entity, IList<Target>
 			}
 			if (value is not null)
 			{
-				elt.SetAttributeValue("s", value);
+				Elt.SetAttributeValue("s", value);
 			}
 		}
 	}
@@ -188,7 +188,7 @@ public class Trigger : Entity, IList<Target>
 		{
 			if (value is double val)
 			{
-				elt.SetAttributeValue("l", (int)Math.Clamp(val, 1.0, 2.0));
+				Elt.SetAttributeValue("l", (int)Math.Clamp(val, 1.0, 2.0));
 			}
 		}
 	}
@@ -199,11 +199,11 @@ public class Trigger : Entity, IList<Target>
 		{
 			if (value is double val)
 			{
-				elt.SetAttributeValue("v", Math.Clamp(val, 0.0, 1.0));
+				Elt.SetAttributeValue("v", Math.Clamp(val, 0.0, 1.0));
 			}
 		}
 	}
-	protected void setParams(XElement e)
+	protected void SetParams(XElement e)
 	{
 		X = GetDoubleOrNull(e, "x");
 		Y = GetDoubleOrNull(e, "y");
@@ -222,11 +222,11 @@ public class Trigger : Entity, IList<Target>
 	}
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
-		elt.RemoveNodes();
+		Elt.RemoveNodes();
 		foreach (Target target in lst)
 		{
 			target.PlaceInLevel(mapper);
-			elt.Add(target.elt);
+			Elt.Add(target.Elt);
 		}
 	}
 	// Targets may come in either the <xml tag> or as a params arg to the constructor
@@ -239,12 +239,12 @@ public class Trigger : Entity, IList<Target>
 		{
 			throw new Exception("Did not give a trigger to the constructor!");
 		}
-		elt = new XElement(e.Name.ToString());
-		setParams(e);
+		Elt = new XElement(e.Name.ToString());
+		SetParams(e);
 		// If your trigger has elements, you need to pass a ReverseMapper to parse them
 		lst = new(targets.Concat(e.Elements().Select(targetTag => Target.FromXElement(targetTag, ReverseMapper))).ToArray());
 	}
-	internal override void finishConstruction()
+	internal override void FinishConstruction()
 	{
 		lst.ForEach(target => target.finishConstruction());
 	}

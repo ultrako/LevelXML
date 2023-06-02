@@ -17,7 +17,7 @@ public abstract class Target : LevelXMLTag
 	public abstract bool Remove(TriggerAction action);
 	public abstract int IndexOf(TriggerAction action);
 	public abstract TriggerAction this[int index] {get; set;}
-	protected Target(Entity e) : base(e.elt.Name) { Targeted = e; }
+	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
 	private Task? setTargeted;
 	protected Target(XElement e, Func<XElement, Entity> ReverseMapper) : base(e.Name)
 	{
@@ -96,11 +96,11 @@ public class Target<T> : Target where T : Entity
 
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
-		elt.SetAttributeValue("i", mapper(Targeted));
-		elt.RemoveNodes();
+		Elt.SetAttributeValue("i", mapper(Targeted));
+		Elt.RemoveNodes();
 		foreach (TriggerAction<T> action in lst)
 		{
-			elt.Add(action.elt);
+			Elt.Add(action.Elt);
 		}
 	}
 	///<summary>

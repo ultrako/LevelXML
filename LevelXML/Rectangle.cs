@@ -15,7 +15,7 @@ public class Rectangle : Shape
 			if (double.IsNaN(val)) {
 				throw new Exception("This would make the rectangle disappear!");
 			} 
-			elt.SetAttributeValue("p2", Math.Clamp(val, 5, 5000));
+			Elt.SetAttributeValue("p2", Math.Clamp(val, 5, 5000));
 		}
 	}
 	public override double? Height
@@ -27,12 +27,9 @@ public class Rectangle : Shape
 			if (double.IsNaN(val)) {
 				throw new Exception("This would make the rectangle disappear!");
 			} 
-			elt.SetAttributeValue("p3", Math.Clamp(val, 5, 5000));
+			Elt.SetAttributeValue("p3", Math.Clamp(val, 5, 5000));
 		}
 	}
-	// If you call new without any args (no xml tag, no XElement),
-	// then this will just give you the same shape that
-	// you would have gotten in the level editor by default.
 	public Rectangle() : this(EditorDefault) {}
 	public Rectangle(string xml) : this(StrToXElement(xml)) {}
 	internal Rectangle(XElement e)
@@ -42,7 +39,7 @@ public class Rectangle : Shape
 			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
 			throw new Exception("Did not give a rectangle to the constructor!");
 		}
-		elt = new XElement(e.Name.ToString());
-		setParams(e);
+		Elt = new XElement(e.Name.ToString());
+		SetParams(e);
 	}
 }

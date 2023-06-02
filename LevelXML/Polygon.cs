@@ -18,7 +18,7 @@ public class Polygon : Shape
 			if (double.IsNaN(val)) {
 				throw new Exception("This would make the art shape disappear!");
 			} 
-			elt.SetAttributeValue("p2", val);
+			Elt.SetAttributeValue("p2", val);
 		}
 	}
 	public override double? Height
@@ -30,7 +30,7 @@ public class Polygon : Shape
 			if (double.IsNaN(val)) {
 				throw new Exception("This would make the art shape disappear!");
 			} 
-			elt.SetAttributeValue("p3", val);
+			Elt.SetAttributeValue("p3", val);
 		}
 	}
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
@@ -46,8 +46,8 @@ public class Polygon : Shape
 			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
 			throw new Exception("Did not give a polygon to the constructor!");
 		}
-		elt = new XElement(e.Name.ToString());
-		setParams(e);
+		Elt = new XElement(e.Name.ToString());
+		SetParams(e);
 		// Replace this with the constructor that takes an XElement when you make it
 		verts = new();
 	}

@@ -13,7 +13,7 @@ public class Vertices : LevelXMLTag
 		set
 		{
 			HWBool val = value ?? true;
-			elt.SetAttributeValue("f", val);
+			Elt.SetAttributeValue("f", val);
 		}
 	}
 	private List<(double, double, double?, double?, double?, double?)> verts;
@@ -27,8 +27,8 @@ public class Vertices : LevelXMLTag
 	public void Add( (double, double, double?, double?, double?, double?) coord ) { verts.Add(coord); }
 	internal void PlaceInLevel(Entity parent, Func<Entity, int> mapper)
 	{
-		elt.SetAttributeValue("id", mapper(parent));
-		elt.SetAttributeValue("n", verts.Count);
+		Elt.SetAttributeValue("id", mapper(parent));
+		Elt.SetAttributeValue("n", verts.Count);
 		int index = 0;
 		foreach ((double x, double y, double? dx0, double? dy0, double? dx1, double? dy1) in verts)
 		{
@@ -37,7 +37,7 @@ public class Vertices : LevelXMLTag
 			if (dy0 is not null) { coord_full += $"_{dy0}"; }
 			if (dx1 is not null) { coord_full += $"_{dx1}"; }
 			if (dy1 is not null) { coord_full += $"_{dy1}"; }
-			elt.SetAttributeValue($"v{index}", coord_full);
+			Elt.SetAttributeValue($"v{index}", coord_full);
 			index += 1;
 		}
 	}

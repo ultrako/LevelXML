@@ -18,8 +18,8 @@ abstract internal class DepthOneTag : LevelXMLTag
 	};
 	protected DepthOneTag(XName name) : base(name) {}
 	// In case you only have this abstract class and at least want an Entity back
-	abstract internal Entity get(int index);
-	abstract internal void finishConstruction();
+	abstract internal Entity GetEntityAt(int index);
+	abstract internal void FinishConstruction();
 	public abstract int Count { get; }
 }
 
@@ -42,15 +42,15 @@ internal class DepthOneTag<T> : DepthOneTag, IList<T> where T : Entity
 	IEnumerator<T> IEnumerable<T>.GetEnumerator() { return lst.GetEnumerator(); }
 	IEnumerator IEnumerable.GetEnumerator() { return lst.GetEnumerator(); }
 	public T this[int index] { get { return lst[index]; } set { lst[index] = value; } }
-	internal override Entity get(int index) { return lst[index]; }
-	internal override void finishConstruction() { lst.ForEach(entity => entity.finishConstruction()); }
+	internal override Entity GetEntityAt(int index) { return lst[index]; }
+	internal override void FinishConstruction() { lst.ForEach(entity => entity.FinishConstruction()); }
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
-		elt.RemoveNodes();
+		Elt.RemoveNodes();
 		foreach (Entity entity in lst)
 		{
 			entity.PlaceInLevel(mapper);
-			elt.Add(entity.elt);
+			Elt.Add(entity.Elt);
 		}
 	}
 	internal DepthOneTag(string xml) : this(StrToXElement(xml)) {}

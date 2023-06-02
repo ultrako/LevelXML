@@ -15,7 +15,7 @@ public abstract class Special : Entity
 			{
 				throw new Exception("This would make the shape disappear!");
 			}
-			else { elt.SetAttributeValue("p0", value); }
+			else { Elt.SetAttributeValue("p0", value); }
 		}
 	}
 	public override double? Y
@@ -27,7 +27,7 @@ public abstract class Special : Entity
 			{
 				throw new Exception("This would make the shape disappear!");
 			}
-			else { elt.SetAttributeValue("p1", value); }
+			else { Elt.SetAttributeValue("p1", value); }
 		}
 	}
 	protected Special(params object?[] contents) : base("sp", contents) {}

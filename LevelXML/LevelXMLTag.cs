@@ -3,14 +3,21 @@ namespace HappyWheels;
 ///<summary>
 /// This class represents any xml tag that can go into the import box in Happy Wheels.
 ///</summary>
+///<remarks>
+/// If it makes sense for a class to be made outside of a level,
+/// it will have a constructor that takes a string.
+/// All classes that inherit this will have a public empty constructor,
+/// and you will end up with an object that would be the same as if you
+/// had opened the level editor and placed that object without changing anything
+///</remarks>
 public abstract class LevelXMLTag
 {
-	internal XElement elt {get; set;}
+	internal XElement Elt {get; set;}
 	protected static XElement StrToXElement(string xml) {
 		return XElement.Parse(xml);
 	}
-	private string? getStringOrNull(string attr) { return getStringOrNull(this.elt, attr); }
-	private static string? getStringOrNull(XElement elt, string attr)
+	private string? GetStringOrNull(string attr) { return GetStringOrNull(this.Elt, attr); }
+	private static string? GetStringOrNull(XElement elt, string attr)
 	{
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }
@@ -25,10 +32,10 @@ public abstract class LevelXMLTag
 	// We're going to represent all the enum-like types in happy wheels with doubles,
 	// because they can sometimes hold NaN. And sometimes NaN does unique things for
 	// level creators, so we won't occlude all of that from the get-go.
-	protected double? GetDoubleOrNull(string attr) { return GetDoubleOrNull(this.elt, attr); }
+	protected double? GetDoubleOrNull(string attr) { return GetDoubleOrNull(this.Elt, attr); }
 	protected static double? GetDoubleOrNull(XElement elt, string attr) 
 	{
-		if (getStringOrNull(elt, attr) is string val)
+		if (GetStringOrNull(elt, attr) is string val)
 		{
 			return ParseDouble(val);
 		}
@@ -92,11 +99,11 @@ public abstract class LevelXMLTag
 			else { return "NaN"; }
 		}
 	}
-	protected HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this.elt, attr); }
+	protected HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this.Elt, attr); }
 	protected static HWBool? GetBoolOrNull(XElement elt, string attr)
 	{
 		HWBool? result = null;
-		if (getStringOrNull(elt, attr) is string val)
+		if (GetStringOrNull(elt, attr) is string val)
 		{
 			if (val == "t") { result = HWBool.True; }
 			else if (val == "f") { result = HWBool.False; }
@@ -116,10 +123,10 @@ public abstract class LevelXMLTag
 	public virtual string ToXML() { return ToXML(mapper: default!); }
 	internal virtual string ToXML(Func<Entity, int> mapper) {
 		PlaceInLevel(mapper);
-		return elt.ToString();
+		return Elt.ToString();
 	}
 	protected LevelXMLTag(XName name, params object?[] content)
 	{
-		elt = new XElement(name, content);
+		Elt = new XElement(name, content);
 	}
 }

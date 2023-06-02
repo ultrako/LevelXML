@@ -72,7 +72,7 @@ public class Group : Entity, IList<Entity>
 			// Having triggers at NaN locations is actually useful;
 			// they can still be pointed to by triggers and activate other triggers.
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("x", val);
+			Elt.SetAttributeValue("x", val);
 		}
 	}
 	public override double? Y
@@ -81,7 +81,7 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("y", val);
+			Elt.SetAttributeValue("y", val);
 		}
 	}
 	public double? Rotation
@@ -94,7 +94,7 @@ public class Group : Entity, IList<Entity>
 			{
 				throw new Exception("That would make the group disappear!");
 			}
-			elt.SetAttributeValue("r", Math.Clamp(val,-180,180)); 
+			Elt.SetAttributeValue("r", Math.Clamp(val,-180,180)); 
 		}
 	}
 	public double? OriginX
@@ -103,7 +103,7 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("ox", val);
+			Elt.SetAttributeValue("ox", val);
 		}
 	}
 	public double? OriginY
@@ -112,7 +112,7 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			double val = value ?? double.NaN;
-			elt.SetAttributeValue("oy", val);
+			Elt.SetAttributeValue("oy", val);
 		}
 	}
 	public HWBool? Sleeping
@@ -121,7 +121,7 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			HWBool val = value ?? false;
-			elt.SetAttributeValue("s", val);
+			Elt.SetAttributeValue("s", val);
 		}
 	}
 	public HWBool? Foreground
@@ -130,7 +130,7 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			HWBool val = value ?? false;
-			elt.SetAttributeValue("f", val);
+			Elt.SetAttributeValue("f", val);
 		}
 	}
 	public double? Opacity
@@ -141,7 +141,7 @@ public class Group : Entity, IList<Entity>
 			// If the opacity isn't set, the import box sets it to 100
 			double val = value ?? 100;
 			// If the opacity is set to NaN, the import box sets it to 0
-			elt.SetAttributeValue("o", Math.Clamp(val, 0, 100));
+			Elt.SetAttributeValue("o", Math.Clamp(val, 0, 100));
 		}
 	}
 	public HWBool? Fixed
@@ -150,7 +150,7 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			HWBool val = value ?? false;
-			elt.SetAttributeValue("im", val);
+			Elt.SetAttributeValue("im", val);
 		}
 	}
 	public HWBool? FixedRotation
@@ -159,16 +159,16 @@ public class Group : Entity, IList<Entity>
 		set
 		{
 			HWBool val = value ?? false;
-			elt.SetAttributeValue("fr", val);
+			Elt.SetAttributeValue("fr", val);
 		}
 	}
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
-		elt.RemoveNodes();
+		Elt.RemoveNodes();
 		foreach (Entity entity in lst)
 		{
 			entity.PlaceInLevel(mapper);
-			elt.Add(entity.elt);
+			Elt.Add(entity.Elt);
 		}
 	}
 	private void setParams(XElement e)
