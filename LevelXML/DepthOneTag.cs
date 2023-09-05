@@ -54,9 +54,9 @@ internal class DepthOneTag<T> : DepthOneTag, IList<T> where T : Entity
 		}
 	}
 	internal DepthOneTag(string xml) : this(StrToXElement(xml)) {}
-	internal DepthOneTag(XElement? e, Func<XElement, Entity> ReverseMapper=default!) : 
+	internal DepthOneTag(XElement? e, Func<XElement, Entity> ReverseTargetMapper=default!, Func<string?, Entity?> ReverseJointMapper=default!) : 
 		this(content: (e ?? new XElement("empty")).Elements()
-			.Select(element => Entity.FromXElement(element, ReverseMapper) as T)
+			.Select(element => Entity.FromXElement(element, ReverseTargetMapper, ReverseJointMapper) as T)
 			.Where(item => item is not null).Select(item => item!)
 			.ToArray()) 
 	{}

@@ -1,7 +1,7 @@
 using Xunit;
 using System;
 
-namespace HappyWheels.test;
+namespace HappyWheels.Test;
 public class GroupTest
 {
     [Fact]

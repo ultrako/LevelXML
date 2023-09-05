@@ -16,8 +16,8 @@ public abstract class LevelXMLTag
 	protected static XElement StrToXElement(string xml) {
 		return XElement.Parse(xml);
 	}
-	private string? GetStringOrNull(string attr) { return GetStringOrNull(this.Elt, attr); }
-	private static string? GetStringOrNull(XElement elt, string attr)
+	public string? GetStringOrNull(string attr) { return GetStringOrNull(this.Elt, attr); }
+	public static string? GetStringOrNull(XElement elt, string attr)
 	{
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }
@@ -27,7 +27,19 @@ public abstract class LevelXMLTag
 		double result;
 		if (double.TryParse(val, out result)) {
 			return result;
-		} else { return double.NaN; }
+		} 
+		else if (val == "Infinity")
+		{
+			return double.PositiveInfinity;
+		}
+		else if (val == "-Infinity")
+		{
+			return double.NegativeInfinity;
+		}
+		else 
+		{ 
+			return double.NaN; 
+		}
 	}
 	// We're going to represent all the enum-like types in happy wheels with doubles,
 	// because they can sometimes hold NaN. And sometimes NaN does unique things for
@@ -40,6 +52,23 @@ public abstract class LevelXMLTag
 			return ParseDouble(val);
 		}
 		return null;
+	}
+	protected void SetDouble(string attr, double val)
+	{
+		string convertedValue;
+		if (val == double.PositiveInfinity)
+		{
+			convertedValue = "Infinity";
+		}
+		else if (val == double.NegativeInfinity)
+		{
+			convertedValue = "-Infinity";
+		}
+		else
+		{
+			convertedValue = val.ToString();
+		}
+		this.Elt.SetAttributeValue(attr, convertedValue);
 	}
 	///<summary>
 	/// In happy wheels, bools can be either true, false, or NaN

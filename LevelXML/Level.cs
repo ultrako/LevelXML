@@ -130,7 +130,7 @@ public class Level : LevelXMLTag
 		return index;
 	}
 	private AutoResetEvent depthOneTagsReady = new(false);
-	private Entity ReverseMapper(XElement e)
+	private Entity ReverseTargetMapper(XElement e)
 	{
 		int index = Int32.Parse(e.Attribute("i")!.Value)!;
 		Type entityType = nameToEntityType[e.Name.ToString()];
@@ -148,6 +148,29 @@ public class Level : LevelXMLTag
 		} else
 		{
 			return lst.GetEntityAt(index);
+		}
+	}
+	private Entity? ReverseJointMapper(string? entityIndex)
+	{
+		// This is the only valid way to represent being jointed to nothing
+		if (entityIndex is null || entityIndex.Equals("-1")) { return null; }
+		string indexTail = entityIndex[..^1];
+		int index;
+		if (int.TryParse(entityIndex, out index))
+		{
+			return Shapes[index];
+		}
+		else if (int.TryParse(indexTail, out index))
+		{
+			
+			return entityIndex[0] switch
+			{
+				's' => Specials[index],
+				'g' => Groups[index],
+				_ => throw new Exception("Invalid joint index!")
+			};
+		} else {
+			throw new Exception("Invalid joint index!");
 		}
 	}
 	private Level(Info? info=default!, 
@@ -184,9 +207,9 @@ public class Level : LevelXMLTag
 		XElement? GroupsElement = e.Element("groups");
 		groupsTag = new DepthOneTag<Group>(GroupsElement);
 		XElement? JointsElement = e.Element("joints");
-		jointsTag = new DepthOneTag<Joint>(JointsElement);
+		jointsTag = new DepthOneTag<Joint>(JointsElement, ReverseJointMapper: ReverseJointMapper);
 		XElement? TriggersElement = e.Element("triggers");
-		triggersTag = new DepthOneTag<Trigger>(TriggersElement, ReverseMapper: ReverseMapper);
+		triggersTag = new DepthOneTag<Trigger>(TriggersElement, ReverseTargetMapper: ReverseTargetMapper);
 		// At this point the depth one tags can be indexed through
 		depthOneTagsReady.Set();
 		triggersTag.FinishConstruction();
