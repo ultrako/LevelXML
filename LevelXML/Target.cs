@@ -19,23 +19,23 @@ public abstract class Target : LevelXMLTag
 	public abstract TriggerAction this[int index] {get; set;}
 	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
 	private Task? setTargeted;
-	protected Target(XElement e, Func<XElement, Entity> ReverseMapper) : base(e.Name)
+	protected Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) : base(e.Name)
 	{
-		setTargeted = Task.Run( () => Targeted = ReverseMapper(e));
+		setTargeted = Task.Run( () => Targeted = ReverseTargetMapper(e));
 	}
 	// This following function is only called if this object is constructed with a string
 	// In LevelXML, targets are set via indexes - but we can only go from index to entity
 	// in the context of an entire level.
 	internal void finishConstruction() { setTargeted!.Wait(); }
-	internal static Target FromXElement(XElement e, Func<XElement, Entity> ReverseMapper)
+	internal static Target FromXElement(XElement e, Func<XElement, Entity> ReverseTargetMapper)
 	{
 		return e.Name.ToString() switch
 		{
-			"sh" => new Target<Shape>(e, ReverseMapper),
-			"sp" => new Target<Special>(e, ReverseMapper),
-			"g" => new Target<Group>(e, ReverseMapper),
-			"j" => new Target<Joint>(e, ReverseMapper),
-			"t" => new Target<Trigger>(e, ReverseMapper),
+			"sh" => new Target<Shape>(e, ReverseTargetMapper),
+			"sp" => new Target<Special>(e, ReverseTargetMapper),
+			"g" => new Target<Group>(e, ReverseTargetMapper),
+			"j" => new Target<Joint>(e, ReverseTargetMapper),
+			"t" => new Target<Trigger>(e, ReverseTargetMapper),
 			_ => throw new Exception("Invalid name for a trigger target!"),
 		};
 	}
@@ -120,9 +120,9 @@ public class Target<T> : Target where T : Entity
 		lst = new(actions);
 	}
 	// Mapper usually gives indices from Entities.
-	// ReverseMapper gives Entities from XElements with a name and a index
-	internal Target(XElement e, Func<XElement, Entity> ReverseMapper) :
-		base(e, ReverseMapper)
+	// ReverseTargetMapper gives Entities from XElements with a name and a index
+	internal Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) :
+		base(e, ReverseTargetMapper)
 	{
 		TriggerAction<T>[] actions = e.Elements()
 			.Select(tag => TriggerAction<T>.FromXElement(tag))
