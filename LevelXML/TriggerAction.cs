@@ -25,7 +25,7 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 	{
 		if (element.Name.ToString() != "a")
 		{
-			throw new Exception("Did not give a trigger action!");
+			throw new ArgumentException("Did not give a trigger action!");
 		}
 		double? ActionType = GetDoubleOrNull(element, "i");
 		// Why am I switching on nameof(T) ?

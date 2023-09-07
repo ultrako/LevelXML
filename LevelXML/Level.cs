@@ -93,24 +93,48 @@ public class Level : LevelXMLTag
 	}
 	private int VertMapper(Entity e)
 	{
-		return e switch
+		// If the vertex tag in this polygon or art has its own coordinates,
+		// then we need to give it a unique id
+		// Otherwise we need to find the first matching kind of art or poly tag
+		// that has the same original id.
+		if (e is Art art)
 		{
-			Art a => 
-				Shapes
-				.Where(shape => shape is Art)
+			List<Art> matchingArts = Shapes.Where(shape => shape is Art)
 				.Concat(Groups.SelectMany(group => group)
 				.Where(entity => entity is Art))
-				.ToList()
-				.FindIndex(other => other == a),
-			Polygon p => 
-				Shapes
-				.Where(shape => shape is Polygon)
+				.Select(entity => (Art)entity)
+				.ToList();
+			if (art.isEmpty)
+			{
+				return matchingArts.FindIndex(other => other.originalIndex == art.originalIndex);
+			}
+			else
+			{
+				return matchingArts.FindIndex(other => other == art);
+			}
+		} 
+		else if (e is Polygon poly)
+		{
+			List<Polygon> matchingPolys = Shapes.Where(shape => shape is Polygon)
 				.Concat(Groups.SelectMany(group => group)
 				.Where(entity => entity is Polygon))
-				.ToList()
-				.FindIndex(other => other == p),
-			_ => throw new Exception("Art shape pointed to by another art shape was not found!"),
-		};
+				.Select(entity => (Polygon)entity)
+				.ToList();
+			if (poly.isEmpty)
+			{
+				return matchingPolys.FindIndex(other => other.originalIndex == poly.originalIndex);
+			}
+			else
+			{
+				return matchingPolys.FindIndex(other => other == poly);
+			}
+		}
+		else
+		{
+			throw new Exception("Gave neither an art entity nor a polygon entity to the vertex id mapper!");
+		}
+		throw new Exception("Art shape pointed to by another art shape was not found!");
+		
 	}
 	private int Mapper(Entity e)
 	{
