@@ -33,7 +33,10 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 		return typeof(T).Name switch {
 			nameof(Shape) => ActionType switch {
 				0 => (new AwakeFromSleep() as TriggerAction<T>)!,
+				1 => (new FixShape() as TriggerAction<T>)!,
+				2 => (new NonfixShape() as TriggerAction<T>)!,
 				3 => (new ChangeShapeOpacity(element) as TriggerAction<T>)!,
+				4 => (new ImpulseShape(element) as TriggerAction<T>)!,
 				_ => throw new Exception("Invalid id for an action targeting a shape!"),
 			},
 			nameof(Trigger) => ActionType switch {
