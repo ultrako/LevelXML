@@ -55,6 +55,15 @@ public class PinJoint : Joint
 		}
     }
     public PinJoint() : this(EditorDefault) {}
+    public PinJoint(Entity first, Entity second) : this(EditorDefault)
+    {
+        First = first;
+        Second = second;
+    }
+    public PinJoint(Entity first) : this(EditorDefault)
+    {
+        First = first;
+    }
     internal PinJoint(string xml) : this (StrToXElement(xml)) {}
     override protected void SetParams(XElement e, Func<string?, Entity?> reverseJointMapper)
     {

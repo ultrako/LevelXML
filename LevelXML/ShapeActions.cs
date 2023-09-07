@@ -12,6 +12,43 @@ public class AwakeFromSleep : TriggerAction<Shape>
 	}
 }
 
+public class ImpulseShape : TriggerAction<Shape>
+{
+	public static string EditorDefault =
+	@"<a i=""4"" p0=""10"" p1=""-10"" p2=""0""/>";
+	public double? X
+	{
+		get { return GetDoubleOrNull("p0"); }
+		set { Elt.SetAttributeValue("p0", value);}
+	}
+	public double? Y
+	{
+		get { return GetDoubleOrNull("p1"); }
+		set { Elt.SetAttributeValue("p1", value);}
+	}
+	public double? Spin
+	{
+		get { return GetDoubleOrNull("p2"); }
+		set { Elt.SetAttributeValue("p2", value);}
+	}
+	public ImpulseShape() : this(EditorDefault) {}
+	public ImpulseShape(double x, double y, double spin)
+	{
+		Elt.SetAttributeValue("i", 4);
+		X = x;
+		Y = y;
+		Spin = spin;
+	}
+	public ImpulseShape(string xml) : this(StrToXElement(xml)) {}
+	internal ImpulseShape(XElement e)
+	{
+		Elt.SetAttributeValue("i", 4);
+		X = GetDoubleOrNull(e, "p0");
+		Y = GetDoubleOrNull(e, "p1");
+		Spin = GetDoubleOrNull(e, "p2");
+	}     
+}
+
 public class ChangeShapeOpacity : TriggerAction<Shape>
 {
 	public static string EditorDefault =

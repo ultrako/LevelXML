@@ -94,7 +94,7 @@ public class TextBox : Special
 		if (e.Name.ToString() != "sp" || GetDoubleOrNull(e, "t") != 16)
 		{
 			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
-			throw new Exception("Did not give a textbox to the constructor!");
+			throw new ArgumentException("Did not give a textbox to the constructor!");
 		}
 		Elt = new XElement(e.Name.ToString());
         contentElement = new("p7", new XCData(""));
