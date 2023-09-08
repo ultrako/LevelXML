@@ -1,14 +1,13 @@
-namespace HappyWheels;
-
-using System.ComponentModel;
 using System.Xml.Linq;
+
+namespace HappyWheels;
 
 ///<summary>
 /// If the object is sleeping, this awakes it from sleep.
 ///</summary>
-public class AwakeFromSleep : TriggerAction<Shape>
+public class AwakeShapeFromSleep : TriggerAction<Shape>
 {
-	public AwakeFromSleep()
+	public AwakeShapeFromSleep()
 	{
 		Elt.SetAttributeValue("i", 0);
 	}
@@ -30,6 +29,8 @@ public class NonfixShape : TriggerAction<Shape>
 	}
 }
 
+// This is a lot of repeated code
+// I'd like this to be ChangeOpacity<Shape> extending TriggerAction<Shape>, but I can't do that.
 public class ChangeShapeOpacity : TriggerAction<Shape>
 {
 	public static string EditorDefault =
@@ -116,24 +117,21 @@ public class DeleteSelfShape : TriggerAction<Shape>
 
 public class ChangeShapeCollision : TriggerAction<Shape>
 {
-	public ChangeShapeCollision(int collision)
+	public Collision Collision
 	{
-		if (collision < 0 || collision > 7)
-		{
-			throw new LevelXMLException("Collision type must be between 0 and 7!");
-		}
+		get { return (Collision)GetDoubleOrNull(Elt, "p0")!;}
+		set { Elt.SetAttributeValue("p0", value);}
+	}
+	public ChangeShapeCollision(Collision collision)
+	{
 		Elt.SetAttributeValue("i", 7);
 		Elt.SetAttributeValue("p0", collision);
 	}
 	internal ChangeShapeCollision(XElement e) {
-		int? collision = (int?)GetDoubleOrNull(e, "p0");
+		Collision? collision = (Collision?)GetDoubleOrNull(e, "p0");
 		if (collision is null)
 		{
 			throw new LevelXMLException("No collision type on change shape collision trigger action!");
-		}
-		else if (collision < 0 || collision > 7)
-		{
-			throw new LevelXMLException("Collision type must be between 0 and 7!");
 		}
 		else
 		{
