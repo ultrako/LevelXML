@@ -12,8 +12,9 @@ public class Rectangle : Shape
 		set
 		{
 			double val = value ?? 100;
-			if (double.IsNaN(val)) {
-				throw new Exception("This would make the rectangle disappear!");
+			if (double.IsNaN(val)) 
+			{
+                throw new LevelXMLException("This would make the rectangle disappear!");
 			} 
 			Elt.SetAttributeValue("p2", Math.Clamp(val, 5, 5000));
 		}
@@ -25,7 +26,7 @@ public class Rectangle : Shape
 		{
 			double val = value ?? 100;
 			if (double.IsNaN(val)) {
-				throw new Exception("This would make the rectangle disappear!");
+				throw new LevelXMLException("This would make the rectangle disappear!");
 			} 
 			Elt.SetAttributeValue("p3", Math.Clamp(val, 5, 5000));
 		}
@@ -37,7 +38,7 @@ public class Rectangle : Shape
 		if (e.Name.ToString() != "sh" || GetDoubleOrNull(e, "t") != 0)
 		{
 			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
-			throw new Exception("Did not give a rectangle to the constructor!");
+			throw new LevelXMLException("Did not give a rectangle to the constructor!");
 		}
 		Elt = new XElement(e.Name.ToString());
 		SetParams(e);

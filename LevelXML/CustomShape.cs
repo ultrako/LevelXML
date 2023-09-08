@@ -12,7 +12,7 @@ public abstract class CustomShape : Shape
 	internal int originalIndex;
 	public IList<Vertex> Vertices
 	{
-		get { return vertices;}
+		get { return vertices.verts;}
 	}
 	public override double? Width
 	{
@@ -45,7 +45,6 @@ public abstract class CustomShape : Shape
 		Elt.Add(vertices.Elt);
 		vertices.PlaceInLevel(this, mapper);
 	}
-	protected CustomShape(string xml) : this(StrToXElement(xml)) {}
 	protected CustomShape(XElement e)
 	{
 		if (e.Name.ToString() != "sh")

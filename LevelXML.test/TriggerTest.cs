@@ -82,4 +82,37 @@ public class TriggerTest
 		Assert.Throws<Exception>(() => trigger.Add(new Target<Trigger>(otherTrigger, new Enable())));
 	}
 	
+	[Fact]
+	public void TestTriggerListOperations()
+	{
+		Trigger trigger = new();
+		Rectangle rect = new();
+		Target target1 = new Target<Shape>(rect, new AwakeShapeFromSleep());
+		Target target2 = new Target<Trigger>(trigger, new Enable());
+		Target target3 = new Target<Shape>(rect, new ChangeShapeOpacity(50, 0));
+		Assert.False(trigger.IsReadOnly);
+		trigger.Add(target1);
+		trigger.Insert(0, target2);
+		trigger.RemoveAt(1);
+		Assert.Contains(target2, trigger);
+		trigger.Add(target3);
+		Target[] array = new Target[2];
+		trigger.CopyTo(array, 0);
+		Assert.Equal(target2, array[0]);
+		Assert.Equal(1, trigger.IndexOf(target3));
+		trigger.Clear();
+		int size = trigger.Count;
+		Assert.Equal(0, size);
+		trigger.Add(target1);
+		trigger.Add(target2);
+		trigger.Add(target3);
+		trigger.Remove(target2);
+		int i = 0;
+		foreach (Target t in trigger)
+		{
+			i += 1;
+		}
+		Assert.Equal(1, i);
+		Assert.NotEmpty(trigger);
+	}
 }

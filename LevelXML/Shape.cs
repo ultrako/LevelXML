@@ -31,7 +31,7 @@ public abstract class Shape : Entity
 		{
 			if (value is null || double.IsNaN((double)value!))
 			{
-				throw new Exception("This would make the shape disappear!");
+				throw new LevelXMLException("This would make the shape disappear!");
 			}
 			else { Elt.SetAttributeValue("p0", value); }
 		}
@@ -43,7 +43,7 @@ public abstract class Shape : Entity
 		{
 			if (value is null || double.IsNaN((double)value!))
 			{
-				throw new Exception("This would make the shape disappear!");
+				throw new LevelXMLException("This would make the shape disappear!");
 			}
 			else { Elt.SetAttributeValue("p1", value); }
 		}
@@ -59,7 +59,7 @@ public abstract class Shape : Entity
 			double val = value ?? 0;
 			if (double.IsNaN(val)) 
 			{
-				throw new Exception("That would make the shape disappear!");
+				throw new LevelXMLException("That would make the shape disappear!");
 			}
 			Elt.SetAttributeValue("p4", Math.Clamp(val,-180,180)); 
 		}
@@ -118,27 +118,10 @@ public abstract class Shape : Entity
 			Elt.SetAttributeValue("p10", Math.Clamp(val, 0, 100));
 		}
 	}
-	public double? Collision 
+	public Collision Collision
 	{
-		get { return GetDoubleOrNull("p11"); }
-		set
-		{
-			// If this isn't set, it defaults to 1
-			double val = value ?? 1;
-			// Technically if this is set to NaN this ends up being 0,
-			// but collision 0 has the exact same behavior as collision 1
-			Elt.SetAttributeValue("p11", Math.Clamp(val, 1, 7));
-		}
-	}
-	// Only circles actually have this, but we're like one thing away from having commonality
-	// in every single Shape
-	public int? Cutout {
-		get { return (int?)GetDoubleOrNull("p12"); }
-		set
-		{
-			int val = value ?? 0;
-			Elt.SetAttributeValue("p12", (uint)Math.Clamp(val, 0, 100));
-		}
+		get { return (Collision)GetDoubleOrNull(Elt, "p11")!;}
+		set { Elt.SetAttributeValue("p11", value);}
 	}
 	protected void SetParams(XElement e)
 	{
@@ -155,7 +138,7 @@ public abstract class Shape : Entity
         FillColor = GetDoubleOrNull(e, "p8");
         OutlineColor = GetDoubleOrNull(e, "p9");
         Opacity = GetDoubleOrNull(e, "p10");
-        Collision = GetDoubleOrNull(e, "p11");
+        Collision = (Collision?)GetDoubleOrNull(e, "p11") ?? Collision.Everything;
 	}
 	internal Shape(params object?[] contents) : base("sh", contents) {}
 }

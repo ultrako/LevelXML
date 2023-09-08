@@ -48,9 +48,9 @@ public abstract class Joint : Entity
 		}
 	}
 
-	public abstract Double? UpperAngle {get; set;}
+	public abstract Double? UpperLimit {get; set;}
 
-	public abstract Double? LowerAngle {get; set;}
+	public abstract Double? LowerLimit {get; set;}
 	public HWBool? Motorized
 	{
 		get
@@ -106,7 +106,7 @@ public abstract class Joint : Entity
 		}
 		else
 		{
-			throw new Exception("Joint is attached to an Entity that can't be jointed!");
+			throw new LevelXMLException("Joint is attached to an Entity that can't be jointed!");
 		}
 		int index = mapper(entity);
 		return prependType + index.ToString();
@@ -131,7 +131,7 @@ public abstract class Joint : Entity
 			'g' => jointIndex.Substring(1, jointIndex.Length-1),
 			_ => jointIndex
 		};
-		return int.TryParse(jointIndex, out _);
+        return int.TryParse(jointIndex, out _);
 	}
 	virtual protected void SetParams(XElement e, Func<string?, Entity?> reverseMapper)
 	{
@@ -144,8 +144,8 @@ public abstract class Joint : Entity
 		Elt.SetAttributeValue("b1", "-1");
 		Elt.SetAttributeValue("b2", "-1");
 		Limit = GetDoubleOrNull(e, "l");
-		UpperAngle = GetDoubleOrNull(e, "ua");
-		LowerAngle = GetDoubleOrNull(e, "la");
+		UpperLimit = GetDoubleOrNull(e, "ua");
+		LowerLimit = GetDoubleOrNull(e, "la");
 		Motorized = GetBoolOrNull(e, "m");
 	}
 	protected Joint(params object?[] contents) : base("j", contents) {}
