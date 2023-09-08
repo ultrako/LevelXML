@@ -54,7 +54,7 @@ public class TriggerTest
 		// Unlike these other tests, importing a trigger with targets doesn't make sense,
 		// unless you have a level to map those targets with.
 		Rectangle rect = new();
-		Trigger trigger = new(targets: new Target<Shape>(rect, new AwakeFromSleep()));
+		Trigger trigger = new(targets: new Target<Shape>(rect, new AwakeShapeFromSleep()));
 		Assert.Equal(@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
 	<sh i=""" + rect.GetHashCode() + @""">
 		<a i=""0"" />
@@ -68,7 +68,7 @@ public class TriggerTest
 	{
 		Rectangle rect = new();
 		Trigger trigger = new();
-		trigger.Add(new Target<Shape>(rect, new AwakeFromSleep()));
+		trigger.Add(new Target<Shape>(rect, new AwakeShapeFromSleep()));
 		trigger.Add(new Target<Shape>(rect, new ChangeShapeOpacity(0, 0)));
 		// We can't assert equality on two TriggerActions because I haven't defined = operators for them
 		Assert.IsType<ChangeShapeOpacity>(trigger[0][1]);

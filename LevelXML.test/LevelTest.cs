@@ -18,7 +18,7 @@ public class LevelTest
 	public void TestCreateLevelWithTriggerToRectangle()
 	{
 		Rectangle rect = new();
-		Trigger trigger = new(targets: new Target<Shape>(rect, new AwakeFromSleep()));
+		Trigger trigger = new(targets: new Target<Shape>(rect, new AwakeShapeFromSleep()));
 		Level level = new(rect, trigger);
 		Assert.Equal(@"<levelXML>
 	<info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />

@@ -8,7 +8,7 @@ public class TargetTest {
 	public void AwakeFromSleepTargetTest()
 	{
 		Rectangle rect = new();
-		Target<Shape> target = new(rect, new AwakeFromSleep());
+		Target<Shape> target = new(rect, new AwakeShapeFromSleep());
 		Assert.Equal(@"<sh i=""" + rect.GetHashCode() + @""">
  <a i=""0"" />
 </sh>",
