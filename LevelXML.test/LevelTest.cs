@@ -128,6 +128,7 @@ public class LevelTest
 		// but vertex ids are not exposed as public, so I'll just see if the library spits back the same level.
 		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
 	}
+
 	[Fact]
 	public void ParseLevelWithJoint()
 	{
@@ -143,5 +144,53 @@ public class LevelTest
 </levelXML>");
 		Assert.Equal(level.Shapes[1], level.Joints[0].First);
 		Assert.Equal(level.Shapes[0], level.Joints[0].Second);
+	}
+
+	[Fact]
+	public void CreateLevelWithJointToShapes()
+	{
+		Rectangle rect1 = new();
+		rect1.Fixed = false;
+		Rectangle rect2 = new();
+		rect2.Fixed = false;
+		PinJoint joint = new(rect1, rect2);
+		Level level = new(new Entity[] {rect1, rect2, joint});
+		Assert.Equal(@"<levelXML>
+  <info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <shapes>
+    <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+  </shapes>
+  <joints>
+    <j t=""0"" x=""0"" y=""0"" b1=""0"" b2=""1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
+  </joints>
+</levelXML>",
+		level.ToXML(), ignoreWhiteSpaceDifferences: true);
+	}
+
+	[Fact]
+	public void CreateLevelWithJointToGroup()
+	{
+		Group group = new();
+		group.Fixed = false;
+		PinJoint joint = new(group);
+		Level level = new(new Entity[] {group, joint});
+		Assert.Equal(@"<levelXML>
+  <info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <groups>
+    <g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""0"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"" />
+  </groups>
+  <joints>
+    <j t=""0"" x=""0"" y=""0"" b1=""g0"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
+  </joints>
+</levelXML>",
+		level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void JointToInvalidEntity()
+	{
+		PinJoint joint = new();
+		Assert.Throws<LevelXMLException>(() => joint.First = joint);
 	}
 }

@@ -17,25 +17,11 @@ public record Point(double X, double Y);
 ///<param name="handle1"> The coordinates of the second bezier handle </param>
 public record Vertex(Point position, Point? handle0=null, Point? handle1=null);
 
-internal class Vertices : LevelXMLTag, IList<Vertex>
+internal class Vertices : LevelXMLTag
 {
-	private List<Vertex> verts = new();
+	internal List<Vertex> verts = new();
 	internal bool isEmpty;
 	internal int originalIndex;
-	public void Add( Vertex v ) { verts.Add(v); }
-	public int IndexOf(Vertex v) { return verts.IndexOf(v); }
-	public void Insert(int index, Vertex v) { verts.Insert(index, v); }
-	public void RemoveAt(int index) { verts.RemoveAt(index); }
-	public Vertex this[int index] { get {return verts[index]; } set { verts[index] = value; } }
-	public void Clear() { verts.Clear(); }
-	public bool Contains(Vertex v) { return verts.Contains(v); }
-	public void CopyTo(Vertex[] array, int index) { verts.CopyTo(array, index); }
-	public bool Remove(Vertex v) { return verts.Remove(v); }
-	public int Count => verts.Count;
-	public bool IsReadOnly => false;
-	IEnumerator<Vertex> IEnumerable<Vertex>.GetEnumerator() { return verts.GetEnumerator(); }
-	IEnumerator IEnumerable.GetEnumerator() { return verts.GetEnumerator(); }
-
 
 	public HWBool? Connected
 	{

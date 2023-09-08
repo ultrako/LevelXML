@@ -1,7 +1,7 @@
 namespace HappyWheels;
 public struct Collision
 {
-    readonly int val;
+    readonly double val;
     public static readonly Collision Everything = 1;
     public static readonly Collision EverythingButCharacters = 2;
     public static readonly Collision Nothing = 3;
@@ -9,25 +9,16 @@ public struct Collision
     public static readonly Collision OnlyFixed = 5;
     public static readonly Collision OnlyFixedAndSame = 6;
     public static readonly Collision OnlyCharacters = 7;
+    public static readonly Collision NaN = double.NaN;
 
-    private Collision(int val)
+    private Collision(double val)
     {
-        if (val < 0 || val > 7)
-		{
-			throw new LevelXMLException("Collision type must be between 0 and 7!");
-		} else
-        {
-            this.val = val;
-        }
+        this.val = Math.Clamp(val, 1, 7);
     }
-    public static implicit operator Collision(int val)
+    public static implicit operator Collision(double val)
 	{
 		return new Collision(val);
 	}
-    public static implicit operator Collision(double val)
-    {
-        return new Collision((int)val);
-    }
     public static bool operator ==(Collision lhs, Collision rhs)
     {
         return lhs.val == rhs.val;
@@ -42,13 +33,14 @@ public struct Collision
 			if (that is Collision t) 
 			{
 				return this == t; 
-			} else if (that is int val)
+			} else
             {
-                return this.val == val;
-            } else
-            { 
-                return false; 
+                return this.val.Equals(that);
             }
 		}
     public override int GetHashCode() { return val.GetHashCode(); }
+    public override string ToString()
+    {
+        return val.ToString();
+    }
 }

@@ -4,13 +4,45 @@ namespace HappyWheels.Test;
 
 public class ShapeTest
 {
+	[Fact]
+	public void ShapeMissingType()
+	{
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh p0=""0"" p1=""0"" p2=""0""/>"));
+	}
     [Fact]
-    public void RectangleTestBlank()
+    public void ShapeMissingX()
     {
-		Assert.Throws<Exception>(() => new Rectangle("<sh />"));
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p1=""0"" p2=""0""/>"));
     }
 	[Fact]
-	public void RectangleTestMinimal()
+	public void ShapeMissingY()
+    {
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p2=""0""/>"));
+    }
+	[Fact]
+	public void ShapeNaNRotation()
+    {
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p4=""NaN""/>"));
+    }
+	[Fact]
+	public void ShapeTestDefaultValues()
+	{
+		Rectangle rect = new();
+		Assert.Null(rect.Interactive);
+		Assert.Equal(0, rect.X);
+		Assert.Equal(0, rect.Y);
+		Assert.Equal(0, rect.Rotation);
+		Assert.Equal(true, rect.Fixed);
+		Assert.Equal(false, rect.Sleeping);
+		Assert.Equal(1, rect.Density);
+		Assert.Equal(4032711, rect.FillColor);
+		Assert.Equal(-1, rect.OutlineColor);
+		Assert.Equal(100, rect.Opacity);
+		Assert.Equal(Collision.Everything, rect.Collision);
+	}
+
+	[Fact]
+	public void ShapeTestMinimal()
 	{
 		// Testing against what I actually get when I import the tag below
 		// into the happy wheels import box
@@ -19,7 +51,7 @@ public class ShapeTest
 			rect.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
 	[Fact]
-	public void RectangleTestNaN()
+	public void ShapeTestNaN()
 	{
 		// So I know I went through a lot of effort making an interface that lets you
 		// do special default behaviors per every single XAttribute on a levelXML tag
@@ -34,26 +66,129 @@ public class ShapeTest
 		Rectangle rect = new(@"<sh t=""0"" p0=""0"" p1=""0"" p5=""NaN"" p6=""NaN"" p7=""NaN"" p8=""NaN"" p9=""NaN"" p10=""NaN"" p11=""NaN"" />");
         Assert.Equal(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""NaN"" p6=""NaN"" p7=""NaN"" p8=""NaN"" p9=""NaN"" p10=""NaN"" p11=""NaN"" />",
 			rect.ToXML(), ignoreWhiteSpaceDifferences: true);
-	}
+    }
+
 	[Fact]
-	public void RectangleTestLowValues()
+	public void ShapeTestLowValues()
 	{
 		// So negative values for rotation are weird
 		// I don't wanna reverse engineer the logic for it,
 		// because it's useless, so just this once test differs
 		// from import box.
-		Rectangle rect = new(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""-1000"" p3=""-1000"" p4=""-1000"" p7=""-1000"" p10=""-1000"" p11=""-1000"" />");
-		Assert.Equal(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""5"" p3=""5"" p4=""-180"" p5=""t"" p6=""f"" p7=""0.1"" p8=""4032711"" p9=""-1"" p10=""0"" p11=""1"" />",
+		Rectangle rect = new(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""-1000"" p7=""-1000"" p10=""-1000"" p11=""-1000"" />");
+		Assert.Equal(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""-180"" p5=""t"" p6=""f"" p7=""0.1"" p8=""4032711"" p9=""-1"" p10=""0"" p11=""1"" />",
 			rect.ToXML(), ignoreWhiteSpaceDifferences: true);
 		
 	}
 	[Fact]
-	public void RectangleTestHighValues()
+	public void ShapeTestHighValues()
 	{
-		Rectangle rect = new(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""123456789"" p3=""123456789"" p4=""123456789"" p7=""123456789"" p10=""123456789"" p11=""123456789"" />");
-		Assert.Equal(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""5000"" p3=""5000"" p4=""180"" p5=""t"" p6=""f"" p7=""100"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""7"" />",
+		Rectangle rect = new(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""123456789"" p7=""100"" p10=""123456789"" p11=""123456789"" />");
+		Assert.Equal(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""180"" p5=""t"" p6=""f"" p7=""100"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""7"" />",
 			rect.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
+
+	[Fact]
+	public void RectangleTestDefaultValues()
+	{
+		Rectangle rect = new();
+		Assert.Equal(300, rect.Width);
+		Assert.Equal(100, rect.Height);
+	}
+
+	[Fact]
+	public void RectangleTestNaNWidth()
+	{
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""NaN"" />"));
+	}
+
+	[Fact]
+	public void RectangleTestNaNHeight()
+	{
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p3=""NaN"" />"));
+	}
+
+	[Fact]
+	public void RectangleTestHighSize()
+	{
+		Rectangle rect = new();
+		rect.Width = double.PositiveInfinity;
+		Assert.Equal(5000, rect.Width);
+		rect.Height = double.PositiveInfinity;
+		Assert.Equal(5000, rect.Height);
+	}
+
+	[Fact]
+	public void RectangleTestLowSize()
+	{
+		Rectangle rect = new();
+		rect.Width = double.NegativeInfinity;
+		Assert.Equal(5, rect.Width);
+		rect.Height = double.NegativeInfinity;
+		Assert.Equal(5, rect.Height);
+	}
+
+	[Fact]
+	public void RectangleTestWrongType()
+	{
+		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""1"" p0=""0"" p1=""0"" />"));
+	}
+
+	[Fact]
+	public void CircleTestDefaultValues()
+	{
+		Circle circle = new();
+		Assert.Equal(200, circle.Width);
+		Assert.Equal(200, circle.Height);
+		Assert.Equal(0, circle.Cutout);
+	}
+
+	[Fact]
+	public void CircleTestNaNWidth()
+	{
+		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p2=""NaN"" />"));
+	}
+
+	[Fact]
+	public void CircleTestNaNHeight()
+	{
+		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p3=""NaN"" />"));
+	}
+
+	[Fact]
+	public void CircleTestNaNCutout()
+	{
+
+	}
+
+	[Fact]
+	public void CircleTestHighSize()
+	{
+		Circle circle = new();
+		circle.Width = double.PositiveInfinity;
+		circle.Cutout = double.PositiveInfinity;
+		Assert.Equal(5000, circle.Width);
+		Assert.Equal(5000, circle.Height);
+		Assert.Equal(100, circle.Cutout);
+	}
+
+	[Fact]
+	public void CircleTestLowSize()
+	{
+		Circle circle = new();
+		circle.Width = double.NegativeInfinity;
+		circle.Cutout = double.NegativeInfinity;
+		Assert.Equal(5, circle.Width);
+		Assert.Equal(5, circle.Height);
+		Assert.Equal(0, circle.Cutout);
+	}
+
+	[Fact]
+	public void CircleTestWrongType()
+	{
+		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""0"" p0=""0"" p1=""0"" />"));
+	}
+
 	[Fact]
 	public void ArtTest()
 	{

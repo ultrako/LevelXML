@@ -19,6 +19,7 @@ public abstract class Entity : LevelXMLTag
 			"sh" => GetDoubleOrNull(element, "t") switch 
 			{
 				0 => new Rectangle(element),
+				1 => new Circle(element),
 				3 => new Polygon(element),
 				4 => new Art(element),
 				_ => throw new LevelXMLException("Shape type doesn't exist!"),

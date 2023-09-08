@@ -31,7 +31,7 @@ public class Trigger : Entity, IList<Target>
 	public void RemoveAt(int index) { lst.RemoveAt(index);}
 	public void Clear() { lst.Clear(); }
 	public bool Contains(Target target) { return lst.Contains(target); }
-	public void CopyTo(Target[] targets, int size) { CopyTo(targets, size); }
+	public void CopyTo(Target[] targets, int index) { lst.CopyTo(targets, index); }
 	public int IndexOf(Target target) { return lst.IndexOf(target); }
 	public int Count => lst.Count;
 	public bool IsReadOnly => false;

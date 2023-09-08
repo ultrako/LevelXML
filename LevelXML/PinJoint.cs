@@ -31,7 +31,7 @@ public class PinJoint : Joint
             Elt.SetAttributeValue("sp", Math.Clamp(value ?? 3, -20, 20));
         }
     }
-    public override double? UpperAngle
+    public override double? UpperLimit
     {
         get
         {
@@ -42,7 +42,7 @@ public class PinJoint : Joint
 			Elt.SetAttributeValue("ua", Math.Clamp(value ?? 90, 0, 180));
 		}
     }
-    public override double? LowerAngle
+    public override double? LowerLimit
     {
         get
         {
@@ -51,16 +51,18 @@ public class PinJoint : Joint
 		set
 		{
             double val = Math.Abs(value ?? 90);
-			Elt.SetAttributeValue("la", Math.Clamp(-val, -180, 0));
+            double negatedAndClamped = Math.Clamp(-val, -180, 0.0);
+            if (negatedAndClamped == -0.0) { negatedAndClamped = 0.0;}
+			Elt.SetAttributeValue("la", negatedAndClamped);
 		}
     }
     public PinJoint() : this(EditorDefault) {}
-    public PinJoint(Entity first, Entity second) : this(EditorDefault)
+    public PinJoint(Entity first, Entity second) : this()
     {
         First = first;
         Second = second;
     }
-    public PinJoint(Entity first) : this(EditorDefault)
+    public PinJoint(Entity first) : this()
     {
         First = first;
     }
