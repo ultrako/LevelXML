@@ -16,7 +16,6 @@ public abstract class LevelXMLTag
 	protected static XElement StrToXElement(string xml) {
 		return XElement.Parse(xml);
 	}
-	public string? GetStringOrNull(string attr) { return GetStringOrNull(this.Elt, attr); }
 	public static string? GetStringOrNull(XElement elt, string attr)
 	{
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
@@ -119,7 +118,11 @@ public abstract class LevelXMLTag
 			if (that is HWBool t) 
 			{
 				return this == t; 
-			} else { return false; }
+			} else if (that is bool b)
+			{
+				return this.Equals(new HWBool(b));
+			}
+			else { return false; }
 		}
 		public override string ToString()
 		{

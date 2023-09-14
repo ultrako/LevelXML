@@ -38,8 +38,8 @@ public class ChangeShapeOpacity : TriggerAction<Shape>
 	public double? Opacity
 	{
 		get { return GetDoubleOrNull("p0"); }
-		// Test if this is the level editor behavior
-		set { Elt.SetAttributeValue("p0", Math.Clamp(value ?? 100, 0, 100)); }
+		// Yes, no clamps on this value, weird behavior ensues.
+		set { Elt.SetAttributeValue("p0", value); }
 	}
 	public double? Duration
 	{
@@ -69,17 +69,17 @@ public class ImpulseShape : TriggerAction<Shape>
 	public double? X
 	{
 		get { return GetDoubleOrNull("p0"); }
-		set { Elt.SetAttributeValue("p0", value);}
+		set { SetDouble("p0", value ?? 0);}
 	}
 	public double? Y
 	{
 		get { return GetDoubleOrNull("p1"); }
-		set { Elt.SetAttributeValue("p1", value);}
+		set { SetDouble("p1", value ?? 0); }
 	}
 	public double? Spin
 	{
 		get { return GetDoubleOrNull("p2"); }
-		set { Elt.SetAttributeValue("p2", value);}
+		set { SetDouble("p2", value ?? 0);}
 	}
 	public ImpulseShape() : this(EditorDefault) {}
 	public ImpulseShape(double x, double y, double spin)
@@ -127,6 +127,7 @@ public class ChangeShapeCollision : TriggerAction<Shape>
 		Elt.SetAttributeValue("i", 7);
 		Elt.SetAttributeValue("p0", collision);
 	}
+	public ChangeShapeCollision(string xml) : this(StrToXElement(xml)) {}
 	internal ChangeShapeCollision(XElement e) {
 		Collision? collision = (Collision?)GetDoubleOrNull(e, "p0");
 		if (collision is null)

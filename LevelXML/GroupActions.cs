@@ -20,7 +20,7 @@ public class ChangeGroupOpacity : TriggerAction<Group>
 	public double? Duration
 	{
 		get { return GetDoubleOrNull("p1"); }
-		set { Elt.SetAttributeValue("p1", value); }
+		set { SetDouble("p1", value ?? 1); }
 	}
 	public ChangeGroupOpacity(double Opacity, double Duration)
 	{
@@ -61,17 +61,18 @@ public class ImpulseGroup : TriggerAction<Group>
 	public double? X
 	{
 		get { return GetDoubleOrNull("p0"); }
-		set { Elt.SetAttributeValue("p0", value);}
+		// Yes, this is the actual happy wheels behavior
+		set { SetDouble("p0", value ?? 10);}
 	}
 	public double? Y
 	{
 		get { return GetDoubleOrNull("p1"); }
-		set { Elt.SetAttributeValue("p1", value);}
+		set { SetDouble("p1", value ?? -10);}
 	}
 	public double? Spin
 	{
 		get { return GetDoubleOrNull("p2"); }
-		set { Elt.SetAttributeValue("p2", value);}
+		set { SetDouble("p2", value ?? 0);}
 	}
 	public ImpulseGroup() : this(EditorDefault) {}
 	public ImpulseGroup(double x, double y, double spin)
@@ -109,6 +110,9 @@ public class DeleteSelfGroup : TriggerAction<Group>
 
 public class ChangeGroupCollision : TriggerAction<Shape>
 {
+	public static string EditorDefault =
+	@"<a i=""7"" p0=""1""/>";
+
 	public Collision Collision
 	{
 		get { return (Collision)GetDoubleOrNull(Elt, "p0")!;}
@@ -119,16 +123,9 @@ public class ChangeGroupCollision : TriggerAction<Shape>
 		Elt.SetAttributeValue("i", 7);
 		Elt.SetAttributeValue("p0", collision);
 	}
+	public ChangeGroupCollision() : this(StrToXElement(EditorDefault)) {}
 	internal ChangeGroupCollision(XElement e) {
-		Collision? collision = (Collision?)GetDoubleOrNull(e, "p0");
-		if (collision is null)
-		{
-			throw new LevelXMLException("No collision type on change group collision trigger action!");
-		}
-		else
-		{
-			Elt.SetAttributeValue("p0", collision);
-		}
 		Elt.SetAttributeValue("i", 7);
+		Collision = (Collision)(GetDoubleOrNull(e, "p0") ?? 1);
 	}
 }

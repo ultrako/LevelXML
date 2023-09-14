@@ -7,14 +7,14 @@ namespace HappyWheels;
 /// </summary>
 internal class Info : LevelXMLTag
 {
-	public const string EditorDefault = @"<info v=""1.94"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
-	internal double? Version
+	internal const string HappyWheelsVersion = "1.95";
+	public const string EditorDefault = @"<info v=""" + HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
+	internal string? Version
 	{
-		get { return GetDoubleOrNull("v"); }
+		get { return GetStringOrNull(Elt, "v"); }
 		set
 		{
-			// Hardcoded because it does nothing
-			Elt.SetAttributeValue("v", "1.94");
+			Elt.SetAttributeValue("v", value ?? HappyWheelsVersion);
 		}
 	}
 	/// <summary>
@@ -38,13 +38,12 @@ internal class Info : LevelXMLTag
 			Elt.SetAttributeValue("y", val);
 		}
 	}
-	public double? Character
+	public Character? Character
 	{
 		get { return GetDoubleOrNull("c"); }
 		set
 		{
-			double val = value ?? 1;
-			Elt.SetAttributeValue("c", Math.Clamp(val, 1, 11));
+			Elt.SetAttributeValue("c", (Character)(value ?? double.NaN));
 		}
 	}
 	public HWBool? ForcedCharacter
@@ -100,7 +99,7 @@ internal class Info : LevelXMLTag
 	}
 	protected void setParams(XElement e)
 	{
-		Version = 1.94f;
+		Version = Info.HappyWheelsVersion;
 		X = GetDoubleOrNull(e, "x");
 		Y = GetDoubleOrNull(e, "y");
 		Character = GetDoubleOrNull(e, "c");

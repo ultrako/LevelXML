@@ -200,5 +200,25 @@ public class ShapeTest
 </sh>";
 		string actual = art.ToXML(mapper: entity => 0);
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
+		Assert.Equal(100, art.Width);
+		Assert.Equal(100, art.Height);
+	}
+
+	[Fact]
+	public void ArtTestInvalidXml()
+	{
+		Assert.Throws<LevelXMLException>(() => new Art("<art />"));
+	}
+
+	[Fact]
+	public void ArtTestNaNWidth()
+	{
+		Assert.Throws<LevelXMLException>(() => new Art(@"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""NaN"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />"));
+	}
+
+	[Fact]
+	public void ArtTestNaNHeight()
+	{
+		Assert.Throws<LevelXMLException>(() => new Art(@"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""NaN"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />"));
 	}
 }

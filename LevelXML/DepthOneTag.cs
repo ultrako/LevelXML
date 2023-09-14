@@ -20,28 +20,16 @@ abstract internal class DepthOneTag : LevelXMLTag
 	// In case you only have this abstract class and at least want an Entity back
 	abstract internal Entity GetEntityAt(int index);
 	abstract internal void FinishConstruction();
-	public abstract int Count { get; }
+	abstract internal int Count { get;}
 }
 
 // Now, <shapes>, <groups>, etc, tags don't really do everything that Xlst.Elements do.
 // They don't have any attributes, and they're basically just glorified lists.
 
-internal class DepthOneTag<T> : DepthOneTag, IList<T> where T : Entity
+internal class DepthOneTag<T> : DepthOneTag where T : Entity
 {
-	private List<T> lst;
-	public void Add(T entity) { lst.Add(entity); }
-	public bool Remove(T entity) { return lst.Remove(entity); }
-	public int IndexOf(T entity) { return lst.IndexOf(entity); }
-	public void Insert(int i, T entity) { lst.Insert(i, entity); }
-	public void RemoveAt(int i) { lst.RemoveAt(i); }
-	public void Clear() { lst.Clear(); }
-	public bool Contains(T entity) { return lst.Contains(entity); }
-	public void CopyTo(T[] entities, int i) { lst.CopyTo(entities, i); }
-	public override int Count { get { return lst.Count; } }
-	public bool IsReadOnly { get { return false; } }
-	IEnumerator<T> IEnumerable<T>.GetEnumerator() { return lst.GetEnumerator(); }
-	IEnumerator IEnumerable.GetEnumerator() { return lst.GetEnumerator(); }
-	public T this[int index] { get { return lst[index]; } set { lst[index] = value; } }
+	public List<T> lst;
+	override internal int Count => lst.Count;
 	internal override Entity GetEntityAt(int index) { return lst[index]; }
 	internal override void FinishConstruction() { lst.ForEach(entity => entity.FinishConstruction()); }
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
@@ -53,19 +41,14 @@ internal class DepthOneTag<T> : DepthOneTag, IList<T> where T : Entity
 			Elt.Add(entity.Elt);
 		}
 	}
-	internal DepthOneTag(string xml) : this(StrToXElement(xml)) {}
 	internal DepthOneTag(XElement? e, Func<XElement, Entity> ReverseTargetMapper=default!, Func<string?, Entity?> ReverseJointMapper=default!) : 
 		this(content: (e ?? new XElement("empty")).Elements()
 			.Select(element => Entity.FromXElement(element, ReverseTargetMapper, ReverseJointMapper) as T)
 			.Where(item => item is not null).Select(item => item!)
 			.ToArray()) 
 	{}
-	internal DepthOneTag(params T[]? content) : base (EntityToDepthOneTagName[typeof(T)]) 
+	internal DepthOneTag(params T[] content) : base (EntityToDepthOneTagName[typeof(T)]) 
 	{
-		if (content is not null) {
-			lst = new(content);
-		} else {
-			lst = new();
-		}
+		lst = new(content);
 	}
 }

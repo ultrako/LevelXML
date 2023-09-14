@@ -1,4 +1,5 @@
 namespace HappyWheels;
+
 public struct Collision
 {
     readonly double val;
@@ -33,10 +34,8 @@ public struct Collision
 			if (that is Collision t) 
 			{
 				return this == t; 
-			} else
-            {
-                return this.val.Equals(that);
-            }
+			} 
+            return false;
 		}
     public override int GetHashCode() { return val.GetHashCode(); }
     public override string ToString()
