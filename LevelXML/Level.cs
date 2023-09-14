@@ -13,15 +13,15 @@ namespace HappyWheels;
 /// </remarks>
 public class Level : LevelXMLTag
 {
-	public IList<Shape> Shapes { get { return shapesTag; } }
-	public IList<Special> Specials { get { return specialsTag; } }
-	public IList<Group> Groups { get { return groupsTag; } }
-	public IList<Joint> Joints { get { return jointsTag; } }
-	public IList<Trigger> Triggers { get { return triggersTag; } }
+	public IList<Shape> Shapes { get { return shapesTag.lst; } }
+	public IList<Special> Specials { get { return specialsTag.lst; } }
+	public IList<Group> Groups { get { return groupsTag.lst; } }
+	public IList<Joint> Joints { get { return jointsTag.lst; } }
+	public IList<Trigger> Triggers { get { return triggersTag.lst; } }
 	// These are never null but you can't use ! on a struct data type
 	public double X { get {return info.X ?? 0;} set { info.X = value;} }
 	public double Y { get {return info.Y ?? 0;} set { info.Y = value;} }
-	public double Character { get { return info.Character ?? 0; } set { info.Character = value;} }
+	public Character? Character { get { return info.Character; } set { info.Character = value ?? (Character)double.NaN;} }
 	public HWBool ForcedCharacter { get { return info.ForcedCharacter ?? false; } set { info.ForcedCharacter = value;}}
 	public HWBool VehicleHidden { get { return info.VehicleHidden ?? false; } set { info.VehicleHidden = value;}}
 	public double Background { get { return info.Background ?? 0; } set { info.Background = value;} }
@@ -44,7 +44,7 @@ public class Level : LevelXMLTag
 	/// editor and just hitting save is set.
 	/// </summary>
 	public Level(params Entity[] entities) :
-		this(info : null,
+		this(info : new(),
 			shapes : entities.Where(entity => entity is Shape).Select(entity => (entity as Shape)!).ToArray(),
 			specials: entities.Where(entity => entity is Special).Select(entity => (entity as Special)!).ToArray(),
 			groups : entities.Where(entity => entity is Group).Select(entity => (entity as Group)!).ToArray(),
@@ -88,7 +88,7 @@ public class Level : LevelXMLTag
 			nameof(Group) => groupsTag,
 			nameof(Joint) => jointsTag,
 			nameof(Trigger) => triggersTag,
-			_ => throw new Exception($"Levels don't hold the type {t.Name}!"),
+			_ => throw new LevelXMLException($"Levels don't hold the type {t.Name}!"),
 		};
 	}
 	private int VertMapper(Entity e)
@@ -100,7 +100,7 @@ public class Level : LevelXMLTag
 		if (e is Art art)
 		{
 			List<Art> matchingArts = Shapes.Where(shape => shape is Art)
-				.Concat(Groups.SelectMany(group => group)
+				.Concat(Groups.SelectMany(group => group.Items)
 				.Where(entity => entity is Art))
 				.Select(entity => (Art)entity)
 				.ToList();
@@ -116,7 +116,7 @@ public class Level : LevelXMLTag
 		else if (e is Polygon poly)
 		{
 			List<Polygon> matchingPolys = Shapes.Where(shape => shape is Polygon)
-				.Concat(Groups.SelectMany(group => group)
+				.Concat(Groups.SelectMany(group => group.Items)
 				.Where(entity => entity is Polygon))
 				.Select(entity => (Polygon)entity)
 				.ToList();
@@ -140,11 +140,11 @@ public class Level : LevelXMLTag
 	{
 		int index = e switch
 		{
-			Shape s => (shapesTag ?? new DepthOneTag<Shape>()).IndexOf(s),
-			Special s => (specialsTag ?? new DepthOneTag<Special>()).IndexOf(s),
-			Group s => (groupsTag ?? new DepthOneTag<Group>()).IndexOf(s),
-			Joint s => (jointsTag ?? new DepthOneTag<Joint>()).IndexOf(s),
-			Trigger s => (triggersTag ?? new DepthOneTag<Trigger>()).IndexOf(s),
+			Shape s => (shapesTag ?? new DepthOneTag<Shape>()).lst.IndexOf(s),
+			Special s => (specialsTag ?? new DepthOneTag<Special>()).lst.IndexOf(s),
+			Group s => (groupsTag ?? new DepthOneTag<Group>()).lst.IndexOf(s),
+			Joint s => (jointsTag ?? new DepthOneTag<Joint>()).lst.IndexOf(s),
+			Trigger s => (triggersTag ?? new DepthOneTag<Trigger>()).lst.IndexOf(s),
 			_ => -1,
 		};
 		if (index < 0)
@@ -197,12 +197,13 @@ public class Level : LevelXMLTag
 			throw new Exception("Invalid joint index!");
 		}
 	}
-	private Level(Info? info=default!, 
-		Shape[]? shapes = null,
-		Special[]? specials = null,
-		Group[]? groups = null,
-		Joint[]? joints = null,
-		Trigger[]? triggers = null) 
+
+	private Level(Info info, 
+		Shape[] shapes,
+		Special[] specials,
+		Group[] groups,
+		Joint[] joints,
+		Trigger[] triggers) 
 		: base("levelXML")
 	{
 		this.info = info ?? new Info();
@@ -213,6 +214,7 @@ public class Level : LevelXMLTag
 		triggersTag = new(triggers);
 		Elt = new("levelXML");
 	}
+
 	internal Level(XElement e) : base("levelXML")
 	{
 		if (e.Name.ToString() != "levelXML")

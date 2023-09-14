@@ -49,7 +49,7 @@ public abstract class CustomShape : Shape
 	{
 		if (e.Name.ToString() != "sh")
 		{
-			throw new ArgumentException("Did not give a shape to the constructor!");
+			throw new LevelXMLException("Did not give a shape to the constructor!");
 		}
 		Elt = new XElement(e.Name.ToString());
 		SetParams(e);

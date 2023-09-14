@@ -9,8 +9,38 @@ using System.Xml.Linq;
 public abstract class Joint : Entity
 {
 	internal abstract uint Type {get;}
-	public Entity? First {get; set;}
-	public Entity? Second {get; set;}
+	private Entity? first;
+	private Entity? second;
+
+	private void checkIfCanBeJointed(Entity? entity)
+	{
+		string exceptionMessage = "Cannot joint a " + nameof(entity);
+		if (entity is null || entity is Group) { return; }
+		if (entity is Shape shape)
+		{
+			if (shape is Art) {  throw new LevelXMLException(exceptionMessage); }
+			return;
+		}
+		throw new LevelXMLException(exceptionMessage);
+	}
+	public Entity? First
+	{
+		get { return first;}
+		set
+		{
+			checkIfCanBeJointed(value);
+			first = value;
+		}
+	}
+	public Entity? Second
+	{
+		get { return second;}
+		set
+		{
+			checkIfCanBeJointed(value);
+			second = value;
+		}
+	}
 	// Joints with no position are allowed as they do actually affect the game
 	public override Double? X
 	{
