@@ -42,7 +42,7 @@ public class TargetTest {
 	[Fact]
 	public void TestAddTriggerActionToTarget()
 	{
-		Target<Trigger> target = new(new Trigger());
+		Target<Trigger> target = new(new ActivateTrigger());
 		Enable action = new();
 		target.Add(action);
 		Assert.Equal(action, target[0]);
@@ -51,7 +51,7 @@ public class TargetTest {
 	[Fact]
 	public void TestConstructTriggerTargetWithTwoActions()
 	{
-		Assert.Throws<LevelXMLException>(() => new Target<Trigger>(new Trigger(), new Enable(), new Disable()));
+		Assert.Throws<LevelXMLException>(() => new Target<Trigger>(new ActivateTrigger(), new Enable(), new Disable()));
 	}
 
 	[Fact]

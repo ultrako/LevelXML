@@ -18,7 +18,7 @@ public class LevelTest
 	public void TestCreateLevelWithTriggerToRectangle()
 	{
 		Rectangle rect = new();
-		Trigger trigger = new(targets: new Target<Shape>(rect, new AwakeShapeFromSleep()));
+		ActivateTrigger trigger = new(targets: new Target<Shape>(rect, new AwakeShapeFromSleep()));
 		Level level = new(rect, trigger);
 		Assert.Equal(@"<levelXML>
 	<info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
@@ -51,7 +51,7 @@ public class LevelTest
         </t>
     </triggers>
 </levelXML>");
-		Assert.Equal(level.Shapes![0]!, level.Triggers![0]![0]!.Targeted);
+		Assert.Equal(level.Shapes![0]!, ((ActivateTrigger)level.Triggers![0]!)[0]!.Targeted);
 	}
 	[Fact]
 	public void ParseLevelWithSelfReferencingTrigger()
@@ -66,7 +66,7 @@ public class LevelTest
 		</t>
 	</triggers>
 </levelXML>");
-		Assert.Equal(level.Triggers![0]!, level.Triggers![0]![0]!.Targeted);
+		Assert.Equal(level.Triggers![0]!, ((ActivateTrigger)level.Triggers![0]!)[0]!.Targeted);
 	}
 	[Fact]
 	public void TestLevelWithGroupThatHasArtShape()

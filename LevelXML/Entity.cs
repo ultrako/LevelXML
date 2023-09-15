@@ -24,7 +24,12 @@ public abstract class Entity : LevelXMLTag
 				4 => new Art(element),
 				_ => throw new LevelXMLException("Shape type doesn't exist!"),
 			},
-			"t" => new Trigger(element, ReverseTargetMapper),
+			"t" => GetDoubleOrNull(element, "t") switch
+			{
+				1 => new ActivateTrigger(element, ReverseTargetMapper),
+				2 => new SoundTrigger(element),
+				_ => throw new LevelXMLException("Trigger has an invalid action type!"),
+			},
 			"sp" => GetDoubleOrNull(element, "t") switch 
 			{
 				16 => new TextBox(element),
