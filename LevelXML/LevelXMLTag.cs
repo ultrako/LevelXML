@@ -148,11 +148,6 @@ public abstract class LevelXMLTag
 	// They need a function that takes Entities and returns the index of where
 	// those entities are in their depth one tag
 	internal virtual void PlaceInLevel(Func<Entity, int> mapper) {}
-	///<summary>
-	/// This converts a levelXMLTag object into the valid levelXML tags
-	/// that represents that object
-	///</summary>
-	public virtual string ToXML() { return ToXML(mapper: default!); }
 	internal virtual string ToXML(Func<Entity, int> mapper) {
 		PlaceInLevel(mapper);
 		return Elt.ToString();

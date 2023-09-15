@@ -3,7 +3,7 @@ namespace HappyWheels;
 
 public class TextBox : Special
 {
-    public override uint Type => 16;
+    internal override uint Type => 16;
     public static string EditorDefault =
         @"<sp t=""16"" p0=""0"" p1=""0"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
             <p7><![CDATA[HERE'S SOME TEXT]]></p7>
@@ -17,7 +17,7 @@ public class TextBox : Special
 			double val = value ?? 0;
 			if (double.IsNaN(val)) 
 			{
-				throw new Exception("That would make the text box disappear!");
+				throw new LevelXMLException("That would make the text box disappear!");
 			}
 			Elt.SetAttributeValue("p2", Math.Clamp(val,-180,180)); 
 		}
@@ -94,7 +94,7 @@ public class TextBox : Special
 		if (e.Name.ToString() != "sp" || GetDoubleOrNull(e, "t") != 16)
 		{
 			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
-			throw new ArgumentException("Did not give a textbox to the constructor!");
+			throw new LevelXMLException("Did not give a textbox to the constructor!");
 		}
 		Elt = new XElement(e.Name.ToString());
         contentElement = new("p7", new XCData(""));
