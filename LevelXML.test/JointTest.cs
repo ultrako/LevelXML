@@ -28,7 +28,7 @@ public class JointTest
     {
         PinJoint pj = new(@"<j t=""0""/>");
         Assert.Equal(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />",
-        pj.ToXML(), ignoreWhiteSpaceDifferences:true);
+        pj.ToXML(mapper:default!), ignoreWhiteSpaceDifferences:true);
     }
 
     [Fact]
@@ -36,7 +36,7 @@ public class JointTest
     {
         PinJoint pj = new(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""NaN"" b2=""NaN"" l=""NaN"" ua=""0"" la=""0"" m=""NaN"" tq=""0"" sp=""NaN"" c=""NaN"" />");
         Assert.Equal(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""f"" ua=""0"" la=""0"" m=""f"" tq=""0"" sp=""NaN"" c=""f"" />",
-        pj.ToXML(), ignoreWhiteSpaceDifferences:true);
+        pj.ToXML(mapper:default!), ignoreWhiteSpaceDifferences:true);
     }
 
     [Fact]
@@ -44,7 +44,7 @@ public class JointTest
     {
         PinJoint pj = new(@"<j t=""0"" ua=""0"" la=""0"" tq=""Infinity"" sp=""Infinity""/>");
         Assert.Equal(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""f"" ua=""0"" la=""0"" m=""f"" tq=""100000"" sp=""20"" c=""f"" />",
-        pj.ToXML(), ignoreWhiteSpaceDifferences:true);
+        pj.ToXML(mapper:default!), ignoreWhiteSpaceDifferences:true);
     }
 
     [Fact]
@@ -52,13 +52,14 @@ public class JointTest
     {
         PinJoint pj = new(@"<j t=""0"" ua=""0"" la=""0"" tq=""-Infinity"" sp=""-Infinity""/>");
         Assert.Equal(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""f"" ua=""0"" la=""0"" m=""f"" tq=""-Infinity"" sp=""-20"" c=""f"" />",
-        pj.ToXML(), ignoreWhiteSpaceDifferences:true);
+        pj.ToXML(mapper:default!), ignoreWhiteSpaceDifferences:true);
     }
 
     [Fact]
     public void PinJointTestDefault()
     {
         PinJoint pj = new();
+        Assert.Equal(3, pj.Speed);
         Assert.Equal(90, pj.UpperLimit);
         Assert.Equal(-90, pj.LowerLimit);
         Assert.Equal(50, pj.Torque);

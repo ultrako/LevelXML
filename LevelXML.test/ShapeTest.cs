@@ -221,4 +221,13 @@ public class ShapeTest
 	{
 		Assert.Throws<LevelXMLException>(() => new Art(@"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""NaN"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />"));
 	}
+
+	[Fact]
+	public void PolygonTestDefault()
+	{
+		Polygon poly = new();
+		Assert.Equal(@"<sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">" +
+		"\n  " + @"<v f=""t"" id=""0"" />" + "\n" + "</sh>",
+		poly.ToXML(mapper: (ent) => 0), ignoreWhiteSpaceDifferences:true);
+	}
 }

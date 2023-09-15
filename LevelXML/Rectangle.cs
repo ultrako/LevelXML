@@ -6,6 +6,7 @@ public class Rectangle : Shape
 	internal override uint Type => 0;
 	public static string EditorDefault =
         @"<sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1""/>";
+	public string ToXML() { return ToXML(mapper: default!); }
 	public override double? Width
 	{
 		get { return GetDoubleOrNull("p2"); }

@@ -1,20 +1,28 @@
 using Xunit;
 using System;
-
 namespace HappyWheels.Test;
 
-public class TextBoxTest
+public class SpecialTest
 {
     [Fact]
-    public void TestDefault()
+    public void TestSpecialNaNX()
     {
-        TextBox textbox = new();
-        string expected = @"<sp t=""16"" p0=""0"" p1=""0"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
-    <p7><![CDATA[HERE'S SOME TEXT]]></p7>
-</sp>";
-        string actual = textbox.ToXML();
-        Assert.Equal(expected,
-        actual,
-        ignoreWhiteSpaceDifferences: true, ignoreLineEndingDifferences: true);
+        Assert.Throws<LevelXMLException>(() => new TextBox(@"<sp t=""16"" p0=""NaN"" p1=""0"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"" />"));
+    }
+
+    [Fact]
+    public void TestSpecialNaNY()
+    {
+        Assert.Throws<LevelXMLException>(() => new TextBox(@"<sp t=""16"" p0=""0"" p1=""NaN"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"" />"));
+    }
+
+    [Fact]
+    public void TestProperties()
+    {
+        TextBox special = new();
+        special.X = 500;
+        special.Y = 300;
+        Assert.Equal(500, special.X);
+        Assert.Equal(300, special.Y);
     }
 }

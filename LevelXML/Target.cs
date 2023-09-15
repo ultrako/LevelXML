@@ -36,7 +36,7 @@ public abstract class Target : LevelXMLTag
 			"g" => new Target<Group>(e, ReverseTargetMapper),
 			"j" => new Target<Joint>(e, ReverseTargetMapper),
 			"t" => new Target<Trigger>(e, ReverseTargetMapper),
-			_ => throw new Exception("Invalid name for a trigger target!"),
+			_ => throw new LevelXMLException("Invalid name for a trigger target!"),
 		};
 	}
 }
@@ -59,7 +59,7 @@ public class Target<T> : Target where T : Entity
 			lst.Add(act); 
 		} else
 		{
-			throw new Exception("Tried to add an action of the wrong Entity type!");
+			throw new LevelXMLException("Tried to add an action of the wrong Entity type!");
 		}
 	}
 	public override bool Remove(TriggerAction action) 
@@ -89,7 +89,7 @@ public class Target<T> : Target where T : Entity
 				lst[index] = act;
 			} else
 			{
-				throw new Exception("Tried to add an action of the wrong Entity type!");
+				throw new LevelXMLException("Tried to add an action of the wrong Entity type!");
 			}
 		} 
 	}
@@ -115,7 +115,7 @@ public class Target<T> : Target where T : Entity
 			// The import box allows this, but it makes a really confusing double action,
 			// and you can only change them together and it only activates once so it's
 			// the same as just setting one action
-			throw new Exception("Triggers can only have one action applied to them per source trigger!");
+			throw new LevelXMLException("Triggers can only have one action applied to them per source trigger!");
 		}
 		lst = new(actions);
 	}

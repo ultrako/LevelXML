@@ -3,9 +3,10 @@ namespace HappyWheels;
 /// Specials are entities that have coded behavior besides just collision,
 /// like homing mines that follow players or spike sets that stab.
 ///</summary>
-public abstract class Special : Entity
+public abstract class Special : Entity, IConvertableToXML
 {
-	public abstract uint Type {get;}
+	internal abstract uint Type {get;}
+	public string ToXML() { return ToXML(mapper: default!); }
 	public override double? X
 	{
 		get { return GetDoubleOrNull("p0"); }
@@ -13,7 +14,7 @@ public abstract class Special : Entity
 		{
 			if (value is null || double.IsNaN((double)value!))
 			{
-				throw new Exception("This would make the shape disappear!");
+				throw new LevelXMLException("This would make the special disappear!");
 			}
 			else { Elt.SetAttributeValue("p0", value); }
 		}
@@ -25,7 +26,7 @@ public abstract class Special : Entity
 		{
 			if (value is null || double.IsNaN((double)value!))
 			{
-				throw new Exception("This would make the shape disappear!");
+				throw new LevelXMLException("This would make the special disappear!");
 			}
 			else { Elt.SetAttributeValue("p1", value); }
 		}

@@ -11,7 +11,7 @@ namespace HappyWheels;
 /// ToXML() will print out the LevelXML that represents this level,
 /// ready to be pasted into the happy wheels import box.
 /// </remarks>
-public class Level : LevelXMLTag
+public class Level : LevelXMLTag, IConvertableToXML
 {
 	public IList<Shape> Shapes { get { return shapesTag.lst; } }
 	public IList<Special> Specials { get { return specialsTag.lst; } }
@@ -26,7 +26,7 @@ public class Level : LevelXMLTag
 	public HWBool VehicleHidden { get { return info.VehicleHidden ?? false; } set { info.VehicleHidden = value;}}
 	public double Background { get { return info.Background ?? 0; } set { info.Background = value;} }
 	public double BackgroundColor { get { return info.BackgroundColor ?? 0; } set { info.BackgroundColor = value;} }
-	private Info info;
+	public string ToXML() { return ToXML(mapper: default!); }
 	public IEnumerable<Entity> Entities =>
 		(Shapes as IEnumerable<Entity>)
 		.Concat(Specials)
@@ -50,6 +50,8 @@ public class Level : LevelXMLTag
 			groups : entities.Where(entity => entity is Group).Select(entity => (entity as Group)!).ToArray(),
 			joints : entities.Where(entity => entity is Joint).Select(entity => (entity as Joint)!).ToArray(),
 			triggers : entities.Where(entity => entity is Trigger).Select(entity => (entity as Trigger)!).ToArray()) {}
+			
+	private Info info;
 	private DepthOneTag<Shape> shapesTag;
 	private DepthOneTag<Special> specialsTag;
 	private DepthOneTag<Group> groupsTag;
