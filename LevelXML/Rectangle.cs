@@ -37,10 +37,6 @@ public class Rectangle : Shape
 	public Rectangle(string xml) : this(StrToXElement(xml)) {}
 	internal Rectangle(XElement e) : base(e)
 	{
-		if (GetDoubleOrNull(e, "t") != Type)
-		{
-			throw new LevelXMLException("Did not give a rectangle to the constructor!");
-		}
 		SetParams(e);
 	}
 }

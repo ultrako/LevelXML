@@ -77,11 +77,6 @@ public class PinJoint : Joint
     
     internal PinJoint(XElement e, Func<string?, Entity?> reverseJointMapper = default!)
     {
-        if (e.Name.ToString() != "j" || GetDoubleOrNull(e, "t") != 0)
-		{
-			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
-			throw new Exception("Did not give a pin joint to the constructor!");
-		}
 		Elt = new XElement(e.Name.ToString());
         if (isNotJointed(e))
         {

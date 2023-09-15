@@ -141,10 +141,6 @@ public abstract class Trigger : Entity
 	// See if you can get rid of the param here
 	internal Trigger(XElement e) : base("t")
 	{
-		if (e.Name.ToString() != "t")
-		{
-			throw new LevelXMLException("Did not give a trigger to the constructor!");
-		}
 		Elt = new XElement(e.Name.ToString());
 		SetParams(e);
 	}
