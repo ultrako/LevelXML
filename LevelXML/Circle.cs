@@ -38,14 +38,17 @@ public class Circle : Shape
 
 	public Circle() : this(EditorDefault) {}
 	public Circle(string xml) : this(StrToXElement(xml)) {}
-	internal Circle(XElement e)
+	protected override void SetParams(XElement e)
 	{
-		if (e.Name.ToString() != "sh" || GetDoubleOrNull(e, "t") != Type)
+		base.SetParams(e);
+		Cutout = GetDoubleOrNull(e, "p12");
+	}
+	internal Circle(XElement e) : base(e)
+	{
+		if (GetDoubleOrNull(e, "t") != Type)
 		{
 			throw new LevelXMLException("Did not give a circle to the constructor!");
 		}
-		Elt = new XElement(e.Name.ToString());
 		SetParams(e);
-        Cutout = GetDoubleOrNull(e, "p12");
 	}
 }

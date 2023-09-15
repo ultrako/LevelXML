@@ -1,7 +1,6 @@
-namespace HappyWheels;
-
-using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+
+namespace HappyWheels;
 ///<summary>
 /// A joint connects two non fixed entities together, 
 /// specifically shapes, groups, and certain specials.

@@ -5,7 +5,7 @@ namespace HappyWheels;
 ///<summary>
 /// A SoundTrigger plays a sound when activated.
 ///</summary>
-public class SoundTrigger : Trigger
+public class SoundTrigger : Trigger, IConvertableToXML
 {
     public const string EditorDefault =
     @"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1""/>";
@@ -68,6 +68,7 @@ public class SoundTrigger : Trigger
         Panning = GetDoubleOrNull(e, "p");
         Volume = GetDoubleOrNull(e, "v");
 	}
+	public string ToXML() { return ToXML(mapper:default!); }
     internal SoundTrigger(XElement e) : base(e) {}
 	public SoundTrigger(string xml=EditorDefault) : this(StrToXElement(xml)) {}
 	
