@@ -5,12 +5,6 @@ namespace HappyWheels.Test;
 public class JointTest
 {
     [Fact]
-    public void PinJointTestBlank()
-    {
-		Assert.Throws<Exception>(() => new PinJoint("<j />"));
-    }
-
-    [Fact]
     public void JointTestDefault()
     {
         PinJoint joint = new PinJoint();
@@ -26,7 +20,7 @@ public class JointTest
     [Fact]
     public void JointTestMinimal()
     {
-        PinJoint pj = new(@"<j t=""0""/>");
+        PinJoint pj = new(@"<j />");
         Assert.Equal(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />",
         pj.ToXML(mapper:default!), ignoreWhiteSpaceDifferences:true);
     }
