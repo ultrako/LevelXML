@@ -142,11 +142,6 @@ public abstract class Shape : Entity
 	}
 	internal Shape(XElement e) : base("sh") 
 	{
-		if (e.Name.ToString() != "sh")
-		{
-			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
-			throw new LevelXMLException("Did not give a shape to the constructor!");
-		}
 		Elt = new XElement(e.Name.ToString());
 	}
 }

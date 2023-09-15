@@ -12,11 +12,5 @@ public class Art : CustomShape
 	
 	public Art() : this(EditorDefault) {}
 	public Art(string xml) : this(StrToXElement(xml)) {}
-	internal Art(XElement e) : base(e) 
-	{
-		if (GetDoubleOrNull(e, "t") != Type)
-		{
-			throw new LevelXMLException("Did not give an art shape to the constructor!");
-		}
-	}
+	internal Art(XElement e) : base(e) {}
 }

@@ -45,10 +45,6 @@ public class Circle : Shape
 	}
 	internal Circle(XElement e) : base(e)
 	{
-		if (GetDoubleOrNull(e, "t") != Type)
-		{
-			throw new LevelXMLException("Did not give a circle to the constructor!");
-		}
 		SetParams(e);
 	}
 }

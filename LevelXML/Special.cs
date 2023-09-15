@@ -41,10 +41,6 @@ public abstract class Special : Entity, IConvertableToXML
 	}
 	protected Special(XElement e) : base("sp") 
 	{
-		if (e.Name.ToString() != "sp")
-		{
-			throw new LevelXMLException("Did not give a special to the constructor!");
-		}
 		Elt = new XElement(e.Name.ToString());
 	}
 }
