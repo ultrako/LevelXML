@@ -34,12 +34,17 @@ public class Van : Special
 		set { Elt.SetAttributeValue("p4", value ?? HWBool.True); }
 	}
 
-    protected override void SetParams(XElement e) : base(e)
+    protected override void SetParams(XElement e)
     {
         base.SetParams(e);
         Rotation = GetDoubleOrNull(e, "p2");
         Sleeping = GetBoolOrNull(e, "p3");
         Interactive = GetBoolOrNull(e, "p4");
+    }
+
+    internal Van(XElement e) : base(e)
+    {
+        SetParams(e);
     }
 }
 

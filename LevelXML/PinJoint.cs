@@ -75,9 +75,8 @@ public class PinJoint : Joint
 		CollideConnected = GetBoolOrNull(e, "c");
     }
     
-    internal PinJoint(XElement e, Func<string?, Entity?> reverseJointMapper = default!)
+    internal PinJoint(XElement e, Func<string?, Entity?> reverseJointMapper = default!) : base(e)
     {
-		Elt = new XElement(e.Name.ToString());
         if (isNotJointed(e))
         {
             reverseJointMapper = (any) => null;

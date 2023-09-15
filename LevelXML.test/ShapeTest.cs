@@ -4,11 +4,6 @@ namespace HappyWheels.Test;
 
 public class ShapeTest
 {
-	[Fact]
-	public void ShapeMissingType()
-	{
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh p0=""0"" p1=""0"" p2=""0""/>"));
-	}
     [Fact]
     public void ShapeMissingX()
     {
@@ -129,12 +124,6 @@ public class ShapeTest
 	}
 
 	[Fact]
-	public void RectangleTestWrongType()
-	{
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""1"" p0=""0"" p1=""0"" />"));
-	}
-
-	[Fact]
 	public void CircleTestDefaultValues()
 	{
 		Circle circle = new();
@@ -181,12 +170,6 @@ public class ShapeTest
 		Assert.Equal(5, circle.Width);
 		Assert.Equal(5, circle.Height);
 		Assert.Equal(0, circle.Cutout);
-	}
-
-	[Fact]
-	public void CircleTestWrongType()
-	{
-		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""0"" p0=""0"" p1=""0"" />"));
 	}
 
 	[Fact]

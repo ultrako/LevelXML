@@ -85,14 +85,10 @@ public class TextBox : Special
         FontSize = GetDoubleOrNull(e, "p5");
         Alignment = GetDoubleOrNull(e, "p6");
         Opacity = GetDoubleOrNull(e, "p8");
-        Content = (e.Element("p7")!.FirstNode as XCData)!.Value;
+        Content = ((e.Element("p7") ?? new XElement("p7"))!.FirstNode as XCData)!.Value;
     }
     internal TextBox(XElement e) : base(e)
 	{
-		if (GetDoubleOrNull(e, "t") != 16)
-		{
-			throw new LevelXMLException("Did not give a textbox to the constructor!");
-		}
         contentElement = new("p7", new XCData(""));
         Elt.Add(contentElement);
 		SetParams(e);

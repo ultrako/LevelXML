@@ -177,5 +177,8 @@ public abstract class Joint : Entity
 		LowerLimit = GetDoubleOrNull(e, "la");
 		Motorized = GetBoolOrNull(e, "m");
 	}
-	protected Joint(params object?[] contents) : base("j", contents) {}
+	protected Joint(XElement e) : base("j") 
+	{
+		Elt = new XElement(e.Name.ToString());
+	}
 }
