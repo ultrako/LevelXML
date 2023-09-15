@@ -68,9 +68,9 @@ public class Level : LevelXMLTag, IConvertableToXML
 				Elt.Add(tag.Elt);
 			}
 		}
-		jointsTag.PlaceInLevel(Mapper);
-		triggersTag.PlaceInLevel(Mapper);
-		specialsTag.PlaceInLevel(Mapper);
+		jointsTag.PlaceInLevel(EntityIndexMapper);
+		triggersTag.PlaceInLevel(EntityIndexMapper);
+		specialsTag.PlaceInLevel(EntityIndexMapper);
 		shapesTag.PlaceInLevel(VertMapper);
 		groupsTag.PlaceInLevel(VertMapper);
 	}
@@ -138,7 +138,7 @@ public class Level : LevelXMLTag, IConvertableToXML
 		throw new Exception("Art shape pointed to by another art shape was not found!");
 		
 	}
-	private int Mapper(Entity e)
+	private int EntityIndexMapper(Entity e)
 	{
 		int index = e switch
 		{
@@ -151,7 +151,7 @@ public class Level : LevelXMLTag, IConvertableToXML
 		};
 		if (index < 0)
 		{
-			throw new Exception($"Entity {e.GetHashCode()} pointed to something that wasn't in the level!");
+			throw new LevelXMLException($"Entity {e.GetHashCode()} pointed to something that wasn't in the level!");
 		}
 		return index;
 	}
@@ -166,7 +166,10 @@ public class Level : LevelXMLTag, IConvertableToXML
 		// but we haven't made a depthOneTag until we've constructed all of its Entities.
 		// The consequence is that the constructors for Entities can't wait for
 		// this function to finish.
-		depthOneTagsReady.WaitOne();
+		if (entityType != typeof(Special))
+		{
+			depthOneTagsReady.WaitOne();
+		}
 		DepthOneTag? lst = TypeToDepthOneTag(entityType);
 		if (lst is null)
 		{
@@ -180,7 +183,7 @@ public class Level : LevelXMLTag, IConvertableToXML
 	{
 		// This is the only valid way to represent being jointed to nothing
 		if (entityIndex is null || entityIndex.Equals("-1")) { return null; }
-		string indexTail = entityIndex[..^1];
+		string indexTail = entityIndex.Substring(1);
 		int index;
 		if (int.TryParse(entityIndex, out index))
 		{

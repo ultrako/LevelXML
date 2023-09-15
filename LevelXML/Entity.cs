@@ -24,21 +24,24 @@ public abstract class Entity : LevelXMLTag
 				4 => new Art(element),
 				_ => throw new LevelXMLException("Shape type doesn't exist!"),
 			},
+			"sp" => GetDoubleOrNull(element, "t") switch 
+			{
+				0 => new Van(element),
+				10 => new SoccerBall(element),
+				16 => new TextBox(element),
+				_ => throw new LevelXMLException("Special type doesn't exist!")
+			},
+			"g" => new Group(element),
+			"j" => GetDoubleOrNull(element, "t") switch
+			{
+				0 => new PinJoint(element, ReverseJointMapper),
+				_ => throw new LevelXMLException("Joint type doesn't exist!")
+			},
 			"t" => GetDoubleOrNull(element, "t") switch
 			{
 				1 => new ActivateTrigger(element, ReverseTargetMapper),
 				2 => new SoundTrigger(element),
 				_ => throw new LevelXMLException("Trigger has an invalid action type!"),
-			},
-			"sp" => GetDoubleOrNull(element, "t") switch 
-			{
-				16 => new TextBox(element),
-				_ => throw new LevelXMLException("Special type doesn't exist!")
-			},
-			"j" => GetDoubleOrNull(element, "t") switch
-			{
-				0 => new PinJoint(element, ReverseJointMapper),
-				_ => throw new LevelXMLException("Joint type doesn't exist!")
 			},
 			_ => throw new LevelXMLException("XML tag type isn't an entity!"),
 		};

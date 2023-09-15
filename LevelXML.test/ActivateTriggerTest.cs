@@ -68,18 +68,18 @@ public class ActivateTriggerTest
 	{
 		Rectangle rect = new();
 		ActivateTrigger trigger = new();
-		trigger.Add(new Target<Shape>(rect, new AwakeShapeFromSleep()));
-		trigger.Add(new Target<Shape>(rect, new ChangeShapeOpacity(0, 0)));
+		trigger.AddTarget(new Target<Shape>(rect, new AwakeShapeFromSleep()));
+		trigger.AddTarget(new Target<Shape>(rect, new ChangeShapeOpacity(0, 0)));
 		// We can't assert equality on two TriggerActions because I haven't defined = operators for them
-		Assert.IsType<ChangeShapeOpacity>(trigger[0][1]);
+		Assert.IsType<ChangeShapeOpacity>(trigger.Targets[0].Actions[1]);
 	}
 	[Fact]
 	public void AddTwoTargetsToSameTrigger()
 	{
 		ActivateTrigger trigger = new();
 		ActivateTrigger otherTrigger = new();
-		trigger.Add(new Target<Trigger>(otherTrigger, new Enable()));
-		Assert.Throws<Exception>(() => trigger.Add(new Target<Trigger>(otherTrigger, new Enable())));
+		trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable()));
+		Assert.Throws<Exception>(() => trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable())));
 	}
 	
 	[Fact]
@@ -90,29 +90,25 @@ public class ActivateTriggerTest
 		Target target1 = new Target<Shape>(rect, new AwakeShapeFromSleep());
 		Target target2 = new Target<Trigger>(trigger, new Enable());
 		Target target3 = new Target<Shape>(rect, new ChangeShapeOpacity(50, 0));
-		Assert.False(trigger.IsReadOnly);
-		trigger.Add(target1);
-		trigger.Insert(0, target2);
-		trigger.RemoveAt(1);
-		Assert.Contains(target2, trigger);
-		trigger.Add(target3);
-		Target[] array = new Target[2];
-		trigger.CopyTo(array, 0);
-		Assert.Equal(target2, array[0]);
-		Assert.Equal(1, trigger.IndexOf(target3));
-		trigger.Clear();
-		int size = trigger.Count;
+		trigger.AddTarget(target1);
+		trigger.InsertTarget(0, target2);
+		trigger.RemoveTargetAt(1);
+		Assert.True(trigger.ContainsTarget(target2));
+		trigger.AddTarget(target3);
+		Assert.Equal(1, trigger.IndexOfTarget(target3));
+		trigger.ClearTargets();
+		int size = trigger.TargetCount;
 		Assert.Equal(0, size);
-		trigger.Add(target1);
-		trigger.Add(target2);
-		trigger.Add(target3);
-		trigger.Remove(target2);
+		trigger.AddTarget(target1);
+		trigger.AddTarget(target2);
+		trigger.AddTarget(target3);
+		trigger.RemoveTarget(target2);
 		int i = 0;
-		foreach (Target t in trigger)
+		foreach (Target t in trigger.Targets)
 		{
 			i += 1;
 		}
 		Assert.Equal(1, i);
-		Assert.NotEmpty(trigger);
+		Assert.NotEmpty(trigger.Targets);
 	}
 }

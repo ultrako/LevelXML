@@ -32,7 +32,8 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 		// Why am I switching on nameof(T) ?
 		// Because C# doesn't support template specialization.
 		return typeof(T).Name switch {
-			nameof(Shape) => ActionType switch {
+			nameof(Shape) => ActionType switch 
+			{
 				0 => (new AwakeShapeFromSleep() as TriggerAction<T>)!,
 				1 => (new FixShape() as TriggerAction<T>)!,
 				2 => (new NonfixShape() as TriggerAction<T>)!,
@@ -42,6 +43,12 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				6 => (new DeleteSelfShape() as TriggerAction<T>)!,
 				7 => (new ChangeShapeCollision(element) as TriggerAction<T>)!,
 				_ => throw new Exception("Invalid id for an action targeting a shape!"),
+			},
+			nameof(SimpleSpecial) => ActionType switch 
+			{
+				0 => (new AwakeSpecialFromSleep() as TriggerAction<T>)!,
+				1 => (new ImpulseSpecial(element) as TriggerAction<T>)!,
+				_ => throw new Exception("Invalid id for an action targeting this special!"),
 			},
 			nameof(Group) => ActionType switch
 			{
@@ -64,7 +71,8 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				4 => (new ChangeLimits(element) as TriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a joint!"),
 			},
-			nameof(Trigger) => ActionType switch {
+			nameof(Trigger) => ActionType switch 
+			{
 				0 => (new Activate() as TriggerAction<T>)!,
 				1 => (new Disable() as TriggerAction<T>)!,
 				2 => (new Enable() as TriggerAction<T>)!,

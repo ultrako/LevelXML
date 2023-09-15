@@ -17,7 +17,7 @@ public struct Character
 
     private Character(double val)
     {
-        if (val == double.NaN)
+        if (double.IsNaN(val))
         {
             throw new LevelXMLException("This would make the level freeze at start!");
         }

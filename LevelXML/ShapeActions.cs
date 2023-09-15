@@ -64,7 +64,7 @@ public class ChangeShapeOpacity : TriggerAction<Shape>
 
 public class ImpulseShape : TriggerAction<Shape>
 {
-	public static string EditorDefault =
+	public const string EditorDefault =
 	@"<a i=""4"" p0=""10"" p1=""-10"" p2=""0""/>";
 	public double? X
 	{

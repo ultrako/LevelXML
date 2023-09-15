@@ -12,11 +12,10 @@ namespace HappyWheels;
 public abstract class Target : LevelXMLTag 
 { 
 	public Entity Targeted {get; set;} = default!;
-	public abstract IEnumerator<TriggerAction> GetEnumerator();
-	public abstract void Add(TriggerAction action);
-	public abstract bool Remove(TriggerAction action);
-	public abstract int IndexOf(TriggerAction action);
-	public abstract TriggerAction this[int index] {get; set;}
+	public abstract void AddAction(TriggerAction action);
+	public abstract bool RemoveAction(TriggerAction action);
+	public abstract int IndexOfAction(TriggerAction action);
+	public abstract IReadOnlyList<TriggerAction> Actions { get; }
 	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
 	private Task? setTargeted;
 	protected Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) : base(e.Name)
@@ -32,7 +31,11 @@ public abstract class Target : LevelXMLTag
 		return e.Name.ToString() switch
 		{
 			"sh" => new Target<Shape>(e, ReverseTargetMapper),
-			"sp" => new Target<Special>(e, ReverseTargetMapper),
+			"sp" => ReverseTargetMapper(e) switch 
+			{
+				SimpleSpecial => new Target<SimpleSpecial>(e, ReverseTargetMapper),
+				_ => throw new LevelXMLException("Special type cannot be pointed to by a trigger!"),
+			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),
 			"j" => new Target<Joint>(e, ReverseTargetMapper),
 			"t" => new Target<Trigger>(e, ReverseTargetMapper),
@@ -45,7 +48,9 @@ public class Target<T> : Target where T : Entity
 {
 	private List<TriggerAction<T>> lst;
 
-	public override void Add(TriggerAction action) {
+	public override IReadOnlyList<TriggerAction> Actions => lst;
+
+	public override void AddAction(TriggerAction action) {
 		// A trigger can only do one thing to another trigger
 		if (typeof(T) == typeof(Trigger))
 		{
@@ -62,7 +67,7 @@ public class Target<T> : Target where T : Entity
 			throw new LevelXMLException("Tried to add an action of the wrong Entity type!");
 		}
 	}
-	public override bool Remove(TriggerAction action) 
+	public override bool RemoveAction(TriggerAction action) 
 	{
 		if (action is TriggerAction<T> act)
 		{
@@ -70,28 +75,13 @@ public class Target<T> : Target where T : Entity
 		}
 		return false;
 	}
-	public override int IndexOf(TriggerAction action) 
+	public override int IndexOfAction(TriggerAction action) 
 	{ 
 		if (action is TriggerAction<T> act)
 		{
 			return lst.IndexOf(act);
 		}
 		return -1;
-	}
-	public override IEnumerator<TriggerAction> GetEnumerator() { return lst.GetEnumerator(); }
-	public override TriggerAction this[int index] 
-	{ 
-		get { return lst[index]; } 
-		set 
-		{
-			if (value is TriggerAction<T> act)
-			{
-				lst[index] = act;
-			} else
-			{
-				throw new LevelXMLException("Tried to add an action of the wrong Entity type!");
-			}
-		} 
 	}
 
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
