@@ -447,6 +447,24 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void CreateLevelWithJointToVan()
+	{
+		Van van = new();
+		PinJoint joint = new(van);
+		Level level = new(van, joint);
+		Assert.Equal(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <specials>
+        <sp t=""0"" p0=""0"" p1=""0"" p2=""0"" p3=""f"" p4=""t"" />
+    </specials>
+    <joints>
+        <j t=""0"" x=""0"" y=""0"" b1=""s0"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
+    </joints>
+</levelXML>",
+		level.ToXML(), ignoreWhiteSpaceDifferences: true);
+	}
+
+	[Fact]
 	public void CreateLevelWithJointToShapes()
 	{
 		Rectangle rect1 = new();
@@ -485,6 +503,23 @@ public class LevelTest
   </joints>
 </levelXML>",
 		level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void ParseLevelWithJointToGroup()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <groups>
+        <g x=""364"" y=""5334"" r=""0"" ox=""-364"" oy=""-5334"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"">
+            <sh t=""1"" p0=""364"" p1=""5334"" p2=""200"" p3=""200"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" p12=""0""/>     
+        </g>
+    </groups>
+    <joints>
+        <j t=""0"" x=""387"" y=""5290"" b1=""g0"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
+    </joints>
+</levelXML>");
+		Assert.Equal(level.Groups[0], level.Joints[0].First);
 	}
 
 	[Fact]
