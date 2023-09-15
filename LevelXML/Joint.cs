@@ -121,7 +121,7 @@ public abstract class Joint : Entity
 	}
 	private string getIndexString(Func<Entity, int> mapper, Entity? entity)
 	{
-		string prependType;
+		string prependType = String.Empty;
 		if (entity is null)
 		{
 			return "-1";
@@ -137,10 +137,6 @@ public abstract class Joint : Entity
 		else if (entity is Group)
 		{
 			prependType = "g";
-		}
-		else
-		{
-			throw new LevelXMLException("Joint is attached to an Entity that can't be jointed!");
 		}
 		int index = mapper(entity);
 		return prependType + index.ToString();
