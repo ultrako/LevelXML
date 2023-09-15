@@ -54,7 +54,6 @@ internal class Vertices : LevelXMLTag
 	{
 		Connected = true;
 	}
-	public Vertices(string xml) : this(StrToXElement(xml)) {}
 	internal Vertices(XElement e) : base("v")
 	{
 		List<XAttribute> vertices = e.Attributes().Where(attr => attr.Name.ToString()[0] == 'v').ToList();

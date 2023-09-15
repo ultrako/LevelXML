@@ -1,4 +1,5 @@
 using System.Xml.Linq;
+
 namespace HappyWheels;
 
 public class Rectangle : Shape
@@ -34,14 +35,12 @@ public class Rectangle : Shape
 	}
 	public Rectangle() : this(EditorDefault) {}
 	public Rectangle(string xml) : this(StrToXElement(xml)) {}
-	internal Rectangle(XElement e)
+	internal Rectangle(XElement e) : base(e)
 	{
-		if (e.Name.ToString() != "sh" || GetDoubleOrNull(e, "t") != 0)
+		if (GetDoubleOrNull(e, "t") != Type)
 		{
-			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
 			throw new LevelXMLException("Did not give a rectangle to the constructor!");
 		}
-		Elt = new XElement(e.Name.ToString());
 		SetParams(e);
 	}
 }

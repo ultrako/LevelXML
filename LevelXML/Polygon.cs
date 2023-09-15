@@ -11,5 +11,11 @@ public class Polygon : CustomShape
 
 	public Polygon() : this(EditorDefault) {}
 	public Polygon(string xml) : this(StrToXElement(xml)) {}
-	internal Polygon(XElement e) : base(e) {}
+	internal Polygon(XElement e) : base(e) 
+	{
+		if (GetDoubleOrNull(e, "t") != Type)
+		{
+			throw new LevelXMLException("Did not give a polygon to the constructor!");
+		}
+	}
 }

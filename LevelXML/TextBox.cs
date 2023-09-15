@@ -19,7 +19,7 @@ public class TextBox : Special
 			{
 				throw new LevelXMLException("That would make the text box disappear!");
 			}
-			Elt.SetAttributeValue("p2", Math.Clamp(val,-180,180)); 
+			SetDouble("p2", val); 
 		}
 	}
 	public double? Color
@@ -76,11 +76,9 @@ public class TextBox : Special
             (contentElement.FirstNode as XCData)!.Value = value;
         }
     }
-    private void SetParams(XElement e)
+    protected override void SetParams(XElement e)
     {
-        Elt.SetAttributeValue("t", Type);
-        X = GetDoubleOrNull(e, "p0");
-        Y = GetDoubleOrNull(e, "p1");
+        base.SetParams(e);
         Rotation = GetDoubleOrNull(e, "p2");
         Color = GetDoubleOrNull(e, "p3");
         Font = GetDoubleOrNull(e, "p4");
@@ -89,14 +87,12 @@ public class TextBox : Special
         Opacity = GetDoubleOrNull(e, "p8");
         Content = (e.Element("p7")!.FirstNode as XCData)!.Value;
     }
-    internal TextBox(XElement e)
+    internal TextBox(XElement e) : base(e)
 	{
-		if (e.Name.ToString() != "sp" || GetDoubleOrNull(e, "t") != 16)
+		if (GetDoubleOrNull(e, "t") != 16)
 		{
-			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
 			throw new LevelXMLException("Did not give a textbox to the constructor!");
 		}
-		Elt = new XElement(e.Name.ToString());
         contentElement = new("p7", new XCData(""));
         Elt.Add(contentElement);
 		SetParams(e);

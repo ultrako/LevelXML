@@ -123,7 +123,7 @@ public abstract class Shape : Entity
 		get { return (Collision)GetDoubleOrNull(Elt, "p11")!;}
 		set { Elt.SetAttributeValue("p11", value);}
 	}
-	protected void SetParams(XElement e)
+	protected virtual void SetParams(XElement e)
 	{
 		Elt.SetAttributeValue("t", Type);
 		Interactive = GetBoolOrNull(e, "i");
@@ -140,5 +140,13 @@ public abstract class Shape : Entity
         Opacity = GetDoubleOrNull(e, "p10");
         Collision = (Collision?)GetDoubleOrNull(e, "p11") ?? Collision.Everything;
 	}
-	internal Shape(params object?[] contents) : base("sh", contents) {}
+	internal Shape(XElement e) : base("sh") 
+	{
+		if (e.Name.ToString() != "sh")
+		{
+			//Console.WriteLine($"Name was {elt.Name.ToString()}, and type number was {GetDoubleOrNull(e, "t")}");
+			throw new LevelXMLException("Did not give a shape to the constructor!");
+		}
+		Elt = new XElement(e.Name.ToString());
+	}
 }

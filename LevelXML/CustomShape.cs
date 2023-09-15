@@ -45,13 +45,8 @@ public abstract class CustomShape : Shape
 		Elt.Add(vertices.Elt);
 		vertices.PlaceInLevel(this, mapper);
 	}
-	protected CustomShape(XElement e)
+	protected CustomShape(XElement e) : base(e)
 	{
-		if (e.Name.ToString() != "sh")
-		{
-			throw new LevelXMLException("Did not give a shape to the constructor!");
-		}
-		Elt = new XElement(e.Name.ToString());
 		SetParams(e);
 		XElement? vTag = e.Element("v");
 		if (vTag is not null)

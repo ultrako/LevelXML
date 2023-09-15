@@ -1,3 +1,5 @@
+using System.Xml.Linq;
+
 namespace HappyWheels;
 ///<summary>
 /// Specials are entities that have coded behavior besides just collision,
@@ -31,5 +33,18 @@ public abstract class Special : Entity, IConvertableToXML
 			else { Elt.SetAttributeValue("p1", value); }
 		}
 	}
-	protected Special(params object?[] contents) : base("sp", contents) {}
+	protected virtual void SetParams(XElement e)
+    {
+		Elt.SetAttributeValue("t", Type);
+        X = GetDoubleOrNull(e, "p0");
+        Y = GetDoubleOrNull(e, "p1");
+	}
+	protected Special(XElement e) : base("sp") 
+	{
+		if (e.Name.ToString() != "sp")
+		{
+			throw new LevelXMLException("Did not give a special to the constructor!");
+		}
+		Elt = new XElement(e.Name.ToString());
+	}
 }
