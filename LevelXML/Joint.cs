@@ -20,6 +20,11 @@ public abstract class Joint : Entity
 			if (shape is Art) {  throw new LevelXMLException(exceptionMessage); }
 			return;
 		}
+		if (entity is Group) { return; }
+		if (entity is Special special)
+		{
+			if (special is Van) { return;}
+		}
 		throw new LevelXMLException(exceptionMessage);
 	}
 	public Entity? First

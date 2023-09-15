@@ -88,12 +88,11 @@ internal class Info : LevelXMLTag, IConvertableToXML
 	}
 	internal double? E
 	{
-		get { return GetDoubleOrNull("e"); }
 		set
 		{
 			if (value != 1)
 			{
-				throw new Exception("This would make the level not import!");
+				throw new LevelXMLException("This would make the level not import!");
 			}
 			Elt.SetAttributeValue("e", value!);
 		}

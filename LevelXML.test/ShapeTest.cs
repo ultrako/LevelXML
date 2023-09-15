@@ -213,4 +213,12 @@ public class ShapeTest
 		"\n  " + @"<v f=""t"" id=""0"" />" + "\n" + "</sh>",
 		poly.ToXML(mapper: (ent) => 0), ignoreWhiteSpaceDifferences:true);
 	}
+
+	[Fact]
+	public void CircleTestDefault()
+	{
+		Circle circle = new();
+		Assert.Equal(@"<sh t=""1"" p0=""0"" p1=""0"" p2=""200"" p3=""200"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" p12=""0"" />",
+		circle.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
 }

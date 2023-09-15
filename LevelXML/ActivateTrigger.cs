@@ -6,39 +6,36 @@ namespace HappyWheels;
 /// An ActivateTrigger is an entity that when activated,
 /// goes through and applies its list of Targets.
 ///</summary>
-public class ActivateTrigger : Trigger, IList<Target>
+public class ActivateTrigger : Trigger
 {
 	public const string EditorDefault =
 	@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0""/>";
     internal override uint Type => 1;
 	private List<Target> lst;
-	public void Add(Target target) {
+	public IReadOnlyList<Target> Targets => lst;
+	public void AddTarget(Target target) { InsertTarget(lst.Count, target); }
+	public void InsertTarget(int index, Target target) 
+	{  
 		Target? sameTarget = lst
 			.Where(other => other.Targeted == target.Targeted)
 			.FirstOrDefault();
 		if (sameTarget is not null)
 		{
-			foreach (TriggerAction action in target)
+			foreach (TriggerAction action in target.Actions)
 			{
-				sameTarget.Add(action);
+				sameTarget.AddAction(action);
 			}
 		} else
 		{
-			lst.Add(target); 
+			lst.Insert(index, target); 
 		}
 	}
-	public void Insert(int index, Target target) { lst.Insert(index, target); }
-	public bool Remove(Target target) { return lst.Remove(target); }
-	public void RemoveAt(int index) { lst.RemoveAt(index);}
-	public void Clear() { lst.Clear(); }
-	public bool Contains(Target target) { return lst.Contains(target); }
-	public void CopyTo(Target[] targets, int index) { lst.CopyTo(targets, index); }
-	public int IndexOf(Target target) { return lst.IndexOf(target); }
-	public int Count => lst.Count;
-	public bool IsReadOnly => false;
-	public Target this[int index] { get { return lst[index]; } set { lst[index] = value; } }
-	IEnumerator<Target> IEnumerable<Target>.GetEnumerator() { return lst.GetEnumerator(); }
-	IEnumerator IEnumerable.GetEnumerator() { return lst.GetEnumerator();}
+	public bool RemoveTarget(Target target) { return lst.Remove(target); }
+	public void RemoveTargetAt(int index) { lst.RemoveAt(index);}
+	public void ClearTargets() { lst.Clear(); }
+	public bool ContainsTarget(Target target) { return lst.Contains(target); }
+	public int IndexOfTarget(Target target) { return lst.IndexOf(target); }
+	public int TargetCount => lst.Count;
 
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{

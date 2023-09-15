@@ -1,7 +1,7 @@
 using System.Xml.Linq;
 namespace HappyWheels;
 
-public class Circle : Shape
+public class Circle : Shape, IConvertableToXML
 {
 	internal override uint Type => 1;
     public static string EditorDefault =
