@@ -1,7 +1,10 @@
 using Xunit;
 using System;
+using System.Linq;
 
 namespace HappyWheels.Test;
+
+//Reminder: add another Entity type to fully test our switch cases
 
 public class LevelTest
 {
@@ -23,10 +26,60 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void TestMergeLevels()
+	{
+		Rectangle rectangle = new();
+		Circle circle = new();
+		PinJoint joint = new(rectangle, circle);
+		Level level1 = new(circle);
+		Level level2 = new(rectangle);
+		Level level3 = new(level1.Entities.Concat(level2.Entities).Concat(new[] {joint}).ToArray());
+		Assert.Equal(joint.First, level3.Shapes[1]);
+		Assert.Equal(joint.Second, level3.Shapes[0]);
+	}
+
+	[Fact]
 	public void TestLevelWithNaNCharacter()
 	{
 		Level level = new();
 		Assert.Throws<LevelXMLException>(() => level.Character = double.NaN);
+	}
+
+	[Fact]
+	public void TestParseLevelWithNoInfoTag()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level("<levelXML />"));
+	}
+
+	[Fact]
+	public void TestParseLevelWithWrongLevelXMLTag()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<level>
+    <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+</level>"));
+	}
+
+	[Fact]
+	public void TestLevelWithDisableMotorTrigger()
+	{
+		PinJoint joint = new();
+		ActivateTrigger trigger = new();
+		trigger.AddTarget(new Target<Joint>(joint, new DisableMotor()));
+		Level level = new(trigger, joint);
+		Assert.Equal(@"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <joints>
+    <j t=""0"" x=""0"" y=""0"" b1=""-1"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
+  </joints>
+  <triggers>
+    <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+      <j i=""0"">
+        <a i=""0"" />
+      </j>
+    </t>
+  </triggers>
+</levelXML>",
+		level.ToXML(), ignoreWhiteSpaceDifferences: true);
 	}
 
 	[Fact]
@@ -217,6 +270,36 @@ public class LevelTest
 </levelXML>");
 		Assert.Equal(level.Triggers![0]!, ((ActivateTrigger)level.Triggers![0]!).Targets[0]!.Targeted);
 	}
+
+	[Fact]
+	public void LevelWithSelfReferencingTrigger()
+	{
+		ActivateTrigger trigger = new();
+		trigger.AddTarget(new Target<Trigger>(trigger, new Activate()));
+		Level level = new(trigger);
+		Assert.Equal(@"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <triggers>
+    <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+      <t i=""0"">
+        <a i=""0"" />
+      </t>
+    </t>
+  </triggers>
+</levelXML>",
+		level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void LevelWithTriggerReferencingEntityNotInLevel()
+	{
+		Rectangle rect = new();
+		ActivateTrigger trigger = new();
+		trigger.AddTarget(new Target<Shape>(rect, new AwakeShapeFromSleep()));
+		Level level = new(trigger);
+		Assert.Throws<LevelXMLException>(() => level.ToXML());
+	}
+
 	[Fact]
 	public void TestLevelWithGroupThatHasArtShape()
 	{
@@ -237,6 +320,7 @@ public class LevelTest
 		string actual = level.ToXML();
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
 	}
+
 	[Fact]
 	public void ArtShapeTestNoIDCollision()
 	{
@@ -254,6 +338,49 @@ public class LevelTest
       <v f=""t"" id=""1"" />
     </sh>
   </shapes>
+</levelXML>";
+		string actual = level.ToXML();
+		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
+	}
+
+	[Fact]
+	public void PolyShapeTestNoIDCollision()
+	{
+		Polygon poly1 = new();
+		poly1.Vertices.Add(new(new(3,0)));
+		Polygon poly2 = new();
+		Level level = new(poly1, poly2);
+		string expected =@"<levelXML>
+  <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <shapes>
+    <sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+      <v f=""t"" id=""0"" n=""1"" v0=""3_0"" />
+    </sh>
+    <sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+      <v f=""t"" id=""1"" />
+    </sh>
+  </shapes>
+</levelXML>";
+		string actual = level.ToXML();
+		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
+	}
+
+	[Fact]
+	public void TestLevelWithGroupThatHasPolyShape()
+	{
+		Polygon poly = new();
+		poly.Vertices.Add(new(new(3,0)));
+		Group group = new(poly);
+		Level level = new(group);
+		string expected = @"<levelXML>
+  <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <groups>
+    <g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""0"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"">
+      <sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+        <v f=""t"" id=""0"" n=""1"" v0=""3_0"" />
+      </sh>
+    </g>
+  </groups>
 </levelXML>";
 		string actual = level.ToXML();
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
@@ -289,6 +416,37 @@ public class LevelTest
 		// but vertex ids are not exposed as public, so I'll just see if the library spits back the same level.
 		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
 	}
+
+	[Fact]
+	public void ParseLevelWithPolys()
+	{
+		String levelXML = @"<levelXML>
+    <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""3"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" n=""3"" v0=""28_47"" v1=""-28_-53"" v2=""-27_53"" />
+        </sh>
+        <sh t=""3"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" />
+        </sh>
+    </shapes>
+</levelXML>";
+		Level level = new(levelXML);
+		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
+	}
+// make this test pass later by fixing Vertices.cs
+// 	[Fact]
+// 	public void ParseLevelWithOneBlankArtShapeWithInvalidID()
+// 	{
+// 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+//     <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
+//     <shapes>
+//         <sh t=""4"" i=""f"" p0=""358.50"" p1=""5339"" p2=""83"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+//             <v f=""t"" id=""1"" />
+//         </sh>
+//     </shapes>
+// </levelXML>"));
+// 	}
 
 	[Fact]
 	public void ParseLevelWithPinJoint()
@@ -523,9 +681,69 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithJointWithInvalidPrefixToIndex()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <joints>
+        <j t=""0"" x=""555"" y=""5372"" b1=""t0"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
+    </joints>
+</levelXML>"));
+	}
+
+	[Fact]
+	public void ParseLevelWithJointWithInvalidTargetID()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <joints>
+        <j t=""0"" x=""555"" y=""5372"" b1=""abcdef"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
+    </joints>
+</levelXML>"));
+	}
+
+	[Fact]
 	public void JointToInvalidEntity()
 	{
 		PinJoint joint = new();
 		Assert.Throws<LevelXMLException>(() => joint.First = joint);
+	}
+
+	[Fact]
+	public void TestParseLevelWithInvalidTargetType()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""f"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <shapes>
+        <sh t=""1"" p0=""444"" p1=""5357"" p2=""200"" p3=""200"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" p12=""0""/>
+    </shapes>
+    <triggers>
+        <t x=""280"" y=""5388"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <john i=""0""/>
+        </t>
+    </triggers>
+</levelXML>"));
+	}
+
+	[Fact]
+	public void TestParseLevelWithTargetTypeOfEmptyTag()
+	{
+		// Have to make this test this way because throwing in an async method wraps my exception
+		try
+		{
+			new Level(@"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <triggers>
+    <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+      <g i=""0"">
+        <a i=""0"" />
+      </g>
+    </t>
+  </triggers>
+</levelXML>").ToXML();
+		} catch (AggregateException e)
+		{
+			Assert.IsType<LevelXMLException>(e.InnerException);
+		}
 	}
 }

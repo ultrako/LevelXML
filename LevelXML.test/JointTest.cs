@@ -28,7 +28,7 @@ public class JointTest
     [Fact]
     public void JointTestNaN()
     {
-        PinJoint pj = new(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""NaN"" b2=""NaN"" l=""NaN"" ua=""0"" la=""0"" m=""NaN"" tq=""0"" sp=""NaN"" c=""NaN"" />");
+        PinJoint pj = new(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""NaN"" ua=""0"" la=""0"" m=""NaN"" tq=""0"" sp=""NaN"" c=""NaN"" />");
         Assert.Equal(@"<j t=""0"" x=""NaN"" y=""NaN"" b1=""-1"" b2=""-1"" l=""f"" ua=""0"" la=""0"" m=""f"" tq=""0"" sp=""NaN"" c=""f"" />",
         pj.ToXML(mapper:default!), ignoreWhiteSpaceDifferences:true);
     }

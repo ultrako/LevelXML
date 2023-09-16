@@ -74,23 +74,15 @@ public class Level : LevelXMLTag, IConvertableToXML
 		shapesTag.PlaceInLevel(VertMapper);
 		groupsTag.PlaceInLevel(VertMapper);
 	}
-	private static readonly Dictionary<string, Type> nameToEntityType = new()
+	private DepthOneTag NameToDepthOneTag(String name)
 	{
-		{"sh", typeof(Shape)},
-		{"sp", typeof(Special)},
-		{"g", typeof(Group)},
-		{"j", typeof(Joint)},
-		{"t", typeof(Trigger)},
-	};
-	private DepthOneTag? TypeToDepthOneTag(Type t)
-	{
-		return t.Name switch {
-			nameof(Shape) => shapesTag,
-			nameof(Special) => specialsTag,
-			nameof(Group) => groupsTag,
-			nameof(Joint) => jointsTag,
-			nameof(Trigger) => triggersTag,
-			_ => throw new LevelXMLException($"Levels don't hold the type {t.Name}!"),
+		return name switch {
+			"sh" => shapesTag,
+			"sp" => specialsTag,
+			"g" => groupsTag,
+			"j" => jointsTag,
+			// This is a private function, only ever called with those four values and "t"
+			_ => triggersTag,
 		};
 	}
 	private int VertMapper(Entity e)
@@ -131,11 +123,7 @@ public class Level : LevelXMLTag, IConvertableToXML
 				return matchingPolys.FindIndex(other => other == poly);
 			}
 		}
-		else
-		{
-			throw new Exception("Gave neither an art entity nor a polygon entity to the vertex id mapper!");
-		}
-		throw new Exception("Art shape pointed to by another art shape was not found!");
+		throw new LevelXMLException("Art shape pointed to by another art shape was not found!");
 		
 	}
 	private int EntityIndexMapper(Entity e)
@@ -159,25 +147,19 @@ public class Level : LevelXMLTag, IConvertableToXML
 	private Entity ReverseTargetMapper(XElement e)
 	{
 		int index = Int32.Parse(e.Attribute("i")!.Value)!;
-		Type entityType = nameToEntityType[e.Name.ToString()];
 		//Console.WriteLine($"Trying to get the {index}th {entityType}");
 		// Wait until the class sets that the tags are ready to index through
 		// This is needed because the constructors of these entities use the reverse mapper,
 		// but we haven't made a depthOneTag until we've constructed all of its Entities.
 		// The consequence is that the constructors for Entities can't wait for
 		// this function to finish.
-		if (entityType != typeof(Special))
+		string tagName = e.Name.ToString();
+		if (tagName != "sp")
 		{
 			depthOneTagsReady.WaitOne();
 		}
-		DepthOneTag? lst = TypeToDepthOneTag(entityType);
-		if (lst is null)
-		{
-			throw new Exception("Tried to index into a depth one tag we didn't construct!");
-		} else
-		{
-			return lst.GetEntityAt(index);
-		}
+		DepthOneTag lst = NameToDepthOneTag(tagName);
+		return lst.GetEntityAt(index);
 	}
 	private Entity? ReverseJointMapper(string? entityIndex)
 	{
@@ -189,6 +171,8 @@ public class Level : LevelXMLTag, IConvertableToXML
 		{
 			return Shapes[index];
 		}
+		// Consider carefully whether we want to set to -1 or throw when we get invalid joint indexes in levels
+		// Import box behavior is to make the joint be jointed to nothing, but this is a silent failure
 		else if (int.TryParse(indexTail, out index))
 		{
 			
@@ -196,10 +180,10 @@ public class Level : LevelXMLTag, IConvertableToXML
 			{
 				's' => Specials[index],
 				'g' => Groups[index],
-				_ => throw new Exception("Invalid joint index!")
+				_ => throw new LevelXMLException("Invalid joint index!")
 			};
 		} else {
-			throw new Exception("Invalid joint index!");
+			throw new LevelXMLException("Invalid joint index!");
 		}
 	}
 
@@ -224,11 +208,11 @@ public class Level : LevelXMLTag, IConvertableToXML
 	{
 		if (e.Name.ToString() != "levelXML")
 		{
-			throw new Exception("You didn't give me a LevelXML tag!");
+			throw new LevelXMLException("You didn't give me a LevelXML tag!");
 		}
 		XElement? InfoTag = e.Element("info");
 		if (InfoTag is null) { 
-			throw new Exception("Level is missing an info tag!"); 
+			throw new LevelXMLException("Level is missing an info tag!"); 
 		}
 		info = new(InfoTag);
 		XElement? ShapesElement = e.Element("shapes");

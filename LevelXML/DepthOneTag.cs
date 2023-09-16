@@ -30,7 +30,11 @@ internal class DepthOneTag<T> : DepthOneTag where T : Entity
 {
 	public List<T> lst;
 	override internal int Count => lst.Count;
-	internal override Entity GetEntityAt(int index) { return lst[index]; }
+	internal override Entity GetEntityAt(int index) 
+	{
+		if (index >= 0 && index < lst.Count)  { return lst[index]; }
+		else { throw new LevelXMLException("Trigger had a target index that isn't in the level!"); }
+	}
 	internal override void FinishConstruction() { lst.ForEach(entity => entity.FinishConstruction()); }
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
