@@ -12,15 +12,17 @@ public class DisableMotor : TriggerAction<Joint>
 
 public class ChangeMotorSpeed : TriggerAction<Joint>
 {
-    double? Speed
+    public const string EditorDefault =
+    @"<a i=""1"" p0=""0"" p1=""1""/>";
+    public double? Speed
     {
         get { return GetDoubleOrNull("p0"); }
-        set { Elt.SetAttributeValue("p0", value ?? 0); }
+        set { SetDouble("p0", value ?? 0); }
     }
-    double? Duration
+    public double? Duration
     {
         get { return GetDoubleOrNull("p1"); }
-        set { Elt.SetAttributeValue("p1", value ?? 0); }
+        set { SetDouble("p1", value ?? 0); }
     }
     public ChangeMotorSpeed(double speed, double duration)
     {
@@ -28,6 +30,7 @@ public class ChangeMotorSpeed : TriggerAction<Joint>
         Speed = speed;
         Duration = duration;
     }
+    public ChangeMotorSpeed(string xml=EditorDefault) : this(StrToXElement(xml)) {}
     internal ChangeMotorSpeed(XElement e)
     {
         Elt.SetAttributeValue("i", 1);
@@ -54,9 +57,11 @@ public class DisableLimits : TriggerAction<Joint>
 
 public class ChangeLimits : TriggerAction<Joint>
 {
+    public const string EditorDefault =
+    @"<a i=""4"" p0=""90"" p1=""-90""/>";
     // Whilst the sliders in the level editor imply that there is a limit to a joint's range,
     // there is no such limit in level xml.
-    double? UpperLimit
+    public double? UpperLimit
     {
         get
         {
@@ -64,10 +69,10 @@ public class ChangeLimits : TriggerAction<Joint>
         }
         set
         {
-            Elt.SetAttributeValue("p0", value);
+            SetDouble("p0", value ?? 0);
         }
     }
-    double? LowerLimit
+    public double? LowerLimit
     {
         get
         {
@@ -75,7 +80,7 @@ public class ChangeLimits : TriggerAction<Joint>
         }
         set
         {
-            Elt.SetAttributeValue("p1", value);
+            SetDouble("p1", value ?? 0);
         }
     }
 
@@ -85,6 +90,7 @@ public class ChangeLimits : TriggerAction<Joint>
         UpperLimit = upperLimit;
         LowerLimit = lowerLimit;
     }
+    public ChangeLimits(string xml=EditorDefault) : this(StrToXElement(xml)) {}
     internal ChangeLimits(XElement e)
     {
         Elt.SetAttributeValue("i", 4);

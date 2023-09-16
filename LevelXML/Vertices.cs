@@ -34,6 +34,9 @@ internal class Vertices : LevelXMLTag
 	}
 	internal void PlaceInLevel(Entity parent, Func<Entity, int> mapper)
 	{
+		// Move finding the corresponding entity out of PlaceInLevel,
+		// into PostConstruct(), so that parsing a level throws on construction,
+		// not on ToXML()
 		Elt.SetAttributeValue("id", mapper(parent));
 		if (verts.Count > 0)
 		{

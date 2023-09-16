@@ -150,18 +150,7 @@ public abstract class Joint : Entity
     }
 	private bool couldPointToAnElement(string? jointIndex)
 	{
-		if (jointIndex == null || jointIndex.Equals("-1"))
-		{
-			return false;
-		}
-		char first = jointIndex[0];
-		jointIndex = first switch 
-		{
-			's' => jointIndex.Substring(1, jointIndex.Length-1),
-			'g' => jointIndex.Substring(1, jointIndex.Length-1),
-			_ => jointIndex
-		};
-        return int.TryParse(jointIndex, out _);
+		return !(jointIndex == null || jointIndex.Equals("-1"));
 	}
 	virtual protected void SetParams(XElement e, Func<string?, Entity?> reverseMapper)
 	{
