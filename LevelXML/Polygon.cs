@@ -10,6 +10,6 @@ public class Polygon : CustomShape
         @"<sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />";
 
 	public Polygon() : this(EditorDefault) {}
-	public Polygon(string xml) : this(StrToXElement(xml)) {}
-	internal Polygon(XElement e) : base(e) {}
+	internal Polygon(string xml) : this(StrToXElement(xml), vertMapper: default!) {}
+	internal Polygon(XElement e, Func<Entity, int> vertMapper) : base(e, vertMapper) {}
 }

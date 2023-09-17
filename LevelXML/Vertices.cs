@@ -22,22 +22,27 @@ internal class Vertices : LevelXMLTag
 	internal List<Vertex> verts = new();
 	internal bool isEmpty;
 	internal int originalIndex;
+	private int id;
+	private Entity? parent;
+	internal Func<Entity, int>? vertMapper;
 
 	public HWBool? Connected
 	{
-		get { return GetBoolOrNull("f"); }
+		// Perhaps expose this in CustomShape?
+		//get { return GetBoolOrNull("f"); }
 		set
 		{
 			HWBool val = value ?? true;
 			Elt.SetAttributeValue("f", val);
 		}
 	}
-	internal void PlaceInLevel(Entity parent, Func<Entity, int> mapper)
+
+	internal void FinishConstruction() { id = vertMapper!(parent!); }
+
+	internal void PlaceInLevel()
 	{
-		// Move finding the corresponding entity out of PlaceInLevel,
-		// into PostConstruct(), so that parsing a level throws on construction,
-		// not on ToXML()
-		Elt.SetAttributeValue("id", mapper(parent));
+		FinishConstruction();
+		Elt.SetAttributeValue("id", id);
 		if (verts.Count > 0)
 		{
 			Elt.SetAttributeValue("n", verts.Count);
@@ -46,19 +51,24 @@ internal class Vertices : LevelXMLTag
 		foreach (Vertex v in verts)
 		{
 			string coord_full = $"{v.position.X}_{v.position.Y}";
-			if (v.handle0 is not null) { coord_full += $"{v.handle0.X}_{v.handle0.Y}"; }
-			if (v.handle1 is not null) { coord_full += $"{v.handle1.X}_{v.handle1.Y}"; }
+			if (v.handle0 is not null) { coord_full += $"_{v.handle0.X}_{v.handle0.Y}"; }
+			if (v.handle1 is not null) { coord_full += $"_{v.handle1.X}_{v.handle1.Y}"; }
 			Elt.SetAttributeValue($"v{index}", coord_full);
 			index += 1;
 		}
 	}
 	// Todo: constructor from levelXML tag string
-	public Vertices() : base("v")
+	internal Vertices(Entity parent) : base("v")
 	{
+		this.parent = parent;
 		Connected = true;
 	}
-	internal Vertices(XElement e) : base("v")
+
+	internal Vertices(XElement e, Entity parent, Func<Entity, int> mapper) : base("v")
 	{
+		// We are setting these two to use when Level.cs has finalized making its Entity lists
+		this.parent = parent;
+		this.vertMapper = mapper;
 		List<XAttribute> vertices = e.Attributes().Where(attr => attr.Name.ToString()[0] == 'v').ToList();
 		Connected = GetBoolOrNull(e, "f");
 		isEmpty = vertices.Count <= 0;
@@ -69,7 +79,7 @@ internal class Vertices : LevelXMLTag
 		}
 		else
 		{
-			throw new Exception("<v> tag did not have an id!");
+			throw new LevelXMLException("<v> tag did not have an id!");
 		}
 		foreach (XAttribute vertex in vertices)
 		{

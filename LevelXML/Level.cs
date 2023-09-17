@@ -87,24 +87,27 @@ public class Level : LevelXMLTag, IConvertableToXML
 	}
 	private int VertMapper(Entity e)
 	{
+		// This function can only run when we already have the shapes and groups depthOneTags ready.
 		// If the vertex tag in this polygon or art has its own coordinates,
 		// then we need to give it a unique id
 		// Otherwise we need to find the first matching kind of art or poly tag
 		// that has the same original id.
+		int result = -1;
 		if (e is Art art)
 		{
 			List<Art> matchingArts = Shapes.Where(shape => shape is Art)
 				.Concat(Groups.SelectMany(group => group.Items)
 				.Where(entity => entity is Art))
 				.Select(entity => (Art)entity)
+				.Where(art => !art.isEmpty)
 				.ToList();
 			if (art.isEmpty)
 			{
-				return matchingArts.FindIndex(other => other.originalIndex == art.originalIndex);
+				result = matchingArts.FindIndex(other => other.originalIndex == art.originalIndex);
 			}
 			else
 			{
-				return matchingArts.FindIndex(other => other == art);
+				result = matchingArts.FindIndex(other => other == art);
 			}
 		} 
 		else if (e is Polygon poly)
@@ -113,18 +116,25 @@ public class Level : LevelXMLTag, IConvertableToXML
 				.Concat(Groups.SelectMany(group => group.Items)
 				.Where(entity => entity is Polygon))
 				.Select(entity => (Polygon)entity)
+				.Where(poly => !poly.isEmpty)
 				.ToList();
 			if (poly.isEmpty)
 			{
-				return matchingPolys.FindIndex(other => other.originalIndex == poly.originalIndex);
+				result = matchingPolys.FindIndex(other => other.originalIndex == poly.originalIndex);
 			}
 			else
 			{
-				return matchingPolys.FindIndex(other => other == poly);
+				result = matchingPolys.FindIndex(other => other == poly);
 			}
 		}
-		throw new LevelXMLException("Art shape pointed to by another art shape was not found!");
-		
+		if (result >= 0) 
+		{
+			 return result; 
+		}
+		else
+		{
+			throw new LevelXMLException("Art shape pointed to by another art shape was not found!");
+		}
 	}
 	private int EntityIndexMapper(Entity e)
 	{
@@ -135,7 +145,7 @@ public class Level : LevelXMLTag, IConvertableToXML
 			Group s => (groupsTag ?? new DepthOneTag<Group>()).lst.IndexOf(s),
 			Joint s => (jointsTag ?? new DepthOneTag<Joint>()).lst.IndexOf(s),
 			Trigger s => (triggersTag ?? new DepthOneTag<Trigger>()).lst.IndexOf(s),
-			_ => -1,
+			_ => throw new LevelXMLException("Gave an invalid kind of Entity as a Target!"),
 		};
 		if (index < 0)
 		{
@@ -216,11 +226,11 @@ public class Level : LevelXMLTag, IConvertableToXML
 		}
 		info = new(InfoTag);
 		XElement? ShapesElement = e.Element("shapes");
-		shapesTag = new DepthOneTag<Shape>(ShapesElement);
+		shapesTag = new DepthOneTag<Shape>(ShapesElement, VertMapper: VertMapper);
 		XElement? SpecialsElement = e.Element("specials");
 		specialsTag = new DepthOneTag<Special>(SpecialsElement);
 		XElement? GroupsElement = e.Element("groups");
-		groupsTag = new DepthOneTag<Group>(GroupsElement);
+		groupsTag = new DepthOneTag<Group>(GroupsElement, VertMapper: VertMapper);
 		XElement? JointsElement = e.Element("joints");
 		jointsTag = new DepthOneTag<Joint>(JointsElement, ReverseJointMapper: ReverseJointMapper);
 		XElement? TriggersElement = e.Element("triggers");
@@ -228,5 +238,7 @@ public class Level : LevelXMLTag, IConvertableToXML
 		// At this point the depth one tags can be indexed through
 		depthOneTagsReady.Set();
 		triggersTag.FinishConstruction();
+		shapesTag.FinishConstruction();
+		groupsTag.FinishConstruction();
 	}
 }

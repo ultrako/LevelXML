@@ -176,16 +176,24 @@ public class Group : Entity
 		FixedRotation = GetBoolOrNull(e, "fr");
 	}
 
+	internal override void FinishConstruction()
+	{
+		foreach (Entity e in items)
+		{
+			e.FinishConstruction();
+		}
+	}
+
 	public Group(params Entity[] content) : this(EditorDefault, content) {}
 	
-	public Group(string xml, params Entity[]? content) : this(StrToXElement(xml), content:content) {}
+	internal Group(string xml, params Entity[]? content) : this(StrToXElement(xml), content:content, vertMapper:default!) {}
 
-	internal Group(XElement e, Func<XElement, Entity> ReverseMapper=default!, params Entity[]? content) :
+	internal Group(XElement e, Func<Entity, int> vertMapper, params Entity[]? content) :
 	base("g")
 	{
 		IEnumerable<Entity> groupedEntities = 
 			e.Elements()
-			.Select(element => Entity.FromXElement(element, ReverseMapper))
+			.Select(element => Entity.FromXElement(element, vertMapper: vertMapper))
 			.Concat(content ?? new Entity[0]);
 		items = new(groupedEntities);
 		setParams(e);

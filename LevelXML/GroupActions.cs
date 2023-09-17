@@ -108,7 +108,7 @@ public class DeleteSelfGroup : TriggerAction<Group>
 	}
 }
 
-public class ChangeGroupCollision : TriggerAction<Shape>
+public class ChangeGroupCollision : TriggerAction<Group>
 {
 	public static string EditorDefault =
 	@"<a i=""7"" p0=""1""/>";
