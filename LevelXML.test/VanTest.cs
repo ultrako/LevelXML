@@ -13,4 +13,11 @@ public class VanTest
         Assert.False(van.Sleeping);
         Assert.True(van.Interactive);
     }
+
+    [Fact]
+    public void TestSettingRotationAsNaN()
+    {
+        Van van = new();
+        Assert.Throws<LevelXMLException>(() => van.Rotation = double.NaN);
+    }
 }

@@ -13,20 +13,11 @@ public abstract class TriggerAction : LevelXMLTag, IConvertableToXML
 public abstract class TriggerAction<T> : TriggerAction where T : Entity
 {
 	protected TriggerAction() : base() {}
-	///<summary>
-	/// You can make a trigger action from a string,
-	/// just that the same xml can make different actions,
-	/// depending on what kind of Entity that action is supposed to point to.
-	///</summary>
-	public static TriggerAction<T> FromXML(string xml)
-	{
-		return FromXElement(StrToXElement(xml));
-	}
 	internal static TriggerAction<T> FromXElement(XElement element)
 	{
 		if (element.Name.ToString() != "a")
 		{
-			throw new ArgumentException("Did not give a trigger action!");
+			throw new LevelXMLException("Did not give a trigger action!");
 		}
 		double? ActionType = GetDoubleOrNull(element, "i");
 		// Why am I switching on nameof(T) ?
@@ -42,13 +33,13 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				5 => (new DeleteShape() as TriggerAction<T>)!,
 				6 => (new DeleteSelfShape() as TriggerAction<T>)!,
 				7 => (new ChangeShapeCollision(element) as TriggerAction<T>)!,
-				_ => throw new Exception("Invalid id for an action targeting a shape!"),
+				_ => throw new LevelXMLException("Invalid id for an action targeting a shape!"),
 			},
 			nameof(SimpleSpecial) => ActionType switch 
 			{
 				0 => (new AwakeSpecialFromSleep() as TriggerAction<T>)!,
 				1 => (new ImpulseSpecial(element) as TriggerAction<T>)!,
-				_ => throw new Exception("Invalid id for an action targeting this special!"),
+				_ => throw new LevelXMLException("Invalid id for an action targeting this special!"),
 			},
 			nameof(Group) => ActionType switch
 			{
@@ -76,9 +67,9 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				0 => (new Activate() as TriggerAction<T>)!,
 				1 => (new Disable() as TriggerAction<T>)!,
 				2 => (new Enable() as TriggerAction<T>)!,
-				_ => throw new Exception("Invalid id for an action targeting a trigger!"),
+				_ => throw new LevelXMLException("Invalid id for an action targeting a trigger!"),
 			},
-			_ => throw new Exception($"Entity type {typeof(T).Name} not supported!"),
+			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} not supported!"),
 		};
 	}
 }

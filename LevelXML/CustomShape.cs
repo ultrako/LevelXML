@@ -8,7 +8,6 @@ public abstract class CustomShape : Shape
 {
 	private Vertices vertices;
 	internal bool isEmpty;
-	internal bool hasVertices;
 	internal int originalIndex;
 	public IList<Vertex> Vertices
 	{
@@ -39,23 +38,30 @@ public abstract class CustomShape : Shape
 		}
 	}
 
-	internal override void PlaceInLevel(Func<Entity, int> mapper)
+	internal override void PlaceInLevel(Func<Entity, int> vertMapper)
 	{
+		vertices.vertMapper = vertMapper;
 		Elt.RemoveNodes();
 		Elt.Add(vertices.Elt);
-		vertices.PlaceInLevel(this, mapper);
+		vertices.PlaceInLevel();
 	}
-	protected CustomShape(XElement e) : base(e)
+
+	internal override void FinishConstruction()
+	{
+		vertices.FinishConstruction();
+	}
+
+	protected CustomShape(XElement e, Func<Entity, int> vertMapper) : base(e)
 	{
 		SetParams(e);
 		XElement? vTag = e.Element("v");
 		if (vTag is not null)
 		{
-			vertices = new(vTag);
+			vertices = new(vTag, this, vertMapper);
 		}
 		else
 		{
-			vertices = new();
+			vertices = new(this);
 		}
 		isEmpty = vertices.isEmpty;
 		originalIndex = vertices.originalIndex;

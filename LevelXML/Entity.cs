@@ -13,15 +13,18 @@ public abstract class Entity : LevelXMLTag
 	public abstract double? Y {get; set;}
 	protected Entity(XName name, params object?[] content) : base(name, content) {}
 	// Entities need a FromXElement function because depth one tags need to construct them
-	internal static Entity FromXElement(XElement element, Func<XElement, Entity> ReverseTargetMapper=default!, Func<string?, Entity?> ReverseJointMapper=default!)
+	internal static Entity FromXElement(XElement element, 
+		Func<XElement, Entity> ReverseTargetMapper=default!, 
+		Func<string?, Entity?> ReverseJointMapper=default!,
+		Func<Entity, int> vertMapper=default!)
     {
 		return element.Name.ToString() switch {
 			"sh" => GetDoubleOrNull(element, "t") switch 
 			{
 				0 => new Rectangle(element),
 				1 => new Circle(element),
-				3 => new Polygon(element),
-				4 => new Art(element),
+				3 => new Polygon(element, vertMapper),
+				4 => new Art(element, vertMapper),
 				_ => throw new LevelXMLException("Shape type doesn't exist!"),
 			},
 			"sp" => GetDoubleOrNull(element, "t") switch 
@@ -31,7 +34,7 @@ public abstract class Entity : LevelXMLTag
 				16 => new TextBox(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
 			},
-			"g" => new Group(element),
+			"g" => new Group(element, vertMapper),
 			"j" => GetDoubleOrNull(element, "t") switch
 			{
 				0 => new PinJoint(element, ReverseJointMapper),

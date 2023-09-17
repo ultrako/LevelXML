@@ -4,7 +4,20 @@ using System.Linq;
 
 namespace HappyWheels.Test;
 
-//Reminder: add another Entity type to fully test our switch cases
+// So this entity type is to be able to help more thoroughly test the cases on switches on Entities
+public class TestEntity : Entity
+{
+	public override double? X { get { return null; } set {}}
+	public override double? Y { get { return null; } set {}}
+	public TestEntity() : base("z") {}
+}
+
+// And this target has a type param of that entity
+
+public class TestTarget : Target<TestEntity>
+{
+	public TestTarget() : base(new TestEntity()) {}
+}
 
 public class LevelTest
 {
@@ -327,6 +340,7 @@ public class LevelTest
 		Art art1 = new();
 		art1.Vertices.Add(new(new(3,0)));
 		Art art2 = new();
+		art2.Vertices.Add(new(new(3,3)));
 		Level level = new(art1, art2);
 		string expected =@"<levelXML>
   <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
@@ -335,7 +349,7 @@ public class LevelTest
       <v f=""t"" id=""0"" n=""1"" v0=""3_0"" />
     </sh>
     <sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
-      <v f=""t"" id=""1"" />
+      <v f=""t"" id=""1"" n=""1"" v0=""3_3"" />
     </sh>
   </shapes>
 </levelXML>";
@@ -400,11 +414,11 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithArt()
 	{
-		String levelXML = @"<levelXML>
+		string levelXML = @"<levelXML>
     <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <shapes>
         <sh t=""4"" i=""f"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
-            <v f=""t"" id=""0"" n=""3"" v0=""28_47"" v1=""-28_-53"" v2=""-27_53"" />
+            <v f=""t"" id=""0"" n=""3"" v0=""28_47_99_88"" v1=""-28_-53"" v2=""-27_53_33_11_-14_30"" />
         </sh>
         <sh t=""4"" i=""f"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
             <v f=""t"" id=""0"" />
@@ -415,6 +429,35 @@ public class LevelTest
 		// I'd like to assert that the vertex id for these two art shapes ends up the same -
 		// but vertex ids are not exposed as public, so I'll just see if the library spits back the same level.
 		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
+	}
+
+	[Fact]
+	public void TestArtShapeWithNoVertexId()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""4"" i=""f"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" n=""3"" v0=""28_47"" v1=""-28_-53"" v2=""-27_53"" />
+        </sh>
+        <sh t=""4"" i=""f"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" />
+        </sh>
+    </shapes>
+</levelXML>"));
+	}
+
+	[Fact]
+	public void TestArtShapeWithInvalidVertex()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""4"" i=""f"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" n=""1"" v0=""3""/>
+        </sh>
+    </shapes>
+</levelXML>"));
 	}
 
 	[Fact]
@@ -434,19 +477,19 @@ public class LevelTest
 		Level level = new(levelXML);
 		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
 	}
-// make this test pass later by fixing Vertices.cs
-// 	[Fact]
-// 	public void ParseLevelWithOneBlankArtShapeWithInvalidID()
-// 	{
-// 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
-//     <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
-//     <shapes>
-//         <sh t=""4"" i=""f"" p0=""358.50"" p1=""5339"" p2=""83"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
-//             <v f=""t"" id=""1"" />
-//         </sh>
-//     </shapes>
-// </levelXML>"));
-// 	}
+
+	[Fact]
+	public void ParseLevelWithOneBlankArtShapeWithInvalidID()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <shapes>
+        <sh t=""4"" i=""f"" p0=""358.50"" p1=""5339"" p2=""83"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""1"" />
+        </sh>
+    </shapes>
+</levelXML>"));
+	}
 
 	[Fact]
 	public void ParseLevelWithPinJoint()
@@ -745,5 +788,30 @@ public class LevelTest
 		{
 			Assert.IsType<LevelXMLException>(e.InnerException);
 		}
+	}
+
+	[Fact]
+	public void TestLevelWithTargetToInvalidEntity()
+	{
+		TestTarget target = new();
+		ActivateTrigger trigger = new();
+		trigger.AddTarget(target);
+		Level level = new(trigger);
+		Assert.Throws<LevelXMLException>(() => level.ToXML());
+	}
+
+	[Fact]
+	public void TestLevelWithInvalidTriggerActionTagName()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <triggers>
+        <t x=""314"" y=""5223"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sh i=""0"">
+                <b i=""0""/>
+            </sh>
+        </t>
+    </triggers>
+</levelXML>"));
 	}
 }

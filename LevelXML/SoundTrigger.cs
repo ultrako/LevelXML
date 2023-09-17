@@ -16,10 +16,9 @@ public class SoundTrigger : Trigger, IConvertableToXML
 		get { return GetDoubleOrNull("s"); }
 		set
 		{
-			// I forget the exact number, it's not 341, check this later
-			if (value < 0 || value > 341)
+			if (value < 0 || value > 325)
 			{
-				throw new Exception("Sound number is invalid!");
+				throw new LevelXMLException("Sound number is invalid! This trigger would freeze the level!");
 			}
 			if (value is not null)
 			{
