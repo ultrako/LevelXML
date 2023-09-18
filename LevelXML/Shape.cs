@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 namespace HappyWheels;
 ///<summary>
-/// Shapes are simple entities that can have collision.
+/// Shapes are simple entities that can have collision and they can be a part of groups.
 /// Shapes are either rectangles, triangles, circles, polygons, or art.
 ///</summary>
 public abstract class Shape : Entity
@@ -17,13 +17,17 @@ public abstract class Shape : Entity
 	// is so that constructors of derived classes can pass their
 	// XAttribute values to these properties and get import box default behavior.
 	// They must _always_ set all these properties.
+
+	/// <summary>
+	///  Whether or not the shape will move and collide with other things.
+	/// </summary>
 	public HWBool? Interactive
 	{
 		// If Interactive is true, then the XAttribute isn't set
 		get { return GetBoolOrNull("i"); }
 		set { if (value == false) { Elt.SetAttributeValue("i", value); }; }
 	}
-	// For shapes, x and y are p0 and p1
+	
 	public override double? X
 	{
 		get { return GetDoubleOrNull("p0"); }
@@ -48,9 +52,12 @@ public abstract class Shape : Entity
 			else { Elt.SetAttributeValue("p1", value); }
 		}
 	}
+
 	// All shapes have Width and Height, just that some are set differently
 	public abstract double? Width {get; set;}
+
 	public abstract double? Height {get; set;}
+
 	public double? Rotation
 	{
 		get { return GetDoubleOrNull("p4"); }
@@ -64,16 +71,28 @@ public abstract class Shape : Entity
 			Elt.SetAttributeValue("p4", Math.Clamp(val,-180,180)); 
 		}
 	}
+
+	/// <summary>
+	///  Whether or not the shape moves
+	/// </summary>
 	public HWBool? Fixed
 	{
 		get { return GetBoolOrNull("p5"); }
 		set { Elt.SetAttributeValue("p5", value ?? HWBool.True); }
 	}
+
+	/// <summary>
+	///  Whether or not the shape starts in an unmoving state until it is first collided with
+	/// </summary>
 	public HWBool? Sleeping
 	{
 		get { return GetBoolOrNull("p6"); }
 		set { Elt.SetAttributeValue("p6", value ?? HWBool.False); }
 	}
+
+	/// <summary>
+	///  The density of the shape - how much force gravity applies to the shape per how large it is.
+	/// </summary>
 	public double? Density
 	{
 		get { return GetDoubleOrNull("p7"); }
@@ -86,9 +105,14 @@ public abstract class Shape : Entity
 			Elt.SetAttributeValue("p7", val);
 		}
 	}
+
 	// Representing a RGB color with a double is weird, yes
 	// It's just that in happy wheels anything can be NaN
 	// But in c#, NaN is only a value in doubles or doubles
+
+	/// <summary>
+	/// The color of the shape inbetween its edges
+	/// </summary>
 	public double? FillColor
 	{
 		get { return GetDoubleOrNull("p8"); }
@@ -98,6 +122,8 @@ public abstract class Shape : Entity
 			Elt.SetAttributeValue("p8", val); 
 		}
 	}
+
+	// The color of the edges of the shape
 	public double? OutlineColor
 	{
 		get { return GetDoubleOrNull("p9"); }
@@ -107,6 +133,15 @@ public abstract class Shape : Entity
 			Elt.SetAttributeValue("p9", val); 
 		}
 	}
+
+	/// <summary>
+	/// How visible the shape is
+	/// </summary>
+	/// <remarks>
+	/// At 0, a shape is invisible,
+	/// At 1-99, a shape is translucent,
+	/// And at 100, a shape is fully visible.
+	/// </remarks>
 	public double? Opacity
 	{
 		get { return GetDoubleOrNull("p10"); }
@@ -118,11 +153,16 @@ public abstract class Shape : Entity
 			Elt.SetAttributeValue("p10", Math.Clamp(val, 0, 100));
 		}
 	}
+
+	/// <summary>
+	/// What kind of objects this shape can collide with
+	/// </summary>
 	public Collision Collision
 	{
 		get { return (Collision)GetDoubleOrNull(Elt, "p11")!;}
 		set { Elt.SetAttributeValue("p11", value);}
 	}
+	
 	protected virtual void SetParams(XElement e)
 	{
 		Elt.SetAttributeValue("t", Type);

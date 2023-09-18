@@ -9,6 +9,7 @@ namespace HappyWheels;
 public abstract class Trigger : Entity
 {
 	internal abstract uint Type {get;}
+
 	public override double? X
 	{
 		get { return GetDoubleOrNull("x"); }
@@ -20,6 +21,7 @@ public abstract class Trigger : Entity
 			Elt.SetAttributeValue("x", val);
 		}
 	}
+
 	public override double? Y
 	{
 		get { return GetDoubleOrNull("y"); }
@@ -29,6 +31,7 @@ public abstract class Trigger : Entity
 			Elt.SetAttributeValue("y", val);
 		}
 	}
+
 	public double? Width
 	{
 		get { return GetDoubleOrNull("w"); }
@@ -38,6 +41,7 @@ public abstract class Trigger : Entity
 			Elt.SetAttributeValue("w", Math.Clamp(val, 5, 5000));
 		}
 	}
+
 	public double? Height
 	{
 		get { return GetDoubleOrNull("h"); }
@@ -47,6 +51,7 @@ public abstract class Trigger : Entity
 			Elt.SetAttributeValue("h", Math.Clamp(val, 5, 5000));
 		}
 	}
+
 	public double? Rotation
 	{
 		get { return GetDoubleOrNull("a"); }
@@ -56,38 +61,34 @@ public abstract class Trigger : Entity
 			Elt.SetAttributeValue("a", val);
 		}
 	}
-	public double? TriggeredBy
+
+	/// <summary>
+	/// Which things can trigger this trigger
+	/// </summary>
+	public TriggeredBy? TriggeredBy
 	{
-		get { return GetDoubleOrNull("b"); }
+		get { return (TriggeredBy?)GetDoubleOrNull("b") ?? HappyWheels.TriggeredBy.Nothing; }
 		set
 		{
-			// Having NaN in triggeredBy is fine, 
-			// it just works like "triggered only by other triggers"
-			double val = value ?? double.NaN;
-			if (double.IsNaN(val)) 
-			{ 
-				Elt.SetAttributeValue("b", val); 
-			}
-			else 
-			{
-				Elt.SetAttributeValue("b", (int)Math.Clamp(val, 1, 6));
-			}
+			Elt.SetAttributeValue("b", value ?? HappyWheels.TriggeredBy.Nothing);
 		}
 	}
-	public double? RepeatType
+
+	/// <summary>
+	/// What kind of repetition the trigger will do when activated once or more
+	/// </summary>
+	public RepeatType? RepeatType
 	{
-		get { return GetDoubleOrNull("r"); }
+		get { return (RepeatType?)GetDoubleOrNull("r") ?? HappyWheels.RepeatType.Never; }
 		set
 		{
-			// If this is null or NaN or 0, then the trigger can't ever be activated
-			if (value is null || double.IsNaN((double)value!))
-			{
-				throw new Exception("This trigger could not ever get activated!");
-			}
-			int val = (int)value!;
-			Elt.SetAttributeValue("r", Math.Clamp(val, 1, 4));
+			Elt.SetAttributeValue("r", (RepeatType?)value ?? HappyWheels.RepeatType.Never);
 		}
 	}
+
+	/// <summary>
+	/// Whether or not the trigger starts disabled (and would need to be enabled by other triggers to activate)
+	/// </summary>
 	public HWBool? StartDisabled
 	{
 		get { return GetBoolOrNull("sd") ?? HWBool.False; }
@@ -103,6 +104,10 @@ public abstract class Trigger : Entity
 			}
 		}
 	}
+
+	/// <summary>
+	/// If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats.
+	/// </summary>
 	public double? Interval
 	{
 		get { return GetDoubleOrNull("i"); }
@@ -112,6 +117,10 @@ public abstract class Trigger : Entity
 			Elt.SetAttributeValue("i", val);
 		}
 	}
+
+	/// <summary>
+	/// This is the amount of time in seconds after the trigger gets activated, before its actions fire.
+	/// </summary>
 	public double? Delay
 	{
 		get { return GetDoubleOrNull("d"); }
@@ -138,7 +147,7 @@ public abstract class Trigger : Entity
 			Interval = GetDoubleOrNull(e, "i");
 		}
 	}
-	// See if you can get rid of the param here
+	
 	internal Trigger(XElement e) : base("t")
 	{
 		Elt = new XElement(e.Name.ToString());

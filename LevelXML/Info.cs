@@ -9,6 +9,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 {
 	internal const string HappyWheelsVersion = "1.95";
 	public const string EditorDefault = @"<info v=""" + HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
+
 	internal string? Version
 	{
 		get { return GetStringOrNull(Elt, "v"); }
@@ -17,10 +18,9 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("v", value ?? HappyWheelsVersion);
 		}
 	}
+
 	public string ToXML() { return ToXML(mapper: default!); }
-	/// <summary>
-	/// The x coordinate of the player in the level
-	/// </summary>
+
 	public double? X
 	{
 		get { return GetDoubleOrNull("x"); }
@@ -30,6 +30,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("x", val);
 		}
 	}
+
 	public double? Y
 	{
 		get { return GetDoubleOrNull("y"); }
@@ -39,6 +40,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("y", val);
 		}
 	}
+
 	public Character? Character
 	{
 		get { return GetDoubleOrNull("c"); }
@@ -47,6 +49,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("c", (Character)(value ?? double.NaN));
 		}
 	}
+
 	public HWBool? ForcedCharacter
 	{
 		get { return GetBoolOrNull("f"); }
@@ -57,6 +60,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("f", val);
 		}
 	}
+
 	public HWBool? VehicleHidden
 	{
 		get { return GetBoolOrNull("h"); }
@@ -67,16 +71,23 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("h", val);
 		}
 	}
-	public double? Background
+
+	/// <summary>
+	///  The background the level has
+	/// </summary>
+	public Background? Background
 	{
-		get { return GetDoubleOrNull("bg"); }
+		get { return (Background?)GetDoubleOrNull("bg"); }
 		set
 		{
-			// Invalid values here make a level that's pretty buggy in the editor
-			double val = value ?? double.NaN;
+			Background val = value ?? HappyWheels.Background.Buggy;;
 			Elt.SetAttributeValue("bg", val);
 		}
 	}
+
+	/// <summary>
+	///  The color of the level's background, if the background is set to Blank
+	/// </summary>
 	public double? BackgroundColor
 	{
 		get { return GetDoubleOrNull("bgc"); }
@@ -86,6 +97,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("bgc", val);
 		}
 	}
+
 	internal double? E
 	{
 		set
@@ -97,6 +109,7 @@ internal class Info : LevelXMLTag, IConvertableToXML
 			Elt.SetAttributeValue("e", value!);
 		}
 	}
+
 	protected void setParams(XElement e)
 	{
 		Version = Info.HappyWheelsVersion;
@@ -111,7 +124,9 @@ internal class Info : LevelXMLTag, IConvertableToXML
 		// idk what Jim Bonacci meant by "e"
 		this.E = GetDoubleOrNull(e, "e");
 	}
+
 	public Info(string xml=EditorDefault) : this (StrToXElement(xml)) {}
+
 	internal Info(XElement e) : base("info")
 	{
 		Elt = new XElement(e.Name.ToString());

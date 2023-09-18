@@ -13,7 +13,17 @@ public class ActivateTrigger : Trigger
     internal override uint Type => 1;
 	private List<Target> lst;
 	public IReadOnlyList<Target> Targets => lst;
+	/// <summary>
+	/// Append a target to this trigger's list of targets
+	/// </summary>
+	/// <param name="target"></param>
 	public void AddTarget(Target target) { InsertTarget(lst.Count, target); }
+	/// <summary>
+	/// Insert a target into the list of targets at a particular index.
+	/// The position indicates the order in which the actions fire ingame.
+	/// </summary>
+	/// <param name="index"></param>
+	/// <param name="target"></param>
 	public void InsertTarget(int index, Target target) 
 	{  
 		Target? sameTarget = lst
@@ -52,11 +62,11 @@ public class ActivateTrigger : Trigger
         base.SetParams(e);
         Delay = GetDoubleOrNull(e, "d");
     }
-
+	public ActivateTrigger(params Target[] targets) : this(EditorDefault, default!, targets) {}
 	// Targets may come in either the <xml tag> or as a params arg to the constructor
 	// If it's in the xml tag, targets have indexes, so it needs the level to be able
 	// to have object references (as this class requires)
-	public ActivateTrigger(string xml=EditorDefault, Func<XElement, Entity> ReverseMapper=default!, params Target[] targets) : this(StrToXElement(xml), ReverseMapper, targets: targets) {}
+	internal ActivateTrigger(string xml=EditorDefault, Func<XElement, Entity> ReverseMapper=default!, params Target[] targets) : this(StrToXElement(xml), ReverseMapper, targets: targets) {}
 	internal ActivateTrigger(XElement e, Func<XElement, Entity> reverseMapper=default!, params Target[] targets) : base(e)
 	{
 		// If your trigger has elements, you need to pass a ReverseMapper to parse them

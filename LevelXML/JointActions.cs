@@ -2,6 +2,9 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
+/// <summary>
+///  This action disables the motor on a joint, making it fall limp.
+/// </summary>
 public class DisableMotor : TriggerAction<Joint>
 {
     public DisableMotor()
@@ -10,6 +13,10 @@ public class DisableMotor : TriggerAction<Joint>
     }
 }
 
+/// <summary>
+///  This action changes a joint's speed.
+///  Note that this value is not clamped, even though the corresponding values on a joint itself are.
+/// </summary>
 public class ChangeMotorSpeed : TriggerAction<Joint>
 {
     public const string EditorDefault =
@@ -39,6 +46,9 @@ public class ChangeMotorSpeed : TriggerAction<Joint>
     }
 }
 
+/// <summary>
+/// This action deletes the joint.
+/// </summary>
 public class DeleteSelfJoint : TriggerAction<Joint>
 {
     public DeleteSelfJoint()
@@ -47,6 +57,9 @@ public class DeleteSelfJoint : TriggerAction<Joint>
     }
 }
 
+/// <summary>
+///  This action makes the joint be able to move past its upper and lower limits.
+/// </summary>
 public class DisableLimits : TriggerAction<Joint>
 {
     public DisableLimits()
@@ -55,12 +68,17 @@ public class DisableLimits : TriggerAction<Joint>
     }
 }
 
+/// <summary>
+///  This action changes the upper and lower limits on a joint.
+///  Note that unlike the upper and lower limit parameters on a joint itself,
+///  these values are not clamped, so a lower limit can be positive
+///  and an upper limit can be negative.
+/// </summary>
 public class ChangeLimits : TriggerAction<Joint>
 {
     public const string EditorDefault =
     @"<a i=""4"" p0=""90"" p1=""-90""/>";
-    // Whilst the sliders in the level editor imply that there is a limit to a joint's range,
-    // there is no such limit in level xml.
+
     public double? UpperLimit
     {
         get
@@ -72,6 +90,7 @@ public class ChangeLimits : TriggerAction<Joint>
             SetDouble("p0", value ?? 0);
         }
     }
+
     public double? LowerLimit
     {
         get
@@ -90,7 +109,9 @@ public class ChangeLimits : TriggerAction<Joint>
         UpperLimit = upperLimit;
         LowerLimit = lowerLimit;
     }
+
     public ChangeLimits(string xml=EditorDefault) : this(StrToXElement(xml)) {}
+    
     internal ChangeLimits(XElement e)
     {
         Elt.SetAttributeValue("i", 4);

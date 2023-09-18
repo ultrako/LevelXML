@@ -1,5 +1,8 @@
 namespace HappyWheels;
 
+/// <summary>
+/// What kind of objects a shape or group can collide with
+/// </summary>
 public struct Collision
 {
     readonly double val;

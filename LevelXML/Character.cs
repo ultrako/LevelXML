@@ -1,5 +1,8 @@
 namespace HappyWheels;
 
+/// <summary>
+/// The 11 characters you can play a level with
+/// </summary>
 public struct Character
 {
     readonly double val;

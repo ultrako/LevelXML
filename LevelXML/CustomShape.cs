@@ -6,12 +6,12 @@ namespace HappyWheels;
 ///</summary>
 public abstract class CustomShape : Shape
 {
-	private Vertices vertices;
+	private Vertices verticesTag;
 	internal bool isEmpty;
 	internal int originalIndex;
 	public IList<Vertex> Vertices
 	{
-		get { return vertices.verts;}
+		get { return verticesTag.verts;}
 	}
 	public override double? Width
 	{
@@ -40,30 +40,34 @@ public abstract class CustomShape : Shape
 
 	internal override void PlaceInLevel(Func<Entity, int> vertMapper)
 	{
-		vertices.vertMapper = vertMapper;
+		verticesTag.vertMapper = vertMapper;
 		Elt.RemoveNodes();
-		Elt.Add(vertices.Elt);
-		vertices.PlaceInLevel();
+		Elt.Add(verticesTag.Elt);
+		verticesTag.PlaceInLevel();
 	}
 
 	internal override void FinishConstruction()
 	{
-		vertices.FinishConstruction();
+		verticesTag.FinishConstruction();
 	}
 
-	protected CustomShape(XElement e, Func<Entity, int> vertMapper) : base(e)
+	protected CustomShape(XElement e, Func<Entity, int> vertMapper, params Vertex[] vertices) : base(e)
 	{
 		SetParams(e);
 		XElement? vTag = e.Element("v");
 		if (vTag is not null)
 		{
-			vertices = new(vTag, this, vertMapper);
+			this.verticesTag = new(vTag, this, vertMapper);
 		}
 		else
 		{
-			vertices = new(this);
+			this.verticesTag = new(this);
 		}
-		isEmpty = vertices.isEmpty;
-		originalIndex = vertices.originalIndex;
+		foreach (Vertex v in vertices)
+		{
+			Vertices.Add(v);
+		}
+		isEmpty = verticesTag.isEmpty;
+		originalIndex = verticesTag.originalIndex;
 	}
 }

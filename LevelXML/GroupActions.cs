@@ -1,5 +1,9 @@
 using System.Xml.Linq;
 namespace HappyWheels;
+
+/// <summary>
+/// If a group is sleeping, this trigger action awakes it.
+/// </summary>
 public class AwakeGroupFromSleep : TriggerAction<Group>
 {
 	public AwakeGroupFromSleep()
@@ -7,6 +11,10 @@ public class AwakeGroupFromSleep : TriggerAction<Group>
 		Elt.SetAttributeValue("i", 0);
 	}
 }
+
+/// <summary>
+/// This trigger action will slowly change the opacity of a group over time
+/// </summary>
 public class ChangeGroupOpacity : TriggerAction<Group>
 {
 	public static string EditorDefault =
@@ -38,6 +46,9 @@ public class ChangeGroupOpacity : TriggerAction<Group>
 	}
 }
 
+/// <summary>
+/// This action turns a group into a fixed object (it will not move)
+/// </summary>
 public class FixGroup : TriggerAction<Group>
 {
 	public FixGroup()
@@ -46,6 +57,9 @@ public class FixGroup : TriggerAction<Group>
 	}
 }
 
+/// <summary>
+/// This action turns the group into a non fixed object (it can move)
+/// </summary>
 public class NonfixGroup : TriggerAction<Group>
 {
 	public NonfixGroup()
@@ -54,6 +68,9 @@ public class NonfixGroup : TriggerAction<Group>
 	}
 }
 
+/// <summary>
+///  This action applies an X, Y, and Spin force to a group.
+/// </summary>
 public class ImpulseGroup : TriggerAction<Group>
 {
 	public static string EditorDefault =
@@ -92,6 +109,9 @@ public class ImpulseGroup : TriggerAction<Group>
 	}     
 }
 
+/// <summary>
+/// This action freezes the group in place and makes it non interactive
+/// </summary>
 public class DeleteShapeGroup : TriggerAction<Group>
 {
 	public DeleteShapeGroup()
@@ -100,6 +120,9 @@ public class DeleteShapeGroup : TriggerAction<Group>
 	}
 }
 
+/// <summary>
+/// This action deletes the group
+/// </summary>
 public class DeleteSelfGroup : TriggerAction<Group>
 {
 	public DeleteSelfGroup()
@@ -107,6 +130,10 @@ public class DeleteSelfGroup : TriggerAction<Group>
 		Elt.SetAttributeValue("i", 6);
 	}
 }
+
+/// <summary>
+/// This action changes the group's collision
+/// </summary>
 
 public class ChangeGroupCollision : TriggerAction<Group>
 {
