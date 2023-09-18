@@ -93,4 +93,62 @@ public class JointTest
         Assert.Equal(Double.NaN, pj.LowerLimit);
         Assert.Equal(Double.NaN, pj.Torque);
     }
+
+    [Fact]
+    public void SlidingJointTestDefault()
+    {
+        SlidingJoint sj = new();
+        Assert.Equal(100, sj.UpperLimit);
+        Assert.Equal(-100, sj.LowerLimit);
+        Assert.Equal(50, sj.Force);
+        Assert.Equal(3, sj.Speed);
+        Assert.Equal(90, sj.Angle);
+    }
+
+    [Fact]
+    public void SlidingJointNaNAngle()
+    {
+        SlidingJoint sj = new();
+        Assert.Throws<LevelXMLException>(() => sj.Angle = double.NaN);
+    }
+
+    [Fact]
+    public void SlidingJointTestHighValues()
+    {
+        SlidingJoint sj = new();
+        sj.UpperLimit = double.PositiveInfinity;
+        sj.LowerLimit = double.PositiveInfinity;
+        sj.Force = double.PositiveInfinity;
+        sj.Speed = double.PositiveInfinity;
+        sj.Angle = double.PositiveInfinity;
+        Assert.Equal(8000, sj.UpperLimit);
+        Assert.Equal(0, sj.LowerLimit);
+        Assert.Equal(100000, sj.Force);
+        Assert.Equal(50, sj.Speed);
+        Assert.Equal(double.PositiveInfinity, sj.Angle);
+    }
+
+    [Fact]
+    public void SlidingJointTestLowValues()
+    {
+        SlidingJoint sj = new();
+        sj.UpperLimit = double.NegativeInfinity;
+        sj.LowerLimit = double.NegativeInfinity;
+        sj.Force = double.NegativeInfinity;
+        sj.Speed = double.NegativeInfinity;
+        sj.Angle = double.NegativeInfinity;
+        Assert.Equal(0, sj.UpperLimit);
+        Assert.Equal(-8000, sj.LowerLimit);
+        Assert.Equal(double.NegativeInfinity, sj.Force);
+        Assert.Equal(-50, sj.Speed);
+        Assert.Equal(double.NegativeInfinity, sj.Angle);
+    }
+
+    [Fact]
+    public void SlidingJointTestConstructorWithOneParam()
+    {
+        Rectangle rect = new();
+        SlidingJoint sj = new(rect);
+        Assert.Equal(rect, sj.First);
+    }
 }

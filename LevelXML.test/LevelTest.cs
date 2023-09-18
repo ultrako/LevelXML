@@ -509,6 +509,23 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithSlidingJoint()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""526"" p1=""5235"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+        <sh t=""0"" p0=""587"" p1=""5298"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <joints>
+        <j t=""1"" x=""6.3"" y=""26"" b1=""0"" b2=""1"" a=""90"" l=""f"" ul=""100"" ll=""-100"" m=""f"" fo=""50"" sp=""3"" c=""f""/>
+    </joints>
+</levelXML>");
+		Assert.Equal(level.Shapes[0], level.Joints[0].First);
+		Assert.Equal(level.Shapes[1], level.Joints[0].Second);
+	}
+
+	[Fact]
 	public void ParseLevelWithInvalidJointType()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
@@ -679,7 +696,7 @@ public class LevelTest
 	}
 
 	[Fact]
-	public void CreateLevelWithJointToShapes()
+	public void CreateLevelWithPinJointToShapes()
 	{
 		Rectangle rect1 = new();
 		rect1.Fixed = false;
@@ -698,6 +715,28 @@ public class LevelTest
   </joints>
 </levelXML>",
 		level.ToXML(), ignoreWhiteSpaceDifferences: true);
+	}
+
+	[Fact]
+	public void CreateLevelWithSlidingJointToShapes()
+	{
+		Rectangle rect1 = new();
+		rect1.Fixed = false;
+		Rectangle rect2 = new();
+		rect2.Fixed = false;
+		SlidingJoint joint = new(rect1, rect2);
+		Level level = new(rect1, rect2, joint);
+		Assert.Equal(@"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <shapes>
+    <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+  </shapes>
+  <joints>
+    <j t=""1"" x=""0"" y=""0"" b1=""0"" b2=""1"" l=""f"" ul=""100"" ll=""-100"" m=""f"" fo=""50"" a=""90"" sp=""3"" c=""f"" />
+  </joints>
+</levelXML>",
+			level.ToXML(), ignoreWhiteSpaceDifferences:true);
 	}
 
 	[Fact]
