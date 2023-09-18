@@ -2,11 +2,11 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Van : SimpleSpecial
+public class DinnerTable : SimpleSpecial
 {
-    internal override uint Type => 0;
+    internal override uint Type => 1;
     public const string EditorDefault = 
-    @"<sp t=""0"" p0=""0"" p1=""0"" p2=""0"" p3=""f"" p4=""t""/>";
+    @"<sp t=""1"" p0=""0"" p1=""0"" p2=""0"" p3=""f"" p4=""t""/>";
 
     public double? Rotation
 	{
@@ -42,9 +42,9 @@ public class Van : SimpleSpecial
         Interactive = GetBoolOrNull(e, "p4");
     }
 
-    public Van(string xml=EditorDefault) : this(StrToXElement(xml)) {}
+    public DinnerTable(string xml=EditorDefault) : this(StrToXElement(xml)) {}
 
-    internal Van(XElement e) : base(e)
+    internal DinnerTable(XElement e) : base(e)
     {
         SetParams(e);
     }

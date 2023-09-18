@@ -622,6 +622,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithDinnerTable()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""108"" y=""124"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""1"" p0=""373"" p1=""114"" p2=""400"" p3=""32"" p4=""0"" p5=""f"" p6=""f""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<DinnerTable>(level.Specials[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithText()
 	{
 		Level level = new(@"<levelXML>

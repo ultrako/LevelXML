@@ -31,6 +31,7 @@ public abstract class Entity : LevelXMLTag
 			"sp" => GetDoubleOrNull(element, "t") switch 
 			{
 				0 => new Van(element),
+				1 => new DinnerTable(element),
 				10 => new SoccerBall(element),
 				16 => new TextBox(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
