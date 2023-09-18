@@ -2,6 +2,9 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
+/// <summary>
+/// If the special is sleeping, this awakes it from sleep.
+/// </summary>
 public class AwakeSpecialFromSleep : TriggerAction<SimpleSpecial>
 {
     public AwakeSpecialFromSleep()
@@ -10,6 +13,9 @@ public class AwakeSpecialFromSleep : TriggerAction<SimpleSpecial>
 	}
 }
 
+/// <summary>
+///  This action applies an X, Y, and Spin force to a special.
+/// </summary>
 public class ImpulseSpecial : TriggerAction<SimpleSpecial>
 {
     public const string EditorDefault =

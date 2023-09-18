@@ -27,6 +27,10 @@ public abstract class Joint : Entity
 		}
 		throw new LevelXMLException(exceptionMessage);
 	}
+	/// <summary>
+	///  The first Entity this joint is jointed to.
+	///  Null means it's jointed to the background.
+	/// </summary>
 	public Entity? First
 	{
 		get { return first;}
@@ -36,6 +40,11 @@ public abstract class Joint : Entity
 			first = value;
 		}
 	}
+
+	/// <summary>
+	///  The second Entity this joint is jointed to.
+	///  Null means it's jointed to the background.
+	/// </summary>
 	public Entity? Second
 	{
 		get { return second;}
@@ -45,6 +54,7 @@ public abstract class Joint : Entity
 			second = value;
 		}
 	}
+
 	// Joints with no position are allowed as they do actually affect the game
 	public override Double? X
 	{
@@ -57,6 +67,7 @@ public abstract class Joint : Entity
 			Elt.SetAttributeValue("x", value ?? Double.NaN);
 		}
 	}
+
 	public override Double? Y
 	{
 		get
@@ -68,6 +79,10 @@ public abstract class Joint : Entity
 			Elt.SetAttributeValue("y", value ?? Double.NaN);
 		}
 	}
+
+	/// <summary>
+	///  Whether or not the joint has limits in its motion
+	/// </summary>
 	public HWBool? Limit
 	{
 		get
@@ -82,9 +97,21 @@ public abstract class Joint : Entity
 		}
 	}
 
+	/// <summary>
+	///  The upper limit of motion for the joint.
+	///  It's an angle for pin joints and a distance for sliding joints.
+	/// </summary>
 	public abstract Double? UpperLimit {get; set;}
 
+	/// <summary>
+	///  The lower limit of motion for the joint.
+	///  It's an angle for pin joints and a distance for sliding joints.
+	/// </summary>
 	public abstract Double? LowerLimit {get; set;}
+
+	/// <summary>
+	/// Whether or not the joint moves on its own based on its speed and force.
+	/// </summary>
 	public HWBool? Motorized
 	{
 		get
@@ -99,8 +126,14 @@ public abstract class Joint : Entity
 		}
 	}
 
+	/// <summary>
+	///  The top speed at which a joint will move
+	/// </summary>
 	public abstract Double? Speed {get; set;}
 
+	/// <summary>
+	///  Whether or not the two objects that a joint connects, can collide with one another.
+	/// </summary>
 	public HWBool? CollideConnected
 	{
 		get
@@ -114,11 +147,13 @@ public abstract class Joint : Entity
 			Elt.SetAttributeValue("c", val);
 		}
 	}
+
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
 		Elt.SetAttributeValue("b1", getIndexString(mapper, First));
 		Elt.SetAttributeValue("b2", getIndexString(mapper, Second));
 	}
+
 	private string getIndexString(Func<Entity, int> mapper, Entity? entity)
 	{
 		string prependType = String.Empty;
@@ -141,6 +176,7 @@ public abstract class Joint : Entity
 		int index = mapper(entity);
 		return prependType + index.ToString();
 	}
+
 	protected bool isNotJointed(XElement e)
     {
         string? entityOne = GetStringOrNull(e, "b1");
@@ -148,10 +184,12 @@ public abstract class Joint : Entity
         return !(couldPointToAnElement(entityOne)
             || couldPointToAnElement(entityTwo));
     }
+
 	private bool couldPointToAnElement(string? jointIndex)
 	{
 		return !(jointIndex == null || jointIndex.Equals("-1"));
 	}
+
 	virtual protected void SetParams(XElement e, Func<string?, Entity?> reverseMapper)
 	{
 		Elt.SetAttributeValue("t", Type);
@@ -167,6 +205,7 @@ public abstract class Joint : Entity
 		LowerLimit = GetDoubleOrNull(e, "la");
 		Motorized = GetBoolOrNull(e, "m");
 	}
+	
 	protected Joint(XElement e) : base("j") 
 	{
 		Elt = new XElement(e.Name.ToString());

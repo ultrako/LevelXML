@@ -3,7 +3,7 @@ using System.Xml.Linq;
 namespace HappyWheels;
 
 ///<summary>
-/// If the object is sleeping, this awakes it from sleep.
+/// If the shape is sleeping, this awakes it from sleep.
 ///</summary>
 public class AwakeShapeFromSleep : TriggerAction<Shape>
 {
@@ -13,6 +13,9 @@ public class AwakeShapeFromSleep : TriggerAction<Shape>
 	}
 }
 
+/// <summary>
+/// This action turns a shape into a fixed object (it will not move)
+/// </summary>
 public class FixShape : TriggerAction<Shape>
 {
 	public FixShape()
@@ -21,6 +24,9 @@ public class FixShape : TriggerAction<Shape>
 	}
 }
 
+/// <summary>
+/// This action turns a shape into a non fixed object (it can move)
+/// </summary>
 public class NonfixShape : TriggerAction<Shape>
 {
 	public NonfixShape()
@@ -31,6 +37,10 @@ public class NonfixShape : TriggerAction<Shape>
 
 // This is a lot of repeated code
 // I'd like this to be ChangeOpacity<Shape> extending TriggerAction<Shape>, but I can't do that.
+
+/// <summary>
+///  This action changes the opacity of a shape over time
+/// </summary>
 public class ChangeShapeOpacity : TriggerAction<Shape>
 {
 	public static string EditorDefault =
@@ -62,6 +72,9 @@ public class ChangeShapeOpacity : TriggerAction<Shape>
 	}
 }
 
+/// <summary>
+/// This action applies an X, Y, and Spin force to a shape.
+/// </summary>
 public class ImpulseShape : TriggerAction<Shape>
 {
 	public const string EditorDefault =
@@ -99,6 +112,9 @@ public class ImpulseShape : TriggerAction<Shape>
 	}     
 }
 
+/// <summary>
+/// This action freezes the shape in place and makes it non interactive
+/// </summary>
 public class DeleteShape : TriggerAction<Shape>
 {
 	public DeleteShape()
@@ -107,6 +123,9 @@ public class DeleteShape : TriggerAction<Shape>
 	}
 }
 
+/// <summary>
+/// This action deletes the shape.
+/// </summary>
 public class DeleteSelfShape : TriggerAction<Shape>
 {
 	public DeleteSelfShape()
@@ -115,6 +134,9 @@ public class DeleteSelfShape : TriggerAction<Shape>
 	}
 }
 
+/// <summary>
+/// This action changes the Shape's collision
+/// </summary>
 public class ChangeShapeCollision : TriggerAction<Shape>
 {
 	public Collision Collision

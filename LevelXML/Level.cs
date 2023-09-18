@@ -9,7 +9,7 @@ namespace HappyWheels;
 /// <remarks>
 /// As this extends LevelXMLTag,
 /// ToXML() will print out the LevelXML that represents this level,
-/// ready to be pasted into the happy wheels import box.
+/// ready to be pasted into the Happy Wheels import box.
 /// </remarks>
 public class Level : LevelXMLTag, IConvertableToXML
 {
@@ -19,29 +19,63 @@ public class Level : LevelXMLTag, IConvertableToXML
 	public IList<Joint> Joints { get { return jointsTag.lst; } }
 	public IList<Trigger> Triggers { get { return triggersTag.lst; } }
 	// These are never null but you can't use ! on a struct data type
+
+	/// <summary>
+	///  The X position of the character in the level.
+	/// </summary>
 	public double X { get {return info.X ?? 0;} set { info.X = value;} }
+
+	/// <summary>
+	/// The Y position of the character in the level.
+	/// </summary>
 	public double Y { get {return info.Y ?? 0;} set { info.Y = value;} }
+
+	/// <summary>
+	///  Which character the level starts with
+	/// </summary>
 	public Character? Character { get { return info.Character; } set { info.Character = value ?? (Character)double.NaN;} }
+
+	/// <summary>
+	///  Whether or not players must use the default character when playing the level.
+	/// </summary>
 	public HWBool ForcedCharacter { get { return info.ForcedCharacter ?? false; } set { info.ForcedCharacter = value;}}
+
+	/// <summary>
+	///  Whether or not the character starts with a vehicle.
+	/// </summary>
 	public HWBool VehicleHidden { get { return info.VehicleHidden ?? false; } set { info.VehicleHidden = value;}}
-	public double Background { get { return info.Background ?? 0; } set { info.Background = value;} }
+
+	/// <summary>
+	///  Which one of 3 backgrounds the level has
+	/// </summary>
+	public Background Background { get { return info.Background ?? Background.Blank; } set { info.Background = value;} }
+
+	/// <summary>
+	///  The color of the level's background, if the background is set to Blank
+	/// </summary>
 	public double BackgroundColor { get { return info.BackgroundColor ?? 0; } set { info.BackgroundColor = value;} }
+
+	/// <returns> The LevelXML representation of the level, with all of its Entities</returns>
 	public string ToXML() { return ToXML(mapper: default!); }
+
+	/// <summary>
+	///  All of the Entities in the level.
+	/// </summary>
 	public IEnumerable<Entity> Entities =>
 		(Shapes as IEnumerable<Entity>)
 		.Concat(Specials)
 		.Concat(Groups)
 		.Concat(Joints)
 		.Concat(Triggers);
+
 	/// <summary>
 	/// This constructor makes a Level from a valid levelXML string.
 	/// </summary>
 	public Level(string xml) : this(StrToXElement(xml)) {}
+	
 	/// <summary>
-	/// This constructor makes a Level from an Info tag and several Entities 
+	/// This constructor makes a Level from several Entities
 	/// (which are shapes, specials, groups, joints, and triggers).
-	/// If no info tag is supplied, then the default one from opening the level
-	/// editor and just hitting save is set.
 	/// </summary>
 	public Level(params Entity[] entities) :
 		this(info : new(),

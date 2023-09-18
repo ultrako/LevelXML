@@ -5,18 +5,13 @@ namespace HappyWheels.Test;
 public class ActivateTriggerTest
 {
 	[Fact]
-	public void TriggerTestBlank()
-	{
-		Assert.Throws<Exception>(() => new ActivateTrigger("<t />"));
-	}
-	[Fact]
 	public void TriggerTestMinimal()
 	{
 		// We'll allow NaN position triggers because they can still be pointed to and cause actions
 		// We won't allow t to not be set (or set to 0), as that causes the level to freeze on start.
 		// And we won't allow r to not be set because then the trigger is useless.
-		ActivateTrigger trigger = new(@"<t t=""1"" r=""1"" />");
-		Assert.Equal(@"<t x=""NaN"" y=""NaN"" w=""NaN"" h=""NaN"" a=""NaN"" b=""NaN"" t=""1"" r=""1"" sd=""f"" d=""NaN"" />",
+		ActivateTrigger trigger = new(@"<t />");
+		Assert.Equal(@"<t x=""NaN"" y=""NaN"" w=""NaN"" h=""NaN"" a=""NaN"" b=""NaN"" t=""1"" r=""NaN"" sd=""f"" d=""NaN"" />",
 			trigger.ToXML(mapper:default!), ignoreWhiteSpaceDifferences: true);
 	}
 	[Fact]

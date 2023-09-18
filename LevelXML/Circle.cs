@@ -1,6 +1,9 @@
 using System.Xml.Linq;
 namespace HappyWheels;
 
+/// <summary>
+/// A circle shape
+/// </summary>
 public class Circle : Shape, IConvertableToXML
 {
 	internal override uint Type => 1;

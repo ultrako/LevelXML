@@ -6,7 +6,7 @@ namespace HappyWheels;
 ///<remarks>
 /// If it makes sense for a class to be made outside of a level,
 /// it will have a constructor that takes a string.
-/// All classes that inherit this will have a public empty constructor,
+/// All public classes that inherit this will have a public empty constructor,
 /// and you will end up with an object that would be the same as if you
 /// had opened the level editor and placed that object without changing anything
 ///</remarks>

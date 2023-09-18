@@ -10,22 +10,38 @@ namespace HappyWheels;
 ///</summary>
 
 public abstract class Target : LevelXMLTag 
-{ 
+{
+	/// <summary>
+	/// Which Entity the list of actions in this target will apply to.
+	/// </summary>
+			 
 	public Entity Targeted {get; set;} = default!;
+
 	public abstract void AddAction(TriggerAction action);
+
 	public abstract bool RemoveAction(TriggerAction action);
+
 	public abstract int IndexOfAction(TriggerAction action);
+
+	/// <summary>
+	///  The actions that will happen to the Target Entity.
+	/// </summary>
 	public abstract IReadOnlyList<TriggerAction> Actions { get; }
+
 	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
+
 	private Task? setTargeted;
+
 	protected Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) : base(e.Name)
 	{
 		setTargeted = Task.Run( () => Targeted = ReverseTargetMapper(e));
 	}
+
 	// This following function is only called if this object is constructed with a string
 	// In LevelXML, targets are set via indexes - but we can only go from index to entity
 	// in the context of an entire level.
 	internal void finishConstruction() { setTargeted!.Wait(); }
+	
 	internal static Target FromXElement(XElement e, Func<XElement, Entity> ReverseTargetMapper)
 	{
 		return e.Name.ToString() switch
