@@ -39,6 +39,7 @@ public abstract class Entity : LevelXMLTag
 			"j" => GetDoubleOrNull(element, "t") switch
 			{
 				0 => new PinJoint(element, ReverseJointMapper),
+				1 => new SlidingJoint(element, ReverseJointMapper),
 				_ => throw new LevelXMLException("Joint type doesn't exist!")
 			},
 			"t" => GetDoubleOrNull(element, "t") switch
