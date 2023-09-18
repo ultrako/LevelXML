@@ -23,6 +23,7 @@ public abstract class Entity : LevelXMLTag
 			{
 				0 => new Rectangle(element),
 				1 => new Circle(element),
+				2 => new Triangle(element),
 				3 => new Polygon(element, vertMapper),
 				4 => new Art(element, vertMapper),
 				_ => throw new LevelXMLException("Shape type doesn't exist!"),

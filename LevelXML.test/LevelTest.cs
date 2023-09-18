@@ -532,6 +532,19 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithTriangle()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <shapes>
+        <sh t=""2"" p0=""0"" p1=""0"" p2=""200"" p3=""200"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1""/>
+    </shapes>
+</levelXML>");
+		Assert.IsType<Triangle>(level.Shapes[0]);
+	}
+
+
+	[Fact]
 	public void ParseLevelWithPolygon()
 	{
 		Level level = new(@"<levelXML>

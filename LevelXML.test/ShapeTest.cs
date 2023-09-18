@@ -124,6 +124,38 @@ public class ShapeTest
 	}
 
 	[Fact]
+	public void TriangleTestDefaultValues()
+	{
+		Triangle triangle = new();
+		Assert.Equal(200, triangle.Width);
+		Assert.Equal(200, triangle.Height);
+		Assert.Equal(@"<sh t=""2"" p0=""0"" p1=""0"" p2=""200"" p3=""200"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />",
+			triangle.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void TriangleTestNaNWidth()
+	{
+		Assert.Throws<LevelXMLException>(() => new Triangle(@"<sh t=""2"" p0=""0"" p1=""0"" p2=""NaN"" />"));
+	}
+
+	[Fact]
+	public void TriangleTestNaNHeight()
+	{
+		Assert.Throws<LevelXMLException>(() => new Triangle(@"<sh t=""2"" p0=""0"" p1=""0"" p3=""NaN"" />"));
+	}
+
+	[Fact]
+	public void TriangleTestLowValues()
+	{
+		Triangle triangle = new();
+		triangle.Width = double.NegativeInfinity;
+		triangle.Height = double.NegativeInfinity;
+		Assert.Equal(5, triangle.Width);
+		Assert.Equal(15, triangle.Height);
+	}
+
+	[Fact]
 	public void CircleTestDefaultValues()
 	{
 		Circle circle = new();
@@ -142,12 +174,6 @@ public class ShapeTest
 	public void CircleTestNaNHeight()
 	{
 		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p3=""NaN"" />"));
-	}
-
-	[Fact]
-	public void CircleTestNaNCutout()
-	{
-
 	}
 
 	[Fact]
