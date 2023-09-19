@@ -599,6 +599,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithVictoryTrigger()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""211"" y=""185"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""3"" r=""1"" sd=""f""/>
+    </triggers>
+</levelXML>");
+		Assert.IsType<VictoryTrigger>(level.Triggers[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithInvalidTriggerAction()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>

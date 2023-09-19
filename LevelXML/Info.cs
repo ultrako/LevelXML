@@ -5,7 +5,7 @@ namespace HappyWheels;
 /// <summary>
 /// The Info tag has information about the character and the background of the level
 /// </summary>
-internal class Info : LevelXMLTag, IConvertableToXML
+internal class Info : LevelXMLTag, IConvertibleToXML
 {
 	internal const string HappyWheelsVersion = "1.95";
 	public const string EditorDefault = @"<info v=""" + HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";

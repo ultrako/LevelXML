@@ -11,7 +11,7 @@ namespace HappyWheels;
 /// ToXML() will print out the LevelXML that represents this level,
 /// ready to be pasted into the Happy Wheels import box.
 /// </remarks>
-public class Level : LevelXMLTag, IConvertableToXML
+public class Level : LevelXMLTag, IConvertibleToXML
 {
 	public IList<Shape> Shapes { get { return shapesTag.lst; } }
 	public IList<Special> Specials { get { return specialsTag.lst; } }

@@ -5,7 +5,7 @@ namespace HappyWheels;
 /// Specials are entities like shapes that have coded behavior besides just collision,
 /// like homing mines that follow players or spike sets that stab.
 ///</summary>
-public abstract class Special : Entity, IConvertableToXML
+public abstract class Special : Entity, IConvertibleToXML
 {
 	internal abstract uint Type {get;}
 

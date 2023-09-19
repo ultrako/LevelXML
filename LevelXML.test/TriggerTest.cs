@@ -28,4 +28,12 @@ public class TriggerTest
         trigger.StartDisabled = true;
         Assert.True(trigger.StartDisabled);
     }
+
+    [Fact]
+    public void TestVictoryTriggerDefault()
+    {
+        VictoryTrigger trigger = new();
+        Assert.Equal(@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""3"" r=""1"" sd=""f"" />",
+            trigger.ToXML(), ignoreWhiteSpaceDifferences: true);
+    }
 }

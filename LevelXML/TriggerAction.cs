@@ -4,7 +4,7 @@ namespace HappyWheels;
 /// A trigger action is something that a trigger can do to an Entity,
 /// like deleting a shape or disabling another trigger.
 ///</summary>
-public abstract class TriggerAction : LevelXMLTag, IConvertableToXML
+public abstract class TriggerAction : LevelXMLTag, IConvertibleToXML
 {
 	protected TriggerAction() : base("a") {}
 	public string ToXML() { return ToXML(mapper: default!); }
