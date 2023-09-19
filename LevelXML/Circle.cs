@@ -4,7 +4,7 @@ namespace HappyWheels;
 /// <summary>
 /// A circle shape
 /// </summary>
-public class Circle : Shape, IConvertableToXML
+public class Circle : Shape, IConvertibleToXML
 {
 	internal override uint Type => 1;
     public static string EditorDefault =
