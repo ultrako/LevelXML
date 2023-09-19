@@ -653,6 +653,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithIBeam()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""211"" y=""185"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""3"" p0=""0"" p1=""0"" p4=""0"" p5=""f"" p6=""f""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<IBeam>(level.Specials[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithText()
 	{
 		Level level = new(@"<levelXML>
