@@ -50,6 +50,7 @@ public abstract class Target : LevelXMLTag
 			"sp" => ReverseTargetMapper(e) switch 
 			{
 				SimpleSpecial => new Target<SimpleSpecial>(e, ReverseTargetMapper),
+				Landmine => new Target<Landmine>(e, ReverseTargetMapper),
 				_ => throw new LevelXMLException("Special type cannot be pointed to by a trigger!"),
 			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),

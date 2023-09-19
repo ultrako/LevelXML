@@ -634,6 +634,25 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithTriggerToLandmine()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""211"" y=""185"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""2"" p0=""243"" p1=""132"" p2=""0""/>
+    </specials>
+    <triggers>
+        <t x=""198"" y=""290"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0""/>
+        </t>
+    </triggers>
+</levelXML>");
+		Assert.IsType<Landmine>(level.Specials[0]);
+		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
+		Assert.IsType<Target<Landmine>>(trigger.Targets[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithText()
 	{
 		Level level = new(@"<levelXML>

@@ -49,4 +49,3 @@ public class Van : SimpleSpecial
         SetParams(e);
     }
 }
-
