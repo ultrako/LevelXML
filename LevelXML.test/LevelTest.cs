@@ -165,18 +165,6 @@ public class LevelTest
 	}
 
 	[Fact]
-	public void ParseLevelWithSoccerBall()
-	{
-		Level level = new(@"<levelXML>
-    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
-    <specials>
-        <sp t=""10"" p0=""457"" p1=""5199""/>
-    </specials>
-</levelXML>");
-		Assert.IsType<SoccerBall>(level.Specials[0]);
-	}
-
-	[Fact]
 	public void ParseLevelWithTriggerToSoccerBall()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
@@ -746,6 +734,30 @@ public class LevelTest
     </specials>
 </levelXML>");
 		Assert.IsType<FinishLine>(level.Specials[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithSoccerBall()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""10"" p0=""457"" p1=""5199""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<SoccerBall>(level.Specials[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithMeteor()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""211"" y=""185"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""11"" p0=""0"" p1=""0"" p2=""400"" p4=""f"" p5=""f""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<Meteor>(level.Specials[0]);
 	}
 
 	[Fact]

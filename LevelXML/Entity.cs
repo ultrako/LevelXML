@@ -41,6 +41,7 @@ public abstract class Entity : LevelXMLTag
 				8 => new Fan(element),
 				9 => new FinishLine(element),
 				10 => new SoccerBall(element),
+				11 => new Meteor(element),
 				16 => new TextBox(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
 			},
