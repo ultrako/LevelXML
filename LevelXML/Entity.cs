@@ -36,6 +36,7 @@ public abstract class Entity : LevelXMLTag
 				3 => new IBeam(element),
 				4 => new Log(element),
 				5 => new SpringPlatform(element),
+				6 => new SpikeSet(element),
 				10 => new SoccerBall(element),
 				16 => new TextBox(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
