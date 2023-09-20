@@ -725,6 +725,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithFan()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""211"" y=""185"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""8"" p0=""0"" p1=""0"" p2=""0""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<Fan>(level.Specials[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithText()
 	{
 		Level level = new(@"<levelXML>
