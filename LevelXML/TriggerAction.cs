@@ -76,6 +76,12 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				2 => (new ActivateHarpoon() as TriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a harpoon!"),
 			},
+			nameof(TextBox) => ActionType switch
+			{
+				0 => (new ChangeTextBoxOpacity(element) as TriggerAction<T>)!,
+				1 => (new SlideTextBox(element) as TriggerAction<T>)!,
+				_ => throw new LevelXMLException("Invalid id for an action targeting a textbox!"),
+			},
 			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} not supported!"),
 		};
 	}

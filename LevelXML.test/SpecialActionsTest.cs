@@ -21,4 +21,36 @@ public class SpecialActionsTest
         Assert.Equal(double.PositiveInfinity, action.Y);
         Assert.Equal(double.PositiveInfinity, action.Spin);
     }
+
+    [Fact]
+    public void TestChangeTextBoxOpacityDefaultValues()
+    {
+        ChangeTextBoxOpacity action = new();
+        Assert.Equal(100, action.Opacity);
+        Assert.Equal(1, action.Duration);
+    }
+
+    [Fact]
+    public void TestChangeTextBoxOpacityHighValues()
+    {
+        ChangeTextBoxOpacity action = new(double.PositiveInfinity, double.PositiveInfinity);
+        Assert.Equal(double.PositiveInfinity, action.Opacity);
+        Assert.Equal(double.PositiveInfinity, action.Duration);
+    }
+
+    [Fact]
+    public void TestSlideTextBoxDefaultValues()
+    {
+        SlideTextBox action = new();
+        Assert.Equal(1, action.Duration);
+        Assert.Equal(0, action.X);
+        Assert.Equal(0, action.Y);
+    }
+
+    [Fact]
+    public void TestSlideTextBoxHighValues()
+    {
+        SlideTextBox action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Assert.Equal(double.PositiveInfinity, action.Duration);
+    }
 }
