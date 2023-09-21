@@ -1,7 +1,7 @@
 namespace HappyWheels;
 
 /// <summary>
-/// The 13 kinds of signs
+/// The 13 images you can have on a sign
 /// </summary>
 public struct SignType
 {

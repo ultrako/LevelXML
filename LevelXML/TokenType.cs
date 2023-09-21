@@ -1,7 +1,7 @@
 namespace HappyWheels;
 
 /// <summary>
-/// The 16 characters you can make as an NPC
+/// The 6 designs you can have on a token
 /// </summary>
 public struct TokenType
 {
