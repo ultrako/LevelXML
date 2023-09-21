@@ -689,6 +689,73 @@ public class LevelTest
     </triggers>
 </levelXML>"));
 	}
+
+	[Fact]
+	public void ParseLevelWithChangeTextBoxOpacity()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""176"" y=""5138"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""16"" p0=""248"" p1=""5152"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
+            <p7><![CDATA[HERE'S SOME TEXT]]></p7>
+        </sp>
+    </specials>
+    <triggers>
+        <t x=""223"" y=""5279"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""0"" p0=""100"" p1=""1""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<TextBox>)trigger.Targets[0];
+		Assert.IsType<ChangeTextBoxOpacity>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithSlideTextBox()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""176"" y=""5138"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""16"" p0=""248"" p1=""5152"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
+            <p7><![CDATA[HERE'S SOME TEXT]]></p7>
+        </sp>
+    </specials>
+    <triggers>
+        <t x=""223"" y=""5279"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""1"" p0=""10"" p1=""0"" p2=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<TextBox>)trigger.Targets[0];
+		Assert.IsType<SlideTextBox>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithInvalidTextBoxActionID()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""176"" y=""5138"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""16"" p0=""248"" p1=""5152"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
+            <p7><![CDATA[HERE'S SOME TEXT]]></p7>
+        </sp>
+    </specials>
+    <triggers>
+        <t x=""223"" y=""5279"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""2"" p0=""10"" p1=""0"" p2=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>"));
+	}
+
 	[Fact]
 	public void ParseLevelWithVan()
 	{
@@ -730,6 +797,60 @@ public class LevelTest
 		Assert.IsType<Landmine>(level.Specials[0]);
 		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
 		Assert.IsType<Target<Landmine>>(trigger.Targets[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithTriggerToWreckingBall()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""7"" p0=""424.78761291503906"" p1=""5180"" p2=""350""/>
+    </specials>
+    <triggers>
+        <t x=""223"" y=""5279"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0""/>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		Assert.IsType<Target<WreckingBall>>(trigger.Targets[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithTriggerToFan()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""8"" p0=""479"" p1=""5355"" p2=""0""/>
+    </specials>
+    <triggers>
+        <t x=""223"" y=""5279"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0""/>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		Assert.IsType<Target<Fan>>(trigger.Targets[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithTriggerToBoost()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""12"" p0=""523"" p1=""5138"" p2=""0"" p3=""2"" p4=""20""/>
+    </specials>
+    <triggers>
+        <t x=""223"" y=""5279"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0""/>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		Assert.IsType<Target<Boost>>(trigger.Targets[0]);
 	}
 
 	[Fact]

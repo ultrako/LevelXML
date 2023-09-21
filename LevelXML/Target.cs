@@ -55,6 +55,7 @@ public abstract class Target : LevelXMLTag
 				Fan => new Target<Fan>(e, ReverseTargetMapper),
 				Boost => new Target<Boost>(e, ReverseTargetMapper),
 				Harpoon => new Target<Harpoon>(e, ReverseTargetMapper),
+				TextBox => new Target<TextBox>(e, ReverseTargetMapper),
 				_ => throw new LevelXMLException("Special type cannot be pointed to by a trigger!"),
 			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),
