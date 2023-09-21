@@ -82,6 +82,14 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				1 => (new SlideTextBox(element) as TriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a textbox!"),
 			},
+			nameof(NonPlayerCharacter) => ActionType switch
+			{
+				0 => (new AwakeNPCFromSleep() as TriggerAction<T>)!,
+				1 => (new ImpulseNPC(element) as TriggerAction<T>)!,
+				2 => (new HoldPose() as TriggerAction<T>)!,
+				3 => (new ReleasePose() as TriggerAction<T>)!,
+				_ => throw new LevelXMLException("Invalid id for an action targeting an NPC!"),
+			},
 			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} not supported!"),
 		};
 	}

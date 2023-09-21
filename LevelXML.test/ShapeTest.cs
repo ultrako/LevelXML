@@ -23,7 +23,7 @@ public class ShapeTest
 	public void ShapeTestDefaultValues()
 	{
 		Rectangle rect = new();
-		Assert.Null(rect.Interactive);
+		Assert.True(rect.Interactive);
 		Assert.Equal(0, rect.X);
 		Assert.Equal(0, rect.Y);
 		Assert.Equal(0, rect.Rotation);
