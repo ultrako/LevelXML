@@ -24,13 +24,6 @@ public class ChainTest
     }
 
     [Fact]
-    public void TestSettingLinkCountAsNaN()
-    {
-        Chain chain = new();
-        Assert.Throws<LevelXMLException>(() => chain.LinkCount = double.NaN);
-    }
-
-    [Fact]
     public void TestSettingLinkScaleAsNaN()
     {
         Chain chain = new();

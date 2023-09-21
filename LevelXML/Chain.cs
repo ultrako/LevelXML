@@ -43,10 +43,6 @@ public class Chain : SimpleSpecial
         set
         {
             double val = value ?? 20;
-            if (double.IsNaN(val))
-            {
-                throw new LevelXMLException("Setting the Link Count to NaN would make the chain disappear!");
-            }
             SetDouble("p5", Math.Clamp(val, 2, 40));
         }
     }
