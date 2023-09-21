@@ -90,7 +90,14 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				3 => (new ReleasePose() as TriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting an NPC!"),
 			},
-			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} not supported!"),
+			nameof(GlassPanel) => ActionType switch
+			{
+				0 => (new Shatter() as TriggerAction<T>)!,
+				1 => (new AwakeGlassPanelFromSleep() as TriggerAction<T>)!,
+				2 => (new ImpulseGlassPanel(element) as TriggerAction<T>)!,
+				_ => throw new LevelXMLException("Invalid id for an action targeting a glass panel!"),
+			},
+			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} cannot have trigger actions!"),
 		};
 	}
 }

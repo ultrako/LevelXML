@@ -57,6 +57,7 @@ public abstract class Target : LevelXMLTag
 				Harpoon => new Target<Harpoon>(e, ReverseTargetMapper),
 				TextBox => new Target<TextBox>(e, ReverseTargetMapper),
 				NonPlayerCharacter => new Target<NonPlayerCharacter>(e, ReverseTargetMapper),
+				GlassPanel => new Target<GlassPanel>(e, ReverseTargetMapper),
 				_ => throw new LevelXMLException("Special type cannot be pointed to by a trigger!"),
 			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),
