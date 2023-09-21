@@ -1037,6 +1037,24 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithTriggerToHomingMine()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""25"" p0=""13"" p1=""16"" p2=""1"" p3=""0""/>
+    </specials>
+    <triggers>
+        <t x=""183"" y=""68"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0""/>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		Assert.IsType<Target<HomingMine>>(trigger.Targets[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithIBeam()
 	{
 		Level level = new(@"<levelXML>
@@ -1300,6 +1318,18 @@ public class LevelTest
     </specials>
 </levelXML>");
 		Assert.IsType<Toilet>(level.Specials[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithHomingMine()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""25"" p0=""13"" p1=""16"" p2=""1"" p3=""0""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<HomingMine>(level.Specials[0]);
 	}
 
 	[Fact]
