@@ -1393,6 +1393,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithToken()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""31"" p0=""0"" p1=""0"" p2=""1""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<Token>(level.Specials[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithInvalidSpecialType()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
