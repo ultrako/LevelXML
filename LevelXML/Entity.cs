@@ -50,6 +50,7 @@ public abstract class Entity : LevelXMLTag
 				17 => new NonPlayerCharacter(element),
 				18 => new GlassPanel(element),
 				19 => new Chair(element),
+				20 => new Bottle(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
 			},
 			"g" => new Group(element, vertMapper),
