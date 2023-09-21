@@ -51,6 +51,9 @@ public abstract class Target : LevelXMLTag
 			{
 				SimpleSpecial => new Target<SimpleSpecial>(e, ReverseTargetMapper),
 				Landmine => new Target<Landmine>(e, ReverseTargetMapper),
+				WreckingBall => new Target<WreckingBall>(e, ReverseTargetMapper),
+				Fan => new Target<Fan>(e, ReverseTargetMapper),
+				Boost => new Target<Boost>(e, ReverseTargetMapper),
 				Harpoon => new Target<Harpoon>(e, ReverseTargetMapper),
 				_ => throw new LevelXMLException("Special type cannot be pointed to by a trigger!"),
 			},
