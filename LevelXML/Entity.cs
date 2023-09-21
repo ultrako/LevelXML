@@ -55,6 +55,7 @@ public abstract class Entity : LevelXMLTag
 				22 => new Boombox(element),
 				23 => new Sign(element),
 				24 => new Toilet(element),
+				25 => new HomingMine(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
 			},
 			"g" => new Group(element, vertMapper),
