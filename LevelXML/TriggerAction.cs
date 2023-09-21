@@ -69,6 +69,13 @@ public abstract class TriggerAction<T> : TriggerAction where T : Entity
 				2 => (new Enable() as TriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a trigger!"),
 			},
+			nameof(Harpoon) => ActionType switch
+			{
+				0 => (new FireHarpoon() as TriggerAction<T>)!,
+				1 => (new DeactivateHarpoon() as TriggerAction<T>)!,
+				2 => (new ActivateHarpoon() as TriggerAction<T>)!,
+				_ => throw new LevelXMLException("Invalid id for an action targeting a harpoon!"),
+			},
 			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} not supported!"),
 		};
 	}

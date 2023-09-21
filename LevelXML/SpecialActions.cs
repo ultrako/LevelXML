@@ -9,7 +9,7 @@ public class AwakeSpecialFromSleep : TriggerAction<SimpleSpecial>
 {
     public AwakeSpecialFromSleep()
 	{
-		Elt.SetAttributeValue("i", 0);
+		SetDouble("i", 0);
 	}
 }
 
@@ -57,5 +57,38 @@ public class ImpulseSpecial : TriggerAction<SimpleSpecial>
 		X = GetDoubleOrNull(e, "p0");
 		Y = GetDoubleOrNull(e, "p1");
 		Spin = GetDoubleOrNull(e, "p2");
+	}
+}
+
+/// <summary>
+/// This action causes the targeted harpoon to fire.
+/// </summary>
+public class FireHarpoon : TriggerAction<Harpoon>
+{
+	public FireHarpoon()
+	{
+		SetDouble("i", 0);
+	}
+}
+
+/// <summary>
+/// This action prevents a harpoon from firing until activated by another trigger.
+/// </summary>
+public class DeactivateHarpoon : TriggerAction<Harpoon>
+{
+	public DeactivateHarpoon()
+	{
+		SetDouble("i", 1);
+	}
+}
+
+/// <summary>
+/// This action will allow a deactivated harpoon to start firing again.
+/// </summary>
+public class ActivateHarpoon : TriggerAction<Harpoon>
+{
+	public ActivateHarpoon()
+	{
+		SetDouble("i", 2);
 	}
 }

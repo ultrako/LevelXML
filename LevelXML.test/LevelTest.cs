@@ -610,6 +610,86 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithTriggerFiringHarpoon()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""111"" y=""39"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""15"" p0=""121"" p1=""150.0517578125"" p2=""0"" p3=""t"" p4=""t"" p5=""0"" p6=""f"" p7=""f""/>
+    </specials>
+    <triggers>
+        <t x=""106"" y=""299"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
+		Target<Harpoon> target = (Target<Harpoon>)trigger.Targets[0];
+		Assert.IsType<FireHarpoon>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithTriggerDeactivatingHarpoon()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""111"" y=""39"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""15"" p0=""121"" p1=""150.0517578125"" p2=""0"" p3=""t"" p4=""t"" p5=""0"" p6=""f"" p7=""f""/>
+    </specials>
+    <triggers>
+        <t x=""106"" y=""299"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""1""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
+		Target<Harpoon> target = (Target<Harpoon>)trigger.Targets[0];
+		Assert.IsType<DeactivateHarpoon>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithTriggerActivatingHarpoon()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""111"" y=""39"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""15"" p0=""121"" p1=""150.0517578125"" p2=""0"" p3=""t"" p4=""t"" p5=""0"" p6=""f"" p7=""f""/>
+    </specials>
+    <triggers>
+        <t x=""106"" y=""299"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""2""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
+		Target<Harpoon> target = (Target<Harpoon>)trigger.Targets[0];
+		Assert.IsType<ActivateHarpoon>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithInvalidHarpoonActionID()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""111"" y=""39"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""15"" p0=""121"" p1=""150.0517578125"" p2=""0"" p3=""t"" p4=""t"" p5=""0"" p6=""f"" p7=""f""/>
+    </specials>
+    <triggers>
+        <t x=""106"" y=""299"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""3""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>"));
+	}
+	[Fact]
 	public void ParseLevelWithVan()
 	{
 		Level level = new(@"<levelXML>
@@ -794,6 +874,18 @@ public class LevelTest
     </specials>
 </levelXML>");
 		Assert.IsType<BuildingTwo>(level.Specials[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithHarpoon()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""111"" y=""39"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""15"" p0=""0"" p1=""0"" p2=""0"" p3=""t"" p4=""f"" p5=""0"" p6=""f"" p7=""f""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<Harpoon>(level.Specials[0]);
 	}
 
 	[Fact]
