@@ -53,4 +53,22 @@ public class SpecialActionsTest
         SlideTextBox action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.Duration);
     }
+
+    [Fact]
+    public void TestImpulseNPCDefaultValues()
+    {
+        ImpulseNPC action = new();
+        Assert.Equal(10, action.X);
+        Assert.Equal(-10, action.Y);
+        Assert.Equal(0, action.Spin);
+    }
+
+    [Fact]
+    public void TestImpulseNPCHighValues()
+    {
+        ImpulseNPC action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Assert.Equal(double.PositiveInfinity, action.X);
+        Assert.Equal(double.PositiveInfinity, action.Y);
+        Assert.Equal(double.PositiveInfinity, action.Spin);
+    }
 }

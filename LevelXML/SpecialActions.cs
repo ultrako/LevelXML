@@ -177,3 +177,81 @@ public class SlideTextBox : TriggerAction<TextBox>
 		Y = GetDoubleOrNull(e, "p2");
 	}
 }
+
+/// <summary>
+/// If the NPC is sleeping, this awakes it from sleep.
+/// </summary>
+public class AwakeNPCFromSleep : TriggerAction<NonPlayerCharacter>
+{
+    public AwakeNPCFromSleep()
+	{
+		SetDouble("i", 0);
+	}
+}
+
+/// <summary>
+///  This action applies an X, Y, and Spin force to a NPC.
+/// </summary>
+public class ImpulseNPC : TriggerAction<NonPlayerCharacter>
+{
+    public const string EditorDefault =
+    @"<a i=""1"" p0=""10"" p1=""-10"" p2=""0""/>";
+
+    public double? X
+	{
+		get { return GetDoubleOrNull("p0"); }
+		set { SetDouble("p0", value ?? 0);}
+	}
+
+	public double? Y
+	{
+		get { return GetDoubleOrNull("p1"); }
+		set { SetDouble("p1", value ?? 0); }
+	}
+
+	public double? Spin
+	{
+		get { return GetDoubleOrNull("p2"); }
+		set { SetDouble("p2", value ?? 0);}
+	}
+
+	public ImpulseNPC(double x, double y, double spin)
+	{
+		Elt.SetAttributeValue("i", 1);
+		X = x;
+		Y = y;
+		Spin = spin;
+	}
+
+	public ImpulseNPC(string xml=EditorDefault) : this(StrToXElement(xml)) {}
+
+	internal ImpulseNPC(XElement e)
+	{
+		Elt.SetAttributeValue("i", 1);
+		X = GetDoubleOrNull(e, "p0");
+		Y = GetDoubleOrNull(e, "p1");
+		Spin = GetDoubleOrNull(e, "p2");
+	}
+}
+
+/// <summary>
+/// This trigger action makes the NPC return to the pose set at the start of the level.
+/// </summary>
+public class HoldPose : TriggerAction<NonPlayerCharacter>
+{
+	public HoldPose()
+	{
+		SetDouble("i", 2);
+	}
+}
+
+/// <summary>
+/// This trigger action makes the NPC limp.
+/// </summary>
+public class ReleasePose : TriggerAction<NonPlayerCharacter>
+{
+	public ReleasePose()
+	{
+		SetDouble("i", 3);
+	}
+}

@@ -757,6 +757,108 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithAwakeNPC()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""17"" p0=""105"" p1=""117"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
+    </specials>
+    <triggers>
+        <t x=""142"" y=""297"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<NonPlayerCharacter>)trigger.Targets[0];
+		Assert.IsType<AwakeNPCFromSleep>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithImpulseNPC()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""17"" p0=""105"" p1=""117"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
+    </specials>
+    <triggers>
+        <t x=""142"" y=""297"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""1"" p0=""10"" p1=""-10"" p2=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<NonPlayerCharacter>)trigger.Targets[0];
+		Assert.IsType<ImpulseNPC>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithHoldPose()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""17"" p0=""105"" p1=""117"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
+    </specials>
+    <triggers>
+        <t x=""142"" y=""297"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""2""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<NonPlayerCharacter>)trigger.Targets[0];
+		Assert.IsType<HoldPose>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithReleasePose()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""17"" p0=""105"" p1=""117"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
+    </specials>
+    <triggers>
+        <t x=""142"" y=""297"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""3""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<NonPlayerCharacter>)trigger.Targets[0];
+		Assert.IsType<ReleasePose>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithInvalidNPCActionID()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""17"" p0=""105"" p1=""117"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
+    </specials>
+    <triggers>
+        <t x=""142"" y=""297"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""4""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>"));
+	}
+
+	[Fact]
 	public void ParseLevelWithVan()
 	{
 		Level level = new(@"<levelXML>
@@ -1021,6 +1123,18 @@ public class LevelTest
     </specials>
 </levelXML>");
 		Assert.Equal("hello", ((TextBox)level.Specials[0]).Content);
+	}
+
+	[Fact]
+	public void ParseLevelWithNPC()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""17"" p0=""106"" p1=""118"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<NonPlayerCharacter>(level.Specials[0]);
 	}
 
 	[Fact]

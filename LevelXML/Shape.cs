@@ -19,12 +19,14 @@ public abstract class Shape : Entity
 	// They must _always_ set all these properties.
 
 	/// <summary>
-	///  Whether or not the shape will move and collide with other things.
+	///  Setting interactive to false will treat the shape like flat artwork.
+	///  The shape will only move if part of a group, and will not take away
+	///  from the total available shapecount allowed in your level.
 	/// </summary>
 	public HWBool? Interactive
 	{
 		// If Interactive is true, then the XAttribute isn't set
-		get { return GetBoolOrNull("i"); }
+		get { return GetBoolOrNull("i") ?? true; }
 		set { if (value == false) { Elt.SetAttributeValue("i", value); }; }
 	}
 	
