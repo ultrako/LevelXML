@@ -1369,6 +1369,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithArrowGun()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""156"" y=""44"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""29"" p0=""0"" p1=""0"" p2=""0"" p3=""f"" p5=""f""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<ArrowGun>(level.Specials[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithInvalidSpecialType()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
