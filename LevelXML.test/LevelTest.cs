@@ -859,6 +859,87 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithShatter()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""18"" p0=""80"" p1=""105"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>
+    </specials>
+    <triggers>
+        <t x=""184"" y=""183"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<GlassPanel>)trigger.Targets[0];
+		Assert.IsType<Shatter>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithAwakeGlassPanel()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""18"" p0=""80"" p1=""105"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>
+    </specials>
+    <triggers>
+        <t x=""184"" y=""183"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""1""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<GlassPanel>)trigger.Targets[0];
+		Assert.IsType<AwakeGlassPanelFromSleep>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithImpulseGlassPanel()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""18"" p0=""80"" p1=""105"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>
+    </specials>
+    <triggers>
+        <t x=""184"" y=""183"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""2"" p0=""10"" p1=""-10"" p2=""0""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>");
+		var trigger = (ActivateTrigger)level.Triggers[0];
+		var target = (Target<GlassPanel>)trigger.Targets[0];
+		Assert.IsType<ImpulseGlassPanel>(target.Actions[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithInvalidGlassPanelActionID()
+	{
+		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""18"" p0=""80"" p1=""105"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>
+    </specials>
+    <triggers>
+        <t x=""184"" y=""183"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
+            <sp i=""0"">
+                <a i=""3""/>
+            </sp>
+        </t>
+    </triggers>
+</levelXML>"));
+	}
+
+	[Fact]
 	public void ParseLevelWithVan()
 	{
 		Level level = new(@"<levelXML>
@@ -1135,6 +1216,18 @@ public class LevelTest
     </specials>
 </levelXML>");
 		Assert.IsType<NonPlayerCharacter>(level.Specials[0]);
+	}
+
+	[Fact]
+	public void ParseLevelWithGlassPanel()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""18"" p0=""83"" p1=""106"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<GlassPanel>(level.Specials[0]);
 	}
 
 	[Fact]

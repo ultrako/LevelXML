@@ -71,4 +71,22 @@ public class SpecialActionsTest
         Assert.Equal(double.PositiveInfinity, action.Y);
         Assert.Equal(double.PositiveInfinity, action.Spin);
     }
+
+    [Fact]
+    public void TestImpulseGlassPanelDefaultValues()
+    {
+        ImpulseGlassPanel action = new();
+        Assert.Equal(10, action.X);
+        Assert.Equal(-10, action.Y);
+        Assert.Equal(0, action.Spin);
+    }
+
+    [Fact]
+    public void TestImpulseGlassPanelHighValues()
+    {
+        ImpulseGlassPanel action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Assert.Equal(double.PositiveInfinity, action.X);
+        Assert.Equal(double.PositiveInfinity, action.Y);
+        Assert.Equal(double.PositiveInfinity, action.Spin);
+    }
 }
