@@ -1381,6 +1381,18 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithChain()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <specials>
+        <sp t=""30"" p0=""304"" p1=""224"" p2=""0"" p3=""f"" p4=""t"" p5=""20"" p6=""1"" p7=""0""/>
+    </specials>
+</levelXML>");
+		Assert.IsType<Chain>(level.Specials[0]);
+	}
+
+	[Fact]
 	public void ParseLevelWithInvalidSpecialType()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
