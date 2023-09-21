@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Boost : SimpleSpecial
+public class Boost : Special
 {
     internal override uint Type => 12;
     public const string EditorDefault = 
