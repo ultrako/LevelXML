@@ -31,7 +31,7 @@ public class GroupActionsTest
     [Fact]
     public void TestFixGroup()
     {
-        FixGroup action = new();
+        Fix<Group> action = new();
         Assert.Equal(@"<a i=""2"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
@@ -39,7 +39,7 @@ public class GroupActionsTest
     [Fact]
     public void TestNonfixGroup()
     {
-        NonfixGroup action = new();
+        Nonfix<Group> action = new();
         Assert.Equal(@"<a i=""3"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }

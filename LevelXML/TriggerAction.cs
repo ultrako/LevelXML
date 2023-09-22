@@ -29,8 +29,8 @@ public interface ITriggerAction<in T> : ITriggerAction
 			nameof(Shape) => ActionType switch 
 			{
 				0 => (new AwakeFromSleep<Shape>() as ITriggerAction<T>)!,
-				1 => (new FixShape() as ITriggerAction<T>)!,
-				2 => (new NonfixShape() as ITriggerAction<T>)!,
+				1 => (new Fix<Shape>() as ITriggerAction<T>)!,
+				2 => (new Nonfix<Shape>() as ITriggerAction<T>)!,
 				3 => (new ChangeOpacity<Shape>(element) as ITriggerAction<T>)!,
 				4 => (new Impulse<Shape>(element) as ITriggerAction<T>)!,
 				5 => (new DeleteShape() as ITriggerAction<T>)!,
@@ -49,8 +49,8 @@ public interface ITriggerAction<in T> : ITriggerAction
 				0 => (new AwakeFromSleep<Group>() as ITriggerAction<T>)!,
 				1 => (new ChangeOpacity<Group>(element) as ITriggerAction<T>)!,
 				2 => (new Impulse<Group>(element) as ITriggerAction<T>)!,
-				3 => (new FixGroup() as ITriggerAction<T>)!,
-				4 => (new NonfixGroup() as ITriggerAction<T>)!,
+				3 => (new Fix<Group>() as ITriggerAction<T>)!,
+				4 => (new Nonfix<Group>() as ITriggerAction<T>)!,
 				5 => (new DeleteShapeGroup() as ITriggerAction<T>)!,
 				6 => (new DeleteSelfGroup() as ITriggerAction<T>)!,
 				7 => (new ChangeGroupCollision(element) as ITriggerAction<T>)!,

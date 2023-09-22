@@ -3,28 +3,6 @@ using System.Xml.Linq;
 namespace HappyWheels;
 
 /// <summary>
-/// This action turns a shape into a fixed object (it will not move)
-/// </summary>
-public class FixShape : TriggerAction, ITriggerAction<Shape>
-{
-	public FixShape()
-	{
-		Elt.SetAttributeValue("i", 1);
-	}
-}
-
-/// <summary>
-/// This action turns a shape into a non fixed object (it can move)
-/// </summary>
-public class NonfixShape : TriggerAction, ITriggerAction<Shape>
-{
-	public NonfixShape()
-	{
-		Elt.SetAttributeValue("i", 2);
-	}
-}
-
-/// <summary>
 /// This action freezes the shape in place and makes it non interactive
 /// </summary>
 public class DeleteShape : TriggerAction, ITriggerAction<Shape>

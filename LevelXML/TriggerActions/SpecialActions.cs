@@ -2,8 +2,6 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-
-
 /// <summary>
 /// This action causes the targeted harpoon to fire.
 /// </summary>
