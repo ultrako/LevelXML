@@ -7,7 +7,7 @@ public class GroupActionsTest
     [Fact]
     public void TestAwakeGroupFromSleep()
     {
-        AwakeGroupFromSleep action = new();
+        AwakeFromSleep<Group> action = new();
         Assert.Equal(@"<a i=""0"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
@@ -15,7 +15,7 @@ public class GroupActionsTest
     [Fact]
     public void TestChangeGroupOpacityDefaultValues()
     {
-        ChangeGroupOpacity action = new();
+        ChangeOpacity<Group> action = new();
         Assert.Equal(@"<a i=""1"" p0=""100"" p1=""1"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
@@ -23,8 +23,8 @@ public class GroupActionsTest
     [Fact]
     public void TestChangeGroupOpacityHighValues()
     {
-        ChangeGroupOpacity action = new(999999, double.PositiveInfinity);
-        Assert.Equal(100, action.Opacity);
+        ChangeOpacity<Group> action = new(double.PositiveInfinity, double.PositiveInfinity);
+        Assert.Equal(double.PositiveInfinity, action.Opacity);
         Assert.Equal(double.PositiveInfinity, action.Duration);
     }
 
@@ -47,7 +47,7 @@ public class GroupActionsTest
     [Fact]
     public void TestImpulseGroupDefaultValues()
     {
-        ImpulseGroup action = new();
+        Impulse<Group> action = new();
         Assert.Equal(10, action.X);
         Assert.Equal(-10, action.Y);
         Assert.Equal(0, action.Spin);
@@ -56,7 +56,7 @@ public class GroupActionsTest
     [Fact]
     public void TestImpulseGroupHighValues()
     {
-        ImpulseGroup action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Impulse<Group> action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.X);
         Assert.Equal(double.PositiveInfinity, action.Y);
         Assert.Equal(double.PositiveInfinity, action.Spin);

@@ -5,27 +5,15 @@ namespace HappyWheels.Test;
 public class SpecialActionsTest
 {
     [Fact]
-    public void TestImpulseSpecialDefaultValues()
+    public void ImpulseInvalidSpecialType()
     {
-        ImpulseSpecial action = new();
-        Assert.Equal(10, action.X);
-        Assert.Equal(-10, action.Y);
-        Assert.Equal(0, action.Spin);
+        Assert.Throws<LevelXMLException>(() => new Impulse<Fan>());
     }
-
-    [Fact]
-    public void TestImpulseSpecialHighValues()
-    {
-        ImpulseSpecial action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
-        Assert.Equal(double.PositiveInfinity, action.X);
-        Assert.Equal(double.PositiveInfinity, action.Y);
-        Assert.Equal(double.PositiveInfinity, action.Spin);
-    }
-
+    
     [Fact]
     public void TestChangeTextBoxOpacityDefaultValues()
     {
-        ChangeTextBoxOpacity action = new();
+        ChangeOpacity<TextBox> action = new();
         Assert.Equal(100, action.Opacity);
         Assert.Equal(1, action.Duration);
     }
@@ -33,7 +21,7 @@ public class SpecialActionsTest
     [Fact]
     public void TestChangeTextBoxOpacityHighValues()
     {
-        ChangeTextBoxOpacity action = new(double.PositiveInfinity, double.PositiveInfinity);
+        ChangeOpacity<TextBox> action = new(double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.Opacity);
         Assert.Equal(double.PositiveInfinity, action.Duration);
     }
@@ -41,7 +29,7 @@ public class SpecialActionsTest
     [Fact]
     public void TestSlideTextBoxDefaultValues()
     {
-        SlideTextBox action = new();
+        Slide action = new();
         Assert.Equal(1, action.Duration);
         Assert.Equal(0, action.X);
         Assert.Equal(0, action.Y);
@@ -50,14 +38,14 @@ public class SpecialActionsTest
     [Fact]
     public void TestSlideTextBoxHighValues()
     {
-        SlideTextBox action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Slide action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.Duration);
     }
 
     [Fact]
     public void TestImpulseNPCDefaultValues()
     {
-        ImpulseNPC action = new();
+        Impulse<NonPlayerCharacter> action = new();
         Assert.Equal(10, action.X);
         Assert.Equal(-10, action.Y);
         Assert.Equal(0, action.Spin);
@@ -66,7 +54,7 @@ public class SpecialActionsTest
     [Fact]
     public void TestImpulseNPCHighValues()
     {
-        ImpulseNPC action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Impulse<NonPlayerCharacter> action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.X);
         Assert.Equal(double.PositiveInfinity, action.Y);
         Assert.Equal(double.PositiveInfinity, action.Spin);
@@ -75,7 +63,7 @@ public class SpecialActionsTest
     [Fact]
     public void TestImpulseGlassPanelDefaultValues()
     {
-        ImpulseGlassPanel action = new();
+        Impulse<GlassPanel> action = new();
         Assert.Equal(10, action.X);
         Assert.Equal(-10, action.Y);
         Assert.Equal(0, action.Spin);
@@ -84,7 +72,7 @@ public class SpecialActionsTest
     [Fact]
     public void TestImpulseGlassPanelHighValues()
     {
-        ImpulseGlassPanel action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Impulse<GlassPanel> action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.X);
         Assert.Equal(double.PositiveInfinity, action.Y);
         Assert.Equal(double.PositiveInfinity, action.Spin);

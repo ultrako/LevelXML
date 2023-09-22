@@ -24,7 +24,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestChangeShapeOpacity()
     {
-        ChangeShapeOpacity action = new();
+        ChangeOpacity<Shape> action = new();
         Assert.Equal(100, action.Opacity);
         Assert.Equal(1, action.Duration);
     }
@@ -32,7 +32,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestImpulseShapeDefaultConstructor()
     {
-        ImpulseShape action = new();
+        Impulse<Shape> action = new();
         Assert.Equal(10, action.X);
         Assert.Equal(-10, action.Y);
         Assert.Equal(0, action.Spin);
@@ -41,7 +41,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestImpulseShapeHighValues()
     {
-        ImpulseShape action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        Impulse<Shape> action = new(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         Assert.Equal(double.PositiveInfinity, action.X);
         Assert.Equal(double.PositiveInfinity, action.Y);
         Assert.Equal(double.PositiveInfinity, action.Spin);

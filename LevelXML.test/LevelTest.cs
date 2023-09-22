@@ -107,7 +107,7 @@ public class LevelTest
 	public void TestCreateLevelWithTriggerToRectangle()
 	{
 		Rectangle rect = new();
-		ActivateTrigger trigger = new(targets: new Target<Shape>(rect, new AwakeShapeFromSleep()));
+		ActivateTrigger trigger = new(targets: new Target<Shape>(rect, new AwakeFromSleep<Shape>()));
 		Level level = new(rect, trigger);
 		Assert.Equal(@"<levelXML>
 	<info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
@@ -161,7 +161,7 @@ public class LevelTest
 </levelXML>");
 		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
 		Target<SimpleSpecial> target = (Target<SimpleSpecial>)trigger.Targets[0];
-		Assert.IsType<AwakeSpecialFromSleep>(target.Actions[0]);
+		Assert.IsType<AwakeFromSleep<SimpleSpecial>>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -214,7 +214,7 @@ public class LevelTest
 </levelXML>");
 		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
 		Target<Group> target = (Target<Group>)trigger.Targets[0];
-		Assert.IsType<AwakeGroupFromSleep>(target.Actions[0]);
+		Assert.IsType<AwakeFromSleep<Group>>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -296,7 +296,7 @@ public class LevelTest
 	{
 		Rectangle rect = new();
 		ActivateTrigger trigger = new();
-		trigger.AddTarget(new Target<Shape>(rect, new AwakeShapeFromSleep()));
+		trigger.AddTarget(new Target<Shape>(rect, new AwakeFromSleep<Shape>()));
 		Level level = new(trigger);
 		Assert.Throws<LevelXMLException>(() => level.ToXML());
 	}
@@ -710,7 +710,7 @@ public class LevelTest
 </levelXML>");
 		var trigger = (ActivateTrigger)level.Triggers[0];
 		var target = (Target<TextBox>)trigger.Targets[0];
-		Assert.IsType<ChangeTextBoxOpacity>(target.Actions[0]);
+		Assert.IsType<ChangeOpacity<TextBox>>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -733,7 +733,7 @@ public class LevelTest
 </levelXML>");
 		var trigger = (ActivateTrigger)level.Triggers[0];
 		var target = (Target<TextBox>)trigger.Targets[0];
-		Assert.IsType<SlideTextBox>(target.Actions[0]);
+		Assert.IsType<Slide>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -774,7 +774,7 @@ public class LevelTest
 </levelXML>");
 		var trigger = (ActivateTrigger)level.Triggers[0];
 		var target = (Target<NonPlayerCharacter>)trigger.Targets[0];
-		Assert.IsType<AwakeNPCFromSleep>(target.Actions[0]);
+		Assert.IsType<AwakeFromSleep<NonPlayerCharacter>>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -795,7 +795,7 @@ public class LevelTest
 </levelXML>");
 		var trigger = (ActivateTrigger)level.Triggers[0];
 		var target = (Target<NonPlayerCharacter>)trigger.Targets[0];
-		Assert.IsType<ImpulseNPC>(target.Actions[0]);
+		Assert.IsType<Impulse<NonPlayerCharacter>>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -897,7 +897,7 @@ public class LevelTest
 </levelXML>");
 		var trigger = (ActivateTrigger)level.Triggers[0];
 		var target = (Target<GlassPanel>)trigger.Targets[0];
-		Assert.IsType<AwakeGlassPanelFromSleep>(target.Actions[0]);
+		Assert.IsType<AwakeFromSleep<GlassPanel>>(target.Actions[0]);
 	}
 
 	[Fact]
@@ -918,7 +918,7 @@ public class LevelTest
 </levelXML>");
 		var trigger = (ActivateTrigger)level.Triggers[0];
 		var target = (Target<GlassPanel>)trigger.Targets[0];
-		Assert.IsType<ImpulseGlassPanel>(target.Actions[0]);
+		Assert.IsType<Impulse<GlassPanel>>(target.Actions[0]);
 	}
 
 	[Fact]
