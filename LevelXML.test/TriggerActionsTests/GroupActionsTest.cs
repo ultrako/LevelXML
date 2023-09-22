@@ -79,16 +79,9 @@ public class GroupActionsTest
     }
 
     [Fact]
-    public void TestChangeGroupCollisionDefaultValue()
-    {
-        ChangeGroupCollision action = new();
-        Assert.Equal(Collision.Everything, action.Collision);
-    }
-
-    [Fact]
     public void TestChangeGroupCollisionOneParamConstructor()
     {
-        ChangeGroupCollision action = new(Collision.Nothing);
+        ChangeCollision<Group> action = new(Collision.Nothing);
         Assert.Equal(Collision.Nothing, action.Collision);
     }
 }
