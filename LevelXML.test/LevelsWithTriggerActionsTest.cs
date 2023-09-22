@@ -66,7 +66,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<ChangeShapeOpacity>(target.Actions[0]);
+        Assert.IsType<ChangeOpacity<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -87,7 +87,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<ImpulseShape>(target.Actions[0]);
+        Assert.IsType<Impulse<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -189,7 +189,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<SimpleSpecial> target = (Target<SimpleSpecial>)trigger.Targets[0];
-        Assert.IsType<ImpulseSpecial>(target.Actions[0]);
+        Assert.IsType<Impulse<SimpleSpecial>>(target.Actions[0]);
     }
 
     [Fact]
@@ -230,7 +230,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<ChangeGroupOpacity>(target.Actions[0]);
+        Assert.IsType<ChangeOpacity<Group>>(target.Actions[0]);
     }
 
     [Fact]
@@ -253,7 +253,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<ImpulseGroup>(target.Actions[0]);
+        Assert.IsType<Impulse<Group>>(target.Actions[0]);
     }
 
     [Fact]

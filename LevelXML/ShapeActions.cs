@@ -2,17 +2,6 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-///<summary>
-/// If the shape is sleeping, this awakes it from sleep.
-///</summary>
-public class AwakeShapeFromSleep : TriggerAction, ITriggerAction<Shape>
-{
-	public AwakeShapeFromSleep()
-	{
-		Elt.SetAttributeValue("i", 0);
-	}
-}
-
 /// <summary>
 /// This action turns a shape into a fixed object (it will not move)
 /// </summary>
@@ -33,83 +22,6 @@ public class NonfixShape : TriggerAction, ITriggerAction<Shape>
 	{
 		Elt.SetAttributeValue("i", 2);
 	}
-}
-
-// This is a lot of repeated code
-// I'd like this to be ChangeOpacity<Shape> extending TriggerAction<Shape>, but I can't do that.
-
-/// <summary>
-///  This action changes the opacity of a shape over time
-/// </summary>
-public class ChangeShapeOpacity : TriggerAction, ITriggerAction<Shape>
-{
-	public static string EditorDefault =
-	@"<a i=""3"" p0=""100"" p1=""1"" />";
-	public double? Opacity
-	{
-		get { return GetDoubleOrNull("p0"); }
-		// Yes, no clamps on this value, weird behavior ensues.
-		set { Elt.SetAttributeValue("p0", value); }
-	}
-	public double? Duration
-	{
-		get { return GetDoubleOrNull("p1"); }
-		set { Elt.SetAttributeValue("p1", value); }
-	}
-	public ChangeShapeOpacity(double Opacity, double Duration)
-	{
-		Elt.SetAttributeValue("i", 3);
-		this.Opacity = Opacity;
-		this.Duration = Duration;
-	}
-	public ChangeShapeOpacity() : this(EditorDefault) {}
-	public ChangeShapeOpacity(string xml) : this(StrToXElement(xml)) {}
-	internal ChangeShapeOpacity(XElement e)
-	{
-		Elt.SetAttributeValue("i", 3);
-		Opacity = GetDoubleOrNull(e, "p0");
-		Duration = GetDoubleOrNull(e, "p1");
-	}
-}
-
-/// <summary>
-/// This action applies an X, Y, and Spin force to a shape.
-/// </summary>
-public class ImpulseShape : TriggerAction, ITriggerAction<Shape>
-{
-	public const string EditorDefault =
-	@"<a i=""4"" p0=""10"" p1=""-10"" p2=""0""/>";
-	public double? X
-	{
-		get { return GetDoubleOrNull("p0"); }
-		set { SetDouble("p0", value ?? 0);}
-	}
-	public double? Y
-	{
-		get { return GetDoubleOrNull("p1"); }
-		set { SetDouble("p1", value ?? 0); }
-	}
-	public double? Spin
-	{
-		get { return GetDoubleOrNull("p2"); }
-		set { SetDouble("p2", value ?? 0);}
-	}
-	public ImpulseShape() : this(EditorDefault) {}
-	public ImpulseShape(double x, double y, double spin)
-	{
-		Elt.SetAttributeValue("i", 4);
-		X = x;
-		Y = y;
-		Spin = spin;
-	}
-	public ImpulseShape(string xml) : this(StrToXElement(xml)) {}
-	internal ImpulseShape(XElement e)
-	{
-		Elt.SetAttributeValue("i", 4);
-		X = GetDoubleOrNull(e, "p0");
-		Y = GetDoubleOrNull(e, "p1");
-		Spin = GetDoubleOrNull(e, "p2");
-	}     
 }
 
 /// <summary>

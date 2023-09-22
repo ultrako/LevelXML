@@ -8,7 +8,7 @@ public class TargetTest {
 	public void TestAwakeFromSleepTarget()
 	{
 		Rectangle rect = new();
-		Target<Shape> target = new(rect, new AwakeShapeFromSleep());
+		Target<Shape> target = new(rect, new AwakeFromSleep<Shape>());
 		Assert.Equal(@"<sh i=""" + rect.GetHashCode() + @""">
  <a i=""0"" />
 </sh>",
@@ -20,7 +20,7 @@ public class TargetTest {
 	public void TestAddWrongEntityTypeActionToTarget()
 	{
 		Target<Shape> target = new(new Rectangle());
-		Assert.Throws<LevelXMLException>(() => target.AddAction(new AwakeGroupFromSleep()));
+		Assert.Throws<LevelXMLException>(() => target.AddAction(new AwakeFromSleep<Group>()));
 	}
 
 	[Fact]
@@ -42,17 +42,17 @@ public class TargetTest {
 	public void TestRemoveAction()
 	{
 		Target<Shape> target = new(new Rectangle());
-		AwakeShapeFromSleep action = new();
+		AwakeFromSleep<Shape> action = new();
 		target.AddAction(action);
 		Assert.True(target.RemoveAction(action));
-		Assert.False(target.RemoveAction(new AwakeGroupFromSleep()));
+		Assert.False(target.RemoveAction(new AwakeFromSleep<Group>()));
 	}
 
 	[Fact]
 	public void TestIndexOf()
 	{
 		Target<Shape> target = new(new Rectangle());
-		AwakeShapeFromSleep action1 = new();
+		AwakeFromSleep<Shape> action1 = new();
 		DeleteSelfShape action2 = new();
 		target.AddAction(action1);
 		target.AddAction(action2);

@@ -2,7 +2,7 @@ using Xunit;
 
 namespace HappyWheels.Test;
 
-public class NonPlayableCharacterTest
+public class NonPlayerCharacterTest
 {
     [Fact]
     public void TestDefaultValues()

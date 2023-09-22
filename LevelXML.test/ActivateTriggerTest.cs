@@ -49,7 +49,7 @@ public class ActivateTriggerTest
 		// Unlike these other tests, importing a trigger with targets doesn't make sense,
 		// unless you have a level to map those targets with.
 		Rectangle rect = new();
-		ActivateTrigger trigger = new(targets: new Target<Shape>(rect, new AwakeShapeFromSleep()));
+		ActivateTrigger trigger = new(targets: new Target<Shape>(rect, new AwakeFromSleep<Shape>()));
 		Assert.Equal(@"<t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
 	<sh i=""" + rect.GetHashCode() + @""">
 		<a i=""0"" />
@@ -63,10 +63,10 @@ public class ActivateTriggerTest
 	{
 		Rectangle rect = new();
 		ActivateTrigger trigger = new();
-		trigger.AddTarget(new Target<Shape>(rect, new AwakeShapeFromSleep()));
-		trigger.AddTarget(new Target<Shape>(rect, new ChangeShapeOpacity(0, 0)));
+		trigger.AddTarget(new Target<Shape>(rect, new AwakeFromSleep<Shape>()));
+		trigger.AddTarget(new Target<Shape>(rect, new ChangeOpacity<Shape>(0, 0)));
 		// We can't assert equality on two TriggerActions because I haven't defined = operators for them
-		Assert.IsType<ChangeShapeOpacity>(trigger.Targets[0].Actions[1]);
+		Assert.IsType<ChangeOpacity<Shape>>(trigger.Targets[0].Actions[1]);
 	}
 	[Fact]
 	public void AddTwoTargetsToSameTrigger()
@@ -82,9 +82,9 @@ public class ActivateTriggerTest
 	{
 		ActivateTrigger trigger = new();
 		Rectangle rect = new();
-		Target target1 = new Target<Shape>(rect, new AwakeShapeFromSleep());
+		Target target1 = new Target<Shape>(rect, new AwakeFromSleep<Shape>());
 		Target target2 = new Target<Trigger>(trigger, new Enable());
-		Target target3 = new Target<Shape>(rect, new ChangeShapeOpacity(50, 0));
+		Target target3 = new Target<Shape>(rect, new ChangeOpacity<Shape>(50, 0));
 		trigger.AddTarget(target1);
 		trigger.InsertTarget(0, target2);
 		trigger.RemoveTargetAt(1);
