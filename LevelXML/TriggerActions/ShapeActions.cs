@@ -3,28 +3,6 @@ using System.Xml.Linq;
 namespace HappyWheels;
 
 /// <summary>
-/// This action freezes the shape in place and makes it non interactive
-/// </summary>
-public class DeleteShape : TriggerAction, ITriggerAction<Shape>
-{
-	public DeleteShape()
-	{
-		Elt.SetAttributeValue("i", 5);
-	}
-}
-
-/// <summary>
-/// This action deletes the shape.
-/// </summary>
-public class DeleteSelfShape : TriggerAction, ITriggerAction<Shape>
-{
-	public DeleteSelfShape()
-	{
-		Elt.SetAttributeValue("i", 6);
-	}
-}
-
-/// <summary>
 /// This action changes the Shape's collision
 /// </summary>
 public class ChangeShapeCollision : TriggerAction, ITriggerAction<Shape>

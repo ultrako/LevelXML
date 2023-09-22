@@ -50,7 +50,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestDeleteShape()
     {
-        DeleteShape action = new();
+        DeleteShapes<Shape> action = new();
         Assert.Equal(@"<a i=""5"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
@@ -58,7 +58,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestDeleteSelfShape()
     {
-        DeleteSelfShape action = new();
+        DeleteSelf<Shape> action = new();
         Assert.Equal(@"<a i=""6"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }

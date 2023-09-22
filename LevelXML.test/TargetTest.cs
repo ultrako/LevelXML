@@ -53,7 +53,7 @@ public class TargetTest {
 	{
 		Target<Shape> target = new(new Rectangle());
 		AwakeFromSleep<Shape> action1 = new();
-		DeleteSelfShape action2 = new();
+		DeleteSelf<Shape> action2 = new();
 		target.AddAction(action1);
 		target.AddAction(action2);
 		Assert.Equal(1, target.IndexOfAction(action2));
