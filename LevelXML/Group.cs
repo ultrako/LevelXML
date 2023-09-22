@@ -14,39 +14,31 @@ public class Group : Entity
 	private List<Entity> items;
 	public IList<Entity> Items { get { return items;}}
 	
-	// We need to make sure only non fixed shapes, or non interactive specials are grouped.
+	// We need to make sure only non fixed shapes, or certain specials are grouped.
 	// This function will throw an exception if that isn't the case.
 	private void checkGroupableEntity(Entity entity)
 	{
-		LevelXMLException notAllowedinGroupException = new("{nameof(entity)} are not allowed in groups.");
-		if (entity is Shape shape)
-		{}
-		else if (entity is Special special)
+		if (entity is Shape ||
+			entity is Van ||
+			entity is DinnerTable ||
+			entity is IBeam ||
+			entity is SpikeSet ||
+			entity is TextBox ||
+			entity is NonPlayerCharacter ||
+			entity is Chair ||
+			entity is Bottle ||
+			entity is Television ||
+			entity is Boombox ||
+			entity is Sign ||
+			entity is Toilet ||
+			entity is TrashCan ||
+			entity is ArrowGun ||
+			entity is Food ||
+			entity is BladeWeapon) 
 		{
-			if (entity is Van ||
-				entity is DinnerTable ||
-				entity is IBeam ||
-				entity is SpikeSet ||
-				entity is TextBox ||
-				entity is NonPlayerCharacter ||
-				entity is Chair ||
-				entity is Bottle ||
-				entity is Television ||
-				entity is Boombox ||
-				entity is Sign ||
-				entity is Toilet ||
-				entity is TrashCan ||
-				entity is ArrowGun ||
-				entity is Food ||
-				entity is BladeWeapon) {}
-			else
-			{
-				throw notAllowedinGroupException;
-			}
-		} else
-		{
-			throw notAllowedinGroupException;
+			return;
 		}
+		throw new LevelXMLException("{nameof(entity)} are not allowed in groups.");
 	}
 	
 	public override double? X

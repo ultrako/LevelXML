@@ -26,7 +26,7 @@ public abstract class Target : LevelXMLTag
 	/// <summary>
 	///  The actions that will happen to the Target Entity.
 	/// </summary>
-	public abstract IReadOnlyList<TriggerAction> Actions { get; }
+	public abstract IReadOnlyList<ITriggerAction> Actions { get; }
 
 	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
 
@@ -71,9 +71,9 @@ public abstract class Target : LevelXMLTag
 
 public class Target<T> : Target where T : Entity
 {
-	private List<TriggerAction<T>> lst;
+	private List<ITriggerAction<T>> lst;
 
-	public override IReadOnlyList<TriggerAction> Actions => lst;
+	public override IReadOnlyList<ITriggerAction<T>> Actions => lst;
 
 	public override void AddAction(TriggerAction action) {
 		// A trigger can only do one thing to another trigger
@@ -81,10 +81,10 @@ public class Target<T> : Target where T : Entity
 		{
 			if (lst.Count > 0)
 			{
-				throw new Exception("Tried to add a second action to a trigger!");
+				throw new LevelXMLException("Tried to add a second action to a trigger!");
 			}
 		}
-		if (action is TriggerAction<T> act)
+		if (action is ITriggerAction<T> act)
 		{
 			lst.Add(act); 
 		} else
@@ -94,7 +94,7 @@ public class Target<T> : Target where T : Entity
 	}
 	public override bool RemoveAction(TriggerAction action) 
 	{
-		if (action is TriggerAction<T> act)
+		if (action is ITriggerAction<T> act)
 		{
 			return lst.Remove(act); 
 		}
@@ -102,7 +102,7 @@ public class Target<T> : Target where T : Entity
 	}
 	public override int IndexOfAction(TriggerAction action) 
 	{ 
-		if (action is TriggerAction<T> act)
+		if (action is ITriggerAction<T> act)
 		{
 			return lst.IndexOf(act);
 		}
@@ -113,16 +113,16 @@ public class Target<T> : Target where T : Entity
 	{
 		Elt.SetAttributeValue("i", mapper(Targeted));
 		Elt.RemoveNodes();
-		foreach (TriggerAction<T> action in lst)
+		foreach (ITriggerAction<T> action in lst)
 		{
-			Elt.Add(action.Elt);
+			Elt.Add(StrToXElement(action.ToXML()));
 		}
 	}
 	///<summary>
 	/// You can construct a Target[T] out of an Entity of type T and a list of Action[T]
 	///</summary>
 
-	public Target(T targeted, params TriggerAction<T>[] actions) : 
+	public Target(T targeted, params ITriggerAction<T>[] actions) : 
 	base(targeted) 
 	{
 		if (typeof(T) == typeof(Trigger) && actions.Length > 1)
@@ -139,8 +139,8 @@ public class Target<T> : Target where T : Entity
 	internal Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) :
 		base(e, ReverseTargetMapper)
 	{
-		TriggerAction<T>[] actions = e.Elements()
-			.Select(tag => TriggerAction<T>.FromXElement(tag))
+		ITriggerAction<T>[] actions = e.Elements()
+			.Select(tag => ITriggerAction<T>.FromXElement(tag))
 			.ToArray();
 		lst = new(actions);
 	}

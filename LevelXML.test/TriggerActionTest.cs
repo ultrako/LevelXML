@@ -9,6 +9,6 @@ public class TriggerActionTest
     [Fact]
     public void InvalidEntityTypeInFromXElement()
     {
-        Assert.Throws<LevelXMLException>(() => TriggerAction<TestEntity>.FromXElement(new XElement("a")));
+        Assert.Throws<LevelXMLException>(() => ITriggerAction<TestEntity>.FromXElement(new XElement("a")));
     }
 }

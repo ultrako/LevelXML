@@ -4,7 +4,7 @@ namespace HappyWheels;
 /// <summary>
 /// If a group is sleeping, this trigger action awakes it.
 /// </summary>
-public class AwakeGroupFromSleep : TriggerAction<Group>
+public class AwakeGroupFromSleep : TriggerAction, ITriggerAction<Group>
 {
 	public AwakeGroupFromSleep()
 	{
@@ -15,7 +15,7 @@ public class AwakeGroupFromSleep : TriggerAction<Group>
 /// <summary>
 /// This trigger action will slowly change the opacity of a group over time
 /// </summary>
-public class ChangeGroupOpacity : TriggerAction<Group>
+public class ChangeGroupOpacity : TriggerAction, ITriggerAction<Group>
 {
 	public static string EditorDefault =
 	@"<a i=""1"" p0=""100"" p1=""1"" />";
@@ -49,7 +49,7 @@ public class ChangeGroupOpacity : TriggerAction<Group>
 /// <summary>
 /// This action turns a group into a fixed object (it will not move)
 /// </summary>
-public class FixGroup : TriggerAction<Group>
+public class FixGroup : TriggerAction, ITriggerAction<Group>
 {
 	public FixGroup()
 	{
@@ -60,7 +60,7 @@ public class FixGroup : TriggerAction<Group>
 /// <summary>
 /// This action turns the group into a non fixed object (it can move)
 /// </summary>
-public class NonfixGroup : TriggerAction<Group>
+public class NonfixGroup : TriggerAction, ITriggerAction<Group>
 {
 	public NonfixGroup()
 	{
@@ -71,7 +71,7 @@ public class NonfixGroup : TriggerAction<Group>
 /// <summary>
 ///  This action applies an X, Y, and Spin force to a group.
 /// </summary>
-public class ImpulseGroup : TriggerAction<Group>
+public class ImpulseGroup : TriggerAction, ITriggerAction<Group>
 {
 	public static string EditorDefault =
 	@"<a i=""4"" p0=""10"" p1=""-10"" p2=""0""/>";
@@ -112,7 +112,7 @@ public class ImpulseGroup : TriggerAction<Group>
 /// <summary>
 /// This action freezes the group in place and makes it non interactive
 /// </summary>
-public class DeleteShapeGroup : TriggerAction<Group>
+public class DeleteShapeGroup : TriggerAction, ITriggerAction<Group>
 {
 	public DeleteShapeGroup()
 	{
@@ -123,7 +123,7 @@ public class DeleteShapeGroup : TriggerAction<Group>
 /// <summary>
 /// This action deletes the group
 /// </summary>
-public class DeleteSelfGroup : TriggerAction<Group>
+public class DeleteSelfGroup : TriggerAction, ITriggerAction<Group>
 {
 	public DeleteSelfGroup()
 	{
@@ -135,7 +135,7 @@ public class DeleteSelfGroup : TriggerAction<Group>
 /// This action changes the group's collision
 /// </summary>
 
-public class ChangeGroupCollision : TriggerAction<Group>
+public class ChangeGroupCollision : TriggerAction, ITriggerAction<Group>
 {
 	public static string EditorDefault =
 	@"<a i=""7"" p0=""1""/>";
