@@ -66,27 +66,27 @@ public class ShapeActionsTest
     [Fact]
     public void TestChangeShapeCollisionXmlConstructor()
     {
-        ChangeShapeCollision action = new(@"<a i=""7"" p0=""3"" />");
+        ChangeCollision<Shape> action = new(@"<a i=""7"" p0=""3"" />");
         Assert.Equal(Collision.Nothing, action.Collision);
     }
 
     [Fact]
     public void TestChangeShapeCollision()
     {
-        ChangeShapeCollision action = new(Collision.Everything);
+        ChangeCollision<Shape> action = new(Collision.Everything);
         Assert.Equal(Collision.Everything, action.Collision);
     }
 
     [Fact]
     public void TestChangeShapeCollisionLackOfCollision()
     {
-        Assert.Throws<LevelXMLException>(() => new ChangeShapeCollision(@"<a i=""7"" />"));
+        Assert.Throws<LevelXMLException>(() => new ChangeCollision<Shape>(@"<a i=""7"" />"));
     }
 
     [Fact]
     public void TestChangeShapeCollisionChangeCollision()
     {
-        ChangeShapeCollision action = new(Collision.Everything);
+        ChangeCollision<Shape> action = new(Collision.Everything);
         action.Collision = 3;
         Assert.Equal(Collision.Nothing, action.Collision);
     }

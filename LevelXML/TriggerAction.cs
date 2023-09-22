@@ -35,7 +35,7 @@ public interface ITriggerAction<in T> : ITriggerAction
 				4 => (new Impulse<Shape>(element) as ITriggerAction<T>)!,
 				5 => (new DeleteShapes<Shape>() as ITriggerAction<T>)!,
 				6 => (new DeleteSelf<Shape>() as ITriggerAction<T>)!,
-				7 => (new ChangeShapeCollision(element) as ITriggerAction<T>)!,
+				7 => (new ChangeCollision<Shape>(element) as ITriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a shape!"),
 			},
 			nameof(SimpleSpecial) => ActionType switch 
@@ -53,7 +53,7 @@ public interface ITriggerAction<in T> : ITriggerAction
 				4 => (new Nonfix<Group>() as ITriggerAction<T>)!,
 				5 => (new DeleteShapes<Group>() as ITriggerAction<T>)!,
 				6 => (new DeleteSelf<Group>() as ITriggerAction<T>)!,
-				7 => (new ChangeGroupCollision(element) as ITriggerAction<T>)!,
+				7 => (new ChangeCollision<Group>(element) as ITriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a group!"),
 			},
 			nameof(Joint) => ActionType switch

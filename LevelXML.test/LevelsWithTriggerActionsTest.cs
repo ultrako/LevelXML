@@ -150,7 +150,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<ChangeShapeCollision>(target.Actions[0]);
+        Assert.IsType<ChangeCollision<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -368,7 +368,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<ChangeGroupCollision>(target.Actions[0]);
+        Assert.IsType<ChangeCollision<Group>>(target.Actions[0]);
     }
 
     [Fact]
