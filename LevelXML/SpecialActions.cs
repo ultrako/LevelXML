@@ -5,7 +5,7 @@ namespace HappyWheels;
 /// <summary>
 /// If the special is sleeping, this awakes it from sleep.
 /// </summary>
-public class AwakeSpecialFromSleep : TriggerAction<SimpleSpecial>
+public class AwakeSpecialFromSleep : TriggerAction, ITriggerAction<SimpleSpecial>
 {
     public AwakeSpecialFromSleep()
 	{
@@ -16,7 +16,7 @@ public class AwakeSpecialFromSleep : TriggerAction<SimpleSpecial>
 /// <summary>
 ///  This action applies an X, Y, and Spin force to a special.
 /// </summary>
-public class ImpulseSpecial : TriggerAction<SimpleSpecial>
+public class ImpulseSpecial : TriggerAction, ITriggerAction<SimpleSpecial>
 {
     public const string EditorDefault =
     @"<a i=""1"" p0=""10"" p1=""-10"" p2=""0""/>";
@@ -61,7 +61,7 @@ public class ImpulseSpecial : TriggerAction<SimpleSpecial>
 /// <summary>
 /// This action causes the targeted harpoon to fire.
 /// </summary>
-public class FireHarpoon : TriggerAction<Harpoon>
+public class FireHarpoon : TriggerAction, ITriggerAction<Harpoon>
 {
 	public FireHarpoon()
 	{
@@ -72,7 +72,7 @@ public class FireHarpoon : TriggerAction<Harpoon>
 /// <summary>
 /// This action prevents a harpoon from firing until activated by another trigger.
 /// </summary>
-public class DeactivateHarpoon : TriggerAction<Harpoon>
+public class DeactivateHarpoon : TriggerAction, ITriggerAction<Harpoon>
 {
 	public DeactivateHarpoon()
 	{
@@ -83,7 +83,7 @@ public class DeactivateHarpoon : TriggerAction<Harpoon>
 /// <summary>
 /// This action will allow a deactivated harpoon to start firing again.
 /// </summary>
-public class ActivateHarpoon : TriggerAction<Harpoon>
+public class ActivateHarpoon : TriggerAction, ITriggerAction<Harpoon>
 {
 	public ActivateHarpoon()
 	{
@@ -94,7 +94,7 @@ public class ActivateHarpoon : TriggerAction<Harpoon>
 /// <summary>
 ///  This action changes the opacity of this textbox over time
 /// </summary>
-public class ChangeTextBoxOpacity : TriggerAction<TextBox>
+public class ChangeTextBoxOpacity : TriggerAction, ITriggerAction<TextBox>
 {
 	public const string EditorDefault =
 	@"<a i=""0"" p0=""100"" p1=""1"" />";
@@ -128,7 +128,7 @@ public class ChangeTextBoxOpacity : TriggerAction<TextBox>
 	}
 }
 
-public class SlideTextBox : TriggerAction<TextBox>
+public class SlideTextBox : TriggerAction, ITriggerAction<TextBox>
 {
 	public const string EditorDefault =
 	@"<a i=""1"" p0=""1"" p1=""0"" p2=""0""/>";
@@ -181,7 +181,7 @@ public class SlideTextBox : TriggerAction<TextBox>
 /// <summary>
 /// If the NPC is sleeping, this awakes it from sleep.
 /// </summary>
-public class AwakeNPCFromSleep : TriggerAction<NonPlayerCharacter>
+public class AwakeNPCFromSleep : TriggerAction, ITriggerAction<NonPlayerCharacter>
 {
     public AwakeNPCFromSleep()
 	{
@@ -192,7 +192,7 @@ public class AwakeNPCFromSleep : TriggerAction<NonPlayerCharacter>
 /// <summary>
 ///  This action applies an X, Y, and Spin force to a NPC.
 /// </summary>
-public class ImpulseNPC : TriggerAction<NonPlayerCharacter>
+public class ImpulseNPC : TriggerAction, ITriggerAction<NonPlayerCharacter>
 {
     public const string EditorDefault =
     @"<a i=""1"" p0=""10"" p1=""-10"" p2=""0""/>";
@@ -237,7 +237,7 @@ public class ImpulseNPC : TriggerAction<NonPlayerCharacter>
 /// <summary>
 /// This trigger action makes the NPC return to the pose set at the start of the level.
 /// </summary>
-public class HoldPose : TriggerAction<NonPlayerCharacter>
+public class HoldPose : TriggerAction, ITriggerAction<NonPlayerCharacter>
 {
 	public HoldPose()
 	{
@@ -248,7 +248,7 @@ public class HoldPose : TriggerAction<NonPlayerCharacter>
 /// <summary>
 /// This trigger action makes the NPC limp.
 /// </summary>
-public class ReleasePose : TriggerAction<NonPlayerCharacter>
+public class ReleasePose : TriggerAction, ITriggerAction<NonPlayerCharacter>
 {
 	public ReleasePose()
 	{
@@ -259,7 +259,7 @@ public class ReleasePose : TriggerAction<NonPlayerCharacter>
 /// <summary>
 /// This trigger action shatters a glass panel.
 /// </summary>
-public class Shatter : TriggerAction<GlassPanel>
+public class Shatter : TriggerAction, ITriggerAction<GlassPanel>
 {
 	public Shatter()
 	{
@@ -267,7 +267,7 @@ public class Shatter : TriggerAction<GlassPanel>
 	}
 }
 
-public class AwakeGlassPanelFromSleep : TriggerAction<GlassPanel>
+public class AwakeGlassPanelFromSleep : TriggerAction, ITriggerAction<GlassPanel>
 {
 	public AwakeGlassPanelFromSleep()
 	{
@@ -278,7 +278,7 @@ public class AwakeGlassPanelFromSleep : TriggerAction<GlassPanel>
 /// <summary>
 ///  This action applies an X, Y, and Spin force to a NPC.
 /// </summary>
-public class ImpulseGlassPanel : TriggerAction<GlassPanel>
+public class ImpulseGlassPanel : TriggerAction, ITriggerAction<GlassPanel>
 {
     public const string EditorDefault =
     @"<a i=""2"" p0=""10"" p1=""-10"" p2=""0""/>";

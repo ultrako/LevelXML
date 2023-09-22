@@ -5,7 +5,7 @@ namespace HappyWheels;
 ///<summary>
 /// If the shape is sleeping, this awakes it from sleep.
 ///</summary>
-public class AwakeShapeFromSleep : TriggerAction<Shape>
+public class AwakeShapeFromSleep : TriggerAction, ITriggerAction<Shape>
 {
 	public AwakeShapeFromSleep()
 	{
@@ -16,7 +16,7 @@ public class AwakeShapeFromSleep : TriggerAction<Shape>
 /// <summary>
 /// This action turns a shape into a fixed object (it will not move)
 /// </summary>
-public class FixShape : TriggerAction<Shape>
+public class FixShape : TriggerAction, ITriggerAction<Shape>
 {
 	public FixShape()
 	{
@@ -27,7 +27,7 @@ public class FixShape : TriggerAction<Shape>
 /// <summary>
 /// This action turns a shape into a non fixed object (it can move)
 /// </summary>
-public class NonfixShape : TriggerAction<Shape>
+public class NonfixShape : TriggerAction, ITriggerAction<Shape>
 {
 	public NonfixShape()
 	{
@@ -41,7 +41,7 @@ public class NonfixShape : TriggerAction<Shape>
 /// <summary>
 ///  This action changes the opacity of a shape over time
 /// </summary>
-public class ChangeShapeOpacity : TriggerAction<Shape>
+public class ChangeShapeOpacity : TriggerAction, ITriggerAction<Shape>
 {
 	public static string EditorDefault =
 	@"<a i=""3"" p0=""100"" p1=""1"" />";
@@ -75,7 +75,7 @@ public class ChangeShapeOpacity : TriggerAction<Shape>
 /// <summary>
 /// This action applies an X, Y, and Spin force to a shape.
 /// </summary>
-public class ImpulseShape : TriggerAction<Shape>
+public class ImpulseShape : TriggerAction, ITriggerAction<Shape>
 {
 	public const string EditorDefault =
 	@"<a i=""4"" p0=""10"" p1=""-10"" p2=""0""/>";
@@ -115,7 +115,7 @@ public class ImpulseShape : TriggerAction<Shape>
 /// <summary>
 /// This action freezes the shape in place and makes it non interactive
 /// </summary>
-public class DeleteShape : TriggerAction<Shape>
+public class DeleteShape : TriggerAction, ITriggerAction<Shape>
 {
 	public DeleteShape()
 	{
@@ -126,7 +126,7 @@ public class DeleteShape : TriggerAction<Shape>
 /// <summary>
 /// This action deletes the shape.
 /// </summary>
-public class DeleteSelfShape : TriggerAction<Shape>
+public class DeleteSelfShape : TriggerAction, ITriggerAction<Shape>
 {
 	public DeleteSelfShape()
 	{
@@ -137,7 +137,7 @@ public class DeleteSelfShape : TriggerAction<Shape>
 /// <summary>
 /// This action changes the Shape's collision
 /// </summary>
-public class ChangeShapeCollision : TriggerAction<Shape>
+public class ChangeShapeCollision : TriggerAction, ITriggerAction<Shape>
 {
 	public Collision Collision
 	{

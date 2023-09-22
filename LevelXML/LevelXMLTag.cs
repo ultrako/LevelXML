@@ -44,7 +44,7 @@ public abstract class LevelXMLTag
 	// because they can sometimes hold NaN. And sometimes NaN does unique things for
 	// level creators, so we won't occlude all of that from the get-go.
 	protected double? GetDoubleOrNull(string attr) { return GetDoubleOrNull(this.Elt, attr); }
-	protected static double? GetDoubleOrNull(XElement elt, string attr) 
+	internal static double? GetDoubleOrNull(XElement elt, string attr) 
 	{
 		if (GetStringOrNull(elt, attr) is string val)
 		{

@@ -5,7 +5,7 @@ namespace HappyWheels;
 /// <summary>
 ///  This action disables the motor on a joint, making it fall limp.
 /// </summary>
-public class DisableMotor : TriggerAction<Joint>
+public class DisableMotor : TriggerAction, ITriggerAction<Joint>
 {
     public DisableMotor()
     {
@@ -17,7 +17,7 @@ public class DisableMotor : TriggerAction<Joint>
 ///  This action changes a joint's speed.
 ///  Note that this value is not clamped, even though the corresponding values on a joint itself are.
 /// </summary>
-public class ChangeMotorSpeed : TriggerAction<Joint>
+public class ChangeMotorSpeed : TriggerAction, ITriggerAction<Joint>
 {
     public const string EditorDefault =
     @"<a i=""1"" p0=""0"" p1=""1""/>";
@@ -49,7 +49,7 @@ public class ChangeMotorSpeed : TriggerAction<Joint>
 /// <summary>
 /// This action deletes the joint.
 /// </summary>
-public class DeleteSelfJoint : TriggerAction<Joint>
+public class DeleteSelfJoint : TriggerAction, ITriggerAction<Joint>
 {
     public DeleteSelfJoint()
     {
@@ -60,7 +60,7 @@ public class DeleteSelfJoint : TriggerAction<Joint>
 /// <summary>
 ///  This action makes the joint be able to move past its upper and lower limits.
 /// </summary>
-public class DisableLimits : TriggerAction<Joint>
+public class DisableLimits : TriggerAction, ITriggerAction<Joint>
 {
     public DisableLimits()
     {
@@ -74,7 +74,7 @@ public class DisableLimits : TriggerAction<Joint>
 ///  these values are not clamped, so a lower limit can be positive
 ///  and an upper limit can be negative.
 /// </summary>
-public class ChangeLimits : TriggerAction<Joint>
+public class ChangeLimits : TriggerAction, ITriggerAction<Joint>
 {
     public const string EditorDefault =
     @"<a i=""4"" p0=""90"" p1=""-90""/>";

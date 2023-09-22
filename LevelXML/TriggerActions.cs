@@ -5,7 +5,7 @@ namespace HappyWheels;
 /// <summary>
 /// This causes the target trigger to be activated
 /// </summary>
-public class Activate : TriggerAction<Trigger>
+public class Activate : TriggerAction, ITriggerAction<Trigger>
 {
 	public Activate()
 	{
@@ -17,7 +17,7 @@ public class Activate : TriggerAction<Trigger>
 /// This causes the target trigger to be disabled, 
 /// requiring that another trigger enable it before it can be activated again.
 /// </summary>
-public class Disable : TriggerAction<Trigger>
+public class Disable : TriggerAction, ITriggerAction<Trigger>
 {
 	public Disable()
 	{
@@ -28,7 +28,7 @@ public class Disable : TriggerAction<Trigger>
 /// <summary>
 /// This causes the target trigger to be enabled, so it can be activated in the future.
 /// </summary>
-public class Enable : TriggerAction<Trigger>
+public class Enable : TriggerAction, ITriggerAction<Trigger>
 {
 	public Enable()
 	{
