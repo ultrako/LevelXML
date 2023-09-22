@@ -24,7 +24,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<FixShape>(target.Actions[0]);
+        Assert.IsType<Fix<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -45,7 +45,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<NonfixShape>(target.Actions[0]);
+        Assert.IsType<Nonfix<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -276,7 +276,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<FixGroup>(target.Actions[0]);
+        Assert.IsType<Fix<Group>>(target.Actions[0]);
     }
 
     [Fact]
@@ -299,7 +299,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<NonfixGroup>(target.Actions[0]);
+        Assert.IsType<Nonfix<Group>>(target.Actions[0]);
     }
 
     [Fact]

@@ -2,28 +2,6 @@ using System.Xml.Linq;
 namespace HappyWheels;
 
 /// <summary>
-/// This action turns a group into a fixed object (it will not move)
-/// </summary>
-public class FixGroup : TriggerAction, ITriggerAction<Group>
-{
-	public FixGroup()
-	{
-		Elt.SetAttributeValue("i", 2);
-	}
-}
-
-/// <summary>
-/// This action turns the group into a non fixed object (it can move)
-/// </summary>
-public class NonfixGroup : TriggerAction, ITriggerAction<Group>
-{
-	public NonfixGroup()
-	{
-		Elt.SetAttributeValue("i", 3);
-	}
-}
-
-/// <summary>
 /// This action freezes the group in place and makes it non interactive
 /// </summary>
 public class DeleteShapeGroup : TriggerAction, ITriggerAction<Group>

@@ -8,7 +8,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestFixShape()
     {
-        FixShape action = new();
+        Fix<Shape> action = new();
         Assert.Equal(@"<a i=""1"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
@@ -16,7 +16,7 @@ public class ShapeActionsTest
     [Fact]
     public void TestNonfixShape()
     {
-        NonfixShape action = new();
+        Nonfix<Shape> action = new();
         Assert.Equal(@"<a i=""2"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
