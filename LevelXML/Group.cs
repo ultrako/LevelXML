@@ -18,19 +18,34 @@ public class Group : Entity
 	// This function will throw an exception if that isn't the case.
 	private void checkGroupableEntity(Entity entity)
 	{
+		LevelXMLException notAllowedinGroupException = new("{nameof(entity)} are not allowed in groups.");
 		if (entity is Shape shape)
 		{}
 		else if (entity is Special special)
 		{
-			// if (entity is Character character)
-			if (entity is TextBox)
-			{} else
+			if (entity is Van ||
+				entity is DinnerTable ||
+				entity is IBeam ||
+				entity is SpikeSet ||
+				entity is TextBox ||
+				entity is NonPlayerCharacter ||
+				entity is Chair ||
+				entity is Bottle ||
+				entity is Television ||
+				entity is Boombox ||
+				entity is Sign ||
+				entity is Toilet ||
+				entity is TrashCan ||
+				entity is ArrowGun ||
+				entity is Food ||
+				entity is BladeWeapon) {}
+			else
 			{
-				throw new LevelXMLException($"{nameof(entity)} are not allowed in groups.");
+				throw notAllowedinGroupException;
 			}
 		} else
 		{
-			throw new LevelXMLException($"{nameof(entity)} are not allowed in groups.");
+			throw notAllowedinGroupException;
 		}
 	}
 	
