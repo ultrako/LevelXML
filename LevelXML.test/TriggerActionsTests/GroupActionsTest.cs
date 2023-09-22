@@ -65,7 +65,7 @@ public class GroupActionsTest
     [Fact]
     public void TestDeleteShapeGroup()
     {
-        DeleteShapeGroup action = new();
+        DeleteShapes<Group> action = new();
         Assert.Equal(@"<a i=""5"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
@@ -73,7 +73,7 @@ public class GroupActionsTest
     [Fact]
     public void TestDeleteSelfGroup()
     {
-        DeleteSelfGroup action = new();
+        DeleteSelf<Group> action = new();
         Assert.Equal(@"<a i=""6"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }

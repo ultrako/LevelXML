@@ -1,27 +1,6 @@
 using System.Xml.Linq;
 namespace HappyWheels;
 
-/// <summary>
-/// This action freezes the group in place and makes it non interactive
-/// </summary>
-public class DeleteShapeGroup : TriggerAction, ITriggerAction<Group>
-{
-	public DeleteShapeGroup()
-	{
-		Elt.SetAttributeValue("i", 5);
-	}
-}
-
-/// <summary>
-/// This action deletes the group
-/// </summary>
-public class DeleteSelfGroup : TriggerAction, ITriggerAction<Group>
-{
-	public DeleteSelfGroup()
-	{
-		Elt.SetAttributeValue("i", 6);
-	}
-}
 
 /// <summary>
 /// This action changes the group's collision

@@ -108,7 +108,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<DeleteShape>(target.Actions[0]);
+        Assert.IsType<DeleteShapes<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -129,7 +129,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Shape> target = (Target<Shape>)trigger.Targets[0];
-        Assert.IsType<DeleteSelfShape>(target.Actions[0]);
+        Assert.IsType<DeleteSelf<Shape>>(target.Actions[0]);
     }
 
     [Fact]
@@ -322,7 +322,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<DeleteShapeGroup>(target.Actions[0]);
+        Assert.IsType<DeleteShapes<Group>>(target.Actions[0]);
     }
 
     [Fact]
@@ -345,7 +345,7 @@ public class LevelsWithTriggerActionsTest
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
         Target<Group> target = (Target<Group>)trigger.Targets[0];
-        Assert.IsType<DeleteSelfGroup>(target.Actions[0]);
+        Assert.IsType<DeleteSelf<Group>>(target.Actions[0]);
     }
 
     [Fact]
