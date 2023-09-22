@@ -2,9 +2,6 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-/// <summary>
-/// If the special is sleeping, this awakes it from sleep.
-/// </summary>
 public abstract class AwakeFromSleep : TriggerAction
 {
     internal abstract uint Type { get; }
@@ -15,6 +12,9 @@ public abstract class AwakeFromSleep : TriggerAction
 	}
 }
 
+/// <summary>
+/// If the special is sleeping, this awakes it from sleep.
+/// </summary>
 public class  AwakeFromSleep<T> : AwakeFromSleep, ITriggerAction<T>
 {
     internal override uint Type => 

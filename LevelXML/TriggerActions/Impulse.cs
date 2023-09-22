@@ -2,9 +2,6 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-/// <summary>
-/// This action applies an X, Y, and Spin force to an Entity.
-/// </summary>
 public abstract class Impulse : TriggerAction
 {
 	public const string EditorDefault =
@@ -42,6 +39,9 @@ public abstract class Impulse : TriggerAction
 	}     
 }
 
+/// <summary>
+/// This action applies an X, Y, and Spin force to an Entity.
+/// </summary>
 public class Impulse<T> : Impulse, ITriggerAction<T>
 {
     internal override uint Type => 

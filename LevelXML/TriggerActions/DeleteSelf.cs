@@ -1,8 +1,5 @@
 namespace HappyWheels;
 
-/// <summary>
-/// This action deletes the entity
-/// </summary>
 public abstract class DeleteSelf : TriggerAction
 {
     internal abstract uint Type { get; }
@@ -12,6 +9,10 @@ public abstract class DeleteSelf : TriggerAction
 	}
 }
 
+
+/// <summary>
+/// This action deletes the entity
+/// </summary>
 public class DeleteSelf<T> : DeleteSelf, ITriggerAction<T>
 {
     internal override uint Type =>
