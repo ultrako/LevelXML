@@ -1,8 +1,5 @@
 namespace HappyWheels;
 
-/// <summary>
-/// This action freezes the entity in place and makes it non interactive
-/// </summary>
 public abstract class DeleteShapes : TriggerAction
 {
     internal abstract uint Type { get; }
@@ -12,6 +9,9 @@ public abstract class DeleteShapes : TriggerAction
 	}
 }
 
+/// <summary>
+/// This action freezes the entity in place and makes it non interactive
+/// </summary>
 public class DeleteShapes<T> : DeleteShapes, ITriggerAction<T>
 {
     internal override uint Type =>

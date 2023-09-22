@@ -1,9 +1,7 @@
 using System.Xml.Linq;
 
 namespace HappyWheels;
-/// <summary>
-///  This action changes the opacity of this object over time
-/// </summary>
+
 public abstract class ChangeOpacity : TriggerAction
 {
 	public const string EditorDefault =
@@ -39,6 +37,9 @@ public abstract class ChangeOpacity : TriggerAction
 	}
 }
 
+/// <summary>
+///  This action changes the opacity of this entity over time
+/// </summary>
 public class ChangeOpacity<T> : ChangeOpacity, ITriggerAction<T>
 {
     internal override uint Type => 

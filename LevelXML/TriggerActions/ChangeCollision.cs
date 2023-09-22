@@ -1,9 +1,7 @@
 using System.Xml.Linq;
 
 namespace HappyWheels;
-/// <summary>
-/// This action changes the Entity's collision
-/// </summary>
+
 public abstract class ChangeCollision : TriggerAction
 {
     internal abstract uint Type { get; }
@@ -35,6 +33,9 @@ public abstract class ChangeCollision : TriggerAction
 	}
 }
 
+/// <summary>
+/// This action changes the Entity's collision
+/// </summary>
 public class ChangeCollision<T> : ChangeCollision, ITriggerAction<T>
 {
     internal override uint Type =>

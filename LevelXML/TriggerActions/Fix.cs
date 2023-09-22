@@ -1,8 +1,5 @@
 namespace HappyWheels;
 
-/// <summary>
-/// This action turns an entity into a fixed object (it will not move)
-/// </summary>
 public abstract class Fix : TriggerAction
 {
     internal abstract uint Type { get; }
@@ -12,6 +9,9 @@ public abstract class Fix : TriggerAction
 	}
 }
 
+/// <summary>
+/// This action turns an entity into a fixed object (it will not move)
+/// </summary>
 public class Fix<T> : Fix , ITriggerAction<T>
 {
     internal override uint Type =>

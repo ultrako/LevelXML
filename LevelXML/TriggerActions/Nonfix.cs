@@ -1,8 +1,5 @@
 namespace HappyWheels;
 
-/// <summary>
-/// If the entity is sleeping, this awakes it from sleep.
-/// </summary>
 public abstract class Nonfix : TriggerAction
 {
     internal abstract uint Type { get; }
@@ -12,6 +9,9 @@ public abstract class Nonfix : TriggerAction
 	}
 }
 
+/// <summary>
+/// This action makes an entity nonfixed (it will be able to move)
+/// </summary>
 public class Nonfix<T> : Nonfix , ITriggerAction<T>
 {
     internal override uint Type =>
