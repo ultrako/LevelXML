@@ -64,6 +64,7 @@ public abstract class Entity : LevelXMLTag
 				31 => new Token(element),
 				32 => new Food(element),
 				33 => new Cannon(element),
+				34 => new BladeWeapon(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
 			},
 			"g" => new Group(element, vertMapper),
