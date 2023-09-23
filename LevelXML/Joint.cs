@@ -56,42 +56,42 @@ public abstract class Joint : Entity
 	}
 
 	// Joints with no position are allowed as they do actually affect the game
-	public override Double? X
+	public override double X
 	{
 		get
 		{
-			return GetDoubleOrNull("x");
+			return GetDoubleOrNull("x") ?? 0;
 		}
 		set
 		{
-			Elt.SetAttributeValue("x", value ?? Double.NaN);
+			SetDouble("x", value);
 		}
 	}
 
-	public override Double? Y
+	public override double Y
 	{
 		get
 		{
-			return GetDoubleOrNull("y");
+			return GetDoubleOrNull("y") ?? 0;
 		}
 		set
 		{
-			Elt.SetAttributeValue("y", value ?? Double.NaN);
+			SetDouble("y", value);
 		}
 	}
 
 	/// <summary>
 	///  Whether or not the joint has limits in its motion
 	/// </summary>
-	public HWBool? Limit
+	public HWBool Limit
 	{
 		get
 		{
-			return GetBoolOrNull("l");
+			return GetBoolOrNull("l") ?? false;
 		}
 		set
 		{
-			HWBool val = value ?? HWBool.False;
+			HWBool val = value;
 			if (val == HWBool.NaN) { val = HWBool.False;}
 			Elt.SetAttributeValue("l", val);
 		}
@@ -101,26 +101,26 @@ public abstract class Joint : Entity
 	///  The upper limit of motion for the joint.
 	///  It's an angle for pin joints and a distance for sliding joints.
 	/// </summary>
-	public abstract Double? UpperLimit {get; set;}
+	public abstract double UpperLimit {get; set;}
 
 	/// <summary>
 	///  The lower limit of motion for the joint.
 	///  It's an angle for pin joints and a distance for sliding joints.
 	/// </summary>
-	public abstract Double? LowerLimit {get; set;}
+	public abstract double LowerLimit {get; set;}
 
 	/// <summary>
 	/// Whether or not the joint moves on its own based on its speed and force.
 	/// </summary>
-	public HWBool? Motorized
+	public HWBool Motorized
 	{
 		get
 		{
-			return GetBoolOrNull("m");
+			return GetBoolOrNull("m") ?? false;
 		}
 		set
 		{
-			HWBool val = value ?? HWBool.False;
+			HWBool val = value;
 			if (val == HWBool.NaN) { val = HWBool.False;}
 			Elt.SetAttributeValue("m", val);
 		}
@@ -129,20 +129,20 @@ public abstract class Joint : Entity
 	/// <summary>
 	///  The top speed at which a joint will move
 	/// </summary>
-	public abstract Double? Speed {get; set;}
+	public abstract double Speed {get; set;}
 
 	/// <summary>
 	///  Whether or not the two objects that a joint connects, can collide with one another.
 	/// </summary>
-	public HWBool? CollideConnected
+	public HWBool CollideConnected
 	{
 		get
 		{
-			return GetBoolOrNull("c");
+			return GetBoolOrNull("c") ?? false;
 		}
 		set
 		{
-			HWBool val = value ?? HWBool.False;
+			HWBool val = value;
 			if (val == HWBool.NaN) { val = HWBool.False;}
 			Elt.SetAttributeValue("c", val);
 		}
@@ -195,15 +195,17 @@ public abstract class Joint : Entity
 		Elt.SetAttributeValue("t", Type);
 		First = reverseMapper(GetStringOrNull(e, "b1"));
 		Second = reverseMapper(GetStringOrNull(e, "b2"));
-        X = GetDoubleOrNull(e, "x");
-        Y = GetDoubleOrNull(e, "y");
-		// These two are just to make sure that b1 and b2 are in the correct place
+        X = GetDoubleOrNull(e, "x") ?? double.NaN;
+        Y = GetDoubleOrNull(e, "y") ?? double.NaN;
+		// Setting these two now just to make sure that b1 and b2 are in the correct place
 		Elt.SetAttributeValue("b1", "-1");
 		Elt.SetAttributeValue("b2", "-1");
-		Limit = GetDoubleOrNull(e, "l");
-		UpperLimit = GetDoubleOrNull(e, "ua");
-		LowerLimit = GetDoubleOrNull(e, "la");
-		Motorized = GetBoolOrNull(e, "m");
+		Limit = GetBoolOrNull(e, "l") ?? false;
+		// This default value is different depending on whether it is a sliding joint or a pin joint
+		double lim = Type switch { 0 => 90, _ => 100 };
+		UpperLimit = GetDoubleOrNull(e, "ua") ?? lim;
+		LowerLimit = GetDoubleOrNull(e, "la") ?? -lim;
+		Motorized = GetBoolOrNull(e, "m") ?? false;
 	}
 	
 	protected Joint(XElement e) : base("j") 

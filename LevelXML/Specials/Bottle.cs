@@ -8,45 +8,44 @@ public class Bottle : SimpleSpecial
     public const string EditorDefault = 
     @"<sp t=""20"" p0=""0"" p1=""0"" p2=""0"" p3=""1"" p4=""f"" p5=""t""/>";
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the special disappear!");
 			}
-			SetDouble("p2", val); 
+			SetDouble("p2", value); 
 		}
 	}
 
-    public BottleType? BottleType
+    public BottleType BottleType
     {
-        get { return (BottleType?)GetDoubleOrNull("p3"); }
-        set { Elt.SetAttributeValue("p3", (BottleType?)value ?? HappyWheels.BottleType.Green); }
+        get { return (BottleType?)GetDoubleOrNull("p3") ?? HappyWheels.BottleType.Green; }
+        set { Elt.SetAttributeValue("p3", value); }
     }
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p4"); }
-		set { Elt.SetAttributeValue("p4", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p4") ?? false; }
+		set { Elt.SetAttributeValue("p4", value); }
 	}
 
-    public HWBool? Interactive
+    public HWBool Interactive
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.True); }
+		get { return GetBoolOrNull("p5") ?? true; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Rotation = GetDoubleOrNull(e, "p2");
-        BottleType = GetDoubleOrNull(e, "p3");
-        Sleeping = GetBoolOrNull(e, "p4");
-        Interactive = GetBoolOrNull(e, "p5");
+        Rotation = GetDoubleOrNull(e, "p2") ?? 0;
+        BottleType = GetDoubleOrNull(e, "p3") ?? HappyWheels.BottleType.Green;
+        Sleeping = GetBoolOrNull(e, "p4") ?? false;
+        Interactive = GetBoolOrNull(e, "p5") ?? true;
     }
 
     public Bottle(string xml=EditorDefault) : this(StrToXElement(xml)) {}

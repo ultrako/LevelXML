@@ -10,141 +10,129 @@ public abstract class Trigger : Entity
 {
 	internal abstract uint Type {get;}
 
-	public override double? X
+	public override double X
 	{
-		get { return GetDoubleOrNull("x"); }
+		get { return GetDoubleOrNull("x") ?? 0; }
 		set
 		{
 			// Having triggers at NaN locations is actually useful;
 			// they can still be pointed to by triggers and activate other triggers.
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("x", val);
+			SetDouble("x", value);
 		}
 	}
 
-	public override double? Y
+	public override double Y
 	{
-		get { return GetDoubleOrNull("y"); }
+		get { return GetDoubleOrNull("y") ?? 0; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("y", val);
+			SetDouble("y", value);
 		}
 	}
 
-	public double? Width
+	public double Width
 	{
-		get { return GetDoubleOrNull("w"); }
+		get { return GetDoubleOrNull("w") ?? 100; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("w", Math.Clamp(val, 5, 5000));
+			SetDouble("w", Math.Clamp(value, 5, 5000));
 		}
 	}
 
-	public double? Height
+	public double Height
 	{
-		get { return GetDoubleOrNull("h"); }
+		get { return GetDoubleOrNull("h") ?? 100; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("h", Math.Clamp(val, 5, 5000));
+			SetDouble("h", Math.Clamp(value, 5, 5000));
 		}
 	}
 
-	public double? Rotation
+	public double Rotation
 	{
-		get { return GetDoubleOrNull("a"); }
+		get { return GetDoubleOrNull("a") ?? 0; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("a", val);
+			SetDouble("a", value);
 		}
 	}
 
 	/// <summary>
 	/// Which things can trigger this trigger
 	/// </summary>
-	public TriggeredBy? TriggeredBy
+	public TriggeredBy TriggeredBy
 	{
 		get { return (TriggeredBy?)GetDoubleOrNull("b") ?? HappyWheels.TriggeredBy.Nothing; }
 		set
 		{
-			Elt.SetAttributeValue("b", value ?? HappyWheels.TriggeredBy.Nothing);
+			Elt.SetAttributeValue("b", value);
 		}
 	}
 
 	/// <summary>
 	/// What kind of repetition the trigger will do when activated once or more
 	/// </summary>
-	public RepeatType? RepeatType
+	public RepeatType RepeatType
 	{
 		get { return (RepeatType?)GetDoubleOrNull("r") ?? HappyWheels.RepeatType.Never; }
 		set
 		{
-			Elt.SetAttributeValue("r", (RepeatType?)value ?? HappyWheels.RepeatType.Never);
+			Elt.SetAttributeValue("r", value);
 		}
 	}
 
 	/// <summary>
 	/// Whether or not the trigger starts disabled (and would need to be enabled by other triggers to activate)
 	/// </summary>
-	public HWBool? StartDisabled
+	public HWBool StartDisabled
 	{
 		get { return GetBoolOrNull("sd") ?? HWBool.False; }
 		set
 		{
-			if (value == true)
-			{
-				Elt.SetAttributeValue("sd", HWBool.True);
-			}
-			else
-			{
-				Elt.SetAttributeValue("sd", HWBool.False);
-			}
+			HWBool val = value;
+			if (val == HWBool.NaN) { val = HWBool.False; }
+			Elt.SetAttributeValue("sd", val);
 		}
 	}
 
 	/// <summary>
 	/// If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats.
 	/// </summary>
-	public double? Interval
+	public double Interval
 	{
-		get { return GetDoubleOrNull("i"); }
+		get { return GetDoubleOrNull("i") ?? double.NaN; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("i", val);
+			Elt.SetAttributeValue("i", value);
 		}
 	}
 
 	/// <summary>
 	/// This is the amount of time in seconds after the trigger gets activated, before its actions fire.
 	/// </summary>
-	public double? Delay
+	public double Delay
 	{
-		get { return GetDoubleOrNull("d"); }
+		get { return GetDoubleOrNull("d") ?? double.NaN; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("d", Math.Clamp(val, 0, 30));
+			Elt.SetAttributeValue("d", Math.Clamp(value, 0, 30));
 		}
 	}
 
 	protected virtual void SetParams(XElement e)
 	{
-		X = GetDoubleOrNull(e, "x");
-		Y = GetDoubleOrNull(e, "y");
-		Width = GetDoubleOrNull(e, "w");
-		Height = GetDoubleOrNull(e, "h");
-		Rotation = GetDoubleOrNull(e, "a");
-		TriggeredBy = GetDoubleOrNull(e, "b");
+		X = GetDoubleOrNull(e, "x") ?? double.NaN;
+		Y = GetDoubleOrNull(e, "y") ?? double.NaN;
+		Width = GetDoubleOrNull(e, "w") ?? double.NaN;
+		Height = GetDoubleOrNull(e, "h") ?? double.NaN;
+		Rotation = GetDoubleOrNull(e, "a") ?? double.NaN;
+		TriggeredBy = GetDoubleOrNull(e, "b") ?? HappyWheels.TriggeredBy.Nothing;
 		Elt.SetAttributeValue("t", Type);
-		RepeatType = GetDoubleOrNull(e, "r");
-		StartDisabled = GetBoolOrNull(e, "sd");
-		if (RepeatType == 4) 
+		RepeatType = GetDoubleOrNull(e, "r") ?? HappyWheels.RepeatType.Never;
+		StartDisabled = GetBoolOrNull(e, "sd") ?? false;
+		if (RepeatType == RepeatType.Continuous || RepeatType == RepeatType.Permanent) 
 		{
-			Interval = GetDoubleOrNull(e, "i");
+			Interval = GetDoubleOrNull(e, "i") ?? double.NaN;
 		}
 	}
 	

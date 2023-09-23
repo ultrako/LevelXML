@@ -12,9 +12,9 @@ public class JointTest
         Assert.Null(joint.Second);
         Assert.Equal(0, joint.X);
         Assert.Equal(0, joint.Y);
-        Assert.Equal(false, joint.Limit);
-        Assert.Equal(false, joint.Motorized);
-        Assert.Equal(false, joint.CollideConnected);
+        Assert.False(joint.Limit);
+        Assert.False(joint.Motorized);
+        Assert.False(joint.CollideConnected);
     }
 
     [Fact]

@@ -9,8 +9,8 @@ public abstract class Entity : LevelXMLTag
 	// For entities, there isn't really an editor default for x and y coords,
 	// as it depends on where the cursor was when you make it in the editor,
 	// but for convenience we'll make it 0,0
-	public abstract double? X {get; set;}
-	public abstract double? Y {get; set;}
+	public abstract double X {get; set;}
+	public abstract double Y {get; set;}
 	protected Entity(XName name, params object?[] content) : base(name, content) {}
 	// Entities need a FromXElement function because depth one tags need to construct them
 	internal static Entity FromXElement(XElement element, 

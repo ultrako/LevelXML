@@ -7,8 +7,8 @@ namespace HappyWheels.Test;
 // So this entity type is to be able to help more thoroughly test the cases on switches on Entities
 public class TestEntity : Entity
 {
-	public override double? X { get { return null; } set {}}
-	public override double? Y { get { return null; } set {}}
+	public override double X { get { return 0; } set {}}
+	public override double Y { get { return 0; } set {}}
 	public TestEntity() : base("z") {}
 }
 

@@ -13,28 +13,26 @@ public abstract class CustomShape : Shape
 	{
 		get { return verticesTag.verts;}
 	}
-	public override double? Width
+	public override double Width
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 100; }
 		set
 		{
-			double val = value ?? 100;
-			if (double.IsNaN(val)) {
+			if (double.IsNaN(value)) {
 				throw new LevelXMLException("This would make the shape disappear!");
 			} 
-			Elt.SetAttributeValue("p2", val);
+			SetDouble("p2", value);
 		}
 	}
-	public override double? Height
+	public override double Height
 	{
-		get { return GetDoubleOrNull("p3"); }
+		get { return GetDoubleOrNull("p3") ?? 100; }
 		set
 		{
-			double val = value ?? 100;
-			if (double.IsNaN(val)) {
+			if (double.IsNaN(value)) {
 				throw new LevelXMLException("This would make the shape disappear!");
 			} 
-			Elt.SetAttributeValue("p3", val);
+			SetDouble("p3", value);
 		}
 	}
 

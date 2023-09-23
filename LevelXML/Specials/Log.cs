@@ -8,68 +8,65 @@ public class Log : SimpleSpecial
     public const string EditorDefault = 
     @"<sp t=""4"" p0=""0"" p1=""0"" p2=""36"" p3=""400"" p4=""0"" p5=""f"" p6=""f""/>";
 
-    public double? Width
+    public double Width
     {
-        get { return GetDoubleOrNull("p2"); }
+        get { return GetDoubleOrNull("p2") ?? 36; }
         set
         {
-            double val = value ?? 36;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the width to NaN would make the special disappear!");
             }
-            SetDouble("p2", Math.Clamp(val, 36, 54));
+            SetDouble("p2", Math.Clamp(value, 36, 54));
         }
     }
 
-    public double? Height
+    public double Height
     {
-        get { return GetDoubleOrNull("p3"); }
+        get { return GetDoubleOrNull("p3") ?? 400; }
         set
         {
-            double val = value ?? 400;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the height to NaN would make the special disappear!");
             }
-            SetDouble("p3", Math.Clamp(val, 200, 600));
+            SetDouble("p3", Math.Clamp(value, 200, 600));
         }
     }
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p4"); }
+		get { return GetDoubleOrNull("p4") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("Setting the rotation to NaN would make the special disappear!");
 			}
-			SetDouble("p4", val); 
+			SetDouble("p4", value); 
 		}
 	}
 
-     public HWBool? Fixed
+     public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p5") ?? false; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p6"); }
-		set { Elt.SetAttributeValue("p6", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p6") ?? false; }
+		set { Elt.SetAttributeValue("p6", value); }
 	}
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Width = GetDoubleOrNull(e, "p2");
-        Height = GetDoubleOrNull(e, "p3");
-        Rotation = GetDoubleOrNull(e, "p4");
-        Fixed = GetBoolOrNull(e, "p5");
-        Sleeping = GetBoolOrNull(e, "p6");
+        Width = GetDoubleOrNull(e, "p2") ?? 36;
+        Height = GetDoubleOrNull(e, "p3") ?? 400;
+        Rotation = GetDoubleOrNull(e, "p4") ?? 0;
+        Fixed = GetBoolOrNull(e, "p5") ?? false;
+        Sleeping = GetBoolOrNull(e, "p6") ?? false;
     }
 
     public Log(string xml=EditorDefault) : this(StrToXElement(xml)) {}

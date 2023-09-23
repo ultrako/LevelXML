@@ -16,7 +16,7 @@ public abstract class LevelXMLTag
 	protected static XElement StrToXElement(string xml) {
 		return XElement.Parse(xml);
 	}
-	public static string? GetStringOrNull(XElement elt, string attr)
+	internal static string? GetStringOrNull(XElement elt, string attr)
 	{
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }

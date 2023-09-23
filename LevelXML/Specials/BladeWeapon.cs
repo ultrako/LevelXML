@@ -8,52 +8,51 @@ public class BladeWeapon : SimpleSpecial
     public const string EditorDefault = 
     @"<sp t=""34"" p0=""0"" p1=""0"" p2=""0"" p3=""f"" p4=""f"" p5=""t"" p6=""1""/>";
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the special disappear!");
 			}
-			SetDouble("p2", val); 
+			SetDouble("p2", value); 
 		}
 	}
 
-    public HWBool? Reverse
+    public HWBool Reverse
     {
-        get { return GetBoolOrNull("p3"); }
-		set { Elt.SetAttributeValue("p3", value ?? HWBool.False); }
+        get { return GetBoolOrNull("p3") ?? false; }
+		set { Elt.SetAttributeValue("p3", value); }
     }
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p4"); }
-		set { Elt.SetAttributeValue("p4", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p4") ?? false; }
+		set { Elt.SetAttributeValue("p4", value); }
 	}
 
-    public HWBool? Interactive
+    public HWBool Interactive
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.True); }
+		get { return GetBoolOrNull("p5") ?? true; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
-    public WeaponType? WeaponType
+    public WeaponType WeaponType
     {
-        get { return (WeaponType?)GetDoubleOrNull("p6"); }
-        set { Elt.SetAttributeValue("p6", (WeaponType?)value ?? HappyWheels.WeaponType.Axe); }
+        get { return (WeaponType?)GetDoubleOrNull("p6") ?? HappyWheels.WeaponType.Axe; }
+        set { Elt.SetAttributeValue("p6", value); }
     }
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Rotation = GetDoubleOrNull(e, "p2");
-        Reverse = GetBoolOrNull(e, "p3");
-        Sleeping = GetBoolOrNull(e, "p4");
-        Interactive = GetBoolOrNull(e, "p5");
-        WeaponType = GetDoubleOrNull(e, "p6");
+        Rotation = GetDoubleOrNull(e, "p2") ?? 0;
+        Reverse = GetBoolOrNull(e, "p3") ?? false;
+        Sleeping = GetBoolOrNull(e, "p4") ?? false;
+        Interactive = GetBoolOrNull(e, "p5") ?? true;
+        WeaponType = GetDoubleOrNull(e, "p6") ?? HappyWheels.WeaponType.Axe;
     }
 
     public BladeWeapon(string xml=EditorDefault) : this(StrToXElement(xml)) {}

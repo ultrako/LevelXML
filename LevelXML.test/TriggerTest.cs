@@ -16,7 +16,7 @@ public class TriggerTest
         // Change these two tests to use structs after I make them
         Assert.Equal(1, trigger.TriggeredBy);
         Assert.Equal(1, trigger.RepeatType);
-        Assert.Null(trigger.Interval);
+        Assert.Equal(double.NaN, trigger.Interval);
         Assert.False(trigger.StartDisabled);
         Assert.Equal(0, trigger.Delay);
     }

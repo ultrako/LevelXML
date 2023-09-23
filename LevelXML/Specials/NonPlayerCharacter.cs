@@ -8,213 +8,203 @@ public class NonPlayerCharacter : Special
     public const string EditorDefault =
     @"<sp t=""17"" p0=""0"" p1=""0"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>";
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the special disappear!");
 			}
-			SetDouble("p2", val); 
+			SetDouble("p2", value); 
 		}
 	}
 
     /// <summary>
     /// Which of the 16 possible characters this NPC is
     /// </summary>
-    public NPCType? NPCType
+    public NPCType NPCType
     {
-        get { return (NPCType?)GetDoubleOrNull("p3"); }
-        set { Elt.SetAttributeValue("p3", (NPCType?)value ?? HappyWheels.NPCType.WheelchairGuy); }
+        get { return (NPCType?)GetDoubleOrNull("p3") ?? HappyWheels.NPCType.WheelchairGuy; }
+        set { Elt.SetAttributeValue("p3", (NPCType?)value); }
     }
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
     {
-        get { return GetBoolOrNull("p4"); }
-        set { Elt.SetAttributeValue("p4", value ?? HWBool.False); }
+        get { return GetBoolOrNull("p4") ?? false; }
+        set { Elt.SetAttributeValue("p4", value); }
     }
 
     /// <summary>
     ///  If Reverse is true, the NPC faces to the left, otherwise it faces to the right.
     /// </summary>
-    public HWBool? Reverse
+    public HWBool Reverse
     {
-        get { return GetBoolOrNull("p5"); }
-        set { Elt.SetAttributeValue("p5", value ?? HWBool.False); }
+        get { return GetBoolOrNull("p5") ?? false; }
+        set { Elt.SetAttributeValue("p5", value); }
     }
 
     /// <summary>
     ///  Whether or not the NPC's body is rigid
     /// </summary>
-    public HWBool? HoldPose
+    public HWBool HoldPose
     {
-        get { return GetBoolOrNull("p6"); }
-        set { Elt.SetAttributeValue("p6", value ?? HWBool.False); }
+        get { return GetBoolOrNull("p6") ?? false; }
+        set { Elt.SetAttributeValue("p6", value); }
     }
 
-    public HWBool? Interactive
+    public HWBool Interactive
     {
-        get { return GetBoolOrNull("p7"); }
-        set { Elt.SetAttributeValue("p7", value ?? HWBool.True); }
+        get { return GetBoolOrNull("p7") ?? true; }
+        set { Elt.SetAttributeValue("p7", value); }
     }
 
-    public double? NeckAngle
+    public double NeckAngle
     {
-        get { return GetDoubleOrNull("p8"); }
+        get { return GetDoubleOrNull("p8") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p8", Math.Clamp(val, -20, 20));
+            SetDouble("p8", Math.Clamp(value, -20, 20));
         }
     }
 
-    public double? FrontArmAngle
+    public double FrontArmAngle
     {
-        get { return GetDoubleOrNull("p9"); }
+        get { return GetDoubleOrNull("p9") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p9", Math.Clamp(val, -180, 60));
+            SetDouble("p9", Math.Clamp(value, -180, 60));
         }
     }
 
-    public double? BackArmAngle
+    public double BackArmAngle
     {
-        get { return GetDoubleOrNull("p10"); }
+        get { return GetDoubleOrNull("p10") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p10", Math.Clamp(val, -180, 60));
+            SetDouble("p10", Math.Clamp(value, -180, 60));
         }
     }
 
-    public double? FrontElbowAngle
+    public double FrontElbowAngle
     {
-        get { return GetDoubleOrNull("p11"); }
+        get { return GetDoubleOrNull("p11") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p11", Math.Clamp(val, -160, 0));
+            SetDouble("p11", Math.Clamp(value, -160, 0));
         }
     }
 
-    public double? BackElbowAngle
+    public double BackElbowAngle
     {
-        get { return GetDoubleOrNull("p12"); }
+        get { return GetDoubleOrNull("p12") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p12", Math.Clamp(val, -160, 0));
+            SetDouble("p12", Math.Clamp(value, -160, 0));
         }
     }
 
-    public double? FrontLegAngle
+    public double FrontLegAngle
     {
-        get { return GetDoubleOrNull("p13"); }
+        get { return GetDoubleOrNull("p13") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p13", Math.Clamp(val, -160, 10));
+            SetDouble("p13", Math.Clamp(value, -160, 10));
         }
     }
 
-    public double? BackLegAngle
+    public double BackLegAngle
     {
-        get { return GetDoubleOrNull("p14"); }
+        get { return GetDoubleOrNull("p14") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p14", Math.Clamp(val, -160, 10));
+            SetDouble("p14", Math.Clamp(value, -160, 10));
         }
     }
 
-    public double? FrontKneeAngle
+    public double FrontKneeAngle
     {
-        get { return GetDoubleOrNull("p15"); }
+        get { return GetDoubleOrNull("p15") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p15", Math.Clamp(val, -0, 150));
+            SetDouble("p15", Math.Clamp(value, -0, 150));
         }
     }
 
-    public double? BackKneeAngle
+    public double BackKneeAngle
     {
-        get { return GetDoubleOrNull("p16"); }
+        get { return GetDoubleOrNull("p16") ?? 0; }
         set
         {
-            double val = value ?? 0;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
             }
-            SetDouble("p16", Math.Clamp(val, -0, 150));
+            SetDouble("p16", Math.Clamp(value, -0, 150));
         }
     }
 
     /// <summary>
     /// Set this if you'd like all attached joints and associated trigger actions to be destroyed when this character dies.
     /// </summary>
-    public HWBool? ReleaseOnDeath
+    public HWBool ReleaseOnDeath
     {
-        get { return GetBoolOrNull("p17"); }
-        set { Elt.SetAttributeValue("p17", value ?? HWBool.False); }
+        get { return GetBoolOrNull("p17") ?? false; }
+        set { Elt.SetAttributeValue("p17", value); }
     }
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Rotation = GetDoubleOrNull(e, "p2");
-        NPCType = GetDoubleOrNull(e, "p3");
-        Sleeping = GetBoolOrNull(e, "p4");
-        Reverse = GetBoolOrNull(e, "p5");
-        HoldPose = GetBoolOrNull(e, "p6");
-        Interactive = GetBoolOrNull(e, "p7");
-        NeckAngle = GetDoubleOrNull(e, "p8");
-        FrontArmAngle = GetDoubleOrNull(e, "p9");
-        BackArmAngle = GetDoubleOrNull(e, "p10");
-        FrontElbowAngle = GetDoubleOrNull(e, "p11");
-        BackElbowAngle = GetDoubleOrNull(e, "p12");
-        FrontLegAngle = GetDoubleOrNull(e, "p13");
-        BackLegAngle = GetDoubleOrNull(e, "p14");
-        FrontKneeAngle = GetDoubleOrNull(e, "p15");
-        BackKneeAngle = GetDoubleOrNull(e, "p16");
-        ReleaseOnDeath = GetDoubleOrNull(e, "p17");
+        Rotation = GetDoubleOrNull(e, "p2") ?? 0;
+        NPCType = GetDoubleOrNull(e, "p3") ?? HappyWheels.NPCType.WheelchairGuy;
+        Sleeping = GetBoolOrNull(e, "p4") ?? false;
+        Reverse = GetBoolOrNull(e, "p5") ?? false;
+        HoldPose = GetBoolOrNull(e, "p6") ?? false;
+        Interactive = GetBoolOrNull(e, "p7") ?? true;
+        NeckAngle = GetDoubleOrNull(e, "p8") ?? 0;
+        FrontArmAngle = GetDoubleOrNull(e, "p9") ?? 0;
+        BackArmAngle = GetDoubleOrNull(e, "p10") ?? 0;
+        FrontElbowAngle = GetDoubleOrNull(e, "p11") ?? 0;
+        BackElbowAngle = GetDoubleOrNull(e, "p12") ?? 0;
+        FrontLegAngle = GetDoubleOrNull(e, "p13") ?? 0;
+        BackLegAngle = GetDoubleOrNull(e, "p14") ?? 0;
+        FrontKneeAngle = GetDoubleOrNull(e, "p15") ?? 0;
+        BackKneeAngle = GetDoubleOrNull(e, "p16") ?? 0;
+        ReleaseOnDeath = GetBoolOrNull(e, "p17") ?? false;
     }
 
     public NonPlayerCharacter(string xml=EditorDefault) : this(StrToXElement(xml)) {}

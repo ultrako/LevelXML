@@ -14,24 +14,23 @@ public class Landmine : Special
     public const string EditorDefault = 
     @"<sp t=""2"" p0=""0"" p1=""0"" p2=""0"" />";
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the special disappear!");
 			}
-			SetDouble("p2", val); 
+			SetDouble("p2", value); 
 		}
 	}
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Rotation = GetDoubleOrNull(e, "p2");
+        Rotation = GetDoubleOrNull(e, "p2") ?? 0;
     }
 
     public Landmine(string xml=EditorDefault) : this(StrToXElement(xml)) {}

@@ -8,84 +8,81 @@ public class GlassPanel : Special
     public const string EditorDefault = 
     @"<sp t=""18"" p0=""0"" p1=""0"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>";
 
-    public double? Width
+    public double Width
     {
-        get { return GetDoubleOrNull("p2"); }
+        get { return GetDoubleOrNull("p2") ?? 10; }
         set
         {
-            double val = value ?? 10;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the width to NaN would make this glass panel disappear!");
             }
-            SetDouble("p2", Math.Clamp(val, 5, 50));
+            SetDouble("p2", Math.Clamp(value, 5, 50));
         }
     }
 
-    public double? Height
+    public double Height
     {
-        get { return GetDoubleOrNull("p3"); }
+        get { return GetDoubleOrNull("p3") ?? 100; }
         set
         {
-            double val = value ?? 100;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the height to NaN would make this glass panel disappear!");
             }
-            SetDouble("p3", Math.Clamp(val, 50, 500));
+            SetDouble("p3", Math.Clamp(value, 50, 500));
         }
     }
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p4"); }
+		get { return GetDoubleOrNull("p4") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the special disappear!");
 			}
-			SetDouble("p4", val); 
+			SetDouble("p4", value); 
 		}
 	}
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p5") ?? false; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
     /// <summary>
     /// Determines how much force is required to shatter the initial glass pane.
     /// </summary>
-    public double? Strength
+    public double Strength
     {
-        get { return GetDoubleOrNull("p6"); }
+        get { return GetDoubleOrNull("p6") ?? 10; }
         set
         {
-            SetDouble("p6", Math.Clamp(value ?? 10, 1, 10));
+            SetDouble("p6", Math.Clamp(value, 1, 10));
         }
     }
 
     /// <summary>
     /// Determines if broken glass can stab the character.
     /// </summary>
-    public HWBool? Stabbing
+    public HWBool Stabbing
     {
-        get { return GetBoolOrNull("p7"); }
-		set { Elt.SetAttributeValue("p7", value ?? HWBool.True); }
+        get { return GetBoolOrNull("p7") ?? true; }
+		set { Elt.SetAttributeValue("p7", value); }
     }
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Width = GetDoubleOrNull(e, "p2");
-        Height = GetDoubleOrNull(e, "p3");
-        Rotation = GetDoubleOrNull(e, "p4");
-        Sleeping = GetBoolOrNull(e, "p5");
-        Strength = GetDoubleOrNull(e, "p6");
-        Stabbing = GetBoolOrNull(e, "p7");
+        Width = GetDoubleOrNull(e, "p2") ?? 10;
+        Height = GetDoubleOrNull(e, "p3") ?? 100;
+        Rotation = GetDoubleOrNull(e, "p4") ?? 0;
+        Sleeping = GetBoolOrNull(e, "p5") ?? false;
+        Strength = GetDoubleOrNull(e, "p6") ?? 10;
+        Stabbing = GetBoolOrNull(e, "p7") ?? true;
     }
 
     public GlassPanel(string xml=EditorDefault) : this(StrToXElement(xml)) {}

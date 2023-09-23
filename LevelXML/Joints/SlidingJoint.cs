@@ -13,80 +13,52 @@ public class SlidingJoint : Joint
     /// <summary>
     /// The amount of force the joint applies in order to reach full speed.
     /// </summary>
-    public double? Force
+    public double Force
     {
-        get
-        {
-            return GetDoubleOrNull("fo");
-        }
-        set
-        {
-            SetDouble("fo", Math.Clamp(value ?? 50, double.NegativeInfinity, 100000));
-        }
+        get { return GetDoubleOrNull("fo") ?? 50; }
+        set { SetDouble("fo", Math.Clamp(value, double.NegativeInfinity, 100000)); }
     }
 
     /// <summary>
     ///  The maximum speed at which this joint will slide.
     /// </summary>
-    public override double? Speed
+    public override double Speed
     {
-        get
-        {
-            return GetDoubleOrNull("sp");
-        }
-        set
-        {
-            Elt.SetAttributeValue("sp", Math.Clamp(value ?? 3, -50, 50));
-        }
+        get { return GetDoubleOrNull("sp") ?? 3; }
+        set { SetDouble("sp", Math.Clamp(value, -50, 50)); }
     }
 
     /// <summary>
     ///  This is the highest position that the joint can reach.
     /// </summary>
-    public override double? UpperLimit
+    public override double UpperLimit
     {
-        get
-        {
-			return GetDoubleOrNull("ul");
-		}
-		set
-		{
-			Elt.SetAttributeValue("ul", Math.Clamp(value ?? 100, 0, 8000));
-		}
+        get { return GetDoubleOrNull("ul") ?? 100; }
+		set { SetDouble("ul", Math.Clamp(value, 0, 8000)); }
     }
 
     /// <summary>
     ///  This is the lowest position that the joint can reach.
     /// </summary>
-    public override double? LowerLimit
+    public override double LowerLimit
     {
-        get
-        {
-			return GetDoubleOrNull("ll");
-		}
-		set
-		{
-            Elt.SetAttributeValue("ll", Math.Clamp(value ?? -100, -8000, 0));
-		}
+        get { return GetDoubleOrNull("ll") ?? -100; }
+		set { Elt.SetAttributeValue("ll", Math.Clamp(value, -8000, 0)); }
     }
 
     /// <summary>
     /// This is the angle (in degrees) of the axis of movement between the bodies of this joint.
     /// </summary>
-    public double? Angle
+    public double Angle
     {
-        get
-        {
-            return GetDoubleOrNull("a");
-        }
+        get { return GetDoubleOrNull("a") ?? double.NaN; }
         set
         {
-            double val = value ?? double.NaN;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the angle to NaN on a sliding joint makes a black hole!");
             }
-            SetDouble("a", val);
+            SetDouble("a", value);
         }
     }
 
@@ -122,10 +94,10 @@ public class SlidingJoint : Joint
     override protected void SetParams(XElement e, Func<string?, Entity?> reverseJointMapper)
     {
         base.SetParams(e, reverseJointMapper);
-        Force = GetDoubleOrNull(e, "fo");
-        Angle = GetDoubleOrNull(e, "a");
-        Speed = GetDoubleOrNull(e, "sp");
-		CollideConnected = GetBoolOrNull(e, "c");
+        Force = GetDoubleOrNull(e, "fo") ?? 50;
+        Angle = GetDoubleOrNull(e, "a") ?? double.NaN;
+        Speed = GetDoubleOrNull(e, "sp") ?? 3;
+		CollideConnected = GetBoolOrNull(e, "c") ?? false;
     }
     
     internal SlidingJoint(XElement e, Func<string?, Entity?> reverseJointMapper = default!) : base(e)

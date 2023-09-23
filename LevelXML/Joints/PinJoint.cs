@@ -13,60 +13,42 @@ public class PinJoint : Joint
     /// <summary>
     /// The amount of torque the joint applies in order to reach full speed.
     /// </summary>
-    public double? Torque
+    public double Torque
     {
-        get
-        {
-            return GetDoubleOrNull("tq");
-        }
+        get { return GetDoubleOrNull("tq") ?? 50; }
         set
         {
-            SetDouble("tq", Math.Clamp(value ?? 50, double.NegativeInfinity, 100000));
+            SetDouble("tq", Math.Clamp(value, double.NegativeInfinity, 100000));
         }
     }
 
     /// <summary>
     ///  The maximum speed at which this joint will rotate.
     /// </summary>
-    public override double? Speed
+    public override double Speed
     {
-        get
-        {
-            return GetDoubleOrNull("sp");
-        }
-        set
-        {
-            Elt.SetAttributeValue("sp", Math.Clamp(value ?? 3, -20, 20));
-        }
+        get { return GetDoubleOrNull("sp") ?? 3; }
+        set { SetDouble("sp", Math.Clamp(value, -20, 20)); }
     }
 
     /// <summary>
     ///  This is the highest angle that the joint can reach.
     /// </summary>
-    public override double? UpperLimit
+    public override double UpperLimit
     {
-        get
-        {
-			return GetDoubleOrNull("ua");
-		}
-		set
-		{
-			Elt.SetAttributeValue("ua", Math.Clamp(value ?? 90, 0, 180));
-		}
+        get { return GetDoubleOrNull("ua") ?? 90; }
+		set { SetDouble("ua", Math.Clamp(value, 0, 180)); }
     }
 
     /// <summary>
     ///  This is the lowest angle that the joint can reach.
     /// </summary>
-    public override double? LowerLimit
+    public override double LowerLimit
     {
-        get
-        {
-			return GetDoubleOrNull("la");
-		}
+        get { return GetDoubleOrNull("la") ?? -90; }
 		set
 		{
-            double val = Math.Abs(value ?? 90);
+            double val = Math.Abs(value);
             double negatedAndClamped = Math.Clamp(-val, -180, 0.0);
             if (negatedAndClamped == -0.0) { negatedAndClamped = 0.0;}
 			Elt.SetAttributeValue("la", negatedAndClamped);
@@ -105,9 +87,9 @@ public class PinJoint : Joint
     override protected void SetParams(XElement e, Func<string?, Entity?> reverseJointMapper)
     {
         base.SetParams(e, reverseJointMapper);
-        Torque = GetDoubleOrNull(e, "tq");
-        Speed = GetDoubleOrNull(e, "sp");
-		CollideConnected = GetBoolOrNull(e, "c");
+        Torque = GetDoubleOrNull(e, "tq") ?? 50;
+        Speed = GetDoubleOrNull(e, "sp") ?? 3;
+		CollideConnected = GetBoolOrNull(e, "c") ?? false;
     }
     
     internal PinJoint(XElement e, Func<string?, Entity?> reverseJointMapper = default!) : base(e)
