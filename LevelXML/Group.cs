@@ -9,7 +9,7 @@ public class Group : Entity
 	// So there's no such thing as a "make new empty group" button in the editor,
 	// but it would be useful to have an empty group with the default properties
 	// you get when you select some objects and press "make group out of objects"
-	public static string EditorDefault =
+	public const string EditorDefault =
 	@"<g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""0"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"" />";
 	private List<Entity> items;
 	public IList<Entity> Items { get { return items;}}
@@ -169,7 +169,7 @@ public class Group : Entity
 		}
 	}
 
-	private void setParams(XElement e)
+	protected virtual void setParams(XElement e)
 	{
 		X = GetDoubleOrNull(e, "x");
 		Y = GetDoubleOrNull(e, "y");

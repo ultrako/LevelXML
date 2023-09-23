@@ -323,6 +323,20 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithVehicle()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""1.95"" x=""253"" y=""124"" c=""1"" f=""f"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
+    <groups>
+        <g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""0"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"" v=""t"" sb=""0"" sh=""0"" ct=""0"" a=""1"" l=""10"" cp=""NaN"" lo=""f"">   
+            <sh t=""0"" h=""t"" p0=""425"" p1=""103"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1""/>
+        </g>
+    </groups>
+</levelXML>");
+		Assert.IsType<Vehicle>(level.Groups[0]);
+	}
+
+	[Fact]
 	public void ArtShapeTestNoIDCollision()
 	{
 		Art art1 = new();

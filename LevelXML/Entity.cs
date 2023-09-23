@@ -68,7 +68,11 @@ public abstract class Entity : LevelXMLTag
 				35 => new PaddlePlatform(element),
 				_ => throw new LevelXMLException("Special type doesn't exist!")
 			},
-			"g" => new Group(element, vertMapper),
+			"g" => (bool?)GetBoolOrNull(element, "v") switch
+			{
+				true => new Vehicle(element, vertMapper),
+				_ => new Group(element, vertMapper),
+			},
 			"j" => GetDoubleOrNull(element, "t") switch
 			{
 				0 => new PinJoint(element, ReverseJointMapper),
