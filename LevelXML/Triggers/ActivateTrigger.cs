@@ -60,7 +60,7 @@ public class ActivateTrigger : Trigger
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Delay = GetDoubleOrNull(e, "d");
+        Delay = GetDoubleOrNull(e, "d") ?? double.NaN;
     }
 	public ActivateTrigger(params Target[] targets) : this(EditorDefault, default!, targets) {}
 	// Targets may come in either the <xml tag> or as a params arg to the constructor

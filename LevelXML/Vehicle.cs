@@ -37,26 +37,24 @@ public class Vehicle : Group
     /// <summary>
     /// Determines how quickly attached joints reach their set motor speed when pressing up or down.
     /// </summary>
-    public double? Acceleration
+    public double Acceleration
     {
-        get { return GetDoubleOrNull("a"); }
+        get { return GetDoubleOrNull("a") ?? double.NaN; }
         set
         {
-            double val = value ?? double.NaN;
-            SetDouble("a", Math.Clamp(val, 1, 10));
+            SetDouble("a", Math.Clamp(value, 1, 10));
         }
     }
 
     /// <summary>
     /// Determines how much force is used when leaning left or right.
     /// </summary>
-    public double? LeaningStrength
+    public double LeaningStrength
     {
-        get { return GetDoubleOrNull("l"); }
+        get { return GetDoubleOrNull("l") ?? double.NaN; }
         set
         {
-            double val = value ?? double.NaN;
-            SetDouble("l", Math.Clamp(val, 0, 10));
+            SetDouble("l", Math.Clamp(value, 0, 10));
         }
     }
 
@@ -73,10 +71,10 @@ public class Vehicle : Group
     /// Set this if you'd like all attached joints to slow their speed to 0
     /// when not accelerating or decelerating.
     /// </summary>
-    public HWBool? LockJoints
+    public HWBool LockJoints
     {
-        get { return GetBoolOrNull("lo"); }
-        set { Elt.SetAttributeValue("lo", value ?? false); }
+        get { return GetBoolOrNull("lo") ?? false; }
+        set { Elt.SetAttributeValue("lo", value); }
     }
 
     protected override void setParams(XElement e)
@@ -86,10 +84,10 @@ public class Vehicle : Group
         SpacebarAction = (VehicleAction?)GetDoubleOrNull(e, "sb") ?? 0;
         ShiftAction = (VehicleAction?)GetDoubleOrNull(e, "sh") ?? 0;
         ControlAction = (VehicleAction?)GetDoubleOrNull(e, "ct") ?? 0;
-        Acceleration = GetDoubleOrNull(e, "a");
-        LeaningStrength = GetDoubleOrNull(e, "l");
+        Acceleration = GetDoubleOrNull(e, "a") ?? double.NaN;
+        LeaningStrength = GetDoubleOrNull(e, "l") ?? double.NaN;
         GrabbingPose = (GrabbingPose?)GetDoubleOrNull(e, "cp") ?? 0;
-        LockJoints = GetBoolOrNull(e, "lo");
+        LockJoints = GetBoolOrNull(e, "lo") ?? false;
     }
 
     public Vehicle(params Entity[] content) : this(EditorDefault, content) {}

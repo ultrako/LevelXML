@@ -16,26 +16,23 @@ public class SoundTrigger : Trigger, IConvertibleToXML
 	/// The ID of the sound to be played
 	/// I'd make a struct for this but there are 326 sounds in the game...
 	/// </summary>
-	public double? Sound
+	public double Sound
 	{
-		get { return GetDoubleOrNull("s"); }
+		get { return GetDoubleOrNull("s") ?? 0; }
 		set
 		{
 			if (value < 0 || value > 325)
 			{
 				throw new LevelXMLException("Sound number is invalid! This trigger would freeze the level!");
 			}
-			if (value is not null)
-			{
-				Elt.SetAttributeValue("s", value);
-			}
+			SetDouble("s", value);
 		}
 	}
 	
 	/// <summary>
 	///  Whether or not the sound is played as if coming from the location of the trigger
 	/// </summary>
-	public HWBool? IsLocal
+	public HWBool IsLocal
 	{
 		get 
 		{
@@ -59,38 +56,35 @@ public class SoundTrigger : Trigger, IConvertibleToXML
 	/// This makes the sound move from the left to the right if positive,
 	/// vice versa if negative.
 	/// </summary>
-    public double? Panning
+    public double Panning
     {
-        get { return GetDoubleOrNull("p"); }
+        get { return GetDoubleOrNull("p") ?? 0; }
         set
         {
-            Elt.SetAttributeValue("p", Math.Clamp(value ?? 0, -1.0, 1.0));
+            SetDouble("p", Math.Clamp(value, -1.0, 1.0));
         }
     }
 
 	/// <summary>
 	///  How loud the sound is, from 0 being silent, to 1 being full volume.
 	/// </summary>
-	public double? Volume
+	public double Volume
 	{
-		get { return GetDoubleOrNull("v"); }
+		get { return GetDoubleOrNull("v") ?? 1; }
 		set
 		{
-			if (value is double val)
-			{
-				Elt.SetAttributeValue("v", Math.Clamp(val, 0.0, 1.0));
-			}
+			SetDouble("v", Math.Clamp(value, 0.0, 1.0));
 		}
 	}
 
 	protected override void SetParams(XElement e)
 	{
 		base.SetParams(e);
-        Sound = GetDoubleOrNull(e, "s");
-		Delay = GetDoubleOrNull(e, "d");
+        Sound = GetDoubleOrNull(e, "s") ?? 0;
+		Delay = GetDoubleOrNull(e, "d") ?? double.NaN;
         IsLocal = (GetDoubleOrNull(e, "l") ?? 1) > 1;
-        Panning = GetDoubleOrNull(e, "p");
-        Volume = GetDoubleOrNull(e, "v");
+        Panning = GetDoubleOrNull(e, "p") ?? 0;
+        Volume = GetDoubleOrNull(e, "v") ?? 1;
 	}
 
 	public string ToXML() { return ToXML(mapper:default!); }

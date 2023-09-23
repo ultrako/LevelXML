@@ -41,120 +41,115 @@ public class Group : Entity
 		throw new LevelXMLException("{nameof(entity)} are not allowed in groups.");
 	}
 	
-	public override double? X
+	public override double X
 	{
-		get { return GetDoubleOrNull("x"); }
+		get { return GetDoubleOrNull("x") ?? 0; }
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the group disappear!");
 			}
-			else { SetDouble("x", (double)value); }
+			else { SetDouble("x", value); }
 		}
 	}
 
-	public override double? Y
+	public override double Y
 	{
-		get { return GetDoubleOrNull("y"); }
+		get { return GetDoubleOrNull("y") ?? 0; }
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the group disappear!");
 			}
-			else { SetDouble("y", (double)value); }
+			else { SetDouble("y", value); }
 		}
 	}
 
-	public double? Rotation
+	public double Rotation
 	{
-		get { return GetDoubleOrNull("r"); }
+		get { return GetDoubleOrNull("r") ?? 0; }
 		set 
 		{ 
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the group disappear!");
 			}
-			else { SetDouble("r", (double)value); }
+			else { SetDouble("r", value); }
 		}
 	}
 
-	public double? OriginX
+	public double OriginX
 	{
-		get { return GetDoubleOrNull("ox");}
+		get { return GetDoubleOrNull("ox") ?? 0;}
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN((double)value!))
 			{
 				throw new LevelXMLException("This would make the group disappear!");
 			}
-			else { SetDouble("ox", (double)value); }
+			else { SetDouble("ox", value); }
 		}
 	}
 
-	public double? OriginY
+	public double OriginY
 	{
-		get { return GetDoubleOrNull("oy");}
+		get { return GetDoubleOrNull("oy") ?? 0;}
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN((double)value!))
 			{
 				throw new LevelXMLException("This would make the group disappear!");
 			}
-			else { SetDouble("oy", (double)value); }
+			else { SetDouble("oy", value); }
 		}
 	}
 
-	public HWBool? Sleeping
+	public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("s");}
+		get { return GetBoolOrNull("s") ?? false;}
 		set
 		{
-			HWBool val = value ?? false;
-			Elt.SetAttributeValue("s", val);
+			Elt.SetAttributeValue("s", value);
 		}
 	}
 
-	public HWBool? Foreground
+	public HWBool Foreground
 	{
-		get { return GetBoolOrNull("f");}
+		get { return GetBoolOrNull("f") ?? false;}
 		set
 		{
-			HWBool val = value ?? false;
-			Elt.SetAttributeValue("f", val);
+			Elt.SetAttributeValue("f", value);
 		}
 	}
 
-	public double? Opacity
+	public double Opacity
 	{
-		get { return GetDoubleOrNull("o"); }
+		get { return GetDoubleOrNull("o") ?? 100; }
 		set
 		{
 			// If the opacity isn't set, the import box sets it to 100
-			double val = value ?? 100;
 			// If the opacity is set to NaN, the import box sets it to 0
-			Elt.SetAttributeValue("o", Math.Clamp(val, 0, 100));
+			Elt.SetAttributeValue("o", Math.Clamp(value, 0, 100));
 		}
 	}
 
-	public HWBool? Fixed
+	public HWBool Fixed
 	{
-		get { return GetBoolOrNull("im");}
+		get { return GetBoolOrNull("im") ?? false;}
 		set
 		{
-			HWBool val = value ?? false;
-			Elt.SetAttributeValue("im", val);
+			Elt.SetAttributeValue("im", value);
 		}
 	}
 
-	public HWBool? FixedRotation
+	public HWBool FixedRotation
 	{
-		get { return GetBoolOrNull("fr");}
+		get { return GetBoolOrNull("fr") ?? false;}
 		set
 		{
-			HWBool val = value ?? false;
-			Elt.SetAttributeValue("fr", val);
+			Elt.SetAttributeValue("fr", value);
 		}
 	}
 
@@ -171,16 +166,16 @@ public class Group : Entity
 
 	protected virtual void setParams(XElement e)
 	{
-		X = GetDoubleOrNull(e, "x");
-		Y = GetDoubleOrNull(e, "y");
-		Rotation = GetDoubleOrNull(e, "r");
-		OriginX = GetDoubleOrNull(e, "ox");
-		OriginY = GetDoubleOrNull(e, "oy");
-		Sleeping = GetBoolOrNull(e, "s");
-		Foreground = GetBoolOrNull(e, "f");
-		Opacity = GetDoubleOrNull(e, "o");
-		Fixed = GetBoolOrNull(e, "im");
-		FixedRotation = GetBoolOrNull(e, "fr");
+		X = GetDoubleOrNull(e, "x") ?? double.NaN;
+		Y = GetDoubleOrNull(e, "y") ?? double.NaN;
+		Rotation = GetDoubleOrNull(e, "r") ?? double.NaN;
+		OriginX = GetDoubleOrNull(e, "ox") ?? double.NaN;
+		OriginY = GetDoubleOrNull(e, "oy") ?? double.NaN;
+		Sleeping = GetBoolOrNull(e, "s") ?? false;
+		Foreground = GetBoolOrNull(e, "f") ?? false;
+		Opacity = GetDoubleOrNull(e, "o") ?? 100;
+		Fixed = GetBoolOrNull(e, "im") ?? false;
+		FixedRotation = GetBoolOrNull(e, "fr") ?? false;
 	}
 
 	internal override void FinishConstruction()

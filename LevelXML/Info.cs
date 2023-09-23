@@ -10,63 +10,61 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	internal const string HappyWheelsVersion = "1.95";
 	public const string EditorDefault = @"<info v=""" + HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
 
-	internal string? Version
+	internal string Version
 	{
-		get { return GetStringOrNull(Elt, "v"); }
+		get { return GetStringOrNull(Elt, "v") ?? HappyWheelsVersion; }
 		set
 		{
-			Elt.SetAttributeValue("v", value ?? HappyWheelsVersion);
+			Elt.SetAttributeValue("v", value);
 		}
 	}
 
 	public string ToXML() { return ToXML(mapper: default!); }
 
-	public double? X
+	public double X
 	{
-		get { return GetDoubleOrNull("x"); }
+		get { return GetDoubleOrNull("x") ?? double.NaN; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("x", val);
+			SetDouble("x", value);
 		}
 	}
 
-	public double? Y
+	public double Y
 	{
-		get { return GetDoubleOrNull("y"); }
+		get { return GetDoubleOrNull("y") ?? double.NaN; }
 		set
 		{
-			double val = value ?? double.NaN;
-			Elt.SetAttributeValue("y", val);
+			Elt.SetAttributeValue("y", value);
 		}
 	}
 
-	public Character? Character
+	public Character Character
 	{
-		get { return GetDoubleOrNull("c"); }
+		get { return GetDoubleOrNull("c") ?? double.NaN; }
 		set
 		{
-			Elt.SetAttributeValue("c", (Character)(value ?? double.NaN));
+			Elt.SetAttributeValue("c", value);
 		}
 	}
 
-	public HWBool? ForcedCharacter
+	public HWBool ForcedCharacter
 	{
-		get { return GetBoolOrNull("f"); }
+		get { return GetBoolOrNull("f") ?? false; }
 		set
 		{
-			HWBool val = value ?? false;
+			HWBool val = value;
 			if (val == HWBool.NaN) { val = false; }
 			Elt.SetAttributeValue("f", val);
 		}
 	}
 
-	public HWBool? VehicleHidden
+	public HWBool VehicleHidden
 	{
-		get { return GetBoolOrNull("h"); }
+		get { return GetBoolOrNull("h") ?? false; }
 		set
 		{
-			HWBool val = value ?? HWBool.False;
+			HWBool val = value;
 			if (val == HWBool.NaN) { val = false; }
 			Elt.SetAttributeValue("h", val);
 		}
@@ -75,26 +73,24 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	/// <summary>
 	///  The background the level has
 	/// </summary>
-	public Background? Background
+	public Background Background
 	{
-		get { return (Background?)GetDoubleOrNull("bg"); }
+		get { return (Background?)GetDoubleOrNull("bg") ?? HappyWheels.Background.Buggy; }
 		set
 		{
-			Background val = value ?? HappyWheels.Background.Buggy;;
-			Elt.SetAttributeValue("bg", val);
+			Elt.SetAttributeValue("bg", value);
 		}
 	}
 
 	/// <summary>
 	///  The color of the level's background, if the background is set to Blank
 	/// </summary>
-	public double? BackgroundColor
+	public double BackgroundColor
 	{
-		get { return GetDoubleOrNull("bgc"); }
+		get { return GetDoubleOrNull("bgc") ?? 16777215; }
 		set
 		{
-			double val = value ?? 16777215;
-			Elt.SetAttributeValue("bgc", val);
+			Elt.SetAttributeValue("bgc", value);
 		}
 	}
 
@@ -113,13 +109,13 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	protected void setParams(XElement e)
 	{
 		Version = Info.HappyWheelsVersion;
-		X = GetDoubleOrNull(e, "x");
-		Y = GetDoubleOrNull(e, "y");
-		Character = GetDoubleOrNull(e, "c");
-		ForcedCharacter = GetBoolOrNull(e, "f");
-		VehicleHidden = GetBoolOrNull(e, "h");
-		Background = GetDoubleOrNull(e, "bg");
-		BackgroundColor = GetDoubleOrNull(e, "bgc");
+		X = GetDoubleOrNull(e, "x") ?? double.NaN;
+		Y = GetDoubleOrNull(e, "y") ?? double.NaN;
+		Character = GetDoubleOrNull(e, "c") ?? double.NaN;
+		ForcedCharacter = GetBoolOrNull(e, "f") ?? false;
+		VehicleHidden = GetBoolOrNull(e, "h") ?? false;
+		Background = GetDoubleOrNull(e, "bg") ?? HappyWheels.Background.Buggy;
+		BackgroundColor = GetDoubleOrNull(e, "bgc") ?? 16777215;
 		// Unfortunate naming here
 		// idk what Jim Bonacci meant by "e"
 		this.E = GetDoubleOrNull(e, "e");

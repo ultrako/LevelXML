@@ -30,24 +30,24 @@ public abstract class Shape : Entity
 		set { if (value == false) { Elt.SetAttributeValue("i", value); }; }
 	}
 	
-	public override double? X
+	public override double X
 	{
-		get { return GetDoubleOrNull("p0"); }
+		get { return GetDoubleOrNull("p0") ?? 0; }
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the shape disappear!");
 			}
 			else { Elt.SetAttributeValue("p0", value); }
 		}
 	}
-	public override double? Y
+	public override double Y
 	{
-		get { return GetDoubleOrNull("p1"); }
+		get { return GetDoubleOrNull("p1") ?? 0; }
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the shape disappear!");
 			}
@@ -56,83 +56,76 @@ public abstract class Shape : Entity
 	}
 
 	// All shapes have Width and Height, just that some are set differently
-	public abstract double? Width {get; set;}
+	public abstract double Width {get; set;}
 
-	public abstract double? Height {get; set;}
+	public abstract double Height {get; set;}
 
-	public double? Rotation
+	public double Rotation
 	{
-		get { return GetDoubleOrNull("p4"); }
+		get { return GetDoubleOrNull("p4") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the shape disappear!");
 			}
-			Elt.SetAttributeValue("p4", Math.Clamp(val,-180,180)); 
+			Elt.SetAttributeValue("p4", Math.Clamp(value,-180,180)); 
 		}
 	}
 
 	/// <summary>
 	///  Whether or not the shape moves
 	/// </summary>
-	public HWBool? Fixed
+	public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.True); }
+		get { return GetBoolOrNull("p5") ?? true; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
 	/// <summary>
 	///  Whether or not the shape starts in an unmoving state until it is first collided with
 	/// </summary>
-	public HWBool? Sleeping
+	public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p6"); }
-		set { Elt.SetAttributeValue("p6", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p6") ?? false; }
+		set { Elt.SetAttributeValue("p6", value); }
 	}
 
 	/// <summary>
 	///  The density of the shape - how much force gravity applies to the shape per how large it is.
 	/// </summary>
-	public double? Density
+	public double Density
 	{
-		get { return GetDoubleOrNull("p7"); }
+		get { return GetDoubleOrNull("p7") ?? 1; }
 		set
 		{
-			double val = value ?? 1;
-			// I am hoping clamp doesn't mess with NaN as we do sometimes want
-			// NaN density entities
-			val = (double)Math.Clamp(val, 0.1, 100.0);
-			Elt.SetAttributeValue("p7", val);
+			Elt.SetAttributeValue("p7", Math.Clamp(value, 0.1, 100.0));
 		}
 	}
 
 	// Representing a RGB color with a double is weird, yes
 	// It's just that in happy wheels anything can be NaN
-	// But in c#, NaN is only a value in doubles or doubles
+	// But in c#, NaN is only a value in doubles
 
 	/// <summary>
-	/// The color of the shape inbetween its edges
+	/// The color of the shape inbetween its edges in RGB hex format.
 	/// </summary>
-	public double? FillColor
+	public double FillColor
 	{
-		get { return GetDoubleOrNull("p8"); }
+		get { return GetDoubleOrNull("p8") ?? 4032711; }
 		set 
 		{
-			double val = value ?? 4032711;
-			Elt.SetAttributeValue("p8", val); 
+			Elt.SetAttributeValue("p8", value); 
 		}
 	}
 
 	// The color of the edges of the shape
-	public double? OutlineColor
+	public double OutlineColor
 	{
-		get { return GetDoubleOrNull("p9"); }
+		get { return GetDoubleOrNull("p9") ?? -1; }
 		set 
 		{ 
-			double val = value ?? -1;
-			Elt.SetAttributeValue("p9", val); 
+			Elt.SetAttributeValue("p9", value); 
 		}
 	}
 
@@ -144,15 +137,12 @@ public abstract class Shape : Entity
 	/// At 1-99, a shape is translucent,
 	/// And at 100, a shape is fully visible.
 	/// </remarks>
-	public double? Opacity
+	public double Opacity
 	{
-		get { return GetDoubleOrNull("p10"); }
+		get { return GetDoubleOrNull("p10") ?? 100; }
 		set
 		{
-			// If the opacity isn't set, the import box sets it to 100
-			double val = value ?? 100;
-			// If the opacity is set to NaN, the import box sets it to 0
-			Elt.SetAttributeValue("p10", Math.Clamp(val, 0, 100));
+			Elt.SetAttributeValue("p10", Math.Clamp(value, 0, 100));
 		}
 	}
 
@@ -161,7 +151,7 @@ public abstract class Shape : Entity
 	/// </summary>
 	public Collision Collision
 	{
-		get { return (Collision)GetDoubleOrNull(Elt, "p11")!;}
+		get { return (Collision?)GetDoubleOrNull(Elt, "p11") ?? Collision.Everything;}
 		set { Elt.SetAttributeValue("p11", value);}
 	}
 	
@@ -169,17 +159,17 @@ public abstract class Shape : Entity
 	{
 		Elt.SetAttributeValue("t", Type);
 		Interactive = GetBoolOrNull(e, "i");
-        X = GetDoubleOrNull(e, "p0");
-        Y = GetDoubleOrNull(e, "p1");
-        Width = GetDoubleOrNull(e, "p2");
-        Height = GetDoubleOrNull(e, "p3");
-        Rotation = GetDoubleOrNull(e, "p4");
-        Fixed = GetBoolOrNull(e, "p5");
-        Sleeping = GetBoolOrNull(e, "p6");
-        Density = GetDoubleOrNull(e, "p7");
-        FillColor = GetDoubleOrNull(e, "p8");
-        OutlineColor = GetDoubleOrNull(e, "p9");
-        Opacity = GetDoubleOrNull(e, "p10");
+        X = GetDoubleOrNull(e, "p0") ?? double.NaN;
+        Y = GetDoubleOrNull(e, "p1") ?? double.NaN;
+        Width = GetDoubleOrNull(e, "p2") ?? 100;
+        Height = GetDoubleOrNull(e, "p3") ?? 100;
+        Rotation = GetDoubleOrNull(e, "p4") ?? 0;
+        Fixed = GetBoolOrNull(e, "p5") ?? true;
+        Sleeping = GetBoolOrNull(e, "p6") ?? false;
+        Density = GetDoubleOrNull(e, "p7") ?? 1;
+        FillColor = GetDoubleOrNull(e, "p8") ?? 4032711;
+        OutlineColor = GetDoubleOrNull(e, "p9") ?? -1;
+        Opacity = GetDoubleOrNull(e, "p10") ?? 100;
         Collision = (Collision?)GetDoubleOrNull(e, "p11") ?? Collision.Everything;
 	}
 	internal Shape(XElement e) : base("sh") 

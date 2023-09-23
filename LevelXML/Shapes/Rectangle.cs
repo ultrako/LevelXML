@@ -13,30 +13,28 @@ public class Rectangle : Shape
 
 	public string ToXML() { return ToXML(mapper: default!); }
 
-	public override double? Width
+	public override double Width
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 100; }
 		set
 		{
-			double val = value ?? 100;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
                 throw new LevelXMLException("This would make the rectangle disappear!");
 			} 
-			Elt.SetAttributeValue("p2", Math.Clamp(val, 5, 5000));
+			SetDouble("p2", Math.Clamp(value, 5, 5000));
 		}
 	}
 
-	public override double? Height
+	public override double Height
 	{
-		get { return GetDoubleOrNull("p3"); }
+		get { return GetDoubleOrNull("p3") ?? 100; }
 		set
 		{
-			double val = value ?? 100;
-			if (double.IsNaN(val)) {
+			if (double.IsNaN(value)) {
 				throw new LevelXMLException("This would make the rectangle disappear!");
 			} 
-			Elt.SetAttributeValue("p3", Math.Clamp(val, 5, 5000));
+			SetDouble("p3", Math.Clamp(value, 5, 5000));
 		}
 	}
 

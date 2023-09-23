@@ -23,37 +23,37 @@ public class Level : LevelXMLTag, IConvertibleToXML
 	/// <summary>
 	///  The X position of the character in the level.
 	/// </summary>
-	public double X { get {return info.X ?? 0;} set { info.X = value;} }
+	public double X { get {return info.X;} set { info.X = value;} }
 
 	/// <summary>
 	/// The Y position of the character in the level.
 	/// </summary>
-	public double Y { get {return info.Y ?? 0;} set { info.Y = value;} }
+	public double Y { get {return info.Y;} set { info.Y = value;} }
 
 	/// <summary>
 	///  Which character the level starts with
 	/// </summary>
-	public Character? Character { get { return info.Character; } set { info.Character = value ?? (Character)double.NaN;} }
+	public Character Character { get { return info.Character; } set { info.Character = value; } }
 
 	/// <summary>
 	///  Whether or not players must use the default character when playing the level.
 	/// </summary>
-	public HWBool ForcedCharacter { get { return info.ForcedCharacter ?? false; } set { info.ForcedCharacter = value;}}
+	public HWBool ForcedCharacter { get { return info.ForcedCharacter; } set { info.ForcedCharacter = value; } }
 
 	/// <summary>
 	///  Whether or not the character starts with a vehicle.
 	/// </summary>
-	public HWBool VehicleHidden { get { return info.VehicleHidden ?? false; } set { info.VehicleHidden = value;}}
+	public HWBool VehicleHidden { get { return info.VehicleHidden; } set { info.VehicleHidden = value;}}
 
 	/// <summary>
 	///  Which one of 3 backgrounds the level has
 	/// </summary>
-	public Background Background { get { return info.Background ?? Background.Blank; } set { info.Background = value;} }
+	public Background Background { get { return info.Background; } set { info.Background = value;} }
 
 	/// <summary>
 	///  The color of the level's background, if the background is set to Blank
 	/// </summary>
-	public double BackgroundColor { get { return info.BackgroundColor ?? 0; } set { info.BackgroundColor = value;} }
+	public double BackgroundColor { get { return info.BackgroundColor; } set { info.BackgroundColor = value;} }
 
 	/// <returns> The LevelXML representation of the level, with all of its Entities</returns>
 	public string ToXML() { return ToXML(mapper: default!); }

@@ -27,8 +27,8 @@ public class ShapeTest
 		Assert.Equal(0, rect.X);
 		Assert.Equal(0, rect.Y);
 		Assert.Equal(0, rect.Rotation);
-		Assert.Equal(true, rect.Fixed);
-		Assert.Equal(false, rect.Sleeping);
+		Assert.True(rect.Fixed);
+		Assert.False(rect.Sleeping);
 		Assert.Equal(1, rect.Density);
 		Assert.Equal(4032711, rect.FillColor);
 		Assert.Equal(-1, rect.OutlineColor);

@@ -11,12 +11,12 @@ public abstract class Special : Entity, IConvertibleToXML
 
 	public string ToXML() { return ToXML(mapper: default!); }
 
-	public override double? X
+	public override double X
 	{
-		get { return GetDoubleOrNull("p0"); }
+		get { return GetDoubleOrNull("p0") ?? 0; }
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the special disappear!");
 			}
@@ -24,12 +24,12 @@ public abstract class Special : Entity, IConvertibleToXML
 		}
 	}
 
-	public override double? Y
+	public override double Y
 	{
-		get { return GetDoubleOrNull("p1"); }
+		get { return GetDoubleOrNull("p1")  ?? 0; }
 		set
 		{
-			if (value is null || double.IsNaN((double)value!))
+			if (double.IsNaN(value))
 			{
 				throw new LevelXMLException("This would make the special disappear!");
 			}
@@ -40,8 +40,8 @@ public abstract class Special : Entity, IConvertibleToXML
 	protected virtual void SetParams(XElement e)
     {
 		Elt.SetAttributeValue("t", Type);
-        X = GetDoubleOrNull(e, "p0");
-        Y = GetDoubleOrNull(e, "p1");
+        X = GetDoubleOrNull(e, "p0") ?? double.NaN;
+        Y = GetDoubleOrNull(e, "p1") ?? double.NaN;
 	}
 	
 	protected Special(XElement e) : base("sp") 

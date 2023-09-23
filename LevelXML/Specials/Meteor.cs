@@ -8,47 +8,46 @@ public class Meteor : SimpleSpecial
     public const string EditorDefault = 
     @"<sp t=""11"" p0=""0"" p1=""0"" p2=""400"" p4=""f"" p5=""f""/>";
 
-    public double? Width
+    public double Width
     {
-        get { return GetDoubleOrNull("p2"); }
+        get { return GetDoubleOrNull("p2") ?? 400; }
         set
         {
-            double val = value ?? 400;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the width or height to NaN would make the special disappear!");
             }
-            double clamped = Math.Clamp(val, 200, 600);
+            double clamped = Math.Clamp(value, 200, 600);
             SetDouble("p2", clamped);
             SetDouble("p3", clamped);
         }
     }
 
-    public double? Height
+    public double Height
     {
         get { return Width; }
         set { Width = value; }
     }
 
-    public HWBool? Fixed
+    public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p4"); }
-		set { Elt.SetAttributeValue("p4", value ?? HWBool.True); }
+		get { return GetBoolOrNull("p4") ?? false; }
+		set { Elt.SetAttributeValue("p4", value); }
 	}
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p5") ?? false; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Width = GetDoubleOrNull(e, "p2");
-        Height = GetDoubleOrNull(e, "p3");
-        Fixed = GetBoolOrNull(e, "p4");
-        Sleeping = GetBoolOrNull(e, "p5");
+        Width = GetDoubleOrNull(e, "p2") ?? GetDoubleOrNull(e, "p3") ?? 400;
+        Height = Width;
+        Fixed = GetBoolOrNull(e, "p4") ?? false;
+        Sleeping = GetBoolOrNull(e, "p5") ?? false;
     }
 
     public Meteor(string xml=EditorDefault) : this(StrToXElement(xml)) {}
