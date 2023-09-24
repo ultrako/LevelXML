@@ -115,7 +115,7 @@ public abstract class Trigger : Entity
 		get { return GetDoubleOrNull("d") ?? double.NaN; }
 		set
 		{
-			Elt.SetAttributeValue("d", Math.Clamp(value, 0, 30));
+			SetDouble("d", Math.Clamp(value, 0, 30));
 		}
 	}
 

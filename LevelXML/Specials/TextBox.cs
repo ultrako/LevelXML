@@ -13,69 +13,53 @@ public class TextBox : Special
         </sp>";
     private XElement contentElement;
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("That would make the text box disappear!");
 			}
-			SetDouble("p2", val); 
+			SetDouble("p2", value); 
 		}
 	}
 
-	public double? Color
+	public double Color
 	{
-		get { return GetDoubleOrNull("p3");}
+		get { return GetDoubleOrNull("p3") ?? 0;}
 		set
 		{
-			Elt.SetAttributeValue("p3", value ?? 0);
+			SetDouble("p3", value);
 		}
 	}
 
-    public double? Font
+    public double Font
     {
-        get { return GetDoubleOrNull("p4");}
-        set
-        {
-            Elt.SetAttributeValue("p4", Math.Clamp((value ?? 1), 1, 5));
-        }
+        get { return GetDoubleOrNull("p4") ?? 1;}
+        set { SetDouble("p4", Math.Clamp(value, 1, 5)); }
     }
 
-    public double? FontSize
+    public double FontSize
     {
-        get { return GetDoubleOrNull("p5");}
-        set
-        {
-            Elt.SetAttributeValue("p5", Math.Clamp((value ?? 10), 10, 100));
-        }
+        get { return GetDoubleOrNull("p5") ?? 10;}
+        set { SetDouble("p5", Math.Clamp(value, 10, 100)); }
     }
 
     /// <summary>
     /// Whether the text is left, center, or right aligned, corresponding to 1, 2, and 3 respectively.
     /// </summary>
-    public double? Alignment
+    public double Alignment
     {
-        get { return GetDoubleOrNull("p6");}
-        set
-        {
-            Elt.SetAttributeValue("p6", Math.Clamp((value ?? 1), 1, 3));
-        }
+        get { return GetDoubleOrNull("p6") ?? 1;}
+        set { SetDouble("p6", Math.Clamp(value, 1, 3)); }
     }
 
-    public double? Opacity
+    public double Opacity
 	{
-		get { return GetDoubleOrNull("p8"); }
-		set
-		{
-			// If the opacity isn't set, the import box sets it to 100
-			double val = value ?? 100;
-			// If the opacity is set to NaN, the import box sets it to 0
-			Elt.SetAttributeValue("p8", Math.Clamp(val, 0, 100));
-		}
+		get { return GetDoubleOrNull("p8") ?? 100; }
+		set { SetDouble("p8", Math.Clamp(value, 0, 100)); }
 	}
 
     /// <summary>
@@ -96,12 +80,12 @@ public class TextBox : Special
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Rotation = GetDoubleOrNull(e, "p2");
-        Color = GetDoubleOrNull(e, "p3");
-        Font = GetDoubleOrNull(e, "p4");
-        FontSize = GetDoubleOrNull(e, "p5");
-        Alignment = GetDoubleOrNull(e, "p6");
-        Opacity = GetDoubleOrNull(e, "p8");
+        Rotation = GetDoubleOrNull(e, "p2") ?? 0;
+        Color = GetDoubleOrNull(e, "p3") ?? 0;
+        Font = GetDoubleOrNull(e, "p4") ?? 1;
+        FontSize = GetDoubleOrNull(e, "p5") ?? 10;
+        Alignment = GetDoubleOrNull(e, "p6") ?? 1;
+        Opacity = GetDoubleOrNull(e, "p8") ?? 100;
         Content = ((e.Element("p7") ?? new XElement("p7"))!.FirstNode as XCData)!.Value;
     }
 
