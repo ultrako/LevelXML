@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class TrashCan : SimpleSpecial
+public class TrashCan : Special
 {
     internal override uint Type => 26;
     public const string EditorDefault = 

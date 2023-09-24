@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Log : SimpleSpecial
+public class Log : Special
 {
     internal override uint Type => 4;
     public const string EditorDefault = 

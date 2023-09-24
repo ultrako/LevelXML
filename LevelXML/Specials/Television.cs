@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Television : SimpleSpecial
+public class Television : Special
 {
     internal override uint Type => 21;
     public const string EditorDefault = 

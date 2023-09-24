@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Meteor : SimpleSpecial
+public class Meteor : Special
 {
     internal override uint Type => 11;
     public const string EditorDefault = 

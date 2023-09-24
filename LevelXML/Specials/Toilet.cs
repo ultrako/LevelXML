@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Toilet : SimpleSpecial
+public class Toilet : Special
 {
     internal override uint Type => 0;
     public const string EditorDefault = 
