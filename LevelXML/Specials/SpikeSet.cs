@@ -9,56 +9,54 @@ public class SpikeSet : SimpleSpecial
     @"<sp t=""6"" p0=""0"" p1=""0"" p2=""0"" p3=""t"" p4=""20"" p5=""f""/>";
 
 
-    public double? Rotation
+    public double Rotation
 	{
-		get { return GetDoubleOrNull("p2"); }
+		get { return GetDoubleOrNull("p2") ?? 0; }
 		set 
 		{ 
-			double val = value ?? 0;
-			if (double.IsNaN(val)) 
+			if (double.IsNaN(value)) 
 			{
 				throw new LevelXMLException("Setting the rotation to NaN would make the special disappear!");
 			}
-			SetDouble("p2", val); 
+			SetDouble("p2", value); 
 		}
 	}
 
-    public HWBool? Fixed
+    public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p3"); }
-		set { Elt.SetAttributeValue("p3", value ?? HWBool.True); }
+		get { return GetBoolOrNull("p3") ?? true; }
+		set { Elt.SetAttributeValue("p3", value); }
 	}
 
     /// <summary>
     /// This is the amount of spikes the spike set has.
     /// </summary>
-    public double? Spikes
+    public double Spikes
     {
-        get { return GetDoubleOrNull("p4"); }
+        get { return GetDoubleOrNull("p4") ?? 20; }
         set
         {
-            double val = value ?? 20;
-            if (double.IsNaN(val))
+            if (double.IsNaN(value))
             {
                 throw new LevelXMLException("Setting the number of spikes to NaN would cause the spike set to disappear!");
             }
-            SetDouble("p4", val);
+            SetDouble("p4", value);
         }
     }
 
-    public HWBool? Sleeping
+    public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p5"); }
-		set { Elt.SetAttributeValue("p5", value ?? HWBool.False); }
+		get { return GetBoolOrNull("p5") ?? false; }
+		set { Elt.SetAttributeValue("p5", value); }
 	}
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        Rotation = GetDoubleOrNull(e, "p2");
-        Fixed = GetBoolOrNull(e, "p3");
-        Spikes = GetDoubleOrNull(e, "p4");
-        Sleeping = GetBoolOrNull(e, "p5");
+        Rotation = GetDoubleOrNull(e, "p2") ?? 0;
+        Fixed = GetBoolOrNull(e, "p3") ?? true;
+        Spikes = GetDoubleOrNull(e, "p4") ?? 20;
+        Sleeping = GetBoolOrNull(e, "p5") ?? false;
     }
 
     public SpikeSet(string xml=EditorDefault) : this(StrToXElement(xml)) {}

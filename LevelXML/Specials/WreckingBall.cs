@@ -11,20 +11,16 @@ public class WreckingBall : Special
     /// <summary>
     /// The length of the wrecking ball's rope
     /// </summary>
-    public double? RopeLength
+    public double RopeLength
     {
-        get { return GetDoubleOrNull("p2"); }
-        set
-        {
-            double val = value ?? 350;
-            SetDouble("p2", Math.Clamp(val, 200, 1000));
-        }
+        get { return GetDoubleOrNull("p2") ?? 350; }
+        set { SetDouble("p2", Math.Clamp(value, 200, 1000)); }
     }
 
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        RopeLength = GetDoubleOrNull(e, "p2");
+        RopeLength = GetDoubleOrNull(e, "p2") ?? 350;
     }
 
     public WreckingBall(string xml=EditorDefault) : this(StrToXElement(xml)) {}
