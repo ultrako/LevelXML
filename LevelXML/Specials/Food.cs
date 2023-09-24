@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Food : SimpleSpecial
+public class Food : Special
 {
     internal override uint Type => 32;
     public const string EditorDefault = 

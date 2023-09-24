@@ -160,8 +160,8 @@ public class LevelTest
     </triggers>
 </levelXML>");
 		ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
-		Target<SimpleSpecial> target = (Target<SimpleSpecial>)trigger.Targets[0];
-		Assert.IsType<AwakeFromSleep<SimpleSpecial>>(target.Actions[0]);
+		Target<Van> target = (Target<Van>)trigger.Targets[0];
+		Assert.IsType<AwakeFromSleep<Van>>(target.Actions[0]);
 	}
 
 	[Fact]

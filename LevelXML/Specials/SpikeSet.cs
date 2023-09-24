@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class SpikeSet : SimpleSpecial
+public class SpikeSet : Special
 {
     internal override uint Type => 6;
     public const string EditorDefault = 

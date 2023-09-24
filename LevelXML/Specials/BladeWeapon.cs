@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class BladeWeapon : SimpleSpecial
+public class BladeWeapon : Special
 {
     internal override uint Type => 34;
     public const string EditorDefault = 

@@ -38,12 +38,6 @@ public interface ITriggerAction<in T> : ITriggerAction
 				7 => (new ChangeCollision<Shape>(element) as ITriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a shape!"),
 			},
-			nameof(SimpleSpecial) => ActionType switch 
-			{
-				0 => (new AwakeFromSleep<SimpleSpecial>() as ITriggerAction<T>)!,
-				1 => (new Impulse<SimpleSpecial>(element) as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting this special!"),
-			},
 			nameof(Group) => ActionType switch
 			{
 				0 => (new AwakeFromSleep<Group>() as ITriggerAction<T>)!,
@@ -78,6 +72,25 @@ public interface ITriggerAction<in T> : ITriggerAction
 				1 => (new DeactivateHarpoon() as ITriggerAction<T>)!,
 				2 => (new ActivateHarpoon() as ITriggerAction<T>)!,
 				_ => throw new LevelXMLException("Invalid id for an action targeting a harpoon!"),
+			},
+			nameof(Rail) or 
+			nameof(SpikeSet) or
+			nameof(Television) or
+			nameof(Toilet) or
+			nameof(TrashCan) or
+			nameof(Van) or
+			nameof(IBeam) or
+			nameof(BladeWeapon) or
+			nameof(Chain) or
+			nameof(Log) or
+			nameof(Food) or
+			nameof(Bottle) or
+			nameof(Meteor)
+			=> ActionType switch
+			{
+				0 => new AwakeFromSleep<T>(),
+				1 => new Impulse<T>(),
+				_ => throw new LevelXMLException("Invalid id for an action")
 			},
 			nameof(TextBox) => ActionType switch
 			{

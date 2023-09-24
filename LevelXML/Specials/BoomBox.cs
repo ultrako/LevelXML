@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Boombox : SimpleSpecial
+public class Boombox : Special
 {
     internal override uint Type => 22;
     public const string EditorDefault = 

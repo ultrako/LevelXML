@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class Rail : SimpleSpecial
+public class Rail : Special
 {
     internal override uint Type => 4;
     public const string EditorDefault = 

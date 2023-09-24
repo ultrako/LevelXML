@@ -172,7 +172,7 @@ public class LevelsWithTriggerActionsTest
     }
 
     [Fact]
-    public void ParseLevelWithImpulseSpecial()
+    public void ParseLevelWithImpulseVan()
     {
         Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
@@ -188,8 +188,8 @@ public class LevelsWithTriggerActionsTest
     </triggers>
 </levelXML>");
         ActivateTrigger trigger = (ActivateTrigger)level.Triggers[0];
-        Target<SimpleSpecial> target = (Target<SimpleSpecial>)trigger.Targets[0];
-        Assert.IsType<Impulse<SimpleSpecial>>(target.Actions[0]);
+        Target<Van> target = (Target<Van>)trigger.Targets[0];
+        Assert.IsType<Impulse<Van>>(target.Actions[0]);
     }
 
     [Fact]

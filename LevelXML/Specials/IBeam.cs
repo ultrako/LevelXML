@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace HappyWheels;
 
-public class IBeam : SimpleSpecial
+public class IBeam : Special
 {
     internal override uint Type => 3;
     public const string EditorDefault = 
