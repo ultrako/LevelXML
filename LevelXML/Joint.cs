@@ -21,6 +21,7 @@ public abstract class Joint : Entity
 			return;
 		}
 		if (entity is Group) { return; }
+		if (entity is Vehicle) { return; }
 		if (entity is Special special)
 		{
 			if (special is Van) { return;}
