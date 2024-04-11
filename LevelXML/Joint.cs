@@ -13,7 +13,7 @@ public abstract class Joint : Entity
 
 	private void checkIfCanBeJointed(Entity? entity)
 	{
-		string exceptionMessage = "Cannot joint a " + nameof(entity);
+		string exceptionMessage = "Cannot joint a " + (entity ?? new Group()).GetType().Name;
 		if (entity is null || entity is Group) { return; }
 		if (entity is Shape shape)
 		{
@@ -21,10 +21,26 @@ public abstract class Joint : Entity
 			return;
 		}
 		if (entity is Group) { return; }
-		if (entity is Vehicle) { return; }
 		if (entity is Special special)
 		{
-			if (special is Van) { return;}
+			if (special is IBeam) { return; }
+			if (special is Log) { return; }
+			if (special is ArrowGun) { return; }
+			if (special is SpikeSet) { return; }
+			if (special is Jet) { return; }
+			if (special is NonPlayerCharacter) { return; }
+			if (special is BladeWeapon) { return; }
+			if (special is Food) { return; }
+			if (special is Chain) { return; }
+			if (special is GlassPanel) { return; }
+			if (special is DinnerTable) { return; }
+			if (special is Chair) { return; }
+			if (special is Bottle) { return; }
+			if (special is Television) { return; }
+			if (special is Boombox) { return; }
+			if (special is Van) { return; }
+			if (special is TrashCan) { return; }
+			if (special is Toilet) { return; }
 		}
 		throw new LevelXMLException(exceptionMessage);
 	}
