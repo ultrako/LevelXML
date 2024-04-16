@@ -1590,6 +1590,25 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void CreateLevelWithJointToVehicle()
+	{
+		Vehicle vehicle = new();
+		vehicle.Fixed = false;
+		PinJoint joint = new(vehicle);
+		Level level = new(new Entity[] {vehicle, joint});
+		Assert.Equal(@"<levelXML>
+  <info v=""" + Info.HappyWheelsVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+  <groups>
+    <g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""0"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"" v=""t"" sb=""0"" sh=""0"" ct=""0"" a=""1"" l=""0"" cp=""0"" lo=""f"" />
+  </groups>
+  <joints>
+    <j t=""0"" x=""0"" y=""0"" b1=""g0"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
+  </joints>
+</levelXML>",
+		level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
 	public void ParseLevelWithJointToGroup()
 	{
 		Level level = new(@"<levelXML>
