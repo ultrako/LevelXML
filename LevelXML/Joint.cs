@@ -220,8 +220,10 @@ public abstract class Joint : Entity
 		Limit = GetBoolOrNull(e, "l") ?? false;
 		// This default value is different depending on whether it is a sliding joint or a pin joint
 		double lim = Type switch { 0 => 90, _ => 100 };
-		UpperLimit = GetDoubleOrNull(e, "ua") ?? lim;
-		LowerLimit = GetDoubleOrNull(e, "la") ?? -lim;
+		string upperLim = Type switch { 0 => "ua", _ => "ul"};
+		string lowerLim = Type switch { 0 => "la", _ => "ll"};
+		UpperLimit = GetDoubleOrNull(e, upperLim) ?? lim;
+		LowerLimit = GetDoubleOrNull(e, lowerLim) ?? -lim;
 		Motorized = GetBoolOrNull(e, "m") ?? false;
 	}
 	

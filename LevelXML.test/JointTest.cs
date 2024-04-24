@@ -113,6 +113,16 @@ public class JointTest
     }
 
     [Fact]
+    public void SlidingJointTestAccessors()
+    {
+        SlidingJoint sj = new();
+        sj.LowerLimit = -10;
+        sj.UpperLimit = 10;
+        Assert.Equal(-10, sj.LowerLimit);
+        Assert.Equal(10, sj.UpperLimit);
+    }
+
+    [Fact]
     public void SlidingJointTestHighValues()
     {
         SlidingJoint sj = new();
