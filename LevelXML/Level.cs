@@ -187,7 +187,7 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		}
 		return index;
 	}
-	private AutoResetEvent depthOneTagsReady = new(false);
+	private ManualResetEvent depthOneTagsReady = new(false);
 	private Entity ReverseTargetMapper(XElement e)
 	{
 		int index = Int32.Parse(e.Attribute("i")!.Value)!;
