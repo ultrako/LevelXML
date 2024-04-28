@@ -205,7 +205,7 @@ public class ShapeTest
 		art.Vertices.Add(new(new(0, 0)));
 		art.Vertices.Add(new(new(0, 100)));
 		string expected = @"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
-  <v f=""t"" id=""0"" n=""2"" v0=""0_0"" v1=""0_100"" />
+  <v f=""t"" id=""0"" v0=""0_0"" v1=""0_100"" n=""2"" />
 </sh>";
 		string actual = art.ToXML(mapper: entity => 0);
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
@@ -218,7 +218,7 @@ public class ShapeTest
 	{
 		Art art = new(Art.EditorDefault, new(new(0, 0)), new(new(0, 100)));
 		string expected = @"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
-  <v f=""t"" id=""0"" n=""2"" v0=""0_0"" v1=""0_100"" />
+  <v f=""t"" id=""0"" v0=""0_0"" v1=""0_100"" n=""2"" />
 </sh>";
 		string actual = art.ToXML(mapper: entity => 0);
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);

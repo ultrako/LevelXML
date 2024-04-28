@@ -43,10 +43,6 @@ internal class Vertices : LevelXMLTag
 	{
 		FinishConstruction();
 		Elt.SetAttributeValue("id", id);
-		if (verts.Count > 0)
-		{
-			Elt.SetAttributeValue("n", verts.Count);
-		}
 		int index = 0;
 		foreach (Vertex v in verts)
 		{
@@ -55,6 +51,10 @@ internal class Vertices : LevelXMLTag
 			if (v.handle1 is not null) { coord_full += $"_{v.handle1.X}_{v.handle1.Y}"; }
 			Elt.SetAttributeValue($"v{index}", coord_full);
 			index += 1;
+		}
+		if (verts.Count > 0)
+		{
+			Elt.SetAttributeValue("n", verts.Count);
 		}
 	}
 	// Todo: constructor from levelXML tag string
