@@ -15,6 +15,8 @@ public abstract class CustomShape : Shape
 	}
 	public override double Width
 	{
+		// Either figure out a way to get the width from the vertices,
+		// or make this field nullable
 		get { return GetDoubleOrNull("p2") ?? 100; }
 		set
 		{
