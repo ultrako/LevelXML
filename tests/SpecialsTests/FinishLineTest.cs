@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace LevelXML;
+namespace LevelXML.Test;
 
 public class FinishLineTest
 {
