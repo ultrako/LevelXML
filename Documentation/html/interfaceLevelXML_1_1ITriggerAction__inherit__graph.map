@@ -1,0 +1,7 @@
+<map id="LevelXML.ITriggerAction&lt; in T &gt;" name="LevelXML.ITriggerAction&lt; in T &gt;">
+<area shape="rect" id="Node000001" title="A TriggerAction is something that a trigger can do to an Entity, like deleting a shape or disabling a..." alt="" coords="60,79,225,119"/>
+<area shape="rect" id="Node000002" href="$interfaceLevelXML_1_1IConvertibleToXML.html" title="These are all of the classes that can directly be converted to XML, without needing any more context ..." alt="" coords="5,5,139,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,39,128,77,124,80,89,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="163,5,266,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,43,162,80,158,77,193,39"/>
+</map>

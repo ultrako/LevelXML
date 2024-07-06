@@ -1,0 +1,132 @@
+\doxysection{Level\+XML.\+Level Class Reference}
+\hypertarget{classLevelXML_1_1Level}{}\label{classLevelXML_1_1Level}\index{LevelXML.Level@{LevelXML.Level}}
+
+
+The \doxylink{classLevelXML_1_1Level}{Level} class represents a Happy Wheels level.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Level\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{classLevelXML_1_1Level__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Level\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{classLevelXML_1_1Level__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Level_af04d84d85a45ced9153529b0f2230c67}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em \begin{DoxyReturn}{Returns}
+The \doxylink{namespaceLevelXML}{Level\+XML} representation of the level, with all of its Entities
+\end{DoxyReturn}
+\end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a4ce84fd673617438b50eb95d6889fba9}\label{classLevelXML_1_1Level_a4ce84fd673617438b50eb95d6889fba9} 
+{\bfseries Level} (string xml)
+\begin{DoxyCompactList}\small\item\em This constructor makes a \doxylink{classLevelXML_1_1Level}{Level} from a valid level\+XML string. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a7df8f710748bde2bd1e9412f071980ab}\label{classLevelXML_1_1Level_a7df8f710748bde2bd1e9412f071980ab} 
+{\bfseries Level} (params \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}\mbox{[}$\,$\mbox{]} entities)
+\begin{DoxyCompactList}\small\item\em This constructor makes a \doxylink{classLevelXML_1_1Level}{Level} from several Entities (which are shapes, specials, groups, joints, and triggers). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Level_a1b8c606cbaa0191e3e8d074cc9ec9685}\label{classLevelXML_1_1Level_a1b8c606cbaa0191e3e8d074cc9ec9685} 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Shape}{Shape}} $>$ {\bfseries Shapes}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Level_a758b6dc0a0cedef8c6753a830b14fa60}\label{classLevelXML_1_1Level_a758b6dc0a0cedef8c6753a830b14fa60} 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Special}{Special}} $>$ {\bfseries Specials}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Level_a7c2b6db5871123e0d568f483c4b67bbc}\label{classLevelXML_1_1Level_a7c2b6db5871123e0d568f483c4b67bbc} 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Group}{Group}} $>$ {\bfseries Groups}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Level_a8d8641c6d5efe1fe67f79020fac65856}\label{classLevelXML_1_1Level_a8d8641c6d5efe1fe67f79020fac65856} 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Joint}{Joint}} $>$ {\bfseries Joints}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Level_a3198e31a7067b37f8f2ce4e602d48765}\label{classLevelXML_1_1Level_a3198e31a7067b37f8f2ce4e602d48765} 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Trigger}{Trigger}} $>$ {\bfseries Triggers}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Level_a0e431ff41e17cab36c404e275e376b25}\label{classLevelXML_1_1Level_a0e431ff41e17cab36c404e275e376b25} 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The X position of the character in the level. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a79a83688660e91ce070deed7d2cc0327}\label{classLevelXML_1_1Level_a79a83688660e91ce070deed7d2cc0327} 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The Y position of the character in the level. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_ad2b5d3765509affbb9fef67bf9c3b1ad}\label{classLevelXML_1_1Level_ad2b5d3765509affbb9fef67bf9c3b1ad} 
+\mbox{\hyperlink{structLevelXML_1_1Character}{Character}} {\bfseries Character}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which character the level starts with. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a6a87c7ac911f9eaaae7afc822e8f76b7}\label{classLevelXML_1_1Level_a6a87c7ac911f9eaaae7afc822e8f76b7} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Forced\+Character}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not players must use the default character when playing the level. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a55e983dacbc4ab94c63dacbc2a651a81}\label{classLevelXML_1_1Level_a55e983dacbc4ab94c63dacbc2a651a81} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Vehicle\+Hidden}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the character starts with a vehicle. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_ac0c2ddb2af25fb743e9a74f5b94ae1a9}\label{classLevelXML_1_1Level_ac0c2ddb2af25fb743e9a74f5b94ae1a9} 
+\mbox{\hyperlink{structLevelXML_1_1Background}{Background}} {\bfseries Background}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which one of 3 backgrounds the level has. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a9edbd6a0b92569a126a99852f71cefb3}\label{classLevelXML_1_1Level_a9edbd6a0b92569a126a99852f71cefb3} 
+double {\bfseries Background\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The color of the level\textquotesingle{}s background, if the background is set to Blank. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Level_a0e3b412d5b2016a227fd6d39f27adfdb}\label{classLevelXML_1_1Level_a0e3b412d5b2016a227fd6d39f27adfdb} 
+IEnumerable$<$ \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} $>$ {\bfseries Entities}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em All of the Entities in the level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classLevelXML_1_1Level}{Level} class represents a Happy Wheels level. 
+
+As this extends \doxylink{classLevelXML_1_1LevelXMLTag}{Level\+XMLTag}, \doxylink{classLevelXML_1_1Level_af04d84d85a45ced9153529b0f2230c67}{To\+XML()} will print out the \doxylink{namespaceLevelXML}{Level\+XML} that represents this level, ready to be pasted into the Happy Wheels import box. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1Level_af04d84d85a45ced9153529b0f2230c67}\index{LevelXML.Level@{LevelXML.Level}!ToXML@{ToXML}}
+\index{ToXML@{ToXML}!LevelXML.Level@{LevelXML.Level}}
+\doxysubsubsection{\texorpdfstring{ToXML()}{ToXML()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Level_af04d84d85a45ced9153529b0f2230c67} 
+string Level\+XML.\+Level.\+To\+XML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{namespaceLevelXML}{Level\+XML} representation of the level, with all of its Entities
+\end{DoxyReturn}
+
+
+
+
+Implements \mbox{\hyperlink{interfaceLevelXML_1_1IConvertibleToXML_ac9361f2b9b62f3fc5959b829513fe346}{Level\+XML.\+IConvertible\+To\+XML}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Level.\+cs\end{DoxyCompactItemize}

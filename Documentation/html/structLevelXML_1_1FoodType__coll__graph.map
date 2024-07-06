@@ -1,0 +1,6 @@
+<map id="LevelXML.FoodType" name="LevelXML.FoodType">
+<area shape="rect" id="Node000001" title="The 3 different kind of Food items." alt="" coords="5,141,147,167"/>
+<area shape="rect" id="Node000002" href="$structLevelXML_1_1FoodType.html" title="The 3 different kind of Food items." alt="" coords="5,15,147,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,54,79,141,73,141,73,54"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="162,16,170,20,173,28,165,38,148,42,146,37,163,33,168,27,166,24,159,20"/>
+</map>

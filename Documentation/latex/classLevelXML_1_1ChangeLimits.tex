@@ -1,0 +1,97 @@
+\doxysection{Level\+XML.\+Change\+Limits Class Reference}
+\hypertarget{classLevelXML_1_1ChangeLimits}{}\label{classLevelXML_1_1ChangeLimits}\index{LevelXML.ChangeLimits@{LevelXML.ChangeLimits}}
+
+
+This action changes the upper and lower limits on a \doxylink{classLevelXML_1_1Joint}{Joint}. Note that unlike the Upper\+Limiy and Lower\+Limit parameters on a \doxylink{classLevelXML_1_1Joint}{Joint} itself, these values are not clamped, so a lower limit can be positive and an upper limit can be negative.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Change\+Limits\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classLevelXML_1_1ChangeLimits__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Change\+Limits\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classLevelXML_1_1ChangeLimits__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ChangeLimits_ac9b2e986a79373f2e413e1e5a7b29838}\label{classLevelXML_1_1ChangeLimits_ac9b2e986a79373f2e413e1e5a7b29838} 
+{\bfseries Change\+Limits} (double upper\+Limit, double lower\+Limit)
+\item 
+\Hypertarget{classLevelXML_1_1ChangeLimits_a88d5bed90db68d3b3370a8ed0ac1f556}\label{classLevelXML_1_1ChangeLimits_a88d5bed90db68d3b3370a8ed0ac1f556} 
+{\bfseries Change\+Limits} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Level\+XML.\+Trigger\+Action}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1TriggerAction_adc71a6a96b1044f6fe0697c831d61c15}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1ChangeLimits_a69f60e9f3ce72d31879ff1bd323840fc}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ChangeLimits_a988806e7a5ecdefc4f0e056485c4030d}\label{classLevelXML_1_1ChangeLimits_a988806e7a5ecdefc4f0e056485c4030d} 
+double? {\bfseries Upper\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1ChangeLimits_aab481723d0600f07080d5be5f0fe1139}\label{classLevelXML_1_1ChangeLimits_aab481723d0600f07080d5be5f0fe1139} 
+double? {\bfseries Lower\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This action changes the upper and lower limits on a \doxylink{classLevelXML_1_1Joint}{Joint}. Note that unlike the Upper\+Limiy and Lower\+Limit parameters on a \doxylink{classLevelXML_1_1Joint}{Joint} itself, these values are not clamped, so a lower limit can be positive and an upper limit can be negative. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1ChangeLimits_a69f60e9f3ce72d31879ff1bd323840fc}\index{LevelXML.ChangeLimits@{LevelXML.ChangeLimits}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.ChangeLimits@{LevelXML.ChangeLimits}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ChangeLimits_a69f60e9f3ce72d31879ff1bd323840fc} 
+const string Level\+XML.\+Change\+Limits.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<a\ i="{}"{}4"{}"{}\ p0="{}"{}90"{}"{}\ p1="{}"{}-\/90"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Joint\+Actions.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="LevelXML.LevelXMLException" name="LevelXML.LevelXMLException">
+<area shape="rect" id="Node000001" title="The exception thrown when either levelXML given to my library is invalid, or the levelXML that my lib..." alt="" coords="5,79,205,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="65,5,145,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,44,108,79,103,79,103,44"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="LevelXML.GrabbingPose" name="LevelXML.GrabbingPose">
+<area shape="rect" id="Node000001" title="The 4 things a Vehicle can do when a button is pressed." alt="" coords="5,171,172,196"/>
+<area shape="rect" id="Node000002" href="$structLevelXML_1_1GrabbingPose.html" title="The 4 things a Vehicle can do when a button is pressed." alt="" coords="5,22,172,47"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,61,91,171,86,171,86,61"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="140,17,179,19,193,25,199,35,191,46,174,52,126,50,126,45,173,46,188,42,193,35,190,29,178,24,139,23"/>
+</map>

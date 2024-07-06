@@ -1,0 +1,7 @@
+<map id="LevelXML.Shape" name="LevelXML.Shape">
+<area shape="rect" id="Node000001" title="Shapes are simple entities that can have collision and they can be a part of groups...." alt="" coords="5,152,127,177"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="38,79,94,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,118,69,152,63,152,63,118"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="15,5,117,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,44,69,79,63,79,63,44"/>
+</map>

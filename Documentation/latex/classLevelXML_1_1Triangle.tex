@@ -1,0 +1,154 @@
+\doxysection{Level\+XML.\+Triangle Class Reference}
+\hypertarget{classLevelXML_1_1Triangle}{}\label{classLevelXML_1_1Triangle}\index{LevelXML.Triangle@{LevelXML.Triangle}}
+
+
+A triangle shape.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Triangle\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classLevelXML_1_1Triangle__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Triangle\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classLevelXML_1_1Triangle__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Triangle_acad0fa834dcd472b4041132c2bcbb084}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Triangle_a4dbc9d9a7db3afca5964a12f0d194d0c}\label{classLevelXML_1_1Triangle_a4dbc9d9a7db3afca5964a12f0d194d0c} 
+{\bfseries Triangle} (string xml)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classLevelXML_1_1Triangle_a4b3ec3f58e33f349ac03215828311e03}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Triangle_affd8d2c7485dc805c76b2853b8816b0a}\label{classLevelXML_1_1Triangle_affd8d2c7485dc805c76b2853b8816b0a} 
+override double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Triangle_a8fffdf8b607e41b5a71000353b845d0c}\label{classLevelXML_1_1Triangle_a8fffdf8b607e41b5a71000353b845d0c} 
+override double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Shape}{Level\+XML.\+Shape}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Interactive}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Setting interactive to false will treat the shape like flat artwork. The shape will only move if part of a group, and will not take away from the total available shapecount allowed in your level. \end{DoxyCompactList}\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape moves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape starts in an unmoving state until it is first collided with. \end{DoxyCompactList}\item 
+double {\bfseries Density}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The density of the shape -\/ how much force gravity applies to the shape per how large it is. \end{DoxyCompactList}\item 
+double {\bfseries Fill\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The color of the shape inbetween its edges in RGB hex format. \end{DoxyCompactList}\item 
+double {\bfseries Outline\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double \mbox{\hyperlink{classLevelXML_1_1Shape_ab9a586613a08210292a2b35730f98dfb}{Opacity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How visible the shape is. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1Collision}{Collision}} {\bfseries Collision}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of objects this shape can collide with. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Shape}{Level\+XML.\+Shape}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Set\+Params} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A triangle shape. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1Triangle_acad0fa834dcd472b4041132c2bcbb084}\index{LevelXML.Triangle@{LevelXML.Triangle}!ToXML@{ToXML}}
+\index{ToXML@{ToXML}!LevelXML.Triangle@{LevelXML.Triangle}}
+\doxysubsubsection{\texorpdfstring{ToXML()}{ToXML()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Triangle_acad0fa834dcd472b4041132c2bcbb084} 
+string Level\+XML.\+Triangle.\+To\+XML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} 
+
+
+
+Implements \mbox{\hyperlink{interfaceLevelXML_1_1IConvertibleToXML_ac9361f2b9b62f3fc5959b829513fe346}{Level\+XML.\+IConvertible\+To\+XML}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Triangle_a4b3ec3f58e33f349ac03215828311e03}\index{LevelXML.Triangle@{LevelXML.Triangle}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Triangle@{LevelXML.Triangle}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Triangle_a4b3ec3f58e33f349ac03215828311e03} 
+string Level\+XML.\+Triangle.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{@"{}<sh\ t="{}"{}2"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}200"{}"{}\ p3="{}"{}200"{}"{}\ p4="{}"{}0"{}"{}\ p5="{}"{}t"{}"{}\ p6="{}"{}f"{}"{}\ p7="{}"{}1"{}"{}\ p8="{}"{}4032711"{}"{}\ p9="{}"{}-\/1"{}"{}\ p10="{}"{}100"{}"{}\ p11="{}"{}1"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Shapes/Triangle.\+cs\end{DoxyCompactItemize}

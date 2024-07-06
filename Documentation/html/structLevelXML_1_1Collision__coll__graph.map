@@ -1,0 +1,6 @@
+<map id="LevelXML.Collision" name="LevelXML.Collision">
+<area shape="rect" id="Node000001" title="What kind of objects a Shape or Group can collide with." alt="" coords="5,288,140,313"/>
+<area shape="rect" id="Node000002" href="$structLevelXML_1_1Collision.html" title="What kind of objects a Shape or Group can collide with." alt="" coords="5,51,140,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,91,75,288,70,288,70,91"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="98,42,121,35,143,36,160,46,167,64,164,75,158,84,138,93,112,91,86,79,88,74,113,86,137,87,155,80,160,73,161,64,156,49,142,42,122,41,99,47"/>
+</map>

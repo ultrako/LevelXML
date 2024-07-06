@@ -1,0 +1,103 @@
+\doxysection{Level\+XML.\+Target\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLevelXML_1_1Target}{}\label{classLevelXML_1_1Target}\index{LevelXML.Target$<$ T $>$@{LevelXML.Target$<$ T $>$}}
+
+
+A \doxylink{classLevelXML_1_1Target}{Target} is an \doxylink{classLevelXML_1_1Entity}{Entity} and a list of actions that a trigger does to that \doxylink{classLevelXML_1_1Entity}{Entity}. Triggers cannot interleave actions between two different entities.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Target\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classLevelXML_1_1Target__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Target\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classLevelXML_1_1Target__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Target_aa1ddb6f542ba01eaa33851ca35904543}\label{classLevelXML_1_1Target_aa1ddb6f542ba01eaa33851ca35904543} 
+void {\bfseries Add\+Action} (\mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Trigger\+Action}} action)
+\item 
+\Hypertarget{classLevelXML_1_1Target_a8d1812a92281b2c4584f9baa30fe7d7c}\label{classLevelXML_1_1Target_a8d1812a92281b2c4584f9baa30fe7d7c} 
+bool {\bfseries Remove\+Action} (\mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Trigger\+Action}} action)
+\item 
+\Hypertarget{classLevelXML_1_1Target_ad1228cc8119119aea0819fcf4e8a262d}\label{classLevelXML_1_1Target_ad1228cc8119119aea0819fcf4e8a262d} 
+int {\bfseries Index\+Of\+Action} (\mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Trigger\+Action}} action)
+\item 
+\Hypertarget{classLevelXML_1_1Target_a0b6607cffeb7c3d322a1dad2d2d5160b}\label{classLevelXML_1_1Target_a0b6607cffeb7c3d322a1dad2d2d5160b} 
+override void {\bfseries Add\+Action} (\mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Trigger\+Action}} action)
+\item 
+\Hypertarget{classLevelXML_1_1Target_a431369b05a3a56678c2d19585ea8ea25}\label{classLevelXML_1_1Target_a431369b05a3a56678c2d19585ea8ea25} 
+override bool {\bfseries Remove\+Action} (\mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Trigger\+Action}} action)
+\item 
+\Hypertarget{classLevelXML_1_1Target_aa7d8be44fc2020100ed6322f7d87ea4d}\label{classLevelXML_1_1Target_aa7d8be44fc2020100ed6322f7d87ea4d} 
+override int {\bfseries Index\+Of\+Action} (\mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Trigger\+Action}} action)
+\item 
+\Hypertarget{classLevelXML_1_1Target_aeaf12f7307cb2a725123a8164f2dd088}\label{classLevelXML_1_1Target_aeaf12f7307cb2a725123a8164f2dd088} 
+{\bfseries Target} (T targeted, params \mbox{\hyperlink{interfaceLevelXML_1_1ITriggerAction}{ITrigger\+Action}}$<$ T $>$\mbox{[}$\,$\mbox{]} actions)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Target_a6a110debc773b8208cefa4297886dfab}\label{classLevelXML_1_1Target_a6a110debc773b8208cefa4297886dfab} 
+{\bfseries Target} (\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} e)
+\item 
+\Hypertarget{classLevelXML_1_1Target_aa753d81af2d4af501bbd1d5b7e112253}\label{classLevelXML_1_1Target_aa753d81af2d4af501bbd1d5b7e112253} 
+{\bfseries Target} (XElement e, Func$<$ XElement, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} $>$ Reverse\+Target\+Mapper)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Target_a65391ea6e94179bb284327e9ba9639c1}\label{classLevelXML_1_1Target_a65391ea6e94179bb284327e9ba9639c1} 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} {\bfseries Targeted} = default!\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which \doxylink{classLevelXML_1_1Entity}{Entity} the list of actions in this target will apply to. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Target_adefa8be4386dd3d952f9d80500d45ed6}\label{classLevelXML_1_1Target_adefa8be4386dd3d952f9d80500d45ed6} 
+IRead\+Only\+List$<$ \mbox{\hyperlink{interfaceLevelXML_1_1ITriggerAction}{ITrigger\+Action}} $>$ {\bfseries Actions}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The actions that will happen to the \doxylink{classLevelXML_1_1Target}{Target} \doxylink{classLevelXML_1_1Entity}{Entity}. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Target_abd119fcc4d9c008efa410688b362eb05}\label{classLevelXML_1_1Target_abd119fcc4d9c008efa410688b362eb05} 
+override IRead\+Only\+List$<$ \mbox{\hyperlink{interfaceLevelXML_1_1ITriggerAction}{ITrigger\+Action}}$<$ T $>$ $>$ {\bfseries Actions}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classLevelXML_1_1Target}{Target} is an \doxylink{classLevelXML_1_1Entity}{Entity} and a list of actions that a trigger does to that \doxylink{classLevelXML_1_1Entity}{Entity}. Triggers cannot interleave actions between two different entities. \begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Target.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,134 @@
+\doxysection{Level\+XML.\+Group Class Reference}
+\hypertarget{classLevelXML_1_1Group}{}\label{classLevelXML_1_1Group}\index{LevelXML.Group@{LevelXML.Group}}
+
+
+A group is a collection of Shapes and non interactive Specials that all move together.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Group\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classLevelXML_1_1Group__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Group\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classLevelXML_1_1Group__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Group_a0958442acba0c386a00322f8248f42aa}\label{classLevelXML_1_1Group_a0958442acba0c386a00322f8248f42aa} 
+{\bfseries Group} (params \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1Group_ab9f1017feeb07c93b2107673d38896cd}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Group_aa5b3c60052d863021405a6362bdc5ffa}\label{classLevelXML_1_1Group_aa5b3c60052d863021405a6362bdc5ffa} 
+virtual void {\bfseries set\+Params} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Group_abc9ba604060436c86d31a1c4ad57c978}\label{classLevelXML_1_1Group_abc9ba604060436c86d31a1c4ad57c978} 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} $>$ {\bfseries Items}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_a9a1d7d63ebf5973cff6f8634e8563c43}\label{classLevelXML_1_1Group_a9a1d7d63ebf5973cff6f8634e8563c43} 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_a37c22a85b3a36df8b2e481a18179547d}\label{classLevelXML_1_1Group_a37c22a85b3a36df8b2e481a18179547d} 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_ae326b4068f89c9e05f339f85c927b91a}\label{classLevelXML_1_1Group_ae326b4068f89c9e05f339f85c927b91a} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_a16fcc3910eb54b814f85bf30344ab914}\label{classLevelXML_1_1Group_a16fcc3910eb54b814f85bf30344ab914} 
+double {\bfseries OriginX}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_a5c7c3ceb2f07bdb5eed1d7c9c9eacb88}\label{classLevelXML_1_1Group_a5c7c3ceb2f07bdb5eed1d7c9c9eacb88} 
+double {\bfseries OriginY}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_adaf447fd0812d6eda4eacc498c233deb}\label{classLevelXML_1_1Group_adaf447fd0812d6eda4eacc498c233deb} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_ac2e3ddde406ce9becf0a40164f2f4ccc}\label{classLevelXML_1_1Group_ac2e3ddde406ce9becf0a40164f2f4ccc} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Foreground}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_af0483479cf836eb6da81d9b86369b0dc}\label{classLevelXML_1_1Group_af0483479cf836eb6da81d9b86369b0dc} 
+double {\bfseries Opacity}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_ae591add5683f24e195aaab59e367d5da}\label{classLevelXML_1_1Group_ae591add5683f24e195aaab59e367d5da} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Group_a069e98aecb7086f0a5e15c1f211d9d60}\label{classLevelXML_1_1Group_a069e98aecb7086f0a5e15c1f211d9d60} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed\+Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A group is a collection of Shapes and non interactive Specials that all move together. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Group_ab9f1017feeb07c93b2107673d38896cd}\index{LevelXML.Group@{LevelXML.Group}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Group@{LevelXML.Group}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Group_ab9f1017feeb07c93b2107673d38896cd} 
+const string Level\+XML.\+Group.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<g\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ r="{}"{}0"{}"{}\ ox="{}"{}0"{}"{}\ oy="{}"{}0"{}"{}\ s="{}"{}f"{}"{}\ f="{}"{}f"{}"{}\ o="{}"{}100"{}"{}\ im="{}"{}f"{}"{}\ fr="{}"{}f"{}"{}\ />"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Group.\+cs\end{DoxyCompactItemize}

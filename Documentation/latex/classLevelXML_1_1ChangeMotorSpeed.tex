@@ -1,0 +1,97 @@
+\doxysection{Level\+XML.\+Change\+Motor\+Speed Class Reference}
+\hypertarget{classLevelXML_1_1ChangeMotorSpeed}{}\label{classLevelXML_1_1ChangeMotorSpeed}\index{LevelXML.ChangeMotorSpeed@{LevelXML.ChangeMotorSpeed}}
+
+
+This action changes a \doxylink{classLevelXML_1_1Joint}{Joint}\textquotesingle{}s speed. Note that this value is not clamped, even though the corresponding values on a \doxylink{classLevelXML_1_1Joint}{Joint} itself are.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Change\+Motor\+Speed\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classLevelXML_1_1ChangeMotorSpeed__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Change\+Motor\+Speed\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classLevelXML_1_1ChangeMotorSpeed__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ChangeMotorSpeed_a166300cece94483fd23c73e38641ff8d}\label{classLevelXML_1_1ChangeMotorSpeed_a166300cece94483fd23c73e38641ff8d} 
+{\bfseries Change\+Motor\+Speed} (double speed, double duration)
+\item 
+\Hypertarget{classLevelXML_1_1ChangeMotorSpeed_a10321ff9e6c35d2a86c38d530c17a13f}\label{classLevelXML_1_1ChangeMotorSpeed_a10321ff9e6c35d2a86c38d530c17a13f} 
+{\bfseries Change\+Motor\+Speed} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Level\+XML.\+Trigger\+Action}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1TriggerAction_adc71a6a96b1044f6fe0697c831d61c15}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1ChangeMotorSpeed_ad5a57b783b302efb32f3770e587e11c5}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ChangeMotorSpeed_aff05a894411222235f3aa9b1bbab36a8}\label{classLevelXML_1_1ChangeMotorSpeed_aff05a894411222235f3aa9b1bbab36a8} 
+double? {\bfseries Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1ChangeMotorSpeed_adeb8fed4197d5e0b62997fc7dd4e8454}\label{classLevelXML_1_1ChangeMotorSpeed_adeb8fed4197d5e0b62997fc7dd4e8454} 
+double? {\bfseries Duration}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This action changes a \doxylink{classLevelXML_1_1Joint}{Joint}\textquotesingle{}s speed. Note that this value is not clamped, even though the corresponding values on a \doxylink{classLevelXML_1_1Joint}{Joint} itself are. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1ChangeMotorSpeed_ad5a57b783b302efb32f3770e587e11c5}\index{LevelXML.ChangeMotorSpeed@{LevelXML.ChangeMotorSpeed}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.ChangeMotorSpeed@{LevelXML.ChangeMotorSpeed}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ChangeMotorSpeed_ad5a57b783b302efb32f3770e587e11c5} 
+const string Level\+XML.\+Change\+Motor\+Speed.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<a\ i="{}"{}1"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}1"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Joint\+Actions.\+cs\end{DoxyCompactItemize}

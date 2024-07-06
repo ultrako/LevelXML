@@ -1,0 +1,194 @@
+\doxysection{Level\+XML.\+Pin\+Joint Class Reference}
+\hypertarget{classLevelXML_1_1PinJoint}{}\label{classLevelXML_1_1PinJoint}\index{LevelXML.PinJoint@{LevelXML.PinJoint}}
+
+
+A pin joint is a kind of joint that rotates on a point.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Pin\+Joint\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classLevelXML_1_1PinJoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Pin\+Joint\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classLevelXML_1_1PinJoint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1PinJoint_aaf6e0c87805a8edbf25c199d492726ac}\label{classLevelXML_1_1PinJoint_aaf6e0c87805a8edbf25c199d492726ac} 
+{\bfseries Pin\+Joint} ()
+\begin{DoxyCompactList}\small\item\em This constructor makes a joint that isn\textquotesingle{}t pinned to anything. Make sure to set First and Second afterwards. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevelXML_1_1PinJoint_adc2985a174afef55a2d0f74d6d531511}{Pin\+Joint}} (\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} first, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} second)
+\begin{DoxyCompactList}\small\item\em This constructor takes two Entities to be attached to. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevelXML_1_1PinJoint_af77bfe283aadd74b5e14780c78d07619}{Pin\+Joint}} (\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} first)
+\begin{DoxyCompactList}\small\item\em This constructor takes one \doxylink{classLevelXML_1_1Entity}{Entity} to be attached to. By default this would pin that \doxylink{classLevelXML_1_1Entity}{Entity} to the background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classLevelXML_1_1PinJoint_aa02fcc474b2f94b3064b271a3bc74135}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1PinJoint_ad27df99d76b9b8952436328e3a6ad4e2}{Set\+Params}} (XElement e, Func$<$ string?, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}?$>$ reverse\+Joint\+Mapper)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Joint}{Level\+XML.\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+Not\+Jointed} (XElement e)
+\item 
+{\bfseries Joint} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1PinJoint_ac9076cbb460170292711c5fb9b700647}\label{classLevelXML_1_1PinJoint_ac9076cbb460170292711c5fb9b700647} 
+double {\bfseries Torque}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of torque the joint applies in order to reach full speed. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1PinJoint_aa5d0330817176e14a54b3cb1ba2fc5d9}\label{classLevelXML_1_1PinJoint_aa5d0330817176e14a54b3cb1ba2fc5d9} 
+override double {\bfseries Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum speed at which this joint will rotate. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1PinJoint_ae5f9e82de3fe02dc913bdd67bc6852cf}\label{classLevelXML_1_1PinJoint_ae5f9e82de3fe02dc913bdd67bc6852cf} 
+override double {\bfseries Upper\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the highest angle that the joint can reach. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1PinJoint_aed77338f36ae4659d441affe0c9b97f3}\label{classLevelXML_1_1PinJoint_aed77338f36ae4659d441affe0c9b97f3} 
+override double {\bfseries Lower\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the lowest angle that the joint can reach. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Joint}{Level\+XML.\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}? {\bfseries First}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The first \doxylink{classLevelXML_1_1Entity}{Entity} this \doxylink{classLevelXML_1_1Joint}{Joint} is jointed to. Null means it\textquotesingle{}s jointed to the background. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}? {\bfseries Second}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The second \doxylink{classLevelXML_1_1Entity}{Entity} this \doxylink{classLevelXML_1_1Joint}{Joint} is jointed to. Null means it\textquotesingle{}s jointed to the background. \end{DoxyCompactList}\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the \doxylink{classLevelXML_1_1Joint}{Joint} has limits in its motion. \end{DoxyCompactList}\item 
+double {\bfseries Upper\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The upper limit of motion for the \doxylink{classLevelXML_1_1Joint}{Joint}. It\textquotesingle{}s a maximum angle for Pin\+Joints and a maximum distance for Sliding\+Joints. \end{DoxyCompactList}\item 
+double {\bfseries Lower\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The lower limit of motion for the \doxylink{classLevelXML_1_1Joint}{Joint}. It\textquotesingle{}s a minimum angle for Pin\+Joints and a minimum distance for Sliding\+Joints. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Motorized}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the \doxylink{classLevelXML_1_1Joint}{Joint} moves on its own based on its speed and force. \end{DoxyCompactList}\item 
+double {\bfseries Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The top speed at which a \doxylink{classLevelXML_1_1Joint}{Joint} will move. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Collide\+Connected}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the two objects that a \doxylink{classLevelXML_1_1Joint}{Joint} connects, can collide with one another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A pin joint is a kind of joint that rotates on a point. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLevelXML_1_1PinJoint_adc2985a174afef55a2d0f74d6d531511}\index{LevelXML.PinJoint@{LevelXML.PinJoint}!PinJoint@{PinJoint}}
+\index{PinJoint@{PinJoint}!LevelXML.PinJoint@{LevelXML.PinJoint}}
+\doxysubsubsection{\texorpdfstring{PinJoint()}{PinJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1PinJoint_adc2985a174afef55a2d0f74d6d531511} 
+Level\+XML.\+Pin\+Joint.\+Pin\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]{first}{, }\item[{\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]{second}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This constructor takes two Entities to be attached to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The first \doxylink{classLevelXML_1_1Entity}{Entity} that the pinjoint is attached to. \\
+\hline
+{\em second} & The second \doxylink{classLevelXML_1_1Entity}{Entity} that the pinjoint is attached to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLevelXML_1_1PinJoint_af77bfe283aadd74b5e14780c78d07619}\index{LevelXML.PinJoint@{LevelXML.PinJoint}!PinJoint@{PinJoint}}
+\index{PinJoint@{PinJoint}!LevelXML.PinJoint@{LevelXML.PinJoint}}
+\doxysubsubsection{\texorpdfstring{PinJoint()}{PinJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1PinJoint_af77bfe283aadd74b5e14780c78d07619} 
+Level\+XML.\+Pin\+Joint.\+Pin\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]{first}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This constructor takes one \doxylink{classLevelXML_1_1Entity}{Entity} to be attached to. By default this would pin that \doxylink{classLevelXML_1_1Entity}{Entity} to the background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The entity to be attached to. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1PinJoint_ad27df99d76b9b8952436328e3a6ad4e2}\index{LevelXML.PinJoint@{LevelXML.PinJoint}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.PinJoint@{LevelXML.PinJoint}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1PinJoint_ad27df99d76b9b8952436328e3a6ad4e2} 
+override void Level\+XML.\+Pin\+Joint.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{, }\item[{Func$<$ string?, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}?$>$}]{reverse\+Joint\+Mapper}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Joint}{Level\+XML.\+Joint}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1PinJoint_aa02fcc474b2f94b3064b271a3bc74135}\index{LevelXML.PinJoint@{LevelXML.PinJoint}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.PinJoint@{LevelXML.PinJoint}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1PinJoint_aa02fcc474b2f94b3064b271a3bc74135} 
+string Level\+XML.\+Pin\+Joint.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<j\ t="{}"{}0"{}"{}\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ b1="{}"{}-\/1"{}"{}\ b2="{}"{}-\/1"{}"{}\ l="{}"{}f"{}"{}\ ua="{}"{}90"{}"{}\ la="{}"{}-\/90"{}"{}\ m="{}"{}f"{}"{}\ tq="{}"{}50"{}"{}\ sp="{}"{}3"{}"{}\ c="{}"{}f"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Joints/Pin\+Joint.\+cs\end{DoxyCompactItemize}

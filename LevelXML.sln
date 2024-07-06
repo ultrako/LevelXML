@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelXML", "src\LevelXML.csproj", "{E5B4983F-A019-4F52-884A-60977CAF98BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelXML.test", "tests\LevelXML.test.csproj", "{4532BAA1-E445-4573-949E-4F31DDA0A808}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5B4983F-A019-4F52-884A-60977CAF98BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B4983F-A019-4F52-884A-60977CAF98BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B4983F-A019-4F52-884A-60977CAF98BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B4983F-A019-4F52-884A-60977CAF98BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4532BAA1-E445-4573-949E-4F31DDA0A808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4532BAA1-E445-4573-949E-4F31DDA0A808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4532BAA1-E445-4573-949E-4F31DDA0A808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4532BAA1-E445-4573-949E-4F31DDA0A808}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

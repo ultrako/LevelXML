@@ -1,0 +1,164 @@
+\doxysection{Level\+XML.\+Vehicle Class Reference}
+\hypertarget{classLevelXML_1_1Vehicle}{}\label{classLevelXML_1_1Vehicle}\index{LevelXML.Vehicle@{LevelXML.Vehicle}}
+
+
+Inheritance diagram for Level\+XML.\+Vehicle\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classLevelXML_1_1Vehicle__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Vehicle\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classLevelXML_1_1Vehicle__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a1b1627d08c8de05c11801f17e937ad51}\label{classLevelXML_1_1Vehicle_a1b1627d08c8de05c11801f17e937ad51} 
+{\bfseries Vehicle} (params \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Group}{Level\+XML.\+Group}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Group} (params \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+new const string \mbox{\hyperlink{classLevelXML_1_1Vehicle_a6dff216051979913d5d8c3ed26348407}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classLevelXML_1_1Group}{Level\+XML.\+Group}}}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1Group_ab9f1017feeb07c93b2107673d38896cd}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1Vehicle_adc833bc5d8b3ea33c7fd5965669aadac}{set\+Params}} (XElement e)
+\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a878d39d7592fc2fc25c26be229fdad9d}\label{classLevelXML_1_1Vehicle_a878d39d7592fc2fc25c26be229fdad9d} 
+{\bfseries Vehicle} (string xml, params \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}\mbox{[}$\,$\mbox{]}? content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Vehicle_aa86246a585ae230ff795064548598f0f}\label{classLevelXML_1_1Vehicle_aa86246a585ae230ff795064548598f0f} 
+\mbox{\hyperlink{structLevelXML_1_1VehicleAction}{Vehicle\+Action}} {\bfseries Spacebar\+Action}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This value determines what happens when spacebar is pressed. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a88ba99b95b9720a340e5a2e841e16299}\label{classLevelXML_1_1Vehicle_a88ba99b95b9720a340e5a2e841e16299} 
+\mbox{\hyperlink{structLevelXML_1_1VehicleAction}{Vehicle\+Action}} {\bfseries Shift\+Action}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This value determines what happens when shift is pressed. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a0a55eedaea6e5addba917a54e8750c65}\label{classLevelXML_1_1Vehicle_a0a55eedaea6e5addba917a54e8750c65} 
+\mbox{\hyperlink{structLevelXML_1_1VehicleAction}{Vehicle\+Action}} {\bfseries Control\+Action}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This value determines what happens when control is pressed. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a291f035ba13474ce636dbc2045a458b3}\label{classLevelXML_1_1Vehicle_a291f035ba13474ce636dbc2045a458b3} 
+double {\bfseries Acceleration}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Determines how quickly attached joints reach their set motor speed when pressing up or down. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Vehicle_af192149d32fe0d13e81eb181eb58485c}\label{classLevelXML_1_1Vehicle_af192149d32fe0d13e81eb181eb58485c} 
+double {\bfseries Leaning\+Strength}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Determines how much force is used when leaning left or right. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a0d1b90831496accf43db37178c1c0e9d}\label{classLevelXML_1_1Vehicle_a0d1b90831496accf43db37178c1c0e9d} 
+\mbox{\hyperlink{structLevelXML_1_1GrabbingPose}{Grabbing\+Pose}} {\bfseries Grabbing\+Pose}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This determines what pose the character will take after grabbing a vehicle handle. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Vehicle_a5f9250487930d8f118ccfc8198bb1e6d}\label{classLevelXML_1_1Vehicle_a5f9250487930d8f118ccfc8198bb1e6d} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Lock\+Joints}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Set this if you\textquotesingle{}d like all attached joints to slow their speed to 0 when not accelerating or decelerating. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Group}{Level\+XML.\+Group}}}
+\begin{DoxyCompactItemize}
+\item 
+IList$<$ \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} $>$ {\bfseries Items}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries OriginX}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries OriginY}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Foreground}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Opacity}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed\+Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1Vehicle_adc833bc5d8b3ea33c7fd5965669aadac}\index{LevelXML.Vehicle@{LevelXML.Vehicle}!setParams@{setParams}}
+\index{setParams@{setParams}!LevelXML.Vehicle@{LevelXML.Vehicle}}
+\doxysubsubsection{\texorpdfstring{setParams()}{setParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Vehicle_adc833bc5d8b3ea33c7fd5965669aadac} 
+override void Level\+XML.\+Vehicle.\+set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Group}{Level\+XML.\+Group}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Vehicle_a6dff216051979913d5d8c3ed26348407}\index{LevelXML.Vehicle@{LevelXML.Vehicle}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Vehicle@{LevelXML.Vehicle}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Vehicle_a6dff216051979913d5d8c3ed26348407} 
+new const string Level\+XML.\+Vehicle.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<g\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ r="{}"{}0"{}"{}\ ox="{}"{}0"{}"{}\ oy="{}"{}0"{}"{}\ s="{}"{}f"{}"{}\ f="{}"{}f"{}"{}\ o="{}"{}100"{}"{}\ im="{}"{}f"{}"{}\ fr="{}"{}f"{}"{}\ v="{}"{}t"{}"{}\ sb="{}"{}0"{}"{}\ sh="{}"{}0"{}"{}\ ct="{}"{}0"{}"{}\ a="{}"{}1"{}"{}\ l="{}"{}0"{}"{}\ cp="{}"{}0"{}"{}\ lo="{}"{}f"{}"{}\ />"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vehicle.\+cs\end{DoxyCompactItemize}
