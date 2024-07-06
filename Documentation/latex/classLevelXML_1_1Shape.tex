@@ -1,0 +1,127 @@
+\doxysection{Level\+XML.\+Shape Class Reference}
+\hypertarget{classLevelXML_1_1Shape}{}\label{classLevelXML_1_1Shape}\index{LevelXML.Shape@{LevelXML.Shape}}
+
+
+Shapes are simple entities that can have collision and they can be a part of groups. Shapes are either rectangles, triangles, circles, polygons, or art.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Shape\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevelXML_1_1Shape__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Shape\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classLevelXML_1_1Shape__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_a5a3bcb7bb7578b06d7ff22ee3acee2ca}\label{classLevelXML_1_1Shape_a5a3bcb7bb7578b06d7ff22ee3acee2ca} 
+virtual void {\bfseries Set\+Params} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_a7d6d99f10b2d0d4cb11cc6206827f68c}\label{classLevelXML_1_1Shape_a7d6d99f10b2d0d4cb11cc6206827f68c} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Interactive}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Setting interactive to false will treat the shape like flat artwork. The shape will only move if part of a group, and will not take away from the total available shapecount allowed in your level. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Shape_a9b9b8fd9b877fbb70c14404a7380e000}\label{classLevelXML_1_1Shape_a9b9b8fd9b877fbb70c14404a7380e000} 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_abd4bf620d37d6df287606938fbef7532}\label{classLevelXML_1_1Shape_abd4bf620d37d6df287606938fbef7532} 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_ae607b36f317d347dc8aa164ce362716d}\label{classLevelXML_1_1Shape_ae607b36f317d347dc8aa164ce362716d} 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_a76f87d7144d0d2d35e58f0ad97cd1efe}\label{classLevelXML_1_1Shape_a76f87d7144d0d2d35e58f0ad97cd1efe} 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_a75317af9acb2b9c7e8acbfa0307a6b6a}\label{classLevelXML_1_1Shape_a75317af9acb2b9c7e8acbfa0307a6b6a} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Shape_a7c9400aab44ba6a67c90675ef2663350}\label{classLevelXML_1_1Shape_a7c9400aab44ba6a67c90675ef2663350} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape moves. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Shape_ae918c76b23bde7409758d0e3b1dba83d}\label{classLevelXML_1_1Shape_ae918c76b23bde7409758d0e3b1dba83d} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape starts in an unmoving state until it is first collided with. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Shape_a75559e06fc492da8429f1d24ec82e63e}\label{classLevelXML_1_1Shape_a75559e06fc492da8429f1d24ec82e63e} 
+double {\bfseries Density}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The density of the shape -\/ how much force gravity applies to the shape per how large it is. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Shape_a84aaa25934454415644cfffd0448ff41}\label{classLevelXML_1_1Shape_a84aaa25934454415644cfffd0448ff41} 
+double {\bfseries Fill\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The color of the shape inbetween its edges in RGB hex format. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Shape_a7b751964d14d8866def9d41987083968}\label{classLevelXML_1_1Shape_a7b751964d14d8866def9d41987083968} 
+double {\bfseries Outline\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double \mbox{\hyperlink{classLevelXML_1_1Shape_ab9a586613a08210292a2b35730f98dfb}{Opacity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How visible the shape is. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Shape_a9d7e92a1738104f64eed4da51494fe76}\label{classLevelXML_1_1Shape_a9d7e92a1738104f64eed4da51494fe76} 
+\mbox{\hyperlink{structLevelXML_1_1Collision}{Collision}} {\bfseries Collision}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of objects this shape can collide with. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Shapes are simple entities that can have collision and they can be a part of groups. Shapes are either rectangles, triangles, circles, polygons, or art. 
+
+\doxysubsection{Property Documentation}
+\Hypertarget{classLevelXML_1_1Shape_ab9a586613a08210292a2b35730f98dfb}\index{LevelXML.Shape@{LevelXML.Shape}!Opacity@{Opacity}}
+\index{Opacity@{Opacity}!LevelXML.Shape@{LevelXML.Shape}}
+\doxysubsubsection{\texorpdfstring{Opacity}{Opacity}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Shape_ab9a586613a08210292a2b35730f98dfb} 
+double Level\+XML.\+Shape.\+Opacity\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+How visible the shape is. 
+
+At 0, a shape is invisible, At 1-\/99, a shape is translucent, And at 100, a shape is fully visible. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Shape.\+cs\end{DoxyCompactItemize}

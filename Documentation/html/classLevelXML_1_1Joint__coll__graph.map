@@ -1,0 +1,7 @@
+<map id="LevelXML.Joint" name="LevelXML.Joint">
+<area shape="rect" id="Node000001" title="A Joint connects two non fixed entities together, specifically shapes, groups, and certain specials." alt="" coords="5,152,117,177"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="33,79,89,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,118,64,152,59,152,59,118"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="11,5,112,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="64,44,64,79,59,79,59,44"/>
+</map>

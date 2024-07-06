@@ -1,0 +1,140 @@
+\doxysection{Level\+XML.\+Jet Class Reference}
+\hypertarget{classLevelXML_1_1Jet}{}\label{classLevelXML_1_1Jet}\index{LevelXML.Jet@{LevelXML.Jet}}
+
+
+Inheritance diagram for Level\+XML.\+Jet\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1Jet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Jet\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1Jet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Jet_ad15982cb9847d27a46af3899f8896e92}\label{classLevelXML_1_1Jet_ad15982cb9847d27a46af3899f8896e92} 
+{\bfseries Jet} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Special_aa4cb3197e7b96a260a7200babfdc429c}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1Jet_a5c8bc63a9fe8aa8119043369106f4db4}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1Jet_aeb980be70772f259d28f3c4f586742af}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Special} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Jet_a81c74df6bc0da3a116658466c1707d96}\label{classLevelXML_1_1Jet_a81c74df6bc0da3a116658466c1707d96} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Jet_a96efcfc2e3280b2416858642a50cdd54}\label{classLevelXML_1_1Jet_a96efcfc2e3280b2416858642a50cdd54} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Jet_a605ca35e2e3a3c5e7fce91a035034aa0}\label{classLevelXML_1_1Jet_a605ca35e2e3a3c5e7fce91a035034aa0} 
+double {\bfseries Power}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of force the jet provides (and the size of the jet) \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Jet_a69c18042dff409faf84caeb683496bed}\label{classLevelXML_1_1Jet_a69c18042dff409faf84caeb683496bed} 
+double {\bfseries Firing\+Time}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of time (in seconds) until the jet shuts off. With a setting of 0, the jet will not shut off. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Jet_ad07e8c2da96a7efb56aeb5ed32539ff8}\label{classLevelXML_1_1Jet_ad07e8c2da96a7efb56aeb5ed32539ff8} 
+double {\bfseries Acceleration\+Time}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of time (in seconds) until the jet reaches full power. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Jet_af37f4a536b33eaa0c187ba7d8bf07eff}\label{classLevelXML_1_1Jet_af37f4a536b33eaa0c187ba7d8bf07eff} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Setting this to true will prevent the jet from rotating. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1Jet_aeb980be70772f259d28f3c4f586742af}\index{LevelXML.Jet@{LevelXML.Jet}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.Jet@{LevelXML.Jet}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Jet_aeb980be70772f259d28f3c4f586742af} 
+override void Level\+XML.\+Jet.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Jet_a5c8bc63a9fe8aa8119043369106f4db4}\index{LevelXML.Jet@{LevelXML.Jet}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Jet@{LevelXML.Jet}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Jet_a5c8bc63a9fe8aa8119043369106f4db4} 
+const string Level\+XML.\+Jet.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<sp\ t="{}"{}28"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}0"{}"{}\ p3="{}"{}f"{}"{}\ p4="{}"{}1"{}"{}\ p5="{}"{}0"{}"{}\ p6="{}"{}0"{}"{}\ p7="{}"{}f"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Specials/Jet.\+cs\end{DoxyCompactItemize}

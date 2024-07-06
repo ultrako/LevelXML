@@ -1,0 +1,120 @@
+\doxysection{Level\+XML.\+Custom\+Shape Class Reference}
+\hypertarget{classLevelXML_1_1CustomShape}{}\label{classLevelXML_1_1CustomShape}\index{LevelXML.CustomShape@{LevelXML.CustomShape}}
+
+
+This kind of shape is defined by a list of vertices (Polygons and \doxylink{classLevelXML_1_1Art}{Art})  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Custom\+Shape\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{classLevelXML_1_1CustomShape__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Custom\+Shape\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classLevelXML_1_1CustomShape__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1CustomShape_a21dc3668cca8a94eaf62ae80aa911390}\label{classLevelXML_1_1CustomShape_a21dc3668cca8a94eaf62ae80aa911390} 
+{\bfseries Custom\+Shape} (XElement e, Func$<$ \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}, int $>$ vert\+Mapper, params Vertex\mbox{[}$\,$\mbox{]} vertices)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Shape}{Level\+XML.\+Shape}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Set\+Params} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1CustomShape_a350806c9708b93205d57085b3c50e372}\label{classLevelXML_1_1CustomShape_a350806c9708b93205d57085b3c50e372} 
+IList$<$ Vertex $>$ {\bfseries Vertices}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1CustomShape_a05816441b98d805c99f462f7e8468bce}\label{classLevelXML_1_1CustomShape_a05816441b98d805c99f462f7e8468bce} 
+override double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1CustomShape_a581d1c3a3d91f02471f283394dc55909}\label{classLevelXML_1_1CustomShape_a581d1c3a3d91f02471f283394dc55909} 
+override double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Shape}{Level\+XML.\+Shape}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Interactive}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Setting interactive to false will treat the shape like flat artwork. The shape will only move if part of a group, and will not take away from the total available shapecount allowed in your level. \end{DoxyCompactList}\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape moves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape starts in an unmoving state until it is first collided with. \end{DoxyCompactList}\item 
+double {\bfseries Density}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The density of the shape -\/ how much force gravity applies to the shape per how large it is. \end{DoxyCompactList}\item 
+double {\bfseries Fill\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The color of the shape inbetween its edges in RGB hex format. \end{DoxyCompactList}\item 
+double {\bfseries Outline\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double \mbox{\hyperlink{classLevelXML_1_1Shape_ab9a586613a08210292a2b35730f98dfb}{Opacity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How visible the shape is. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1Collision}{Collision}} {\bfseries Collision}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of objects this shape can collide with. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This kind of shape is defined by a list of vertices (Polygons and \doxylink{classLevelXML_1_1Art}{Art}) 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Shapes/Custom\+Shape.\+cs\end{DoxyCompactItemize}

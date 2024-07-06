@@ -1,0 +1,7 @@
+<map id="LevelXML.Target&lt; T &gt;" name="LevelXML.Target&lt; T &gt;">
+<area shape="rect" id="Node000001" title="A Target is an Entity and a list of actions that a trigger does to that Entity. Triggers cannot inter..." alt="" coords="32,79,184,104"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="5,5,107,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,40,102,77,97,80,70,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="131,5,189,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,43,119,80,114,77,141,40"/>
+</map>

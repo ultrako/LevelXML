@@ -1,0 +1,6 @@
+<map id="LevelXML.CannonType" name="LevelXML.CannonType">
+<area shape="rect" id="Node000001" title="The 2 kinds of skins a Cannon can have (and an invisible Cannon)" alt="" coords="5,141,163,167"/>
+<area shape="rect" id="Node000002" href="$structLevelXML_1_1CannonType.html" title="The 2 kinds of skins a Cannon can have (and an invisible Cannon)" alt="" coords="5,15,163,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,54,87,141,81,141,81,54"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="177,16,186,20,189,28,181,37,163,42,162,37,179,33,184,27,182,24,175,21"/>
+</map>

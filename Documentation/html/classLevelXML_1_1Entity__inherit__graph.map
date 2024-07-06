@@ -1,0 +1,99 @@
+<map id="LevelXML.Entity" name="LevelXML.Entity">
+<area shape="rect" id="Node000001" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="155,227,273,252"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1Group.html" title="A group is a collection of Shapes and non interactive Specials that all move together." alt="" coords="325,31,444,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,213,266,155,319,89,362,54,365,58,323,93,271,158,232,216"/>
+<area shape="rect" id="Node000005" href="$classLevelXML_1_1Joint.html" title="A Joint connects two non fixed entities together, specifically shapes, groups, and certain specials." alt="" coords="329,104,441,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="243,216,364,128,367,132,246,220"/>
+<area shape="rect" id="Node000008" href="$classLevelXML_1_1Shape.html" title="Shapes are simple entities that can have collision and they can be a part of groups...." alt="" coords="324,227,445,252"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="287,237,323,237,323,242,287,242"/>
+<area shape="rect" id="Node000015" href="$classLevelXML_1_1Special.html" title="Specials are entities like shapes that have coded behavior besides just collision,..." alt="" coords="321,1140,448,1165"/>
+<area shape="poly" id="edge12_Node000001_Node000015" title=" " alt="" coords="223,265,384,1139,378,1140,218,266"/>
+<area shape="rect" id="Node000053" href="$classLevelXML_1_1Trigger.html" title="A trigger is an entity that under certain circumstances can be activated, and when it does,..." alt="" coords="323,1189,447,1215"/>
+<area shape="poly" id="edge48_Node000001_Node000053" title=" " alt="" coords="219,266,231,459,253,748,268,894,284,1024,303,1123,313,1156,323,1176,336,1187,333,1191,319,1180,308,1158,298,1124,279,1025,262,895,248,748,226,459,214,266"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="5,227,107,252"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,237,154,237,154,242,120,242"/>
+<area shape="rect" id="Node000004" href="$classLevelXML_1_1Vehicle.html" title=" " alt="" coords="534,5,661,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="458,32,533,23,534,28,458,37"/>
+<area shape="rect" id="Node000006" href="$classLevelXML_1_1PinJoint.html" title="A pin joint is a kind of joint that rotates on a point." alt="" coords="532,55,663,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="453,98,541,77,542,83,454,103"/>
+<area shape="rect" id="Node000007" href="$classLevelXML_1_1SlidingJoint.html" title="A pin joint is a kind of joint that slides on an axis." alt="" coords="522,104,673,129"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="455,114,522,114,522,119,455,119"/>
+<area shape="rect" id="Node000009" href="$classLevelXML_1_1Circle.html" title="A circle shape." alt="" coords="538,153,657,179"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="422,218,495,187,537,175,539,181,497,193,424,223"/>
+<area shape="rect" id="Node000010" href="$classLevelXML_1_1CustomShape.html" title="This kind of shape is defined by a list of vertices (Polygons and Art)" alt="" coords="514,203,681,228"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="459,228,514,222,514,227,459,234"/>
+<area shape="rect" id="Node000013" href="$classLevelXML_1_1Rectangle.html" title="A rectangle shape." alt="" coords="526,252,669,277"/>
+<area shape="poly" id="edge10_Node000008_Node000013" title=" " alt="" coords="460,246,526,254,526,259,459,251"/>
+<area shape="rect" id="Node000014" href="$classLevelXML_1_1Triangle.html" title="A triangle shape." alt="" coords="532,301,663,327"/>
+<area shape="poly" id="edge11_Node000008_Node000014" title=" " alt="" coords="423,256,497,287,535,299,534,304,495,293,421,261"/>
+<area shape="rect" id="Node000016" href="$classLevelXML_1_1ArrowGun.html" title=" " alt="" coords="526,351,669,376"/>
+<area shape="poly" id="edge13_Node000015_Node000016" title=" " alt="" coords="383,1126,387,976,401,754,414,639,434,534,460,447,476,413,494,387,508,375,524,368,527,372,511,380,498,390,480,415,465,449,439,535,420,640,406,754,392,976,389,1127"/>
+<area shape="rect" id="Node000017" href="$classLevelXML_1_1BladeWeapon.html" title=" " alt="" coords="515,400,679,425"/>
+<area shape="poly" id="edge14_Node000015_Node000017" title=" " alt="" coords="384,1126,388,984,404,777,418,670,437,572,462,492,477,460,494,436,514,422,517,426,498,440,482,463,467,494,442,573,423,671,409,777,394,984,389,1126"/>
+<area shape="rect" id="Node000018" href="$classLevelXML_1_1Boombox.html" title=" " alt="" coords="528,449,667,475"/>
+<area shape="poly" id="edge15_Node000015_Node000018" title=" " alt="" coords="384,1126,390,993,407,801,421,702,440,611,464,537,478,508,494,485,509,473,527,466,529,471,512,478,498,489,483,510,469,539,445,613,426,703,412,801,395,993,389,1127"/>
+<area shape="rect" id="Node000019" href="$classLevelXML_1_1Boost.html" title=" " alt="" coords="538,499,657,524"/>
+<area shape="poly" id="edge16_Node000015_Node000019" title=" " alt="" coords="384,1126,392,1002,410,824,424,733,443,650,466,582,479,555,494,535,514,520,537,512,539,517,516,525,498,539,484,558,470,584,448,652,429,734,415,825,397,1002,390,1127"/>
+<area shape="rect" id="Node000020" href="$classLevelXML_1_1Bottle.html" title=" " alt="" coords="538,548,657,573"/>
+<area shape="poly" id="edge17_Node000015_Node000020" title=" " alt="" coords="385,1126,394,1011,413,848,427,765,445,689,467,627,480,603,494,584,514,570,537,562,539,567,516,574,498,588,485,606,472,629,451,691,433,766,418,849,399,1011,390,1127"/>
+<area shape="rect" id="Node000021" href="$classLevelXML_1_1Building.html" title=" " alt="" coords="532,597,663,623"/>
+<area shape="poly" id="edge18_Node000015_Node000021" title=" " alt="" coords="385,1126,396,1019,416,871,431,796,448,728,469,672,494,634,511,621,531,613,533,618,514,625,498,637,474,674,454,730,436,797,422,872,401,1019,391,1126"/>
+<area shape="rect" id="Node000024" href="$classLevelXML_1_1Cannon.html" title=" " alt="" coords="533,647,662,672"/>
+<area shape="poly" id="edge19_Node000015_Node000024" title=" " alt="" coords="386,1126,398,1029,419,896,434,829,451,768,471,717,494,683,512,670,531,662,533,667,514,675,498,687,476,720,456,769,439,830,425,897,403,1030,391,1127"/>
+<area shape="rect" id="Node000025" href="$classLevelXML_1_1Chain.html" title=" " alt="" coords="538,696,657,721"/>
+<area shape="poly" id="edge20_Node000015_Node000025" title=" " alt="" coords="387,1126,400,1037,423,920,454,807,473,762,494,732,514,718,537,710,539,715,517,723,498,736,478,765,459,808,428,921,405,1038,392,1127"/>
+<area shape="rect" id="Node000026" href="$classLevelXML_1_1Chair.html" title=" " alt="" coords="540,745,655,771"/>
+<area shape="poly" id="edge21_Node000015_Node000026" title=" " alt="" coords="383,1126,386,1057,401,965,415,915,435,866,461,821,494,781,515,767,539,759,540,764,517,772,498,785,465,824,439,869,420,917,406,966,392,1058,388,1126"/>
+<area shape="rect" id="Node000027" href="$classLevelXML_1_1DinnerTable.html" title=" " alt="" coords="521,795,674,820"/>
+<area shape="poly" id="edge22_Node000015_Node000027" title=" " alt="" coords="384,1125,391,1065,408,985,422,943,441,902,464,864,494,831,519,815,522,820,498,835,469,867,445,905,427,945,413,987,396,1066,390,1126"/>
+<area shape="rect" id="Node000028" href="$classLevelXML_1_1Fan.html" title=" " alt="" coords="544,844,651,869"/>
+<area shape="poly" id="edge23_Node000015_Node000028" title=" " alt="" coords="386,1126,396,1074,415,1007,446,939,468,907,494,880,517,866,543,858,545,863,520,871,498,884,472,911,451,941,420,1009,401,1075,392,1127"/>
+<area shape="rect" id="Node000029" href="$classLevelXML_1_1FinishLine.html" title=" " alt="" coords="526,893,669,919"/>
+<area shape="poly" id="edge24_Node000015_Node000029" title=" " alt="" coords="389,1126,401,1083,422,1030,452,975,472,951,494,929,524,913,527,918,498,933,476,954,457,978,426,1032,406,1085,394,1127"/>
+<area shape="rect" id="Node000030" href="$classLevelXML_1_1Food.html" title=" " alt="" coords="541,943,654,968"/>
+<area shape="poly" id="edge25_Node000015_Node000030" title=" " alt="" coords="393,1126,408,1092,429,1052,458,1012,494,979,516,967,540,959,541,964,518,972,498,983,462,1016,434,1055,412,1095,398,1128"/>
+<area shape="rect" id="Node000031" href="$classLevelXML_1_1GlassPanel.html" title=" " alt="" coords="522,992,673,1017"/>
+<area shape="poly" id="edge26_Node000015_Node000031" title=" " alt="" coords="399,1126,438,1076,465,1050,495,1028,523,1015,525,1020,497,1032,468,1054,442,1080,404,1130"/>
+<area shape="rect" id="Node000032" href="$classLevelXML_1_1Harpoon.html" title=" " alt="" coords="531,1041,664,1067"/>
+<area shape="poly" id="edge27_Node000015_Node000032" title=" " alt="" coords="411,1129,449,1102,495,1077,531,1064,533,1069,497,1082,452,1107,414,1134"/>
+<area shape="rect" id="Node000033" href="$classLevelXML_1_1HomingMine.html" title=" " alt="" coords="519,1091,676,1116"/>
+<area shape="poly" id="edge28_Node000015_Node000033" title=" " alt="" coords="453,1134,541,1113,542,1119,454,1139"/>
+<area shape="rect" id="Node000034" href="$classLevelXML_1_1IBeam.html" title=" " alt="" coords="536,1140,659,1165"/>
+<area shape="poly" id="edge29_Node000015_Node000034" title=" " alt="" coords="462,1150,536,1150,536,1155,462,1155"/>
+<area shape="rect" id="Node000035" href="$classLevelXML_1_1Jet.html" title=" " alt="" coords="546,1189,649,1215"/>
+<area shape="poly" id="edge30_Node000015_Node000035" title=" " alt="" coords="454,1166,546,1188,545,1193,452,1171"/>
+<area shape="rect" id="Node000036" href="$classLevelXML_1_1Landmine.html" title=" " alt="" coords="527,1239,667,1264"/>
+<area shape="poly" id="edge31_Node000015_Node000036" title=" " alt="" coords="438,1169,450,1176,464,1189,474,1202,483,1214,497,1225,528,1238,526,1243,495,1230,479,1218,469,1205,460,1193,446,1180,436,1174"/>
+<area shape="rect" id="Node000037" href="$classLevelXML_1_1Log.html" title=" " alt="" coords="545,1288,650,1313"/>
+<area shape="poly" id="edge32_Node000015_Node000037" title=" " alt="" coords="443,1170,450,1176,468,1202,474,1228,480,1252,487,1263,498,1275,520,1287,545,1294,544,1300,518,1292,494,1279,482,1267,475,1254,468,1229,463,1204,446,1180,439,1174"/>
+<area shape="rect" id="Node000038" href="$classLevelXML_1_1Meteor.html" title=" " alt="" coords="535,1337,659,1363"/>
+<area shape="poly" id="edge33_Node000015_Node000038" title=" " alt="" coords="445,1171,450,1176,464,1196,471,1215,473,1253,476,1290,484,1307,498,1324,515,1336,536,1343,534,1348,513,1341,494,1328,479,1310,471,1291,468,1254,466,1216,459,1198,446,1180,441,1175"/>
+<area shape="rect" id="Node000039" href="$classLevelXML_1_1NonPlayerCharacter.html" title=" " alt="" coords="496,1387,699,1412"/>
+<area shape="poly" id="edge34_Node000015_Node000039" title=" " alt="" coords="445,1171,450,1176,467,1202,474,1228,475,1254,473,1279,471,1303,472,1327,480,1350,498,1373,513,1384,509,1389,494,1377,476,1353,467,1328,466,1303,467,1278,470,1254,469,1229,462,1205,446,1180,441,1175"/>
+<area shape="rect" id="Node000040" href="$classLevelXML_1_1PaddlePlatform.html" title=" " alt="" coords="511,1436,684,1461"/>
+<area shape="poly" id="edge35_Node000015_Node000040" title=" " alt="" coords="445,1171,450,1176,470,1209,477,1241,477,1273,472,1304,468,1334,469,1364,477,1393,498,1423,512,1434,509,1438,494,1427,472,1396,463,1365,463,1334,467,1303,471,1272,472,1242,465,1211,446,1180,441,1175"/>
+<area shape="rect" id="Node000041" href="$classLevelXML_1_1Rail.html" title=" " alt="" coords="544,1485,651,1511"/>
+<area shape="poly" id="edge36_Node000015_Node000041" title=" " alt="" coords="446,1172,450,1176,473,1216,480,1254,478,1292,472,1329,466,1365,465,1401,474,1436,498,1472,519,1487,545,1494,543,1499,517,1492,494,1476,469,1439,459,1402,460,1365,466,1328,473,1291,475,1255,468,1218,446,1180,442,1175"/>
+<area shape="rect" id="Node000042" href="$classLevelXML_1_1Sign.html" title=" " alt="" coords="542,1535,653,1560"/>
+<area shape="poly" id="edge37_Node000015_Node000042" title=" " alt="" coords="446,1172,450,1176,465,1200,476,1222,484,1267,480,1311,471,1354,463,1396,461,1438,470,1480,482,1500,498,1521,518,1536,542,1543,541,1548,516,1541,494,1525,477,1503,465,1482,455,1438,457,1396,466,1353,475,1310,478,1268,471,1224,461,1202,446,1180,442,1175"/>
+<area shape="rect" id="Node000043" href="$classLevelXML_1_1SoccerBall.html" title=" " alt="" coords="524,1584,671,1609"/>
+<area shape="poly" id="edge38_Node000015_Node000043" title=" " alt="" coords="446,1172,450,1176,467,1203,479,1229,485,1255,487,1280,482,1330,471,1379,460,1427,457,1475,460,1499,467,1523,480,1547,498,1571,510,1581,525,1588,523,1593,507,1586,494,1575,475,1549,462,1525,454,1500,451,1475,455,1426,466,1378,477,1329,482,1280,480,1256,473,1231,463,1205,446,1180,442,1175"/>
+<area shape="rect" id="Node000044" href="$classLevelXML_1_1SpikeSet.html" title=" " alt="" coords="529,1633,666,1659"/>
+<area shape="poly" id="edge39_Node000015_Node000044" title=" " alt="" coords="446,1172,450,1176,469,1206,481,1236,488,1265,490,1293,484,1349,470,1404,457,1458,453,1512,456,1539,464,1566,477,1593,498,1620,512,1632,529,1639,527,1644,509,1636,494,1624,473,1596,459,1568,451,1540,447,1512,452,1457,465,1403,478,1348,485,1293,483,1265,476,1237,464,1209,446,1180,442,1175"/>
+<area shape="rect" id="Node000045" href="$classLevelXML_1_1SpringPlatform.html" title=" " alt="" coords="512,1683,683,1708"/>
+<area shape="poly" id="edge40_Node000015_Node000045" title=" " alt="" coords="447,1172,450,1176,461,1196,469,1221,476,1281,476,1351,472,1427,469,1502,470,1571,478,1629,487,1652,498,1670,513,1682,510,1686,494,1673,482,1654,473,1631,465,1572,464,1502,467,1427,470,1351,470,1281,463,1222,456,1198,446,1180,443,1176"/>
+<area shape="rect" id="Node000046" href="$classLevelXML_1_1Television.html" title=" " alt="" coords="526,1732,669,1757"/>
+<area shape="poly" id="edge41_Node000015_Node000046" title=" " alt="" coords="447,1172,450,1176,462,1198,470,1225,477,1291,477,1368,472,1452,468,1534,468,1611,477,1674,486,1699,498,1719,511,1730,527,1737,525,1742,508,1734,494,1722,481,1702,472,1676,463,1611,462,1534,467,1451,471,1368,472,1291,465,1226,457,1200,446,1180,443,1176"/>
+<area shape="rect" id="Node000047" href="$classLevelXML_1_1TextBox.html" title="This is a non interactive Special that displays text." alt="" coords="531,1781,663,1807"/>
+<area shape="poly" id="edge42_Node000015_Node000047" title=" " alt="" coords="447,1172,450,1177,463,1200,472,1229,479,1301,477,1386,472,1477,466,1567,466,1650,475,1720,485,1747,498,1768,513,1781,532,1788,530,1793,511,1785,494,1772,480,1749,470,1721,461,1650,461,1567,466,1476,472,1386,474,1301,466,1230,458,1202,446,1179,443,1176"/>
+<area shape="rect" id="Node000048" href="$classLevelXML_1_1Toilet.html" title=" " alt="" coords="540,1831,655,1856"/>
+<area shape="poly" id="edge43_Node000015_Node000048" title=" " alt="" coords="447,1172,450,1177,464,1202,473,1234,481,1312,478,1403,471,1501,465,1599,464,1689,467,1729,473,1765,484,1794,498,1818,517,1832,540,1839,539,1845,515,1837,494,1821,479,1797,468,1766,462,1730,459,1690,460,1599,466,1501,473,1403,475,1312,468,1235,459,1204,446,1179,443,1176"/>
+<area shape="rect" id="Node000049" href="$classLevelXML_1_1Token.html" title=" " alt="" coords="538,1880,657,1905"/>
+<area shape="poly" id="edge44_Node000015_Node000049" title=" " alt="" coords="447,1172,450,1177,465,1204,474,1238,480,1278,482,1322,479,1420,471,1526,464,1632,462,1729,465,1772,472,1810,482,1842,498,1867,516,1881,538,1888,537,1893,513,1885,494,1870,478,1844,467,1811,460,1772,457,1729,458,1631,466,1526,474,1420,477,1322,475,1278,469,1239,460,1206,446,1179,443,1176"/>
+<area shape="rect" id="Node000050" href="$classLevelXML_1_1TrashCan.html" title=" " alt="" coords="527,1929,668,1955"/>
+<area shape="poly" id="edge45_Node000015_Node000050" title=" " alt="" coords="447,1172,450,1177,466,1206,476,1242,482,1285,484,1332,480,1438,471,1551,462,1664,460,1768,463,1814,470,1855,481,1889,498,1916,511,1928,528,1935,525,1940,508,1932,494,1920,477,1892,465,1856,458,1815,455,1768,457,1664,466,1551,475,1438,479,1332,476,1285,471,1244,461,1208,446,1179,443,1176"/>
+<area shape="rect" id="Node000051" href="$classLevelXML_1_1Van.html" title=" " alt="" coords="544,1979,651,2004"/>
+<area shape="poly" id="edge46_Node000015_Node000051" title=" " alt="" coords="447,1172,450,1177,467,1208,477,1247,483,1292,485,1343,481,1455,471,1576,461,1696,458,1807,461,1856,468,1900,480,1937,498,1966,519,1981,544,1988,543,1993,516,1986,494,1969,476,1939,463,1901,456,1857,453,1807,456,1696,465,1576,476,1455,480,1343,478,1293,472,1248,462,1210,446,1179,443,1176"/>
+<area shape="rect" id="Node000052" href="$classLevelXML_1_1WreckingBall.html" title=" " alt="" coords="517,2028,677,2053"/>
+<area shape="poly" id="edge47_Node000015_Node000052" title=" " alt="" coords="447,1172,450,1177,468,1210,479,1251,485,1299,487,1353,482,1473,470,1601,459,1729,456,1847,459,1899,467,1945,479,1984,498,2015,519,2030,515,2035,494,2018,475,1986,461,1946,454,1899,451,1847,454,1728,465,1600,477,1472,482,1353,480,1300,474,1252,463,1212,446,1179,443,1176"/>
+</map>

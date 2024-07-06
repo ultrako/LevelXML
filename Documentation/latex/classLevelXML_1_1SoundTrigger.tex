@@ -1,0 +1,164 @@
+\doxysection{Level\+XML.\+Sound\+Trigger Class Reference}
+\hypertarget{classLevelXML_1_1SoundTrigger}{}\label{classLevelXML_1_1SoundTrigger}\index{LevelXML.SoundTrigger@{LevelXML.SoundTrigger}}
+
+
+A \doxylink{classLevelXML_1_1SoundTrigger}{Sound\+Trigger} plays a sound when activated.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Sound\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classLevelXML_1_1SoundTrigger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Sound\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classLevelXML_1_1SoundTrigger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1SoundTrigger_a1cf1ca119b5959a27ff0cda26124bff8}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SoundTrigger_adc527c1cee9c15902a54add607021c98}\label{classLevelXML_1_1SoundTrigger_adc527c1cee9c15902a54add607021c98} 
+{\bfseries Sound\+Trigger} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1SoundTrigger_a25b84d7ee9f7bafb80a483aa7f647805}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1SoundTrigger_aac67d2f499de3dc1be59910c94c9f0f6}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1SoundTrigger_aca0c7745878d0cdfc11de0bc5e9c3ad6}\label{classLevelXML_1_1SoundTrigger_aca0c7745878d0cdfc11de0bc5e9c3ad6} 
+double {\bfseries Sound}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The ID of the sound to be played I\textquotesingle{}d make a struct for this but there are 326 sounds in the game... \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SoundTrigger_a64ee794b69f0cd16d7709d8bad10959a}\label{classLevelXML_1_1SoundTrigger_a64ee794b69f0cd16d7709d8bad10959a} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Is\+Local}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the sound is played as if coming from the location of the trigger. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SoundTrigger_a997b0c85ea0b0c880ce1ce85ce8e63d2}\label{classLevelXML_1_1SoundTrigger_a997b0c85ea0b0c880ce1ce85ce8e63d2} 
+double {\bfseries Panning}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This makes the sound move from the left to the right if positive, vice versa if negative. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SoundTrigger_aaa0dd1efbc9ab134a5b90950f969c4f1}\label{classLevelXML_1_1SoundTrigger_aaa0dd1efbc9ab134a5b90950f969c4f1} 
+double {\bfseries Volume}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How loud the sound is, from 0 being silent, to 1 being full volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Trigger}{Level\+XML.\+Trigger}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1TriggeredBy}{Triggered\+By}} {\bfseries Triggered\+By}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which things can trigger this trigger. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Repeat\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of repetition the trigger will do when activated once or more. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Start\+Disabled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the trigger starts disabled (and would need to be enabled by other triggers to activate) \end{DoxyCompactList}\item 
+double {\bfseries Interval}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats. \end{DoxyCompactList}\item 
+double {\bfseries Delay}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the amount of time in seconds after the trigger gets activated, before its actions fire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classLevelXML_1_1SoundTrigger}{Sound\+Trigger} plays a sound when activated. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1SoundTrigger_aac67d2f499de3dc1be59910c94c9f0f6}\index{LevelXML.SoundTrigger@{LevelXML.SoundTrigger}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.SoundTrigger@{LevelXML.SoundTrigger}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SoundTrigger_aac67d2f499de3dc1be59910c94c9f0f6} 
+override void Level\+XML.\+Sound\+Trigger.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Trigger}{Level\+XML.\+Trigger}}.
+
+\Hypertarget{classLevelXML_1_1SoundTrigger_a1cf1ca119b5959a27ff0cda26124bff8}\index{LevelXML.SoundTrigger@{LevelXML.SoundTrigger}!ToXML@{ToXML}}
+\index{ToXML@{ToXML}!LevelXML.SoundTrigger@{LevelXML.SoundTrigger}}
+\doxysubsubsection{\texorpdfstring{ToXML()}{ToXML()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SoundTrigger_a1cf1ca119b5959a27ff0cda26124bff8} 
+string Level\+XML.\+Sound\+Trigger.\+To\+XML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} 
+
+
+
+Implements \mbox{\hyperlink{interfaceLevelXML_1_1IConvertibleToXML_ac9361f2b9b62f3fc5959b829513fe346}{Level\+XML.\+IConvertible\+To\+XML}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1SoundTrigger_a25b84d7ee9f7bafb80a483aa7f647805}\index{LevelXML.SoundTrigger@{LevelXML.SoundTrigger}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.SoundTrigger@{LevelXML.SoundTrigger}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SoundTrigger_a25b84d7ee9f7bafb80a483aa7f647805} 
+const string Level\+XML.\+Sound\+Trigger.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<t\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ w="{}"{}100"{}"{}\ h="{}"{}100"{}"{}\ a="{}"{}0"{}"{}\ b="{}"{}1"{}"{}\ t="{}"{}2"{}"{}\ r="{}"{}1"{}"{}\ sd="{}"{}f"{}"{}\ s="{}"{}0"{}"{}\ d="{}"{}0"{}"{}\ l="{}"{}1"{}"{}\ p="{}"{}0"{}"{}\ v="{}"{}1"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Triggers/Sound\+Trigger.\+cs\end{DoxyCompactItemize}
