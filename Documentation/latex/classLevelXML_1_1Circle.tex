@@ -1,0 +1,167 @@
+\doxysection{Level\+XML.\+Circle Class Reference}
+\hypertarget{classLevelXML_1_1Circle}{}\label{classLevelXML_1_1Circle}\index{LevelXML.Circle@{LevelXML.Circle}}
+
+
+A circle shape.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Circle\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classLevelXML_1_1Circle__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Circle\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classLevelXML_1_1Circle__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Circle_a94b2b71f93cd58564b64097c53e40629}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Circle_a6c85f587453bbf5ad96a794984e26aba}\label{classLevelXML_1_1Circle_a6c85f587453bbf5ad96a794984e26aba} 
+{\bfseries Circle} (string xml)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classLevelXML_1_1Circle_a5ce41f0d726cb8486b7e1a096531f34b}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1Circle_a64f8e3429fda7131363d38a02690202d}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Circle_a2982f7a36f80360e7c87ed99206ad880}\label{classLevelXML_1_1Circle_a2982f7a36f80360e7c87ed99206ad880} 
+override double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Circle_a655bc904a3e497296bfbd964d11c293c}\label{classLevelXML_1_1Circle_a655bc904a3e497296bfbd964d11c293c} 
+override double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Circle_a6576980f495e4fa3221e0555c5a8fca6}\label{classLevelXML_1_1Circle_a6576980f495e4fa3221e0555c5a8fca6} 
+double {\bfseries Cutout}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Shape}{Level\+XML.\+Shape}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Interactive}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Setting interactive to false will treat the shape like flat artwork. The shape will only move if part of a group, and will not take away from the total available shapecount allowed in your level. \end{DoxyCompactList}\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape moves. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the shape starts in an unmoving state until it is first collided with. \end{DoxyCompactList}\item 
+double {\bfseries Density}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The density of the shape -\/ how much force gravity applies to the shape per how large it is. \end{DoxyCompactList}\item 
+double {\bfseries Fill\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The color of the shape inbetween its edges in RGB hex format. \end{DoxyCompactList}\item 
+double {\bfseries Outline\+Color}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double \mbox{\hyperlink{classLevelXML_1_1Shape_ab9a586613a08210292a2b35730f98dfb}{Opacity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How visible the shape is. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1Collision}{Collision}} {\bfseries Collision}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of objects this shape can collide with. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A circle shape. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1Circle_a64f8e3429fda7131363d38a02690202d}\index{LevelXML.Circle@{LevelXML.Circle}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.Circle@{LevelXML.Circle}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Circle_a64f8e3429fda7131363d38a02690202d} 
+override void Level\+XML.\+Circle.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Shape}{Level\+XML.\+Shape}}.
+
+\Hypertarget{classLevelXML_1_1Circle_a94b2b71f93cd58564b64097c53e40629}\index{LevelXML.Circle@{LevelXML.Circle}!ToXML@{ToXML}}
+\index{ToXML@{ToXML}!LevelXML.Circle@{LevelXML.Circle}}
+\doxysubsubsection{\texorpdfstring{ToXML()}{ToXML()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Circle_a94b2b71f93cd58564b64097c53e40629} 
+string Level\+XML.\+Circle.\+To\+XML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} 
+
+
+
+Implements \mbox{\hyperlink{interfaceLevelXML_1_1IConvertibleToXML_ac9361f2b9b62f3fc5959b829513fe346}{Level\+XML.\+IConvertible\+To\+XML}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Circle_a5ce41f0d726cb8486b7e1a096531f34b}\index{LevelXML.Circle@{LevelXML.Circle}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Circle@{LevelXML.Circle}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Circle_a5ce41f0d726cb8486b7e1a096531f34b} 
+string Level\+XML.\+Circle.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{@"{}<sh\ t="{}"{}1"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}200"{}"{}\ p3="{}"{}200"{}"{}\ p4="{}"{}0"{}"{}\ p5="{}"{}t"{}"{}\ p6="{}"{}f"{}"{}\ p7="{}"{}1"{}"{}\ p8="{}"{}4032711"{}"{}\ p9="{}"{}-\/1"{}"{}\ p10="{}"{}100"{}"{}\ p11="{}"{}1"{}"{}\ p12="{}"{}0"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Shapes/Circle.\+cs\end{DoxyCompactItemize}

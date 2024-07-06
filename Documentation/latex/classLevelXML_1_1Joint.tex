@@ -1,0 +1,111 @@
+\doxysection{Level\+XML.\+Joint Class Reference}
+\hypertarget{classLevelXML_1_1Joint}{}\label{classLevelXML_1_1Joint}\index{LevelXML.Joint@{LevelXML.Joint}}
+
+
+A \doxylink{classLevelXML_1_1Joint}{Joint} connects two non fixed entities together, specifically shapes, groups, and certain specials.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Joint\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{classLevelXML_1_1Joint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Joint\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classLevelXML_1_1Joint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Joint_aee48fb4f0963da3e452fec6f753ac805}\label{classLevelXML_1_1Joint_aee48fb4f0963da3e452fec6f753ac805} 
+bool {\bfseries is\+Not\+Jointed} (XElement e)
+\item 
+\Hypertarget{classLevelXML_1_1Joint_aebdd31613834f85d708c263f0518fcda}\label{classLevelXML_1_1Joint_aebdd31613834f85d708c263f0518fcda} 
+virtual void {\bfseries Set\+Params} (XElement e, Func$<$ string?, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}?$>$ reverse\+Mapper)
+\item 
+\Hypertarget{classLevelXML_1_1Joint_a368a7c83bb6b9eae03b8d1ff24742a40}\label{classLevelXML_1_1Joint_a368a7c83bb6b9eae03b8d1ff24742a40} 
+{\bfseries Joint} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Joint_a39b89e1e18b4351912ade86f058d47a8}\label{classLevelXML_1_1Joint_a39b89e1e18b4351912ade86f058d47a8} 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}? {\bfseries First}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The first \doxylink{classLevelXML_1_1Entity}{Entity} this \doxylink{classLevelXML_1_1Joint}{Joint} is jointed to. Null means it\textquotesingle{}s jointed to the background. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_a1d84c39aef403f2c583d47f3c2d1bb2d}\label{classLevelXML_1_1Joint_a1d84c39aef403f2c583d47f3c2d1bb2d} 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}? {\bfseries Second}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The second \doxylink{classLevelXML_1_1Entity}{Entity} this \doxylink{classLevelXML_1_1Joint}{Joint} is jointed to. Null means it\textquotesingle{}s jointed to the background. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_a2476afd99834c6f3863dd800e0add790}\label{classLevelXML_1_1Joint_a2476afd99834c6f3863dd800e0add790} 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Joint_a5bb00db54caa1ada79ceebcc25cd7d22}\label{classLevelXML_1_1Joint_a5bb00db54caa1ada79ceebcc25cd7d22} 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Joint_af9a1faa505939a2d4501eacac657cb61}\label{classLevelXML_1_1Joint_af9a1faa505939a2d4501eacac657cb61} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the \doxylink{classLevelXML_1_1Joint}{Joint} has limits in its motion. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_ada77175bd76e86be797678729f39c468}\label{classLevelXML_1_1Joint_ada77175bd76e86be797678729f39c468} 
+double {\bfseries Upper\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The upper limit of motion for the \doxylink{classLevelXML_1_1Joint}{Joint}. It\textquotesingle{}s a maximum angle for Pin\+Joints and a maximum distance for Sliding\+Joints. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_a45c9a7ca8214711e203f2aed251b7437}\label{classLevelXML_1_1Joint_a45c9a7ca8214711e203f2aed251b7437} 
+double {\bfseries Lower\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The lower limit of motion for the \doxylink{classLevelXML_1_1Joint}{Joint}. It\textquotesingle{}s a minimum angle for Pin\+Joints and a minimum distance for Sliding\+Joints. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_a9547d87e3ba48c9108eee90a474eafa8}\label{classLevelXML_1_1Joint_a9547d87e3ba48c9108eee90a474eafa8} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Motorized}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the \doxylink{classLevelXML_1_1Joint}{Joint} moves on its own based on its speed and force. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_a4cb30b3c61c7a4c72715e0799f78170b}\label{classLevelXML_1_1Joint_a4cb30b3c61c7a4c72715e0799f78170b} 
+double {\bfseries Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The top speed at which a \doxylink{classLevelXML_1_1Joint}{Joint} will move. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Joint_abb51783303e791237352121c20458028}\label{classLevelXML_1_1Joint_abb51783303e791237352121c20458028} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Collide\+Connected}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the two objects that a \doxylink{classLevelXML_1_1Joint}{Joint} connects, can collide with one another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classLevelXML_1_1Joint}{Joint} connects two non fixed entities together, specifically shapes, groups, and certain specials. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Joint.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,197 @@
+\doxysection{Level\+XML.\+Sliding\+Joint Class Reference}
+\hypertarget{classLevelXML_1_1SlidingJoint}{}\label{classLevelXML_1_1SlidingJoint}\index{LevelXML.SlidingJoint@{LevelXML.SlidingJoint}}
+
+
+A pin joint is a kind of joint that slides on an axis.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Sliding\+Joint\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classLevelXML_1_1SlidingJoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Sliding\+Joint\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classLevelXML_1_1SlidingJoint__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1SlidingJoint_aa972ee7579c7d179cd0fc59677a4cec9}\label{classLevelXML_1_1SlidingJoint_aa972ee7579c7d179cd0fc59677a4cec9} 
+{\bfseries Sliding\+Joint} ()
+\begin{DoxyCompactList}\small\item\em This constructor makes a joint that isn\textquotesingle{}t pinned to anything. Make sure to set First and Second afterwards. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevelXML_1_1SlidingJoint_a6c954dbc8ddd36217de1de0be4c6f87f}{Sliding\+Joint}} (\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} first, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} second)
+\begin{DoxyCompactList}\small\item\em This constructor takes two Entities to be attached to. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevelXML_1_1SlidingJoint_a088cb04ec58b305d95dc631e6893fa64}{Sliding\+Joint}} (\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}} first)
+\begin{DoxyCompactList}\small\item\em This constructor takes one \doxylink{classLevelXML_1_1Entity}{Entity} to be attached to. By default this would joint that \doxylink{classLevelXML_1_1Entity}{Entity} to the background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classLevelXML_1_1SlidingJoint_aeeb61ec7df10fd82a2dac0ce7e6c5dd3}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1SlidingJoint_a90c97254bcdb7719714cd881e4dd5bc3}{Set\+Params}} (XElement e, Func$<$ string?, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}?$>$ reverse\+Joint\+Mapper)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Joint}{Level\+XML.\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+Not\+Jointed} (XElement e)
+\item 
+{\bfseries Joint} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1SlidingJoint_a346c13de1742ff97b523594f641d5cb5}\label{classLevelXML_1_1SlidingJoint_a346c13de1742ff97b523594f641d5cb5} 
+double {\bfseries Force}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of force the joint applies in order to reach full speed. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SlidingJoint_a8bf1e6d83eadd534175f18ff4d592400}\label{classLevelXML_1_1SlidingJoint_a8bf1e6d83eadd534175f18ff4d592400} 
+override double {\bfseries Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The maximum speed at which this joint will slide. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SlidingJoint_a079b41858e4bf94204332c04b128418d}\label{classLevelXML_1_1SlidingJoint_a079b41858e4bf94204332c04b128418d} 
+override double {\bfseries Upper\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the highest position that the joint can reach. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SlidingJoint_ad1a101dac05bfeb77afb0f8e9fae9da0}\label{classLevelXML_1_1SlidingJoint_ad1a101dac05bfeb77afb0f8e9fae9da0} 
+override double {\bfseries Lower\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the lowest position that the joint can reach. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1SlidingJoint_a6867a61bdbc9285c9f74349be0964eb0}\label{classLevelXML_1_1SlidingJoint_a6867a61bdbc9285c9f74349be0964eb0} 
+double {\bfseries Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the angle (in degrees) of the axis of movement between the bodies of this joint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Joint}{Level\+XML.\+Joint}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}? {\bfseries First}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The first \doxylink{classLevelXML_1_1Entity}{Entity} this \doxylink{classLevelXML_1_1Joint}{Joint} is jointed to. Null means it\textquotesingle{}s jointed to the background. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}? {\bfseries Second}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The second \doxylink{classLevelXML_1_1Entity}{Entity} this \doxylink{classLevelXML_1_1Joint}{Joint} is jointed to. Null means it\textquotesingle{}s jointed to the background. \end{DoxyCompactList}\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the \doxylink{classLevelXML_1_1Joint}{Joint} has limits in its motion. \end{DoxyCompactList}\item 
+double {\bfseries Upper\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The upper limit of motion for the \doxylink{classLevelXML_1_1Joint}{Joint}. It\textquotesingle{}s a maximum angle for Pin\+Joints and a maximum distance for Sliding\+Joints. \end{DoxyCompactList}\item 
+double {\bfseries Lower\+Limit}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The lower limit of motion for the \doxylink{classLevelXML_1_1Joint}{Joint}. It\textquotesingle{}s a minimum angle for Pin\+Joints and a minimum distance for Sliding\+Joints. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Motorized}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the \doxylink{classLevelXML_1_1Joint}{Joint} moves on its own based on its speed and force. \end{DoxyCompactList}\item 
+double {\bfseries Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The top speed at which a \doxylink{classLevelXML_1_1Joint}{Joint} will move. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Collide\+Connected}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the two objects that a \doxylink{classLevelXML_1_1Joint}{Joint} connects, can collide with one another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A pin joint is a kind of joint that slides on an axis. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLevelXML_1_1SlidingJoint_a6c954dbc8ddd36217de1de0be4c6f87f}\index{LevelXML.SlidingJoint@{LevelXML.SlidingJoint}!SlidingJoint@{SlidingJoint}}
+\index{SlidingJoint@{SlidingJoint}!LevelXML.SlidingJoint@{LevelXML.SlidingJoint}}
+\doxysubsubsection{\texorpdfstring{SlidingJoint()}{SlidingJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SlidingJoint_a6c954dbc8ddd36217de1de0be4c6f87f} 
+Level\+XML.\+Sliding\+Joint.\+Sliding\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]{first}{, }\item[{\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]{second}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This constructor takes two Entities to be attached to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The first \doxylink{classLevelXML_1_1Entity}{Entity} that the slidingjoint is attached to. \\
+\hline
+{\em second} & The second \doxylink{classLevelXML_1_1Entity}{Entity} that the slidingjoint is attached to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLevelXML_1_1SlidingJoint_a088cb04ec58b305d95dc631e6893fa64}\index{LevelXML.SlidingJoint@{LevelXML.SlidingJoint}!SlidingJoint@{SlidingJoint}}
+\index{SlidingJoint@{SlidingJoint}!LevelXML.SlidingJoint@{LevelXML.SlidingJoint}}
+\doxysubsubsection{\texorpdfstring{SlidingJoint()}{SlidingJoint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SlidingJoint_a088cb04ec58b305d95dc631e6893fa64} 
+Level\+XML.\+Sliding\+Joint.\+Sliding\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}}]{first}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This constructor takes one \doxylink{classLevelXML_1_1Entity}{Entity} to be attached to. By default this would joint that \doxylink{classLevelXML_1_1Entity}{Entity} to the background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The entity to be attached to. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1SlidingJoint_a90c97254bcdb7719714cd881e4dd5bc3}\index{LevelXML.SlidingJoint@{LevelXML.SlidingJoint}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.SlidingJoint@{LevelXML.SlidingJoint}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SlidingJoint_a90c97254bcdb7719714cd881e4dd5bc3} 
+override void Level\+XML.\+Sliding\+Joint.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{, }\item[{Func$<$ string?, \mbox{\hyperlink{classLevelXML_1_1Entity}{Entity}}?$>$}]{reverse\+Joint\+Mapper}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Joint}{Level\+XML.\+Joint}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1SlidingJoint_aeeb61ec7df10fd82a2dac0ce7e6c5dd3}\index{LevelXML.SlidingJoint@{LevelXML.SlidingJoint}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.SlidingJoint@{LevelXML.SlidingJoint}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1SlidingJoint_aeeb61ec7df10fd82a2dac0ce7e6c5dd3} 
+string Level\+XML.\+Sliding\+Joint.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<j\ t="{}"{}1"{}"{}\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ b1="{}"{}-\/1"{}"{}\ b2="{}"{}-\/1"{}"{}\ a="{}"{}90"{}"{}\ l="{}"{}f"{}"{}\ ul="{}"{}100"{}"{}\ ll="{}"{}-\/100"{}"{}\ m="{}"{}f"{}"{}\ fo="{}"{}50"{}"{}\ sp="{}"{}3"{}"{}\ c="{}"{}f"{}"{}\ />"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Joints/Sliding\+Joint.\+cs\end{DoxyCompactItemize}

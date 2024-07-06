@@ -1,0 +1,67 @@
+\doxysection{Level\+XML.\+Level\+XMLTag Class Reference}
+\hypertarget{classLevelXML_1_1LevelXMLTag}{}\label{classLevelXML_1_1LevelXMLTag}\index{LevelXML.LevelXMLTag@{LevelXML.LevelXMLTag}}
+
+
+This class represents any xml tag that can go into the import box in Happy Wheels.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Level\+XMLTag\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLevelXML_1_1LevelXMLTag__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1LevelXMLTag_a343571b1f4cf1ded42f19ee785088fc9}\label{classLevelXML_1_1LevelXMLTag_a343571b1f4cf1ded42f19ee785088fc9} 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\Hypertarget{classLevelXML_1_1LevelXMLTag_a54aef8f07fad6ef994845ef970b2c50e}\label{classLevelXML_1_1LevelXMLTag_a54aef8f07fad6ef994845ef970b2c50e} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+\Hypertarget{classLevelXML_1_1LevelXMLTag_a3bbd998f4d90c71eabd0d9881d093731}\label{classLevelXML_1_1LevelXMLTag_a3bbd998f4d90c71eabd0d9881d093731} 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1LevelXMLTag_a5d546a927b17b644167087366b06fc3b}\label{classLevelXML_1_1LevelXMLTag_a5d546a927b17b644167087366b06fc3b} 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+\Hypertarget{classLevelXML_1_1LevelXMLTag_adb69fe997346cb35c3d54843a674fd9b}\label{classLevelXML_1_1LevelXMLTag_adb69fe997346cb35c3d54843a674fd9b} 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+\Hypertarget{classLevelXML_1_1LevelXMLTag_aafea9bc339e27db71336539ce126c45b}\label{classLevelXML_1_1LevelXMLTag_aafea9bc339e27db71336539ce126c45b} 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents any xml tag that can go into the import box in Happy Wheels. 
+
+If it makes sense for a class to be made outside of a level, it will have a constructor that takes a string. All public classes that inherit this will have a public empty constructor, and you will end up with an object that would be the same as if you had opened the level editor and placed that object without changing anything 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}\index{LevelXML.LevelXMLTag@{LevelXML.LevelXMLTag}!SetDouble@{SetDouble}}
+\index{SetDouble@{SetDouble}!LevelXML.LevelXMLTag@{LevelXML.LevelXMLTag}}
+\doxysubsubsection{\texorpdfstring{SetDouble()}{SetDouble()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30} 
+void Level\+XML.\+Level\+XMLTag.\+Set\+Double (\begin{DoxyParamCaption}\item[{string}]{attr}{, }\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+summary\texorpdfstring{$>$}{>} In happy wheels, bools can be either true, false, or NaN This has implicit conversions, so whenever a property has the type \doxylink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}, just use regular bools instead. summary\texorpdfstring{$>$}{>} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Level\+XMLTag.\+cs\end{DoxyCompactItemize}

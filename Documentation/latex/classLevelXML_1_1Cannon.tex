@@ -1,0 +1,143 @@
+\doxysection{Level\+XML.\+Cannon Class Reference}
+\hypertarget{classLevelXML_1_1Cannon}{}\label{classLevelXML_1_1Cannon}\index{LevelXML.Cannon@{LevelXML.Cannon}}
+
+
+Inheritance diagram for Level\+XML.\+Cannon\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1Cannon__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Cannon\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1Cannon__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Cannon_a3057a931500643b490b693ce534d706e}\label{classLevelXML_1_1Cannon_a3057a931500643b490b693ce534d706e} 
+{\bfseries Cannon} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Special_aa4cb3197e7b96a260a7200babfdc429c}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1Cannon_a86a4449d68605d4c4f13e635b8c06974}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1Cannon_a5104cf7fa254f997ad3bfa5b5a39e347}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Special} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Cannon_afab5980ee10b8d044d66db6958dd86c0}\label{classLevelXML_1_1Cannon_afab5980ee10b8d044d66db6958dd86c0} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Cannon_ae13fff632ff36248e2710c9b85c78d1c}\label{classLevelXML_1_1Cannon_ae13fff632ff36248e2710c9b85c78d1c} 
+double {\bfseries Start\+Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The angle the muzzle rests at until objects fall into it. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Cannon_a84f9281382aabf6b2d2fda0815c35782}\label{classLevelXML_1_1Cannon_a84f9281382aabf6b2d2fda0815c35782} 
+double {\bfseries Firing\+Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The angle the muzzle moves to and fires. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Cannon_aa5838d704c299a125b3bc30b825b1417}\label{classLevelXML_1_1Cannon_aa5838d704c299a125b3bc30b825b1417} 
+\mbox{\hyperlink{structLevelXML_1_1CannonType}{Cannon\+Type}} {\bfseries Cannon\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether the cannon has circus colors or is metal. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Cannon_adcfeed7e87d8a0cec3097f1950a1d26c}\label{classLevelXML_1_1Cannon_adcfeed7e87d8a0cec3097f1950a1d26c} 
+double {\bfseries Delay}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of time in seconds before the cannon moves to the firing position. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Cannon_a43a2fec83f3b557521198e80cf58e58f}\label{classLevelXML_1_1Cannon_a43a2fec83f3b557521198e80cf58e58f} 
+double {\bfseries Muzzle\+Scale}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How large the cannon is. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Cannon_a8a952b5f71fe933d93c4c3f295eb37e6}\label{classLevelXML_1_1Cannon_a8a952b5f71fe933d93c4c3f295eb37e6} 
+double {\bfseries Power}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The amount of force that firing the cannon applies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1Cannon_a5104cf7fa254f997ad3bfa5b5a39e347}\index{LevelXML.Cannon@{LevelXML.Cannon}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.Cannon@{LevelXML.Cannon}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Cannon_a5104cf7fa254f997ad3bfa5b5a39e347} 
+override void Level\+XML.\+Cannon.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Cannon_a86a4449d68605d4c4f13e635b8c06974}\index{LevelXML.Cannon@{LevelXML.Cannon}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Cannon@{LevelXML.Cannon}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Cannon_a86a4449d68605d4c4f13e635b8c06974} 
+const string Level\+XML.\+Cannon.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<sp\ t="{}"{}33"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}0"{}"{}\ p3="{}"{}0"{}"{}\ p4="{}"{}0"{}"{}\ p5="{}"{}1"{}"{}\ p6="{}"{}1"{}"{}\ p7="{}"{}1"{}"{}\ p8="{}"{}5"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Specials/Cannon.\+cs\end{DoxyCompactItemize}

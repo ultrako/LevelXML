@@ -1,0 +1,7 @@
+<map id="LevelXML.Group" name="LevelXML.Group">
+<area shape="rect" id="Node000001" title="A group is a collection of Shapes and non interactive Specials that all move together." alt="" coords="5,152,124,177"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="37,79,93,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,118,67,152,62,152,62,118"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="14,5,115,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="67,44,67,79,62,79,62,44"/>
+</map>
