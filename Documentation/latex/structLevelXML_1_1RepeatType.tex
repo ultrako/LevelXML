@@ -1,0 +1,72 @@
+\doxysection{Level\+XML.\+Repeat\+Type Struct Reference}
+\hypertarget{structLevelXML_1_1RepeatType}{}\label{structLevelXML_1_1RepeatType}\index{LevelXML.RepeatType@{LevelXML.RepeatType}}
+
+
+The reason for which a \doxylink{classLevelXML_1_1Trigger}{Trigger} can be activated.  
+
+
+
+
+Collaboration diagram for Level\+XML.\+Repeat\+Type\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{structLevelXML_1_1RepeatType__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a20d4eb7f502d0f67a2c247cb2b8793c1}\label{structLevelXML_1_1RepeatType_a20d4eb7f502d0f67a2c247cb2b8793c1} 
+override bool {\bfseries Equals} (Object? that)
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_aceb95cece4642e15211910b224aadde2}\label{structLevelXML_1_1RepeatType_aceb95cece4642e15211910b224aadde2} 
+override int {\bfseries Get\+Hash\+Code} ()
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a16c0fbcc23686c327e1666529276cd56}\label{structLevelXML_1_1RepeatType_a16c0fbcc23686c327e1666529276cd56} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_afbec1783ea93d53de80841b2a3b694f2}\label{structLevelXML_1_1RepeatType_afbec1783ea93d53de80841b2a3b694f2} 
+static implicit {\bfseries operator Repeat\+Type} (double val)
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a577fe39b02cc33301a76ad420f452fc7}\label{structLevelXML_1_1RepeatType_a577fe39b02cc33301a76ad420f452fc7} 
+static bool {\bfseries operator==} (\mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} lhs, \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} rhs)
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_aa69362af7edfe40cdcaf0d957e4fb654}\label{structLevelXML_1_1RepeatType_aa69362af7edfe40cdcaf0d957e4fb654} 
+static bool {\bfseries operator!=} (\mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} lhs, \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} rhs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a6e95f9e0d22995b08cacb07433e1cac4}\label{structLevelXML_1_1RepeatType_a6e95f9e0d22995b08cacb07433e1cac4} 
+readonly double {\bfseries val}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structLevelXML_1_1RepeatType_abda5b75c6baaf8b353db4348ee144fc2}\label{structLevelXML_1_1RepeatType_abda5b75c6baaf8b353db4348ee144fc2} 
+static readonly \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Once} = 1
+\begin{DoxyCompactList}\small\item\em \doxylink{classLevelXML_1_1Trigger}{Trigger} action occurs only once, then the trigger is deleted. \end{DoxyCompactList}\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a880183c7b3ca12a69af558f5b26d8911}\label{structLevelXML_1_1RepeatType_a880183c7b3ca12a69af558f5b26d8911} 
+static readonly \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Multiple} = 2
+\begin{DoxyCompactList}\small\item\em \doxylink{classLevelXML_1_1Trigger}{Trigger} action occurs upon contact with the trigger. It will occur again with new contact after the trigger area is clear of the original triggering body. \end{DoxyCompactList}\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a63a03ae9794a22a5c5813b6f37e0bd72}\label{structLevelXML_1_1RepeatType_a63a03ae9794a22a5c5813b6f37e0bd72} 
+static readonly \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Continuous} = 3
+\begin{DoxyCompactList}\small\item\em \doxylink{classLevelXML_1_1Trigger}{Trigger} action will occur on a repeated interval until the triggering body leaves the trigger area. \end{DoxyCompactList}\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a2ff5e31ccbd7dd8b567ccc9f484544c4}\label{structLevelXML_1_1RepeatType_a2ff5e31ccbd7dd8b567ccc9f484544c4} 
+static readonly \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Permanent} = 4
+\begin{DoxyCompactList}\small\item\em \doxylink{classLevelXML_1_1Trigger}{Trigger} action will occur on a repeated interval once activated until disabled by other triggers. \end{DoxyCompactList}\item 
+\Hypertarget{structLevelXML_1_1RepeatType_a813b02b23e274c385e5967269ede489e}\label{structLevelXML_1_1RepeatType_a813b02b23e274c385e5967269ede489e} 
+static readonly \mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Never} = double.\+NaN
+\begin{DoxyCompactList}\small\item\em The trigger cannot ever be triggered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The reason for which a \doxylink{classLevelXML_1_1Trigger}{Trigger} can be activated. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Structs/Repeat\+Type.\+cs\end{DoxyCompactItemize}

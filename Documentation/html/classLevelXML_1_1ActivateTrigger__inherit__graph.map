@@ -1,0 +1,9 @@
+<map id="LevelXML.ActivateTrigger" name="LevelXML.ActivateTrigger">
+<area shape="rect" id="Node000001" title="An ActivateTrigger is an entity that when activated, goes through and applies its list of Targets." alt="" coords="5,225,177,251"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Trigger.html" title="A trigger is an entity that under certain circumstances can be activated, and when it does,..." alt="" coords="60,152,123,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,191,94,225,89,225,89,191"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="63,79,119,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,118,94,152,89,152,89,118"/>
+<area shape="rect" id="Node000004" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="41,5,142,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,44,94,79,89,79,89,44"/>
+</map>

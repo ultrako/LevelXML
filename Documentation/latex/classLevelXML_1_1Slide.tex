@@ -1,0 +1,100 @@
+\doxysection{Level\+XML.\+Slide Class Reference}
+\hypertarget{classLevelXML_1_1Slide}{}\label{classLevelXML_1_1Slide}\index{LevelXML.Slide@{LevelXML.Slide}}
+
+
+This trigger action slides a \doxylink{classLevelXML_1_1TextBox}{Text\+Box} to a particular x and y position over time.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Slide\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{classLevelXML_1_1Slide__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Slide\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{classLevelXML_1_1Slide__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Slide_ae4545932daa2bffa09814f3a734ef8b4}\label{classLevelXML_1_1Slide_ae4545932daa2bffa09814f3a734ef8b4} 
+{\bfseries Slide} (double duration, double x, double y)
+\item 
+\Hypertarget{classLevelXML_1_1Slide_a805e74d6f2aa3fa5e181ea1af93fc0e7}\label{classLevelXML_1_1Slide_a805e74d6f2aa3fa5e181ea1af93fc0e7} 
+{\bfseries Slide} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1TriggerAction}{Level\+XML.\+Trigger\+Action}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1TriggerAction_adc71a6a96b1044f6fe0697c831d61c15}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1Slide_aaa8ee8e351028fefb6fc7631c75ea867}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Slide_afe69268efc4754957cbe2a0ff235f6c1}\label{classLevelXML_1_1Slide_afe69268efc4754957cbe2a0ff235f6c1} 
+double? {\bfseries Duration}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em How long it will take the \doxylink{classLevelXML_1_1TextBox}{Text\+Box} to slide to the specified position. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Slide_a88b23d1b0cc257a92514d0040f50c170}\label{classLevelXML_1_1Slide_a88b23d1b0cc257a92514d0040f50c170} 
+double? {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The X coordinate the \doxylink{classLevelXML_1_1TextBox}{Text\+Box} will slide to. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Slide_a477c0a28b4abda65924b115410513741}\label{classLevelXML_1_1Slide_a477c0a28b4abda65924b115410513741} 
+double? {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The Y coordinate the \doxylink{classLevelXML_1_1TextBox}{Text\+Box} will slide to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This trigger action slides a \doxylink{classLevelXML_1_1TextBox}{Text\+Box} to a particular x and y position over time. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1Slide_aaa8ee8e351028fefb6fc7631c75ea867}\index{LevelXML.Slide@{LevelXML.Slide}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.Slide@{LevelXML.Slide}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1Slide_aaa8ee8e351028fefb6fc7631c75ea867} 
+const string Level\+XML.\+Slide.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<a\ i="{}"{}1"{}"{}\ p0="{}"{}1"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}0"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Trigger\+Actions/Special\+Actions.\+cs\end{DoxyCompactItemize}

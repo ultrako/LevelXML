@@ -1,0 +1,193 @@
+\doxysection{Level\+XML.\+Activate\+Trigger Class Reference}
+\hypertarget{classLevelXML_1_1ActivateTrigger}{}\label{classLevelXML_1_1ActivateTrigger}\index{LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}}
+
+
+An \doxylink{classLevelXML_1_1ActivateTrigger}{Activate\+Trigger} is an entity that when activated, goes through and applies its list of Targets.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Activate\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classLevelXML_1_1ActivateTrigger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Activate\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classLevelXML_1_1ActivateTrigger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1ActivateTrigger_a0fa2b9e74eddd2552902076203035f6b}{Add\+Target}} (\mbox{\hyperlink{classLevelXML_1_1Target}{Target}} target)
+\begin{DoxyCompactList}\small\item\em Append a target to this trigger\textquotesingle{}s list of targets. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLevelXML_1_1ActivateTrigger_aa2deabdba41bb6576fabdd7700da5048}{Insert\+Target}} (int index, \mbox{\hyperlink{classLevelXML_1_1Target}{Target}} target)
+\begin{DoxyCompactList}\small\item\em Insert a target into the list of targets at a particular index. The position indicates the order in which the actions fire ingame. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_a36fe0098f7dabdcc3dd014287e64ecf5}\label{classLevelXML_1_1ActivateTrigger_a36fe0098f7dabdcc3dd014287e64ecf5} 
+bool {\bfseries Remove\+Target} (\mbox{\hyperlink{classLevelXML_1_1Target}{Target}} target)
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_a9fb3380958bc934d4dcddefd01028943}\label{classLevelXML_1_1ActivateTrigger_a9fb3380958bc934d4dcddefd01028943} 
+void {\bfseries Remove\+Target\+At} (int index)
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_ab22dd7261a11712e2b74e1ec11387f3a}\label{classLevelXML_1_1ActivateTrigger_ab22dd7261a11712e2b74e1ec11387f3a} 
+void {\bfseries Clear\+Targets} ()
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_ad5c10842a11e78d00fdc2ca445a94870}\label{classLevelXML_1_1ActivateTrigger_ad5c10842a11e78d00fdc2ca445a94870} 
+bool {\bfseries Contains\+Target} (\mbox{\hyperlink{classLevelXML_1_1Target}{Target}} target)
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_abc142bccdd8d90cc60ec63a7ea196e50}\label{classLevelXML_1_1ActivateTrigger_abc142bccdd8d90cc60ec63a7ea196e50} 
+int {\bfseries Index\+Of\+Target} (\mbox{\hyperlink{classLevelXML_1_1Target}{Target}} target)
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_a59c89638790418b9605b2e396405ec7c}\label{classLevelXML_1_1ActivateTrigger_a59c89638790418b9605b2e396405ec7c} 
+{\bfseries Activate\+Trigger} (params \mbox{\hyperlink{classLevelXML_1_1Target}{Target}}\mbox{[}$\,$\mbox{]} targets)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1ActivateTrigger_aa81df226f8b41cabcc9101ded9ba43d3}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1ActivateTrigger_aea8eb4cd374e566ad9c8778be255c40b}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_a3b5ae0b72e5d156807d028488ca1d3b1}\label{classLevelXML_1_1ActivateTrigger_a3b5ae0b72e5d156807d028488ca1d3b1} 
+IRead\+Only\+List$<$ \mbox{\hyperlink{classLevelXML_1_1Target}{Target}} $>$ {\bfseries Targets}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1ActivateTrigger_acf0573db22ccb8222b247e8274166b31}\label{classLevelXML_1_1ActivateTrigger_acf0573db22ccb8222b247e8274166b31} 
+int {\bfseries Target\+Count}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Trigger}{Level\+XML.\+Trigger}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1TriggeredBy}{Triggered\+By}} {\bfseries Triggered\+By}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which things can trigger this trigger. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Repeat\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of repetition the trigger will do when activated once or more. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Start\+Disabled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the trigger starts disabled (and would need to be enabled by other triggers to activate) \end{DoxyCompactList}\item 
+double {\bfseries Interval}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats. \end{DoxyCompactList}\item 
+double {\bfseries Delay}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the amount of time in seconds after the trigger gets activated, before its actions fire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An \doxylink{classLevelXML_1_1ActivateTrigger}{Activate\+Trigger} is an entity that when activated, goes through and applies its list of Targets. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1ActivateTrigger_a0fa2b9e74eddd2552902076203035f6b}\index{LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}!AddTarget@{AddTarget}}
+\index{AddTarget@{AddTarget}!LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}}
+\doxysubsubsection{\texorpdfstring{AddTarget()}{AddTarget()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ActivateTrigger_a0fa2b9e74eddd2552902076203035f6b} 
+void Level\+XML.\+Activate\+Trigger.\+Add\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLevelXML_1_1Target}{Target}}}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Append a target to this trigger\textquotesingle{}s list of targets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLevelXML_1_1ActivateTrigger_aa2deabdba41bb6576fabdd7700da5048}\index{LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}!InsertTarget@{InsertTarget}}
+\index{InsertTarget@{InsertTarget}!LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}}
+\doxysubsubsection{\texorpdfstring{InsertTarget()}{InsertTarget()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ActivateTrigger_aa2deabdba41bb6576fabdd7700da5048} 
+void Level\+XML.\+Activate\+Trigger.\+Insert\+Target (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{\mbox{\hyperlink{classLevelXML_1_1Target}{Target}}}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Insert a target into the list of targets at a particular index. The position indicates the order in which the actions fire ingame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+{\em target} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLevelXML_1_1ActivateTrigger_aea8eb4cd374e566ad9c8778be255c40b}\index{LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ActivateTrigger_aea8eb4cd374e566ad9c8778be255c40b} 
+override void Level\+XML.\+Activate\+Trigger.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Trigger}{Level\+XML.\+Trigger}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1ActivateTrigger_aa81df226f8b41cabcc9101ded9ba43d3}\index{LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.ActivateTrigger@{LevelXML.ActivateTrigger}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ActivateTrigger_aa81df226f8b41cabcc9101ded9ba43d3} 
+const string Level\+XML.\+Activate\+Trigger.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<t\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ w="{}"{}100"{}"{}\ h="{}"{}100"{}"{}\ a="{}"{}0"{}"{}\ b="{}"{}1"{}"{}\ t="{}"{}1"{}"{}\ r="{}"{}1"{}"{}\ sd="{}"{}f"{}"{}\ d="{}"{}0"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Triggers/Activate\+Trigger.\+cs\end{DoxyCompactItemize}

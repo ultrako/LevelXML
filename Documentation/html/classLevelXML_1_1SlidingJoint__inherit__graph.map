@@ -1,0 +1,9 @@
+<map id="LevelXML.SlidingJoint" name="LevelXML.SlidingJoint">
+<area shape="rect" id="Node000001" title="A pin joint is a kind of joint that slides on an axis." alt="" coords="5,225,156,251"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Joint.html" title="A Joint connects two non fixed entities together, specifically shapes, groups, and certain specials." alt="" coords="55,152,106,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,191,83,225,78,225,78,191"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="53,79,109,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,118,83,152,78,152,78,118"/>
+<area shape="rect" id="Node000004" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="30,5,131,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="83,44,83,79,78,79,78,44"/>
+</map>

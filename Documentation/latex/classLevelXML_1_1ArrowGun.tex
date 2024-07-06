@@ -1,0 +1,134 @@
+\doxysection{Level\+XML.\+Arrow\+Gun Class Reference}
+\hypertarget{classLevelXML_1_1ArrowGun}{}\label{classLevelXML_1_1ArrowGun}\index{LevelXML.ArrowGun@{LevelXML.ArrowGun}}
+
+
+Inheritance diagram for Level\+XML.\+Arrow\+Gun\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1ArrowGun__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Arrow\+Gun\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1ArrowGun__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ArrowGun_ad690790539e72a96fe79b1574278f588}\label{classLevelXML_1_1ArrowGun_ad690790539e72a96fe79b1574278f588} 
+{\bfseries Arrow\+Gun} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Special_aa4cb3197e7b96a260a7200babfdc429c}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1ArrowGun_a4d1f8cdc3ffff6a751e5647d599760e1}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1ArrowGun_ac4f31a91b364f9d480fd65b39f706dba}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Special} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1ArrowGun_a06256b15168805af5c5456b61d23af84}\label{classLevelXML_1_1ArrowGun_a06256b15168805af5c5456b61d23af84} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1ArrowGun_a53f6ffe236d7e854a9126cc84b836005}\label{classLevelXML_1_1ArrowGun_a53f6ffe236d7e854a9126cc84b836005} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Fixed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1ArrowGun_a929effe89c303ff7528a02e06f1102f2}\label{classLevelXML_1_1ArrowGun_a929effe89c303ff7528a02e06f1102f2} 
+double {\bfseries Rate\+Of\+Fire}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The speed at which this arrow gun fires arrows. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1ArrowGun_a606c371d86eeba78dc3ff996f1df0b3f}\label{classLevelXML_1_1ArrowGun_a606c371d86eeba78dc3ff996f1df0b3f} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Shoot\+Player}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If this is set to false, the arrow gun will only shoot player characters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1ArrowGun_ac4f31a91b364f9d480fd65b39f706dba}\index{LevelXML.ArrowGun@{LevelXML.ArrowGun}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.ArrowGun@{LevelXML.ArrowGun}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ArrowGun_ac4f31a91b364f9d480fd65b39f706dba} 
+override void Level\+XML.\+Arrow\+Gun.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1ArrowGun_a4d1f8cdc3ffff6a751e5647d599760e1}\index{LevelXML.ArrowGun@{LevelXML.ArrowGun}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.ArrowGun@{LevelXML.ArrowGun}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1ArrowGun_a4d1f8cdc3ffff6a751e5647d599760e1} 
+const string Level\+XML.\+Arrow\+Gun.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<sp\ t="{}"{}29"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}0"{}"{}\ p3="{}"{}f"{}"{}\ p4="{}"{}5"{}"{}\ p5="{}"{}f"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Specials/Arrow\+Gun.\+cs\end{DoxyCompactItemize}

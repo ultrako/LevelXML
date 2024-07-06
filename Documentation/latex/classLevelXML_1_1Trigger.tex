@@ -1,0 +1,105 @@
+\doxysection{Level\+XML.\+Trigger Class Reference}
+\hypertarget{classLevelXML_1_1Trigger}{}\label{classLevelXML_1_1Trigger}\index{LevelXML.Trigger@{LevelXML.Trigger}}
+
+
+A trigger is an entity that under certain circumstances can be activated, and when it does, it does its particular Action.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevelXML_1_1Trigger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classLevelXML_1_1Trigger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_af093d8cb9250f66792168b1fe0f5f4ba}\label{classLevelXML_1_1Trigger_af093d8cb9250f66792168b1fe0f5f4ba} 
+virtual void {\bfseries Set\+Params} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_ac7511bd9b6558e3e06d0b41a2e51df51}\label{classLevelXML_1_1Trigger_ac7511bd9b6558e3e06d0b41a2e51df51} 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_a20c8c9b435d1a5dd5d8c10256c563f6b}\label{classLevelXML_1_1Trigger_a20c8c9b435d1a5dd5d8c10256c563f6b} 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_aa4dbd0b95d98985b1ed9d44e651119cf}\label{classLevelXML_1_1Trigger_aa4dbd0b95d98985b1ed9d44e651119cf} 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_aa0fa0f4ab84606b4e3bdec73c59e8d10}\label{classLevelXML_1_1Trigger_aa0fa0f4ab84606b4e3bdec73c59e8d10} 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_a54ab849fcde293131ad09a4abfecba79}\label{classLevelXML_1_1Trigger_a54ab849fcde293131ad09a4abfecba79} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1Trigger_aa5236be3df036e8f81df414f15d2cddc}\label{classLevelXML_1_1Trigger_aa5236be3df036e8f81df414f15d2cddc} 
+\mbox{\hyperlink{structLevelXML_1_1TriggeredBy}{Triggered\+By}} {\bfseries Triggered\+By}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which things can trigger this trigger. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Trigger_a62aef8bca3f7ff0d98a4a3498fa88ccc}\label{classLevelXML_1_1Trigger_a62aef8bca3f7ff0d98a4a3498fa88ccc} 
+\mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Repeat\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of repetition the trigger will do when activated once or more. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Trigger_a3bdc98a8ffe7887bc5c179071564f28c}\label{classLevelXML_1_1Trigger_a3bdc98a8ffe7887bc5c179071564f28c} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Start\+Disabled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the trigger starts disabled (and would need to be enabled by other triggers to activate) \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Trigger_af2a0c78d9ff81a4ea8da287f4a7785f8}\label{classLevelXML_1_1Trigger_af2a0c78d9ff81a4ea8da287f4a7785f8} 
+double {\bfseries Interval}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1Trigger_aaf9257a43970ad81adcbe839d1a33ccc}\label{classLevelXML_1_1Trigger_aaf9257a43970ad81adcbe839d1a33ccc} 
+double {\bfseries Delay}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the amount of time in seconds after the trigger gets activated, before its actions fire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A trigger is an entity that under certain circumstances can be activated, and when it does, it does its particular Action. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Trigger.\+cs\end{DoxyCompactItemize}

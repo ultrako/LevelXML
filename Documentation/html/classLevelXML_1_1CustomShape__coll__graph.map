@@ -1,0 +1,9 @@
+<map id="LevelXML.CustomShape" name="LevelXML.CustomShape">
+<area shape="rect" id="Node000001" title="This kind of shape is defined by a list of vertices (Polygons and Art)" alt="" coords="5,225,172,251"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Shape.html" title="Shapes are simple entities that can have collision and they can be a part of groups...." alt="" coords="59,152,118,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,191,91,225,86,225,86,191"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="61,79,117,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="91,118,91,152,86,152,86,118"/>
+<area shape="rect" id="Node000004" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="38,5,139,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="91,44,91,79,86,79,86,44"/>
+</map>

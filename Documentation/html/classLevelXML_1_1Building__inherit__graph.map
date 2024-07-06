@@ -1,0 +1,15 @@
+<map id="LevelXML.Building" name="LevelXML.Building">
+<area shape="rect" id="Node000001" title=" " alt="" coords="107,225,237,251"/>
+<area shape="rect" id="Node000006" href="$classLevelXML_1_1BuildingOne.html" title=" " alt="" coords="5,299,160,324"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="149,261,99,301,96,296,145,257"/>
+<area shape="rect" id="Node000007" href="$classLevelXML_1_1BuildingTwo.html" title=" " alt="" coords="184,299,339,324"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="199,257,248,296,245,301,195,261"/>
+<area shape="rect" id="Node000002" href="$classLevelXML_1_1Special.html" title="Specials are entities like shapes that have coded behavior besides just collision,..." alt="" coords="139,152,205,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,191,175,225,169,225,169,191"/>
+<area shape="rect" id="Node000003" href="$classLevelXML_1_1Entity.html" title="Entities are anything that actually show up when you press play in a level Basically everything that ..." alt="" coords="85,79,141,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="134,113,165,150,160,154,130,116"/>
+<area shape="rect" id="Node000004" href="$classLevelXML_1_1LevelXMLTag.html" title="This class represents any xml tag that can go into the import box in Happy Wheels." alt="" coords="63,5,164,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="116,44,116,79,111,79,111,44"/>
+<area shape="rect" id="Node000005" href="$interfaceLevelXML_1_1IConvertibleToXML.html" title="These are all of the classes that can directly be converted to XML, without needing any more context ..." alt="" coords="165,79,299,104"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="215,116,184,154,180,150,211,113"/>
+</map>

@@ -1,0 +1,170 @@
+\doxysection{Level\+XML.\+Non\+Player\+Character Class Reference}
+\hypertarget{classLevelXML_1_1NonPlayerCharacter}{}\label{classLevelXML_1_1NonPlayerCharacter}\index{LevelXML.NonPlayerCharacter@{LevelXML.NonPlayerCharacter}}
+
+
+Inheritance diagram for Level\+XML.\+Non\+Player\+Character\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1NonPlayerCharacter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Non\+Player\+Character\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classLevelXML_1_1NonPlayerCharacter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a8e52c0d4fcdfc5cdc21c056a77cbb95c}\label{classLevelXML_1_1NonPlayerCharacter_a8e52c0d4fcdfc5cdc21c056a77cbb95c} 
+{\bfseries Non\+Player\+Character} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1Special_aa4cb3197e7b96a260a7200babfdc429c}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1NonPlayerCharacter_a6e19bd3c2f4e706a939d5db76fd17993}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classLevelXML_1_1NonPlayerCharacter_aa6c5d8ffb7dee33526129f09bcb68425}{Set\+Params}} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Special} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a7ee63157777dad494549727ef64b1a3d}\label{classLevelXML_1_1NonPlayerCharacter_a7ee63157777dad494549727ef64b1a3d} 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a0093e3f60bcafa07a1d2a5bfb8f3cddd}\label{classLevelXML_1_1NonPlayerCharacter_a0093e3f60bcafa07a1d2a5bfb8f3cddd} 
+\mbox{\hyperlink{structLevelXML_1_1NPCType}{NPCType}} {\bfseries NPCType}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which of the 16 possible characters this NPC is. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a50c95167faec9e7a365b02835bbab484}\label{classLevelXML_1_1NonPlayerCharacter_a50c95167faec9e7a365b02835bbab484} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Sleeping}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a8ee4177a5f8eb6dfc20a47244d1292ca}\label{classLevelXML_1_1NonPlayerCharacter_a8ee4177a5f8eb6dfc20a47244d1292ca} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Reverse}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If Reverse is true, the NPC faces to the left, otherwise it faces to the right. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_aeed2e1fff19ca148b8f9e99f9da87dde}\label{classLevelXML_1_1NonPlayerCharacter_aeed2e1fff19ca148b8f9e99f9da87dde} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Hold\+Pose}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the NPC\textquotesingle{}s body is rigid. \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a3c04464268565ad3393b1b00e9284737}\label{classLevelXML_1_1NonPlayerCharacter_a3c04464268565ad3393b1b00e9284737} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Interactive}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_ab95154b927ac56c3ab455a1bb400641d}\label{classLevelXML_1_1NonPlayerCharacter_ab95154b927ac56c3ab455a1bb400641d} 
+double {\bfseries Neck\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a1c4e24e47428e14983b3ce401943a644}\label{classLevelXML_1_1NonPlayerCharacter_a1c4e24e47428e14983b3ce401943a644} 
+double {\bfseries Front\+Arm\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a31f21b489914c6be36298be2f0bae78d}\label{classLevelXML_1_1NonPlayerCharacter_a31f21b489914c6be36298be2f0bae78d} 
+double {\bfseries Back\+Arm\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a4d0e8a516d3672735b40818fb341f693}\label{classLevelXML_1_1NonPlayerCharacter_a4d0e8a516d3672735b40818fb341f693} 
+double {\bfseries Front\+Elbow\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_aa945ce6b8e5845e5f24376b31a0aaa92}\label{classLevelXML_1_1NonPlayerCharacter_aa945ce6b8e5845e5f24376b31a0aaa92} 
+double {\bfseries Back\+Elbow\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_ad86ce048864c708d55aca9e0649dfcac}\label{classLevelXML_1_1NonPlayerCharacter_ad86ce048864c708d55aca9e0649dfcac} 
+double {\bfseries Front\+Leg\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_aa63c5ed7e710f40bec47bc32bab88ad7}\label{classLevelXML_1_1NonPlayerCharacter_aa63c5ed7e710f40bec47bc32bab88ad7} 
+double {\bfseries Back\+Leg\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a1de2d1352fe8f2cebdccb2785f622290}\label{classLevelXML_1_1NonPlayerCharacter_a1de2d1352fe8f2cebdccb2785f622290} 
+double {\bfseries Front\+Knee\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_af4de79b35cd56de759469656c957297c}\label{classLevelXML_1_1NonPlayerCharacter_af4de79b35cd56de759469656c957297c} 
+double {\bfseries Back\+Knee\+Angle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a5bb5335b954d2b160d2fc49c6c77db37}\label{classLevelXML_1_1NonPlayerCharacter_a5bb5335b954d2b160d2fc49c6c77db37} 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Release\+On\+Death}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Set this if you\textquotesingle{}d like all attached joints and associated trigger actions to be destroyed when this character dies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_aa6c5d8ffb7dee33526129f09bcb68425}\index{LevelXML.NonPlayerCharacter@{LevelXML.NonPlayerCharacter}!SetParams@{SetParams}}
+\index{SetParams@{SetParams}!LevelXML.NonPlayerCharacter@{LevelXML.NonPlayerCharacter}}
+\doxysubsubsection{\texorpdfstring{SetParams()}{SetParams()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1NonPlayerCharacter_aa6c5d8ffb7dee33526129f09bcb68425} 
+override void Level\+XML.\+Non\+Player\+Character.\+Set\+Params (\begin{DoxyParamCaption}\item[{XElement}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classLevelXML_1_1Special}{Level\+XML.\+Special}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1NonPlayerCharacter_a6e19bd3c2f4e706a939d5db76fd17993}\index{LevelXML.NonPlayerCharacter@{LevelXML.NonPlayerCharacter}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.NonPlayerCharacter@{LevelXML.NonPlayerCharacter}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1NonPlayerCharacter_a6e19bd3c2f4e706a939d5db76fd17993} 
+const string Level\+XML.\+Non\+Player\+Character.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<sp\ t="{}"{}17"{}"{}\ p0="{}"{}0"{}"{}\ p1="{}"{}0"{}"{}\ p2="{}"{}0"{}"{}\ p3="{}"{}1"{}"{}\ p4="{}"{}f"{}"{}\ p5="{}"{}f"{}"{}\ p6="{}"{}f"{}"{}\ p7="{}"{}t"{}"{}\ p8="{}"{}0"{}"{}\ p9="{}"{}0"{}"{}\ p10="{}"{}0"{}"{}\ p11="{}"{}0"{}"{}\ p12="{}"{}0"{}"{}\ p13="{}"{}0"{}"{}\ p14="{}"{}0"{}"{}\ p15="{}"{}0"{}"{}\ p16="{}"{}0"{}"{}\ p17="{}"{}f"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Specials/Non\+Player\+Character.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,139 @@
+\doxysection{Level\+XML.\+Victory\+Trigger Class Reference}
+\hypertarget{classLevelXML_1_1VictoryTrigger}{}\label{classLevelXML_1_1VictoryTrigger}\index{LevelXML.VictoryTrigger@{LevelXML.VictoryTrigger}}
+
+
+A \doxylink{classLevelXML_1_1VictoryTrigger}{Victory\+Trigger} will cause the level victory if activated.  
+
+
+
+
+Inheritance diagram for Level\+XML.\+Victory\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classLevelXML_1_1VictoryTrigger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+XML.\+Victory\+Trigger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classLevelXML_1_1VictoryTrigger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLevelXML_1_1VictoryTrigger_ac16eb55d9ba27e5f4feccb0b75bbd12a}{To\+XML}} ()
+\begin{DoxyCompactList}\small\item\em This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+\Hypertarget{classLevelXML_1_1VictoryTrigger_ab8601dfcdc45ecc32cab0e98a9a6fef4}\label{classLevelXML_1_1VictoryTrigger_ab8601dfcdc45ecc32cab0e98a9a6fef4} 
+{\bfseries Victory\+Trigger} (string xml=Editor\+Default)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{classLevelXML_1_1VictoryTrigger_a0b7906a9322d2d54392e838fdba6f2d8}{Editor\+Default}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Trigger}{Level\+XML.\+Trigger}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Set\+Params} (XElement e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+double? {\bfseries Get\+Double\+Or\+Null} (string attr)
+\item 
+void \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag_ab981abd9508030b674d1cc8b08779c30}{Set\+Double}} (string attr, double val)
+\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}}? {\bfseries Get\+Bool\+Or\+Null} (string attr)
+\item 
+{\bfseries Level\+XMLTag} (XName name, params object?\mbox{[}$\,$\mbox{]} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classLevelXML_1_1LevelXMLTag}{Level\+XML.\+Level\+XMLTag}}}
+\begin{DoxyCompactItemize}
+\item 
+static XElement {\bfseries Str\+To\+XElement} (string xml)
+\item 
+static double {\bfseries Parse\+Double} (string val)
+\item 
+static ? \mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Get\+Bool\+Or\+Null} (XElement elt, string attr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Trigger}{Level\+XML.\+Trigger}}}
+\begin{DoxyCompactItemize}
+\item 
+override double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+override double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Width}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Height}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{structLevelXML_1_1TriggeredBy}{Triggered\+By}} {\bfseries Triggered\+By}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Which things can trigger this trigger. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1RepeatType}{Repeat\+Type}} {\bfseries Repeat\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em What kind of repetition the trigger will do when activated once or more. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLevelXML_1_1LevelXMLTag_1_1HWBool}{HWBool}} {\bfseries Start\+Disabled}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether or not the trigger starts disabled (and would need to be enabled by other triggers to activate) \end{DoxyCompactList}\item 
+double {\bfseries Interval}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats. \end{DoxyCompactList}\item 
+double {\bfseries Delay}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This is the amount of time in seconds after the trigger gets activated, before its actions fire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{classLevelXML_1_1Entity}{Level\+XML.\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+double {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classLevelXML_1_1VictoryTrigger}{Victory\+Trigger} will cause the level victory if activated. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLevelXML_1_1VictoryTrigger_ac16eb55d9ba27e5f4feccb0b75bbd12a}\index{LevelXML.VictoryTrigger@{LevelXML.VictoryTrigger}!ToXML@{ToXML}}
+\index{ToXML@{ToXML}!LevelXML.VictoryTrigger@{LevelXML.VictoryTrigger}}
+\doxysubsubsection{\texorpdfstring{ToXML()}{ToXML()}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1VictoryTrigger_ac16eb55d9ba27e5f4feccb0b75bbd12a} 
+string Level\+XML.\+Victory\+Trigger.\+To\+XML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This converts this level\+XMLTag object into the valid level\+XML that represents this object /summary\texorpdfstring{$>$}{>} 
+
+
+
+Implements \mbox{\hyperlink{interfaceLevelXML_1_1IConvertibleToXML_ac9361f2b9b62f3fc5959b829513fe346}{Level\+XML.\+IConvertible\+To\+XML}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLevelXML_1_1VictoryTrigger_a0b7906a9322d2d54392e838fdba6f2d8}\index{LevelXML.VictoryTrigger@{LevelXML.VictoryTrigger}!EditorDefault@{EditorDefault}}
+\index{EditorDefault@{EditorDefault}!LevelXML.VictoryTrigger@{LevelXML.VictoryTrigger}}
+\doxysubsubsection{\texorpdfstring{EditorDefault}{EditorDefault}}
+{\footnotesize\ttfamily \label{classLevelXML_1_1VictoryTrigger_a0b7906a9322d2d54392e838fdba6f2d8} 
+const string Level\+XML.\+Victory\+Trigger.\+Editor\+Default\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{@"{}<t\ x="{}"{}0"{}"{}\ y="{}"{}0"{}"{}\ w="{}"{}100"{}"{}\ h="{}"{}100"{}"{}\ a="{}"{}0"{}"{}\ b="{}"{}1"{}"{}\ t="{}"{}3"{}"{}\ r="{}"{}1"{}"{}\ sd="{}"{}f"{}"{}/>"{}}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Triggers/Victory\+Trigger.\+cs\end{DoxyCompactItemize}
