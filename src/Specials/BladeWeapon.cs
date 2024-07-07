@@ -10,7 +10,7 @@ public class BladeWeapon : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 

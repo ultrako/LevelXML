@@ -6,16 +6,16 @@ namespace LevelXML;
 ///<summary>
 /// A point in a 2D plane
 ///</summary>
-public record Point(double X, double Y);
+public record struct Point(double X, double Y);
 ///<summary>
 /// A vertex represents a corner in an art shape or polygon
 ///</summary>
-///<param name="position"> 
+///<param name="Position"> 
 /// The coordinates of the vertex, relative to the center of the shape it is contained in
 ///</param>
-///<param name="handle0"> The coordinates of the first bezier handle </param>
-///<param name="handle1"> The coordinates of the second bezier handle </param>
-public record Vertex(Point position, Point? handle0=null, Point? handle1=null);
+///<param name="HandleOne"> The coordinates of the first bezier handle </param>
+///<param name="HandleTwo"> The coordinates of the second bezier handle </param>
+public record Vertex(Point Position, Point? HandleOne=null, Point? HandleTwo=null);
 
 internal class Vertices : LevelXMLTag
 {
@@ -28,8 +28,6 @@ internal class Vertices : LevelXMLTag
 
 	public HWBool? Connected
 	{
-		// Perhaps expose this in CustomShape?
-		//get { return GetBoolOrNull("f"); }
 		set
 		{
 			HWBool val = value ?? true;
@@ -46,9 +44,9 @@ internal class Vertices : LevelXMLTag
 		int index = 0;
 		foreach (Vertex v in verts)
 		{
-			string coord_full = $"{v.position.X}_{v.position.Y}";
-			if (v.handle0 is not null) { coord_full += $"_{v.handle0.X}_{v.handle0.Y}"; }
-			if (v.handle1 is not null) { coord_full += $"_{v.handle1.X}_{v.handle1.Y}"; }
+			string coord_full = $"{v.Position.X}_{v.Position.Y}";
+			if (v.HandleOne is Point handleOne) { coord_full += $"_{handleOne.X}_{handleOne.Y}"; }
+			if (v.HandleTwo is Point handleTwo) { coord_full += $"_{handleTwo.X}_{handleTwo.Y}"; }
 			Elt.SetAttributeValue($"v{index}", coord_full);
 			index += 1;
 		}

@@ -10,7 +10,7 @@ public class Sign : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -23,13 +23,13 @@ public class Sign : Special
 
     public SignType SignType
     {
-        get { return (SignType?)GetDoubleOrNull("p3") ?? LevelXML.SignType.RightArrow; }
+        get { return (SignType)GetDouble("p3"); }
         set { Elt.SetAttributeValue("p3", value); }
     }
 
     public HWBool ShowSignPost
 	{
-		get { return GetBoolOrNull("p4") ?? true; }
+		get { return GetBool("p4"); }
 		set { Elt.SetAttributeValue("p4", value); }
 	}
 

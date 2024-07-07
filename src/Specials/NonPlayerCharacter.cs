@@ -10,7 +10,7 @@ public class NonPlayerCharacter : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -26,13 +26,13 @@ public class NonPlayerCharacter : Special
     /// </summary>
     public NPCType NPCType
     {
-        get { return (NPCType?)GetDoubleOrNull("p3") ?? LevelXML.NPCType.WheelchairGuy; }
+        get { return (NPCType)GetDouble("p3"); }
         set { Elt.SetAttributeValue("p3", (NPCType?)value); }
     }
 
     public HWBool Sleeping
     {
-        get { return GetBoolOrNull("p4") ?? false; }
+        get { return GetBool("p4"); }
         set { Elt.SetAttributeValue("p4", value); }
     }
 
@@ -41,7 +41,7 @@ public class NonPlayerCharacter : Special
     /// </summary>
     public HWBool Reverse
     {
-        get { return GetBoolOrNull("p5") ?? false; }
+        get { return GetBool("p5"); }
         set { Elt.SetAttributeValue("p5", value); }
     }
 
@@ -50,19 +50,19 @@ public class NonPlayerCharacter : Special
     /// </summary>
     public HWBool HoldPose
     {
-        get { return GetBoolOrNull("p6") ?? false; }
+        get { return GetBool("p6"); }
         set { Elt.SetAttributeValue("p6", value); }
     }
 
     public HWBool Interactive
     {
-        get { return GetBoolOrNull("p7") ?? true; }
+        get { return GetBool("p7"); }
         set { Elt.SetAttributeValue("p7", value); }
     }
 
     public double NeckAngle
     {
-        get { return GetDoubleOrNull("p8") ?? 0; }
+        get { return GetDouble("p8"); }
         set
         {
             if (double.IsNaN(value))
@@ -75,7 +75,7 @@ public class NonPlayerCharacter : Special
 
     public double FrontArmAngle
     {
-        get { return GetDoubleOrNull("p9") ?? 0; }
+        get { return GetDouble("p9"); }
         set
         {
             if (double.IsNaN(value))
@@ -88,7 +88,7 @@ public class NonPlayerCharacter : Special
 
     public double BackArmAngle
     {
-        get { return GetDoubleOrNull("p10") ?? 0; }
+        get { return GetDouble("p10"); }
         set
         {
             if (double.IsNaN(value))
@@ -101,7 +101,7 @@ public class NonPlayerCharacter : Special
 
     public double FrontElbowAngle
     {
-        get { return GetDoubleOrNull("p11") ?? 0; }
+        get { return GetDouble("p11"); }
         set
         {
             if (double.IsNaN(value))
@@ -114,7 +114,7 @@ public class NonPlayerCharacter : Special
 
     public double BackElbowAngle
     {
-        get { return GetDoubleOrNull("p12") ?? 0; }
+        get { return GetDouble("p12"); }
         set
         {
             if (double.IsNaN(value))
@@ -127,7 +127,7 @@ public class NonPlayerCharacter : Special
 
     public double FrontLegAngle
     {
-        get { return GetDoubleOrNull("p13") ?? 0; }
+        get { return GetDouble("p13"); }
         set
         {
             if (double.IsNaN(value))
@@ -140,7 +140,7 @@ public class NonPlayerCharacter : Special
 
     public double BackLegAngle
     {
-        get { return GetDoubleOrNull("p14") ?? 0; }
+        get { return GetDouble("p14"); }
         set
         {
             if (double.IsNaN(value))
@@ -153,7 +153,7 @@ public class NonPlayerCharacter : Special
 
     public double FrontKneeAngle
     {
-        get { return GetDoubleOrNull("p15") ?? 0; }
+        get { return GetDouble("p15"); }
         set
         {
             if (double.IsNaN(value))
@@ -166,7 +166,7 @@ public class NonPlayerCharacter : Special
 
     public double BackKneeAngle
     {
-        get { return GetDoubleOrNull("p16") ?? 0; }
+        get { return GetDouble("p16"); }
         set
         {
             if (double.IsNaN(value))
@@ -182,7 +182,7 @@ public class NonPlayerCharacter : Special
     /// </summary>
     public HWBool ReleaseOnDeath
     {
-        get { return GetBoolOrNull("p17") ?? false; }
+        get { return GetBool("p17") ; }
         set { Elt.SetAttributeValue("p17", value); }
     }
 

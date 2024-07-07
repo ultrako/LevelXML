@@ -10,7 +10,7 @@ public class PaddlePlatform : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -23,25 +23,25 @@ public class PaddlePlatform : Special
 
     public double Delay
     {
-        get { return GetDoubleOrNull("p3") ?? 0; }
+        get { return GetDouble("p3"); }
         set { SetDouble("p3", Math.Clamp(value, 0, 2)); }
     }
 
     public HWBool Reverse
     {
-        get { return GetBoolOrNull("p4") ?? false; }
+        get { return GetBool("p4"); }
         set { Elt.SetAttributeValue("p4", value); }
     }
 
     public double MaxAngle
     {
-        get { return GetDoubleOrNull("p5") ?? 90; }
+        get { return GetDouble("p5"); }
         set { SetDouble("p5", Math.Clamp(value, 15, 90)); }
     }
 
     public double Speed
     {
-        get { return GetDoubleOrNull("p6") ?? 10; }
+        get { return GetDouble("p6"); }
         set { SetDouble("p6", Math.Clamp(value, 1, 10)); }
     }
 

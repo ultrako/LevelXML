@@ -7,7 +7,7 @@ public abstract class ChangeCollision : TriggerAction
     internal abstract uint Type { get; }
 	public Collision Collision
 	{
-		get { return (Collision)GetDoubleOrNull(Elt, "p0")!;}
+		get { return (Collision)GetDouble("p0");}
 		set { Elt.SetAttributeValue("p0", value);}
 	}
 

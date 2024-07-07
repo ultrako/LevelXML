@@ -15,7 +15,7 @@ public class TextBox : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -28,7 +28,7 @@ public class TextBox : Special
 
 	public double Color
 	{
-		get { return GetDoubleOrNull("p3") ?? 0;}
+		get { return GetDouble("p3");}
 		set
 		{
 			SetDouble("p3", value);
@@ -37,13 +37,13 @@ public class TextBox : Special
 
     public double Font
     {
-        get { return GetDoubleOrNull("p4") ?? 1;}
+        get { return GetDouble("p4");}
         set { SetDouble("p4", Math.Clamp(value, 1, 5)); }
     }
 
     public double FontSize
     {
-        get { return GetDoubleOrNull("p5") ?? 10;}
+        get { return GetDouble("p5");}
         set { SetDouble("p5", Math.Clamp(value, 10, 100)); }
     }
 
@@ -52,13 +52,13 @@ public class TextBox : Special
     /// </summary>
     public double Alignment
     {
-        get { return GetDoubleOrNull("p6") ?? 1;}
+        get { return GetDouble("p6");}
         set { SetDouble("p6", Math.Clamp(value, 1, 3)); }
     }
 
     public double Opacity
 	{
-		get { return GetDoubleOrNull("p8") ?? 100; }
+		get { return GetDouble("p8"); }
 		set { SetDouble("p8", Math.Clamp(value, 0, 100)); }
 	}
 
