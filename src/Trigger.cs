@@ -12,7 +12,7 @@ public abstract class Trigger : Entity
 
 	public override double X
 	{
-		get { return GetDoubleOrNull("x") ?? 0; }
+		get { return GetDouble("x"); }
 		set
 		{
 			// Having triggers at NaN locations is actually useful;
@@ -23,7 +23,7 @@ public abstract class Trigger : Entity
 
 	public override double Y
 	{
-		get { return GetDoubleOrNull("y") ?? 0; }
+		get { return GetDouble("y"); }
 		set
 		{
 			SetDouble("y", value);
@@ -32,7 +32,7 @@ public abstract class Trigger : Entity
 
 	public double Width
 	{
-		get { return GetDoubleOrNull("w") ?? 100; }
+		get { return GetDouble("w"); }
 		set
 		{
 			SetDouble("w", Math.Clamp(value, 5, 5000));
@@ -41,7 +41,7 @@ public abstract class Trigger : Entity
 
 	public double Height
 	{
-		get { return GetDoubleOrNull("h") ?? 100; }
+		get { return GetDouble("h"); }
 		set
 		{
 			SetDouble("h", Math.Clamp(value, 5, 5000));
@@ -50,7 +50,7 @@ public abstract class Trigger : Entity
 
 	public double Rotation
 	{
-		get { return GetDoubleOrNull("a") ?? 0; }
+		get { return GetDouble("a"); }
 		set
 		{
 			SetDouble("a", value);
@@ -62,7 +62,7 @@ public abstract class Trigger : Entity
 	/// </summary>
 	public TriggeredBy TriggeredBy
 	{
-		get { return (TriggeredBy?)GetDoubleOrNull("b") ?? LevelXML.TriggeredBy.Nothing; }
+		get { return (TriggeredBy)GetDouble("b"); }
 		set
 		{
 			Elt.SetAttributeValue("b", value);
@@ -74,7 +74,7 @@ public abstract class Trigger : Entity
 	/// </summary>
 	public RepeatType RepeatType
 	{
-		get { return (RepeatType?)GetDoubleOrNull("r") ?? LevelXML.RepeatType.Never; }
+		get { return (RepeatType)GetDouble("r"); }
 		set
 		{
 			Elt.SetAttributeValue("r", value);
@@ -86,7 +86,7 @@ public abstract class Trigger : Entity
 	/// </summary>
 	public HWBool StartDisabled
 	{
-		get { return GetBoolOrNull("sd") ?? HWBool.False; }
+		get { return GetBool("sd"); }
 		set
 		{
 			HWBool val = value;
@@ -98,12 +98,15 @@ public abstract class Trigger : Entity
 	/// <summary>
 	/// If the trigger repeats continuously, this is the rate in seconds at which the trigger repeats.
 	/// </summary>
-	public double Interval
+	public double? Interval
 	{
-		get { return GetDoubleOrNull("i") ?? double.NaN; }
+		get { return GetDoubleOrNull("i"); }
 		set
 		{
-			Elt.SetAttributeValue("i", value);
+			if (value is not null)
+			{
+				Elt.SetAttributeValue("i", value);
+			}
 		}
 	}
 
@@ -112,7 +115,7 @@ public abstract class Trigger : Entity
 	/// </summary>
 	public double Delay
 	{
-		get { return GetDoubleOrNull("d") ?? double.NaN; }
+		get { return GetDouble("d"); }
 		set
 		{
 			SetDouble("d", Math.Clamp(value, 0, 30));

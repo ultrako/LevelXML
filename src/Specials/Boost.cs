@@ -10,7 +10,7 @@ public class Boost : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -27,7 +27,7 @@ public class Boost : Special
     /// </summary>
     public double Panels
 	{
-		get { return GetDoubleOrNull("p3") ?? 2; }
+		get { return GetDouble("p3"); }
 		set 
         { 
             if (double.IsNaN(value))
@@ -40,7 +40,7 @@ public class Boost : Special
 
     public double Speed
 	{
-		get { return GetDoubleOrNull("p4") ?? 20; }
+		get { return GetDouble("p4"); }
 		set { Elt.SetAttributeValue("p4", Math.Clamp(value, 10, 100)); }
 	}
 

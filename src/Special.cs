@@ -13,7 +13,7 @@ public abstract class Special : Entity, IConvertibleToXML
 
 	public override double X
 	{
-		get { return GetDoubleOrNull("p0") ?? 0; }
+		get { return GetDouble("p0"); }
 		set
 		{
 			if (double.IsNaN(value))
@@ -26,7 +26,7 @@ public abstract class Special : Entity, IConvertibleToXML
 
 	public override double Y
 	{
-		get { return GetDoubleOrNull("p1")  ?? 0; }
+		get { return GetDouble("p1"); }
 		set
 		{
 			if (double.IsNaN(value))

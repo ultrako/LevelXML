@@ -10,13 +10,13 @@ public class HomingMine : Special
 
     public double Speed
     {
-        get { return GetDoubleOrNull("p2") ?? 1; }
+        get { return GetDouble("p2"); }
         set { SetDouble("p2", Math.Clamp(value, 1, 10)); }
     }
 
     public double Delay
     {
-        get { return GetDoubleOrNull("p3") ?? 0; }
+        get { return GetDouble("p3"); }
         set { SetDouble("p3", Math.Clamp(value, 0, 5)); }
     }
 

@@ -10,7 +10,7 @@ public class IBeam : Special
 
     public double Width
     {
-        get { return GetDoubleOrNull("p2") ?? 400; }
+        get { return GetDouble("p2"); }
         set
         {
             if (double.IsNaN(value))
@@ -23,7 +23,7 @@ public class IBeam : Special
 
     public double Height
     {
-        get { return GetDoubleOrNull("p3") ?? 32; }
+        get { return GetDouble("p3"); }
         set
         {
             if (double.IsNaN(value))
@@ -36,7 +36,7 @@ public class IBeam : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p4") ?? 0; }
+		get { return GetDouble("p4"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -49,13 +49,13 @@ public class IBeam : Special
 
      public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p5") ?? false; }
+		get { return GetBool("p5"); }
 		set { Elt.SetAttributeValue("p5", value); }
 	}
 
     public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p6") ?? false; }
+		get { return GetBool("p6"); }
 		set { Elt.SetAttributeValue("p6", value); }
 	}
 

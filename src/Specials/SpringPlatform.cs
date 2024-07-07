@@ -10,7 +10,7 @@ public class SpringPlatform : Special
 
     public double Rotation
     {
-        get { return GetDoubleOrNull("p2") ?? 0; }
+        get { return GetDouble("p2"); }
         set
         {
             if (double.IsNaN(value))
@@ -23,7 +23,7 @@ public class SpringPlatform : Special
 
     public double Delay
     {
-        get { return GetDoubleOrNull("p3") ?? 0; }
+        get { return GetDouble("p3"); }
         set
         {
             SetDouble("p3", Math.Clamp(value, 0, 2));

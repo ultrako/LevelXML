@@ -12,7 +12,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 
 	internal string Version
 	{
-		get { return GetStringOrNull(Elt, "v") ?? LevelXMLVersion; }
+		get { return GetString("v"); }
 		set
 		{
 			Elt.SetAttributeValue("v", value);
@@ -23,7 +23,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 
 	public double X
 	{
-		get { return GetDoubleOrNull("x") ?? double.NaN; }
+		get { return GetDouble("x"); }
 		set
 		{
 			SetDouble("x", value);
@@ -32,7 +32,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 
 	public double Y
 	{
-		get { return GetDoubleOrNull("y") ?? double.NaN; }
+		get { return GetDouble("y"); }
 		set
 		{
 			Elt.SetAttributeValue("y", value);
@@ -41,7 +41,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 
 	public Character Character
 	{
-		get { return GetDoubleOrNull("c") ?? double.NaN; }
+		get { return GetDouble("c"); }
 		set
 		{
 			Elt.SetAttributeValue("c", value);
@@ -50,7 +50,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 
 	public HWBool ForcedCharacter
 	{
-		get { return GetBoolOrNull("f") ?? false; }
+		get { return GetBool("f"); }
 		set
 		{
 			HWBool val = value;
@@ -61,7 +61,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 
 	public HWBool VehicleHidden
 	{
-		get { return GetBoolOrNull("h") ?? false; }
+		get { return GetBool("h"); }
 		set
 		{
 			HWBool val = value;
@@ -75,7 +75,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	/// </summary>
 	public Background Background
 	{
-		get { return (Background?)GetDoubleOrNull("bg") ?? LevelXML.Background.Buggy; }
+		get { return (Background)GetDouble("bg"); }
 		set
 		{
 			Elt.SetAttributeValue("bg", value);
@@ -87,7 +87,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	/// </summary>
 	public double BackgroundColor
 	{
-		get { return GetDoubleOrNull("bgc") ?? 16777215; }
+		get { return GetDouble("bgc"); }
 		set
 		{
 			Elt.SetAttributeValue("bgc", value);

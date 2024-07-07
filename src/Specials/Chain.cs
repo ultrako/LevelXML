@@ -10,7 +10,7 @@ public class Chain : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -23,13 +23,13 @@ public class Chain : Special
 
     public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p3") ?? false; }
+		get { return GetBool("p3"); }
 		set { Elt.SetAttributeValue("p3", value); }
 	}
 
     public HWBool Interactive
 	{
-		get { return GetBoolOrNull("p4") ?? true; }
+		get { return GetBool("p4"); }
 		set { Elt.SetAttributeValue("p4", value); }
 	}
 
@@ -38,7 +38,7 @@ public class Chain : Special
     /// </summary>
     public double LinkCount
     {
-        get { return GetDoubleOrNull("p5") ?? 20; }
+        get { return GetDouble("p5"); }
         set { SetDouble("p5", Math.Clamp(value, 2, 40)); }
     }
 
@@ -47,7 +47,7 @@ public class Chain : Special
     /// </summary>
     public double LinkScale
     {
-        get { return GetDoubleOrNull("p6") ?? 1; }
+        get { return GetDouble("p6"); }
         set
         {
             if (double.IsNaN(value))
@@ -63,7 +63,7 @@ public class Chain : Special
     /// </summary>
     public double Curve
     {
-        get { return GetDoubleOrNull("p7") ?? 0; }
+        get { return GetDouble("p7"); }
         set
         {
             if (double.IsNaN(value))

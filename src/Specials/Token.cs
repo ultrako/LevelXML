@@ -10,7 +10,7 @@ public class Token : Special
 
     public TokenType TokenType
     {
-        get { return (TokenType?)GetDoubleOrNull("p2") ?? LevelXML.TokenType.Skull; }
+        get { return (TokenType)GetDouble("p2"); }
         set { Elt.SetAttributeValue("p2", value); }
     }
 

@@ -10,7 +10,7 @@ public class Harpoon : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -26,7 +26,7 @@ public class Harpoon : Special
     /// </summary>
     public HWBool Anchor
 	{
-		get { return GetBoolOrNull("p3") ?? true; }
+		get { return GetBool("p3"); }
 		set { Elt.SetAttributeValue("p3", value); }
 	}
 
@@ -35,13 +35,13 @@ public class Harpoon : Special
     /// </summary>
     public HWBool FixedTurret
 	{
-		get { return GetBoolOrNull("p4") ?? false; }
+		get { return GetBool("p4"); }
 		set { Elt.SetAttributeValue("p4", value); }
 	}
 
     public double TurretAngle
     {
-        get { return GetDoubleOrNull("p5") ?? 0; }
+        get { return GetDouble("p5"); }
         set { SetDouble("p5", value); }
     }
 
@@ -50,7 +50,7 @@ public class Harpoon : Special
     /// </summary>
     public HWBool TriggerFiring
     {
-        get { return GetBoolOrNull("p6") ?? false; }
+        get { return GetBool("p6"); }
         set { Elt.SetAttributeValue("p6", value); }
     }
 
@@ -59,7 +59,7 @@ public class Harpoon : Special
     /// </summary>
     public HWBool StartDeactivated
     {
-        get { return GetBoolOrNull("p7") ?? false; }
+        get { return GetBool("p7"); }
         set { Elt.SetAttributeValue("p7", value); }
     }
 

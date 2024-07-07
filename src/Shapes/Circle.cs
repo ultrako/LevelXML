@@ -12,7 +12,7 @@ public class Circle : Shape, IConvertibleToXML
 	public string ToXML() { return ToXML(mapper: default!); }
 	public override double Width
 	{
-		get { return GetDoubleOrNull("p2") ?? 100; }
+		get { return GetDouble("p2"); }
 		set
 		{
 			if (double.IsNaN(value)) {
@@ -30,7 +30,7 @@ public class Circle : Shape, IConvertibleToXML
 	}
 
     public double Cutout {
-		get { return (double?)GetDoubleOrNull("p12") ?? 0; }
+		get { return GetDouble("p12"); }
 		set
 		{
 			SetDouble("p12", Math.Clamp(value, 0, 100));
@@ -39,9 +39,12 @@ public class Circle : Shape, IConvertibleToXML
 
 	public Circle() : this(EditorDefault) {}
 	public Circle(string xml) : this(StrToXElement(xml)) {}
-	protected override void SetParams(XElement e)
+	protected void SetParams(XElement e)
 	{
-		base.SetParams(e);
+		SetFirstParams(e);
+		Width = GetDoubleOrNull(e, "p2") ?? 100;
+        Height = GetDoubleOrNull(e, "p3") ?? 100;
+		SetLastParams(e);
 		Cutout = GetDoubleOrNull(e, "p12") ?? 0;
 	}
 	internal Circle(XElement e) : base(e)
