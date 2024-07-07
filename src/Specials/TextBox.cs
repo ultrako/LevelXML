@@ -86,7 +86,7 @@ public class TextBox : Special
         FontSize = GetDoubleOrNull(e, "p5") ?? 10;
         Alignment = GetDoubleOrNull(e, "p6") ?? 1;
         Opacity = GetDoubleOrNull(e, "p8") ?? 100;
-        Content = ((e.Element("p7") ?? new XElement("p7"))!.FirstNode as XCData)!.Value;
+        Content = ((e.Element("p7") ?? new XElement("p7")).FirstNode as XCData ?? new XCData(string.Empty)).Value;
     }
 
     internal TextBox(XElement e) : base(e)
