@@ -24,4 +24,11 @@ public class TextBoxTest
         TextBox textbox = new();
         Assert.Throws<LevelXMLException>(() => textbox.Rotation = double.NaN);
     }
+
+    [Fact]
+    public void TestBlankContent()
+    {
+        // Test to ensure that initializing a textbox with no content does not throw
+        var _ = new TextBox(@"<sp t=""7"" p0=""0"" p1=""0"" p2=""0"" p3=""333333"" p4=""3"" p5=""5"" p6=""1"" p8=""100"" />");
+    }
 }
