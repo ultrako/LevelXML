@@ -10,7 +10,7 @@ public class Cannon : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -26,7 +26,7 @@ public class Cannon : Special
     /// </summary>
     public double StartRotation
     {
-        get { return GetDoubleOrNull("p3") ?? 0; }
+        get { return GetDouble("p3"); }
         set { SetDouble("p3", Math.Clamp(value, -90, 90)); }
     }
 
@@ -35,7 +35,7 @@ public class Cannon : Special
     /// </summary>
     public double FiringRotation
     {
-        get { return GetDoubleOrNull("p4") ?? 0; }
+        get { return GetDouble("p4"); }
         set { SetDouble("p4", Math.Clamp(value, -90, 90)); }
     }
 
@@ -44,7 +44,7 @@ public class Cannon : Special
     /// </summary>
     public CannonType CannonType
     {
-        get { return (CannonType?)GetDoubleOrNull("p5") ?? LevelXML.CannonType.Circus; }
+        get { return (CannonType)GetDouble("p5"); }
         set { Elt.SetAttributeValue("p5", value); }
     }
 
@@ -53,7 +53,7 @@ public class Cannon : Special
     /// </summary>
     public double Delay
     {
-        get { return GetDoubleOrNull("p6") ?? 1; }
+        get { return GetDouble("p6"); }
         set { SetDouble("p6", Math.Clamp(value, 1, 10)); }
     }
 
@@ -62,7 +62,7 @@ public class Cannon : Special
     /// </summary>
     public double MuzzleScale
     {
-        get { return GetDoubleOrNull("p7") ?? 1; }
+        get { return GetDouble("p7"); }
         set { SetDouble("p7", Math.Clamp(value, 1, 10)); }
     }
 
@@ -71,7 +71,7 @@ public class Cannon : Special
     /// </summary>
     public double Power
     {
-        get { return GetDoubleOrNull("p8") ?? 5; }
+        get { return GetDouble("p8"); }
         set { SetDouble("p8", Math.Clamp(value, 1, 10)); }
     }
 

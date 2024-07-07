@@ -15,7 +15,7 @@ public class Triangle : Shape, IConvertibleToXML
 
 	public override double Width
 	{
-		get { return GetDoubleOrNull("p2") ?? 100; }
+		get { return GetDouble("p2"); }
 		set
 		{
 			if (double.IsNaN(value)) 
@@ -28,7 +28,7 @@ public class Triangle : Shape, IConvertibleToXML
 
 	public override double Height
 	{
-		get { return GetDoubleOrNull("p3") ?? 300; }
+		get { return GetDouble("p3"); }
 		set
 		{
 			if (double.IsNaN(value)) {
@@ -41,6 +41,14 @@ public class Triangle : Shape, IConvertibleToXML
 	public Triangle() : this(EditorDefault) {}
 
 	public Triangle(string xml) : this(StrToXElement(xml)) {}
+
+	protected void SetParams(XElement e)
+    {
+        SetFirstParams(e);
+		Width = GetDoubleOrNull(e, "p2") ?? 100;
+        Height = GetDoubleOrNull(e, "p3") ?? 100;
+		SetLastParams(e);
+    }
 	
 	internal Triangle(XElement e) : base(e)
 	{

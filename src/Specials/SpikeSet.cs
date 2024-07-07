@@ -11,7 +11,7 @@ public class SpikeSet : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -24,7 +24,7 @@ public class SpikeSet : Special
 
     public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p3") ?? true; }
+		get { return GetBool("p3"); }
 		set { Elt.SetAttributeValue("p3", value); }
 	}
 
@@ -33,7 +33,7 @@ public class SpikeSet : Special
     /// </summary>
     public double Spikes
     {
-        get { return GetDoubleOrNull("p4") ?? 20; }
+        get { return GetDouble("p4"); }
         set
         {
             if (double.IsNaN(value))
@@ -46,7 +46,7 @@ public class SpikeSet : Special
 
     public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p5") ?? false; }
+		get { return GetBool("p5"); }
 		set { Elt.SetAttributeValue("p5", value); }
 	}
 

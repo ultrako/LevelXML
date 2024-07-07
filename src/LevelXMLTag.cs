@@ -21,6 +21,17 @@ public abstract class LevelXMLTag
 		if (elt.Attribute(attr) is XAttribute val) { return val.Value; }
 		else { return null; }
 	}
+
+	internal string? GetStringOrNull(string attr)
+	{
+		return GetStringOrNull(Elt, attr);
+	}
+
+	internal string GetString(string attr)
+	{
+		return GetStringOrNull(attr)!;
+	}
+
 	protected static double ParseDouble(string val)
 	{
 		double result;
@@ -44,6 +55,7 @@ public abstract class LevelXMLTag
 	// because they can sometimes hold NaN. And sometimes NaN does unique things for
 	// level creators, so we won't occlude all of that from the get-go.
 	protected double? GetDoubleOrNull(string attr) { return GetDoubleOrNull(this.Elt, attr); }
+	protected double GetDouble(string attr) { return (double)GetDoubleOrNull(attr)!; }
 	internal static double? GetDoubleOrNull(XElement elt, string attr) 
 	{
 		if (GetStringOrNull(elt, attr) is string val)
@@ -132,6 +144,7 @@ public abstract class LevelXMLTag
 		}
 	}
 	protected HWBool? GetBoolOrNull(string attr) { return GetBoolOrNull(this.Elt, attr); }
+	protected HWBool GetBool(string attr) { return (HWBool)GetBoolOrNull(attr)!; }
 	protected static HWBool? GetBoolOrNull(XElement elt, string attr)
 	{
 		HWBool? result = null;

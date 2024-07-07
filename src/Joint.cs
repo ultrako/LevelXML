@@ -72,12 +72,12 @@ public abstract class Joint : Entity
 		}
 	}
 
-	// Joints with no position are allowed as they do actually affect the game
+	// Joints with NaN position are allowed as they do actually affect the game
 	public override double X
 	{
 		get
 		{
-			return GetDoubleOrNull("x") ?? 0;
+			return GetDouble("x");
 		}
 		set
 		{
@@ -89,7 +89,7 @@ public abstract class Joint : Entity
 	{
 		get
 		{
-			return GetDoubleOrNull("y") ?? 0;
+			return GetDouble("y");
 		}
 		set
 		{
@@ -104,7 +104,7 @@ public abstract class Joint : Entity
 	{
 		get
 		{
-			return GetBoolOrNull("l") ?? false;
+			return GetBool("l");
 		}
 		set
 		{
@@ -133,7 +133,7 @@ public abstract class Joint : Entity
 	{
 		get
 		{
-			return GetBoolOrNull("m") ?? false;
+			return GetBool("m");
 		}
 		set
 		{
@@ -155,7 +155,7 @@ public abstract class Joint : Entity
 	{
 		get
 		{
-			return GetBoolOrNull("c") ?? false;
+			return GetBool("c");
 		}
 		set
 		{

@@ -10,7 +10,7 @@ public class Jet : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -23,7 +23,7 @@ public class Jet : Special
 
     public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p3") ?? false; }
+		get { return GetBool("p3"); }
 		set { Elt.SetAttributeValue("p3", value); }
 	}
 
@@ -32,7 +32,7 @@ public class Jet : Special
     /// </summary>
     public double Power
     {
-        get { return GetDoubleOrNull("p4") ?? 1; }
+        get { return GetDouble("p4"); }
         set 
         {
             if (double.IsNaN(value))

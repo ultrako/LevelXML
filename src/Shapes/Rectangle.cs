@@ -15,7 +15,7 @@ public class Rectangle : Shape, IConvertibleToXML
 
 	public override double Width
 	{
-		get { return GetDoubleOrNull("p2") ?? 100; }
+		get { return GetDouble("p2");}
 		set
 		{
 			if (double.IsNaN(value)) 
@@ -28,7 +28,7 @@ public class Rectangle : Shape, IConvertibleToXML
 
 	public override double Height
 	{
-		get { return GetDoubleOrNull("p3") ?? 100; }
+		get { return GetDouble("p3"); }
 		set
 		{
 			if (double.IsNaN(value)) {
@@ -41,8 +41,16 @@ public class Rectangle : Shape, IConvertibleToXML
 	public Rectangle() : this(EditorDefault) {}
 
 	public Rectangle(string xml) : this(StrToXElement(xml)) {}
-	
-	internal Rectangle(XElement e) : base(e)
+
+    protected void SetParams(XElement e)
+    {
+        SetFirstParams(e);
+		Width = GetDoubleOrNull(e, "p2") ?? 100;
+        Height = GetDoubleOrNull(e, "p3") ?? 100;
+		SetLastParams(e);
+    }
+
+    internal Rectangle(XElement e) : base(e)
 	{
 		SetParams(e);
 	}

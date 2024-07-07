@@ -12,7 +12,7 @@ public class Vehicle : Group
     /// </summary>
     public VehicleAction SpacebarAction
     {
-        get { return (VehicleAction?)GetDoubleOrNull("sb") ?? LevelXML.VehicleAction.Nothing; }
+        get { return (VehicleAction)GetDouble("sb"); }
         set { Elt.SetAttributeValue("sb", value); }
     }
 
@@ -21,7 +21,7 @@ public class Vehicle : Group
     /// </summary>
     public VehicleAction ShiftAction
     {
-        get { return (VehicleAction?)GetDoubleOrNull("sh") ?? LevelXML.VehicleAction.Nothing; }
+        get { return (VehicleAction)GetDouble("sh"); }
         set { Elt.SetAttributeValue("sh", value); }
     }
 
@@ -30,7 +30,7 @@ public class Vehicle : Group
     /// </summary>
     public VehicleAction ControlAction
     {
-        get { return (VehicleAction?)GetDoubleOrNull("ct") ?? LevelXML.VehicleAction.Nothing; }
+        get { return (VehicleAction)GetDouble("ct"); }
         set { Elt.SetAttributeValue("ct", value); }
     }
 
@@ -39,7 +39,7 @@ public class Vehicle : Group
     /// </summary>
     public double Acceleration
     {
-        get { return GetDoubleOrNull("a") ?? double.NaN; }
+        get { return GetDouble("a"); }
         set
         {
             SetDouble("a", Math.Clamp(value, 1, 10));
@@ -51,7 +51,7 @@ public class Vehicle : Group
     /// </summary>
     public double LeaningStrength
     {
-        get { return GetDoubleOrNull("l") ?? double.NaN; }
+        get { return GetDouble("l"); }
         set
         {
             SetDouble("l", Math.Clamp(value, 0, 10));
@@ -63,7 +63,7 @@ public class Vehicle : Group
     /// </summary>
     public GrabbingPose GrabbingPose
     {
-        get { return (GrabbingPose?)GetDoubleOrNull("cp") ?? GrabbingPose.Limp; }
+        get { return (GrabbingPose)GetDouble("cp"); }
         set { Elt.SetAttributeValue("cp", value); }
     }
 
@@ -73,7 +73,7 @@ public class Vehicle : Group
     /// </summary>
     public HWBool LockJoints
     {
-        get { return GetBoolOrNull("lo") ?? false; }
+        get { return GetBool("lo"); }
         set { Elt.SetAttributeValue("lo", value); }
     }
 

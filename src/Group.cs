@@ -56,7 +56,7 @@ public class Group : Entity
 
 	public override double Y
 	{
-		get { return GetDoubleOrNull("y") ?? 0; }
+		get { return GetDouble("y"); }
 		set
 		{
 			if (double.IsNaN(value))
@@ -69,7 +69,7 @@ public class Group : Entity
 
 	public double Rotation
 	{
-		get { return GetDoubleOrNull("r") ?? 0; }
+		get { return GetDouble("r"); }
 		set 
 		{ 
 			if (double.IsNaN(value))
@@ -82,7 +82,7 @@ public class Group : Entity
 
 	public double OriginX
 	{
-		get { return GetDoubleOrNull("ox") ?? 0;}
+		get { return GetDouble("ox");}
 		set
 		{
 			if (double.IsNaN((double)value!))
@@ -95,7 +95,7 @@ public class Group : Entity
 
 	public double OriginY
 	{
-		get { return GetDoubleOrNull("oy") ?? 0;}
+		get { return GetDouble("oy");}
 		set
 		{
 			if (double.IsNaN((double)value!))
@@ -108,7 +108,7 @@ public class Group : Entity
 
 	public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("s") ?? false;}
+		get { return GetBool("s");}
 		set
 		{
 			Elt.SetAttributeValue("s", value);
@@ -117,7 +117,7 @@ public class Group : Entity
 
 	public HWBool Foreground
 	{
-		get { return GetBoolOrNull("f") ?? false;}
+		get { return GetBool("f");}
 		set
 		{
 			Elt.SetAttributeValue("f", value);
@@ -126,7 +126,7 @@ public class Group : Entity
 
 	public double Opacity
 	{
-		get { return GetDoubleOrNull("o") ?? 100; }
+		get { return GetDouble("o"); }
 		set
 		{
 			// If the opacity isn't set, the import box sets it to 100
@@ -137,7 +137,7 @@ public class Group : Entity
 
 	public HWBool Fixed
 	{
-		get { return GetBoolOrNull("im") ?? false;}
+		get { return GetBool("im");}
 		set
 		{
 			Elt.SetAttributeValue("im", value);
@@ -146,7 +146,7 @@ public class Group : Entity
 
 	public HWBool FixedRotation
 	{
-		get { return GetBoolOrNull("fr") ?? false;}
+		get { return GetBool("fr");}
 		set
 		{
 			Elt.SetAttributeValue("fr", value);

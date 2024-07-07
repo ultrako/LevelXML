@@ -10,7 +10,7 @@ public class Bottle : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p2") ?? 0; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -23,19 +23,19 @@ public class Bottle : Special
 
     public BottleType BottleType
     {
-        get { return (BottleType?)GetDoubleOrNull("p3") ?? LevelXML.BottleType.Green; }
+        get { return (BottleType)GetDouble("p3"); }
         set { Elt.SetAttributeValue("p3", value); }
     }
 
     public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p4") ?? false; }
+		get { return GetBool("p4"); }
 		set { Elt.SetAttributeValue("p4", value); }
 	}
 
     public HWBool Interactive
 	{
-		get { return GetBoolOrNull("p5") ?? true; }
+		get { return GetBool("p5"); }
 		set { Elt.SetAttributeValue("p5", value); }
 	}
 

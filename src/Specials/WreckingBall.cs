@@ -13,7 +13,7 @@ public class WreckingBall : Special
     /// </summary>
     public double RopeLength
     {
-        get { return GetDoubleOrNull("p2") ?? 350; }
+        get { return GetDouble("p2"); }
         set { SetDouble("p2", Math.Clamp(value, 200, 1000)); }
     }
 

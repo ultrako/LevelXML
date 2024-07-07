@@ -10,7 +10,7 @@ public class Log : Special
 
     public double Width
     {
-        get { return GetDoubleOrNull("p2") ?? 36; }
+        get { return GetDouble("p2"); }
         set
         {
             if (double.IsNaN(value))
@@ -23,7 +23,7 @@ public class Log : Special
 
     public double Height
     {
-        get { return GetDoubleOrNull("p3") ?? 400; }
+        get { return GetDouble("p3"); }
         set
         {
             if (double.IsNaN(value))

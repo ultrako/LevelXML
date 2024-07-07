@@ -10,7 +10,7 @@ public class GlassPanel : Special
 
     public double Width
     {
-        get { return GetDoubleOrNull("p2") ?? 10; }
+        get { return GetDouble("p2"); }
         set
         {
             if (double.IsNaN(value))
@@ -23,7 +23,7 @@ public class GlassPanel : Special
 
     public double Height
     {
-        get { return GetDoubleOrNull("p3") ?? 100; }
+        get { return GetDouble("p3"); }
         set
         {
             if (double.IsNaN(value))
@@ -36,7 +36,7 @@ public class GlassPanel : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p4") ?? 0; }
+		get { return GetDouble("p4"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -49,7 +49,7 @@ public class GlassPanel : Special
 
     public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p5") ?? false; }
+		get { return GetBool("p5"); }
 		set { Elt.SetAttributeValue("p5", value); }
 	}
 
@@ -58,7 +58,7 @@ public class GlassPanel : Special
     /// </summary>
     public double Strength
     {
-        get { return GetDoubleOrNull("p6") ?? 10; }
+        get { return GetDouble("p6"); }
         set
         {
             SetDouble("p6", Math.Clamp(value, 1, 10));
@@ -70,7 +70,7 @@ public class GlassPanel : Special
     /// </summary>
     public HWBool Stabbing
     {
-        get { return GetBoolOrNull("p7") ?? true; }
+        get { return GetBool("p7"); }
 		set { Elt.SetAttributeValue("p7", value); }
     }
 
