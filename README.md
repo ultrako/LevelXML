@@ -21,7 +21,7 @@ Rectangle floor = new()
    X = 0,
    Width = 5000,
    Height = 50
-}
+};
 ```
 5. Combine all your entities into one array, and construct a new Level with them. Then, use Level's ToXML() method to get the LevelXML representation of your entire level.
 It is important that no objects in this list reference any objects outside of the list, or otherwise the library will throw an exception when calling ToXML().
