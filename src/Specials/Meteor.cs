@@ -10,7 +10,7 @@ public class Meteor : Special
 
     public double Width
     {
-        get { return GetDoubleOrNull("p2") ?? 400; }
+        get { return GetDouble("p2"); }
         set
         {
             if (double.IsNaN(value))

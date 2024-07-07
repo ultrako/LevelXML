@@ -13,10 +13,9 @@ public class TriggerTest
         Assert.Equal(100, trigger.Width);
         Assert.Equal(100, trigger.Height);
         Assert.Equal(0, trigger.Rotation);
-        // Change these two tests to use structs after I make them
-        Assert.Equal(1, trigger.TriggeredBy);
-        Assert.Equal(1, trigger.RepeatType);
-        Assert.Equal(double.NaN, trigger.Interval);
+        Assert.Equal(TriggeredBy.MainCharacter, trigger.TriggeredBy);
+        Assert.Equal(RepeatType.Once, trigger.RepeatType);
+        Assert.Null(trigger.Interval);
         Assert.False(trigger.StartDisabled);
         Assert.Equal(0, trigger.Delay);
     }

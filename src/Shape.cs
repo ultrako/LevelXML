@@ -32,7 +32,7 @@ public abstract class Shape : Entity
 	
 	public override double X
 	{
-		get { return GetDoubleOrNull("p0") ?? 0; }
+		get { return GetDouble("p0"); }
 		set
 		{
 			if (double.IsNaN(value))
@@ -44,7 +44,7 @@ public abstract class Shape : Entity
 	}
 	public override double Y
 	{
-		get { return GetDoubleOrNull("p1") ?? 0; }
+		get { return GetDouble("p1"); }
 		set
 		{
 			if (double.IsNaN(value))
@@ -62,7 +62,7 @@ public abstract class Shape : Entity
 
 	public double Rotation
 	{
-		get { return GetDoubleOrNull("p4") ?? 0; }
+		get { return GetDouble("p4"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -78,7 +78,7 @@ public abstract class Shape : Entity
 	/// </summary>
 	public HWBool Fixed
 	{
-		get { return GetBoolOrNull("p5") ?? true; }
+		get { return GetBool("p5"); }
 		set { Elt.SetAttributeValue("p5", value); }
 	}
 
@@ -87,7 +87,7 @@ public abstract class Shape : Entity
 	/// </summary>
 	public HWBool Sleeping
 	{
-		get { return GetBoolOrNull("p6") ?? false; }
+		get { return GetBool("p6"); }
 		set { Elt.SetAttributeValue("p6", value); }
 	}
 
@@ -96,7 +96,7 @@ public abstract class Shape : Entity
 	/// </summary>
 	public double Density
 	{
-		get { return GetDoubleOrNull("p7") ?? 1; }
+		get { return GetDouble("p7"); }
 		set
 		{
 			Elt.SetAttributeValue("p7", Math.Clamp(value, 0.1, 100.0));
@@ -112,7 +112,7 @@ public abstract class Shape : Entity
 	/// </summary>
 	public double FillColor
 	{
-		get { return GetDoubleOrNull("p8") ?? 4032711; }
+		get { return GetDouble("p8"); }
 		set 
 		{
 			Elt.SetAttributeValue("p8", value); 
@@ -122,7 +122,7 @@ public abstract class Shape : Entity
 	// The color of the edges of the shape
 	public double OutlineColor
 	{
-		get { return GetDoubleOrNull("p9") ?? -1; }
+		get { return GetDouble("p9"); }
 		set 
 		{ 
 			Elt.SetAttributeValue("p9", value); 
@@ -139,7 +139,7 @@ public abstract class Shape : Entity
 	/// </remarks>
 	public double Opacity
 	{
-		get { return GetDoubleOrNull("p10") ?? 100; }
+		get { return GetDouble("p10"); }
 		set
 		{
 			Elt.SetAttributeValue("p10", Math.Clamp(value, 0, 100));
@@ -151,18 +151,20 @@ public abstract class Shape : Entity
 	/// </summary>
 	public Collision Collision
 	{
-		get { return (Collision?)GetDoubleOrNull(Elt, "p11") ?? Collision.Everything;}
+		get { return (Collision)GetDouble("p11");}
 		set { Elt.SetAttributeValue("p11", value);}
 	}
 	
-	protected virtual void SetParams(XElement e)
+	// Had to split this out into two because the order of setting these properties matters
+	protected void SetFirstParams(XElement e)
 	{
 		Elt.SetAttributeValue("t", Type);
 		Interactive = GetBoolOrNull(e, "i");
         X = GetDoubleOrNull(e, "p0") ?? double.NaN;
         Y = GetDoubleOrNull(e, "p1") ?? double.NaN;
-        Width = GetDoubleOrNull(e, "p2") ?? 100;
-        Height = GetDoubleOrNull(e, "p3") ?? 100;
+	}
+	protected void SetLastParams(XElement e)
+	{
         Rotation = GetDoubleOrNull(e, "p4") ?? 0;
         Fixed = GetBoolOrNull(e, "p5") ?? true;
         Sleeping = GetBoolOrNull(e, "p6") ?? false;

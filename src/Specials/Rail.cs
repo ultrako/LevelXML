@@ -10,7 +10,7 @@ public class Rail : Special
 
     public double Width
     {
-        get { return GetDoubleOrNull("p2") ?? 250; }
+        get { return GetDouble("p2"); }
         set
         {
             if (double.IsNaN(value))
@@ -23,7 +23,7 @@ public class Rail : Special
 
     public double Height
     {
-        get { return GetDoubleOrNull("p3") ?? 18; }
+        get { return GetDouble("p3"); }
         set
         {
             if (double.IsNaN(value))
@@ -36,7 +36,7 @@ public class Rail : Special
 
     public double Rotation
 	{
-		get { return GetDoubleOrNull("p4") ?? 0; }
+		get { return GetDouble("p4"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 

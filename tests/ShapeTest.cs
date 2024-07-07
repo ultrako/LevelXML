@@ -1,5 +1,7 @@
 using Xunit;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace LevelXML.Test;
 
 public class ShapeTest
@@ -201,29 +203,51 @@ public class ShapeTest
 	[Fact]
 	public void ArtTest()
 	{
-		Art art = new();
-		art.Vertices.Add(new(new(0, 0)));
-		art.Vertices.Add(new(new(0, 100)));
-		string expected = @"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
-  <v f=""t"" id=""0"" v0=""0_0"" v1=""0_100"" n=""2"" />
+		Art art = new(new Vertex(new(0, 0)), new Vertex(new(100, 0)));
+		string expected = @"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""0"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+  <v f=""t"" id=""0"" v0=""0_0"" v1=""100_0"" n=""2"" />
 </sh>";
 		string actual = art.ToXML(mapper: entity => 0);
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
 		Assert.Equal(100, art.Width);
-		Assert.Equal(100, art.Height);
+		Assert.Equal(0, art.Height);
 	}
 	
 	[Fact]
 	public void ArtTestWithVerticesInConstructor()
 	{
 		Art art = new(Art.EditorDefault, new(new(0, 0)), new(new(0, 100)));
-		string expected = @"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+		string expected = @"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""0"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
   <v f=""t"" id=""0"" v0=""0_0"" v1=""0_100"" n=""2"" />
 </sh>";
 		string actual = art.ToXML(mapper: entity => 0);
 		Assert.Equal(expected, actual, ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences:true);
-		Assert.Equal(100, art.Width);
+		Assert.Equal(0, art.Width);
 		Assert.Equal(100, art.Height);
+	}
+
+	public static TheoryData<IEnumerable<Point>, double, double> 
+	ArtShapeDimensionDefaultingTestCases => new() 
+	{
+        { new Point[]{new(-1,-1), new(1,1)}, 2,2 },
+		{ new Point[]{new(-2,-2), new(-4,-4)}, 4,4 },
+		{ new Point[]{new(-2,-2)}, double.NaN,double.NaN },
+		{ new Point[]{}, double.NaN,double.NaN },
+    };
+
+
+	[Theory]
+	[MemberData(nameof(ArtShapeDimensionDefaultingTestCases))]
+	public void ArtTestDimensionDefaulting(IList<Point> points, double expectedWidth, double expectedHeight)
+	{
+		string numberOfVertices = @" n=""" + points.Count + @"""";
+		string vertices = string.Join(String.Empty, 
+		points.Select((point, index) => " v" + index.ToString() + @"=""" + point.X + "_" + point.Y + @""" "));
+		Art art = new(@"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+  <v f=""t"" id=""0""" + numberOfVertices + vertices +@" />
+</sh>");
+		Assert.Equal(expectedWidth, art.Width);
+		Assert.Equal(expectedHeight, art.Height);
 	}
 
 	[Fact]
@@ -233,22 +257,10 @@ public class ShapeTest
 	}
 
 	[Fact]
-	public void ArtTestNaNWidth()
-	{
-		Assert.Throws<LevelXMLException>(() => new Art(@"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""NaN"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />"));
-	}
-
-	[Fact]
-	public void ArtTestNaNHeight()
-	{
-		Assert.Throws<LevelXMLException>(() => new Art(@"<sh t=""4"" i=""f"" p0=""0"" p1=""0"" p2=""100"" p3=""NaN"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />"));
-	}
-
-	[Fact]
 	public void PolygonTestDefault()
 	{
 		Polygon poly = new();
-		Assert.Equal(@"<sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">" +
+		Assert.Equal(@"<sh t=""3"" p0=""0"" p1=""0"" p2=""NaN"" p3=""NaN"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">" +
 		"\n  " + @"<v f=""t"" id=""0"" />" + "\n" + "</sh>",
 		poly.ToXML(mapper: (ent) => 0), ignoreWhiteSpaceDifferences:true);
 	}

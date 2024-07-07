@@ -9,7 +9,7 @@ public abstract class Building : Special
     /// </summary>
     public double FloorWidth
 	{
-		get { return GetDoubleOrNull("p2") ?? 1; }
+		get { return GetDouble("p2"); }
 		set 
 		{ 
 			if (double.IsNaN(value)) 
@@ -25,7 +25,7 @@ public abstract class Building : Special
     /// </summary>
     public double Floors
 	{
-		get { return GetDoubleOrNull("p3") ?? 3; }
+		get { return GetDouble("p3"); }
 		set 
         {
             SetDouble("p3", Math.Clamp(value, 3, 50)); 
