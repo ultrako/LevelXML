@@ -10,7 +10,7 @@ and it allows you to export to the LevelXML format, so that you can paste the le
 ```csharp
 Level controlsVehicleLevel = new Level("./controlsVehicle.xml");
 ```
-4. Construct new Entities and modify them using the library.
+4. Construct new Entities and modify them using their properties.
 ## Example:
 ```csharp
 Vehicle controlsVehicle = (Vehicle)controlsVehicleLevel.Groups[0];
