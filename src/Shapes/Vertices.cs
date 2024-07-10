@@ -82,7 +82,21 @@ internal class Vertices : LevelXMLTag
 		foreach (XAttribute vertex in vertices)
 		{
 			string raw = vertex.Value;
-			List<double> coords = raw.Split("_").Select(str => Double.Parse(str)).ToList();
+			List<double> coords = new();
+			try
+			{
+				coords = raw.Split("_").Select(str => Double.Parse(str)).ToList();
+			} catch (FormatException) {}
+			// This can cause unexpected/hard to debug behavior when you don't mean to dot-split your coordinates,
+			// or have decimals in your coordinates but only have a single coordinate,
+			// but Happy Wheels supports this format so I have to too.
+			if (coords.Count < 2)
+			{
+				try
+				{
+					coords = raw.Split(".").Select(str => Double.Parse(str)).ToList();
+				} catch (FormatException) {}
+			}
 			if (coords.Count < 2)
 			{
 				throw new LevelXMLException("Failed to process vertex or vertex had fewer than 2 coordinates!");
