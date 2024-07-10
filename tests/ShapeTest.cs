@@ -256,6 +256,22 @@ public class ShapeTest
 		Assert.Throws<LevelXMLException>(() => new Art("<art />"));
 	}
 
+	// Yes, the happy wheels import box also supports this way of formatting vertices.
+	// No idea why, but I'm mad about it.
+	[Fact]
+	public void ArtTestOtherVertexFormat()
+	{
+		Art art = new(@"<sh t=""3"" i=""f"" p0=""0"" p1=""0"" p2=""0"" p3=""0"" p4=""3"" p5=""t"" p6=""f"" p7=""1"" p8=""100000"" p9=""-1"" p10=""100"" p11=""1"">
+      <v f=""t"" id=""0"" n=""3"" v0=""3.34"" v1=""2.-17"" v2=""0.-31""/>
+    </sh>");
+		Assert.Equal(3, art.Vertices[0].Position.X);
+		Assert.Equal(34, art.Vertices[0].Position.Y);
+		Assert.Equal(2, art.Vertices[1].Position.X);
+		Assert.Equal(-17, art.Vertices[1].Position.Y);
+		Assert.Equal(0, art.Vertices[2].Position.X);
+		Assert.Equal(-31, art.Vertices[2].Position.Y);
+	}
+
 	[Fact]
 	public void PolygonTestDefault()
 	{
