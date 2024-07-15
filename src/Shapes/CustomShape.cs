@@ -38,6 +38,12 @@ public abstract class CustomShape : Shape
 		}
 	}
 
+	internal void ShallowCopy(Func<int, IList<Vertex>> parentLocator)
+	{
+		verticesTag.verts = parentLocator(verticesTag.originalIndex).ToList();
+		isEmpty = false;
+	}
+
 	internal override void PlaceInLevel(Func<Entity, int> vertMapper)
 	{
 		verticesTag.vertMapper = vertMapper;
