@@ -69,6 +69,36 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		.Concat(Triggers);
 
 	/// <summary>
+	/// Use this if you need to get rid of all inter-shape referencing,
+	/// at the cost of a bit of redundancy
+	/// Useful when you want to remove some but not all custom shapes,
+	/// but some of those that you are removing are originals that other still
+	/// -remaining shapes depend on.
+	/// </summary>
+	public void DetachCopiedCustomShapes()
+	{
+		IList<Vertex> findOriginalArt(int index)
+		{
+			return allNonemptyArts.ToArray()[index].Vertices;
+		}
+		IList<Vertex> findOriginalPoly(int index)
+		{
+			return allNonemptyPolys.ToArray()[index].Vertices;
+		}
+
+		foreach (Art art in Shapes.OfType<Art>())
+		{
+			art.ShallowCopy(findOriginalArt);
+			art.originalIndex = allNonemptyArts.Count();
+		}
+		foreach (Polygon poly in Shapes.OfType<Polygon>())
+		{
+			poly.ShallowCopy(findOriginalPoly);
+			poly.originalIndex = allNonemptyPolys.Count();
+		}
+	}
+
+	/// <summary>
 	/// This constructor makes a Level from a valid levelXML string.
 	/// </summary>
 	public Level(string xml) : this(StrToXElement(xml)) {}
@@ -119,6 +149,16 @@ public class Level : LevelXMLTag, IConvertibleToXML
 			_ => triggersTag,
 		};
 	}
+
+	private IEnumerable<Art> allNonemptyArts => Shapes.Where(shape => shape is Art)
+				.Concat(Groups.SelectMany(group => group.Items))
+				.OfType<Art>()
+				.Where(art => !art.isEmpty);
+	private IEnumerable<Polygon> allNonemptyPolys => Shapes.Where(shape => shape is Polygon)
+				.Concat(Groups.SelectMany(group => group.Items))
+				.OfType<Polygon>()
+				.Where(poly => !poly.isEmpty);
+
 	private int VertMapper(Entity e)
 	{
 		// This function can only run when we already have the shapes and groups depthOneTags ready.
@@ -129,12 +169,7 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		int result = -1;
 		if (e is Art art)
 		{
-			List<Art> matchingArts = Shapes.Where(shape => shape is Art)
-				.Concat(Groups.SelectMany(group => group.Items)
-				.Where(entity => entity is Art))
-				.Select(entity => (Art)entity)
-				.Where(art => !art.isEmpty)
-				.ToList();
+			List<Art> matchingArts = allNonemptyArts.ToList();
 			if (art.isEmpty)
 			{
 				result = matchingArts.FindIndex(other => other.originalIndex == art.originalIndex);
@@ -146,12 +181,7 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		} 
 		else if (e is Polygon poly)
 		{
-			List<Polygon> matchingPolys = Shapes.Where(shape => shape is Polygon)
-				.Concat(Groups.SelectMany(group => group.Items)
-				.Where(entity => entity is Polygon))
-				.Select(entity => (Polygon)entity)
-				.Where(poly => !poly.isEmpty)
-				.ToList();
+			List<Polygon> matchingPolys = allNonemptyPolys.ToList();
 			if (poly.isEmpty)
 			{
 				result = matchingPolys.FindIndex(other => other.originalIndex == poly.originalIndex);
@@ -190,7 +220,7 @@ public class Level : LevelXMLTag, IConvertibleToXML
 	private ManualResetEvent depthOneTagsReady = new(false);
 	private Entity ReverseTargetMapper(XElement e)
 	{
-		int index = Int32.Parse(e.Attribute("i")!.Value)!;
+		int index = int.Parse(e.Attribute("i")!.Value)!;
 		//Console.WriteLine($"Trying to get the {index}th {entityType}");
 		// Wait until the class sets that the tags are ready to index through
 		// This is needed because the constructors of these entities use the reverse mapper,

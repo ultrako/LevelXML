@@ -434,6 +434,36 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void ParseLevelWithArtShallowCopy()
+	{
+		string levelXML = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""4"" i=""f"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" v0=""28_47_99_88"" v1=""-28_-53"" v2=""-27_53_33_11_-14_30"" n=""3"" />
+        </sh>
+        <sh t=""4"" i=""f"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" />
+        </sh>
+    </shapes>
+</levelXML>";
+		string expected = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""4"" i=""f"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" v0=""28_47_99_88"" v1=""-28_-53"" v2=""-27_53_33_11_-14_30"" n=""3"" />
+        </sh>
+        <sh t=""4"" i=""f"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""1"" v0=""28_47_99_88"" v1=""-28_-53"" v2=""-27_53_33_11_-14_30"" n=""3"" />
+        </sh>
+    </shapes>
+</levelXML>";
+		Level level = new(levelXML);
+		level.DetachCopiedCustomShapes();
+		Assert.Equal(expected, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
+	}
+
+	[Fact]
 	public void TestArtShapeWithNoVertexId()
 	{
 		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
@@ -465,7 +495,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithPolys()
 	{
-		String levelXML = @"<levelXML>
+		string levelXML = @"<levelXML>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <shapes>
         <sh t=""3"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
@@ -478,6 +508,36 @@ public class LevelTest
 </levelXML>";
 		Level level = new(levelXML);
 		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
+	}
+
+	[Fact]
+	public void ParseLevelWithPolysShallowCopy()
+	{
+		string levelXML = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""3"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" v0=""28_47"" v1=""-28_-53"" v2=""-27_53"" n=""3"" />
+        </sh>
+        <sh t=""3"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" />
+        </sh>
+    </shapes>
+</levelXML>";
+		string expected = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""3"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""0"" v0=""28_47"" v1=""-28_-53"" v2=""-27_53"" n=""3"" />
+        </sh>
+        <sh t=""3"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+            <v f=""t"" id=""1"" v0=""28_47"" v1=""-28_-53"" v2=""-27_53"" n=""3"" />
+        </sh>
+    </shapes>
+</levelXML>";
+		Level level = new(levelXML);
+		level.DetachCopiedCustomShapes();
+		Assert.Equal(expected, level.ToXML(), ignoreWhiteSpaceDifferences:true, ignoreLineEndingDifferences: true);
 	}
 
 	[Fact]
