@@ -23,6 +23,7 @@ internal class Vertices : LevelXMLTag
 	internal bool isEmpty;
 	internal int originalIndex;
 	private int id;
+	// The shape tag that contains this vertices tag
 	private Entity? parent;
 	internal Func<Entity, int>? vertMapper;
 
