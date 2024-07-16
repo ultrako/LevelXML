@@ -42,6 +42,7 @@ public abstract class CustomShape : Shape
 	{
 		verticesTag.verts = parentLocator(verticesTag.originalIndex).ToList();
 		isEmpty = false;
+		verticesTag.FinishConstruction();
 	}
 
 	internal override void PlaceInLevel(Func<Entity, int> vertMapper)
