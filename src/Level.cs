@@ -79,22 +79,23 @@ public class Level : LevelXMLTag, IConvertibleToXML
 	{
 		IList<Vertex> findOriginalArt(int index)
 		{
-			return allNonemptyArts.ToArray()[index].Vertices;
+			return allNonemptyArts.Where(art => art.originalIndex == index).First().Vertices;
 		}
 		IList<Vertex> findOriginalPoly(int index)
 		{
-			return allNonemptyPolys.ToArray()[index].Vertices;
+			return allNonemptyPolys.Where(poly => poly.originalIndex == index).First().Vertices;
 		}
-
-		foreach (Art art in Shapes.OfType<Art>())
+		IEnumerable<Art> allArts = Groups.SelectMany(group => group.Items).Concat(Shapes).OfType<Art>();
+		IEnumerable<Polygon> allPolys = Groups.SelectMany(group => group.Items).Concat(Shapes).OfType<Polygon>();
+		foreach (Art art in allArts.Where(art => art.isEmpty))
 		{
 			art.ShallowCopy(findOriginalArt);
-			art.originalIndex = allNonemptyArts.Count();
+			art.originalIndex = allArts.ToList().IndexOf(art);
 		}
-		foreach (Polygon poly in Shapes.OfType<Polygon>())
+		foreach (Polygon poly in allPolys.Where(poly => poly.isEmpty))
 		{
 			poly.ShallowCopy(findOriginalPoly);
-			poly.originalIndex = allNonemptyPolys.Count();
+			poly.originalIndex = allPolys.ToList().IndexOf(poly);
 		}
 	}
 
