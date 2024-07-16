@@ -29,10 +29,18 @@ public class GroupActionsTest
     }
 
     [Fact]
+    public void TestImpulseGroup()
+    {
+        Impulse<Group> action = new();
+        Assert.Equal(@"<a i=""2"" p0=""10"" p1=""-10"" p2=""0"" />",
+        action.ToXML(), ignoreWhiteSpaceDifferences:true);
+    }
+
+    [Fact]
     public void TestFixGroup()
     {
         Fix<Group> action = new();
-        Assert.Equal(@"<a i=""2"" />",
+        Assert.Equal(@"<a i=""3"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
 
@@ -40,7 +48,7 @@ public class GroupActionsTest
     public void TestNonfixGroup()
     {
         Nonfix<Group> action = new();
-        Assert.Equal(@"<a i=""3"" />",
+        Assert.Equal(@"<a i=""4"" />",
         action.ToXML(), ignoreWhiteSpaceDifferences:true);
     }
 
