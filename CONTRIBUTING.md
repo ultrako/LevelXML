@@ -10,7 +10,7 @@ The very first rule of thumb for considering whether to add a functionality to t
 There's no point in adding a feature into this library if the level importing function in the Happy Wheels game doesn't support it.
 On the other hand, if there _is_ something that you can do by editing the LevelXML, and this library doesn't have it, then end developers would have to limit themselves just to use this library.
 Of course, there is still a lot of leeway between those two extremes - we tend towards the latter, and strive for a library that can minimally do everything that the game can, but rely on dependent code to implement anything else. 
-For example, we don't offer a method that analyzes a level's trigger graph and optimizes it to have the fewest amount of triggers, because you don't need to rely on the library internals to do that, it's possible just by importing it in a separate project.
+For example, we don't offer a method that analyzes a level's trigger graph and optimizes it to have the fewest amount of triggers, because you don't need to rely on the library internals to do that.
 
 Exceptions to this rule include:
 1. Diagnostic features: Providing insight into why a level or part of a level fails to import
