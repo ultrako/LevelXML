@@ -1,0 +1,3 @@
+We didn't get permission from the creators of Happy Wheels to make this project. 
+This is a reverse engineering project, so never reference/copy/use the Happy Wheels source code, whether minified or not, when working on this library.
+Some members of the Happy Wheels reverse engineering community might have the ability to grab other people's levels. I'm not going to have an opinion about whether you use downloaded LevelXML to test the library locally, but never push it to our repository, don't put it in a GitHub issue, just make sure it's not on GitHub at all. If you are pushing LevelXML to the repository, make sure it's a level you made. If you are including it in an Issue, just make sure you have permission from the level author.
