@@ -1,7 +1,6 @@
 # Overview
-This library has a class hierarchy representing every feature in a Happy Wheels level.
-It allows you to import the LevelXML format (the format that the game's import and export boxes use in its level editor) into objects in the class hierarchy,
-and it allows you to export to the LevelXML format, so that you can paste the levels back into the game again.
+This library has a class hierarchy representing every feature in a Happy Wheels level.  
+It allows you to import the LevelXML format (the format that the game's import and export boxes use in its level editor) into objects in the class hierarchy, and it allows you to export to the LevelXML format, so that you can paste the levels back into the game again.
 # Usage
 1. Add the package to your project (a "dotnet add package" command)
 2. Add a ```using LevelXML;``` line to the file that you want to use the library in
