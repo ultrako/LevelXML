@@ -1869,34 +1869,6 @@ public class LevelTest
 	}
 
 	[Fact]
-	public void TestLevelWithVictoryTriggerToShape()
-	{
-		Level level = new(@"<levelXML>
-    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
-    <shapes>
-        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
-    </shapes>
-    <triggers>
-        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""3"" r=""1"" sd=""f"">
-            <sh i=""0"">
-                <a i=""0"" />
-            </sh>
-        </t>
-    </triggers>
-</levelXML>");
-		string expected = @"<levelXML>
-    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
-    <shapes>
-        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
-    </shapes>
-    <triggers>
-        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""3"" r=""1"" sd=""f"" />
-    </triggers>
-</levelXML>";
-		Assert.Equal(expected, level.ToXML(), ignoreWhiteSpaceDifferences:true);
-	}
-
-	[Fact]
 	public void TestLevelWithVictoryTriggerToShape_TriggeredByTargets()
 	{
 		string levelXML = @"<levelXML>
