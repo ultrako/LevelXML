@@ -82,8 +82,8 @@ public abstract class Entity : LevelXMLTag
 			"t" => GetDoubleOrNull(element, "t") switch
 			{
 				1 => new ActivateTrigger(element, ReverseTargetMapper),
-				2 => new SoundTrigger(element),
-				3 => new VictoryTrigger(element),
+				2 => new SoundTrigger(element, ReverseTargetMapper),
+				3 => new VictoryTrigger(element, ReverseTargetMapper),
 				_ => throw new LevelXMLException("Trigger has an invalid action type!"),
 			},
 			_ => throw new LevelXMLException("XML tag type isn't an entity!"),

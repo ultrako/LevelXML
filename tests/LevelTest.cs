@@ -1819,4 +1819,100 @@ public class LevelTest
     </triggers>
 </levelXML>"));
 	}
+
+	[Fact]
+	public void TestLevelWithSoundTriggerToShape()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1"">
+            <sh i=""0"">
+                <a i=""0"" />
+            </sh>
+        </t>
+    </triggers>
+</levelXML>");
+		string expected = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1"" />
+    </triggers>
+</levelXML>";
+		Assert.Equal(expected, level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void TestLevelWithSoundTriggerToShape_TriggeredByTargets()
+	{
+		string levelXML = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""4"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1"">
+            <sh i=""0"">
+                <a i=""0"" />
+            </sh>
+        </t>
+    </triggers>
+</levelXML>";
+		Level level = new(levelXML);
+		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void TestLevelWithVictoryTriggerToShape()
+	{
+		Level level = new(@"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""3"" r=""1"" sd=""f"">
+            <sh i=""0"">
+                <a i=""0"" />
+            </sh>
+        </t>
+    </triggers>
+</levelXML>");
+		string expected = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""3"" r=""1"" sd=""f"" />
+    </triggers>
+</levelXML>";
+		Assert.Equal(expected, level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
+
+	[Fact]
+	public void TestLevelWithVictoryTriggerToShape_TriggeredByTargets()
+	{
+		string levelXML = @"<levelXML>
+    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+    <shapes>
+        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
+    </shapes>
+    <triggers>
+        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""4"" t=""3"" r=""1"" sd=""f"">
+            <sh i=""0"">
+                <a i=""0"" />
+            </sh>
+        </t>
+    </triggers>
+</levelXML>";
+		Level level = new(levelXML);
+		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true);
+	}
 }

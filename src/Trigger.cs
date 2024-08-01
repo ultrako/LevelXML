@@ -122,6 +122,58 @@ public abstract class Trigger : Entity
 		}
 	}
 
+	private List<Target> lst;
+	public IReadOnlyList<Target> Targets => lst;
+	/// <summary>
+	/// Append a target to this trigger's list of targets
+	/// </summary>
+	/// <param name="target"></param>
+	public void AddTarget(Target target) { InsertTarget(lst.Count, target); }
+	/// <summary>
+	/// Insert a target into the list of targets at a particular index.
+	/// The position indicates the order in which the actions fire ingame.
+	/// </summary>
+	/// <param name="index"></param>
+	/// <param name="target"></param>
+	public void InsertTarget(int index, Target target) 
+	{  
+		Target? sameTarget = lst
+			.Where(other => other.Targeted == target.Targeted)
+			.FirstOrDefault();
+		if (sameTarget is not null)
+		{
+			foreach (TriggerAction action in target.Actions)
+			{
+				sameTarget.AddAction(action);
+			}
+		} else
+		{
+			lst.Insert(index, target); 
+		}
+	}
+	public bool RemoveTarget(Target target) { return lst.Remove(target); }
+	public void RemoveTargetAt(int index) { lst.RemoveAt(index);}
+	public void ClearTargets() { lst.Clear(); }
+	public bool ContainsTarget(Target target) { return lst.Contains(target); }
+	public int IndexOfTarget(Target target) { return lst.IndexOf(target); }
+	public int TargetCount => lst.Count;
+
+	// Override this in Sound and Victory trigger to only call base functionality if TriggeredBy.Targets
+	internal override void PlaceInLevel(Func<Entity, int> mapper)
+	{
+		Elt.RemoveNodes();
+		foreach (Target target in lst)
+		{
+			target.PlaceInLevel(mapper);
+			Elt.Add(target.Elt);
+		}
+	}
+
+	internal override void FinishConstruction()
+	{
+		lst.ForEach(target => target.finishConstruction());
+	}
+
 	protected virtual void SetParams(XElement e)
 	{
 		X = GetDoubleOrNull(e, "x") ?? double.NaN;
@@ -139,9 +191,14 @@ public abstract class Trigger : Entity
 		}
 	}
 	
-	internal Trigger(XElement e) : base("t")
+	// Targets may come in either the <xml tag> or as a params arg to the constructor
+	// If it's in the xml tag, targets have indexes, so it needs the level to be able
+	// to have object references (as this class requires)
+	internal Trigger(XElement e, Func<XElement, Entity> reverseMapper=default!, params Target[] targets) : base("t")
 	{
 		Elt = new XElement(e.Name.ToString());
 		SetParams(e);
+		// If your trigger has elements, you need to pass a ReverseMapper to parse them
+		lst = new(targets.Concat(e.Elements().Select(targetTag => Target.FromXElement(targetTag, reverseMapper))).ToArray());
 	}
 }

@@ -87,10 +87,17 @@ public class SoundTrigger : Trigger, IConvertibleToXML
         Volume = GetDoubleOrNull(e, "v") ?? 1;
 	}
 
-	public string ToXML() { return ToXML(mapper:default!); }
+	internal override void PlaceInLevel(Func<Entity, int> mapper)
+	{
+		if (TriggeredBy == TriggeredBy.Targets)
+		{
+			base.PlaceInLevel(mapper);
+		}
+	}
 
-    internal SoundTrigger(XElement e) : base(e) {}
-	
-	public SoundTrigger(string xml=EditorDefault) : this(StrToXElement(xml)) {}
+	public string ToXML() { return ToXML(mapper:default!); }
+	public SoundTrigger(params Target[] targets) : this(EditorDefault, default!, targets) {}
+	internal SoundTrigger(XElement e, Func<XElement, Entity> ReverseMapper=default!, params Target[] targets) : base(e, ReverseMapper, targets) {}
+	internal SoundTrigger(string xml=EditorDefault, Func<XElement, Entity> ReverseMapper=default!, params Target[] targets) : this(StrToXElement(xml), ReverseMapper, targets: targets) {}
 	
 }
