@@ -1,0 +1,10 @@
+<levelXML>
+    <info v="1.95" x="300" y="5100" c="1" f="f" h="f" bg="0" bgc="16777215" e="1"/>
+    <triggers>
+        <t x="314" y="5223" w="100" h="100" a="0" b="1" t="1" r="1" sd="f" d="0">
+            <sh i="0">
+                <b i="0"/>
+            </sh>
+        </t>
+    </triggers>
+</levelXML>

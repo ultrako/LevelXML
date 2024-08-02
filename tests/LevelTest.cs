@@ -1758,22 +1758,6 @@ public class LevelTest
 	}
 
 	[Fact]
-	public void TestParseLevelWithInvalidTargetType()
-	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
-    <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""f"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
-    <shapes>
-        <sh t=""1"" p0=""444"" p1=""5357"" p2=""200"" p3=""200"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" p12=""0""/>
-    </shapes>
-    <triggers>
-        <t x=""280"" y=""5388"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
-            <john i=""0""/>
-        </t>
-    </triggers>
-</levelXML>"));
-	}
-
-	[Fact]
 	public void TestParseLevelWithTargetTypeOfEmptyTag()
 	{
 		// Have to make this test this way because throwing in an async method wraps my exception
@@ -1803,88 +1787,5 @@ public class LevelTest
 		trigger.AddTarget(target);
 		Level level = new(trigger);
 		Assert.Throws<LevelXMLException>(() => level.ToXML());
-	}
-
-	[Fact]
-	public void TestLevelWithInvalidTriggerActionTagName()
-	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
-    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
-    <triggers>
-        <t x=""314"" y=""5223"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
-            <sh i=""0"">
-                <b i=""0""/>
-            </sh>
-        </t>
-    </triggers>
-</levelXML>"));
-	}
-
-	[Fact]
-	public void TestLevelWithSoundTriggerToShape()
-	{
-		Level level = new(@"<levelXML>
-    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
-    <shapes>
-        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
-    </shapes>
-    <triggers>
-        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1"">
-            <sh i=""0"">
-                <a i=""0"" />
-            </sh>
-        </t>
-    </triggers>
-</levelXML>");
-		string expected = @"<levelXML>
-    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
-    <shapes>
-        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
-    </shapes>
-    <triggers>
-        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""1"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1"" />
-    </triggers>
-</levelXML>";
-		Assert.Equal(expected, level.ToXML(), ignoreWhiteSpaceDifferences:true);
-	}
-
-	[Fact]
-	public void TestLevelWithSoundTriggerToShape_TriggeredByTargets()
-	{
-		string levelXML = @"<levelXML>
-    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
-    <shapes>
-        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
-    </shapes>
-    <triggers>
-        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""4"" t=""2"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1"">
-            <sh i=""0"">
-                <a i=""0"" />
-            </sh>
-        </t>
-    </triggers>
-</levelXML>";
-		Level level = new(levelXML);
-		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true);
-	}
-
-	[Fact]
-	public void TestLevelWithVictoryTriggerToShape_TriggeredByTargets()
-	{
-		string levelXML = @"<levelXML>
-    <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
-    <shapes>
-        <sh t=""0"" p0=""0"" p1=""0"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
-    </shapes>
-    <triggers>
-        <t x=""0"" y=""0"" w=""100"" h=""100"" a=""0"" b=""4"" t=""3"" r=""1"" sd=""f"">
-            <sh i=""0"">
-                <a i=""0"" />
-            </sh>
-        </t>
-    </triggers>
-</levelXML>";
-		Level level = new(levelXML);
-		Assert.Equal(levelXML, level.ToXML(), ignoreWhiteSpaceDifferences:true);
 	}
 }
