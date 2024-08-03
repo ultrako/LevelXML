@@ -36,11 +36,14 @@ internal class Vertices : LevelXMLTag
 		}
 	}
 
-	internal void FinishConstruction() { id = vertMapper!(parent!); }
-
 	internal void PlaceInLevel()
 	{
-		FinishConstruction();
+		id = vertMapper!(parent!);
+		if (id < 0)
+		{
+			((CustomShape)parent!).ShallowCopy();
+			id = vertMapper!(parent!);
+		}
 		Elt.SetAttributeValue("id", id);
 		int index = 0;
 		foreach (Vertex v in verts)

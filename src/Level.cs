@@ -69,37 +69,6 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		.Concat(Triggers);
 
 	/// <summary>
-	/// Use this if you need to get rid of all inter-shape referencing,
-	/// at the cost of a bit of redundancy
-	/// Useful when you want to remove some but not all custom shapes,
-	/// but some of those that you are removing are originals that other still
-	/// -remaining shapes depend on.
-	/// </summary>
-	public void DetachCopiedCustomShapes()
-	{
-		IList<Vertex> findOriginalArt(int index)
-		{
-			return allNonemptyArts.Where(art => art.originalIndex == index).First().Vertices;
-		}
-		IList<Vertex> findOriginalPoly(int index)
-		{
-			return allNonemptyPolys.Where(poly => poly.originalIndex == index).First().Vertices;
-		}
-		IEnumerable<Art> allArts = Groups.SelectMany(group => group.Items).Concat(Shapes).OfType<Art>();
-		IEnumerable<Polygon> allPolys = Groups.SelectMany(group => group.Items).Concat(Shapes).OfType<Polygon>();
-		foreach (Art art in allArts.Where(art => art.isEmpty))
-		{
-			art.ShallowCopy(findOriginalArt);
-			art.originalIndex = allArts.ToList().IndexOf(art);
-		}
-		foreach (Polygon poly in allPolys.Where(poly => poly.isEmpty))
-		{
-			poly.ShallowCopy(findOriginalPoly);
-			poly.originalIndex = allPolys.ToList().IndexOf(poly);
-		}
-	}
-
-	/// <summary>
 	/// This constructor makes a Level from a valid levelXML string.
 	/// </summary>
 	public Level(string xml) : this(StrToXElement(xml)) {}
@@ -150,15 +119,14 @@ public class Level : LevelXMLTag, IConvertibleToXML
 			_ => triggersTag,
 		};
 	}
-
-	private IEnumerable<Art> allNonemptyArts => Shapes.Where(shape => shape is Art)
+	private IEnumerable<Art> allArts => Shapes
 				.Concat(Groups.SelectMany(group => group.Items))
-				.OfType<Art>()
-				.Where(art => !art.isEmpty);
-	private IEnumerable<Polygon> allNonemptyPolys => Shapes.Where(shape => shape is Polygon)
+				.OfType<Art>();
+	private IEnumerable<Art> allNonemptyArts => allArts.Where(art => !art.isEmpty);
+	private IEnumerable<Polygon> allPolys => Shapes
 				.Concat(Groups.SelectMany(group => group.Items))
-				.OfType<Polygon>()
-				.Where(poly => !poly.isEmpty);
+				.OfType<Polygon>();
+	private IEnumerable<Polygon> allNonemptyPolys => allPolys.Where(poly => !poly.isEmpty);
 
 	private int VertMapper(Entity e)
 	{
@@ -173,11 +141,11 @@ public class Level : LevelXMLTag, IConvertibleToXML
 			List<Art> matchingArts = allNonemptyArts.ToList();
 			if (art.isEmpty)
 			{
-				result = matchingArts.FindIndex(other => other.originalIndex == art.originalIndex);
+				result = matchingArts.IndexOf((Art)art.CopiedShape);
 			}
 			else
 			{
-				result = matchingArts.FindIndex(other => other == art);
+				result = matchingArts.IndexOf(art);
 			}
 		} 
 		else if (e is Polygon poly)
@@ -185,21 +153,14 @@ public class Level : LevelXMLTag, IConvertibleToXML
 			List<Polygon> matchingPolys = allNonemptyPolys.ToList();
 			if (poly.isEmpty)
 			{
-				result = matchingPolys.FindIndex(other => other.originalIndex == poly.originalIndex);
+				result = matchingPolys.IndexOf((Polygon)poly.CopiedShape);
 			}
 			else
 			{
-				result = matchingPolys.FindIndex(other => other == poly);
+				result = matchingPolys.IndexOf(poly);
 			}
 		}
-		if (result >= 0) 
-		{
-			 return result; 
-		}
-		else
-		{
-			throw new LevelXMLException("Art shape pointed to by another art shape was not found!");
-		}
+		return result;
 	}
 	private int EntityIndexMapper(Entity e)
 	{
@@ -291,19 +252,25 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		}
 		info = new(InfoTag);
 		XElement? ShapesElement = e.Element("shapes");
-		shapesTag = new DepthOneTag<Shape>(ShapesElement, VertMapper: VertMapper);
+		shapesTag = new DepthOneTag<Shape>(ShapesElement, vertMapper: VertMapper);
 		XElement? SpecialsElement = e.Element("specials");
 		specialsTag = new DepthOneTag<Special>(SpecialsElement);
 		XElement? GroupsElement = e.Element("groups");
-		groupsTag = new DepthOneTag<Group>(GroupsElement, VertMapper: VertMapper);
+		groupsTag = new DepthOneTag<Group>(GroupsElement, vertMapper: VertMapper);
 		XElement? JointsElement = e.Element("joints");
-		jointsTag = new DepthOneTag<Joint>(JointsElement, ReverseJointMapper: ReverseJointMapper);
+		jointsTag = new DepthOneTag<Joint>(JointsElement, reverseJointMapper: ReverseJointMapper);
 		XElement? TriggersElement = e.Element("triggers");
-		triggersTag = new DepthOneTag<Trigger>(TriggersElement, ReverseTargetMapper: ReverseTargetMapper);
+		triggersTag = new DepthOneTag<Trigger>(TriggersElement, reverseTargetMapper: ReverseTargetMapper);
 		// At this point the depth one tags can be indexed through
 		depthOneTagsReady.Set();
 		triggersTag.FinishConstruction();
-		shapesTag.FinishConstruction();
-		groupsTag.FinishConstruction();
+		foreach (Art art in allArts)
+		{
+			art.LocateParent(index => allNonemptyArts.Where(art => art.originalIndex == index).First());
+		}
+		foreach (Polygon poly in allPolys)
+		{
+			poly.LocateParent(index => allNonemptyPolys.Where(poly => poly.originalIndex == index).First());
+		}
 	}
 }
