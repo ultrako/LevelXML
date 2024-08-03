@@ -195,8 +195,8 @@ public class Group : Entity
 	{
 		IEnumerable<Entity> groupedEntities = 
 			e.Elements()
-			.Select(element => Entity.FromXElement(element, vertMapper: vertMapper))
-			.Concat(content ?? new Entity[0]);
+			.Select(element => FromXElement(element, vertMapper: vertMapper))
+			.Concat(content ?? Array.Empty<Entity>());
 		items = new(groupedEntities);
 		setParams(e);
 	}

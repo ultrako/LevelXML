@@ -7,6 +7,7 @@ namespace LevelXML;
 public abstract class CustomShape : Shape
 {
 	private Vertices verticesTag;
+	internal CustomShape CopiedShape;
 	internal bool isEmpty;
 	internal int originalIndex;
 	public IList<Vertex> Vertices
@@ -38,11 +39,21 @@ public abstract class CustomShape : Shape
 		}
 	}
 
-	internal void ShallowCopy(Func<int, IList<Vertex>> parentLocator)
+	internal void LocateParent(Func<int, CustomShape> parentLocator)
 	{
-		verticesTag.verts = parentLocator(verticesTag.originalIndex).ToList();
+		try
+		{
+			CopiedShape = parentLocator(verticesTag.originalIndex);
+		} catch (InvalidOperationException)
+		{
+			throw new LevelXMLException("Empty custom shape with invalid ID!");
+		}
+	}
+
+	internal void ShallowCopy()
+	{
+		verticesTag.verts = CopiedShape.Vertices.ToList();
 		isEmpty = false;
-		verticesTag.FinishConstruction();
 	}
 
 	internal override void PlaceInLevel(Func<Entity, int> vertMapper)
@@ -51,11 +62,6 @@ public abstract class CustomShape : Shape
 		Elt.RemoveNodes();
 		Elt.Add(verticesTag.Elt);
 		verticesTag.PlaceInLevel();
-	}
-
-	internal override void FinishConstruction()
-	{
-		verticesTag.FinishConstruction();
 	}
 
 	/// <summary>
@@ -98,14 +104,15 @@ public abstract class CustomShape : Shape
 
 	protected CustomShape(XElement e, Func<Entity, int> vertMapper, params Vertex[] vertices) : base(e)
 	{
+		CopiedShape = this;
 		XElement? vTag = e.Element("v");
 		if (vTag is not null)
 		{
-			this.verticesTag = new(vTag, this, vertMapper);
+			verticesTag = new(vTag, this, vertMapper);
 		}
 		else
 		{
-			this.verticesTag = new(this);
+			verticesTag = new(this);
 		}
 		foreach (Vertex v in vertices)
 		{
