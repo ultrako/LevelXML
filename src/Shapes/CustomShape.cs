@@ -6,7 +6,7 @@ namespace LevelXML;
 /// </summary>
 public abstract class CustomShape : Shape
 {
-	private Vertices verticesTag;
+	private readonly Vertices verticesTag;
 	internal CustomShape CopiedShape;
 	internal bool isEmpty;
 	internal int originalIndex;
@@ -16,8 +16,6 @@ public abstract class CustomShape : Shape
 	}
 	public override double Width
 	{
-		// Either figure out a way to get the width from the vertices,
-		// or make this field nullable
 		get 
 		{
 			return GetDouble("p2");
