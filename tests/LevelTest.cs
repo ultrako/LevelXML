@@ -1565,7 +1565,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithJointToSoccerBall()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new Level(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""10"" p0=""586"" p1=""5249"" />
@@ -1573,7 +1573,8 @@ public class LevelTest
     <joints>
         <j t=""0"" x=""546"" y=""5223"" b1=""-1"" b2=""s0"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
     </joints>
-</levelXML>").ToXML());
+</levelXML>");
+		Assert.IsType<SoccerBall>(level.Joints[0].Second);
 	}
 
 	[Fact]
@@ -1719,7 +1720,7 @@ public class LevelTest
 	public void JointToInvalidEntity()
 	{
 		PinJoint joint = new();
-		Assert.Throws<LevelXMLException>(() => joint.First = joint);
+		joint.First = joint;
 	}
 
 	[Fact]

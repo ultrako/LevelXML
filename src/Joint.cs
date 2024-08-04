@@ -11,39 +11,6 @@ public abstract class Joint : Entity
 	private Entity? first;
 	private Entity? second;
 
-	private void checkIfCanBeJointed(Entity? entity)
-	{
-		string exceptionMessage = "Cannot joint a " + (entity ?? new Group()).GetType().Name;
-		if (entity is null || entity is Group) { return; }
-		if (entity is Shape shape)
-		{
-			if (shape is Art) {  throw new LevelXMLException(exceptionMessage); }
-			return;
-		}
-		if (entity is Group) { return; }
-		if (entity is Special special)
-		{
-			if (special is IBeam) { return; }
-			if (special is Log) { return; }
-			if (special is ArrowGun) { return; }
-			if (special is SpikeSet) { return; }
-			if (special is Jet) { return; }
-			if (special is NonPlayerCharacter) { return; }
-			if (special is BladeWeapon) { return; }
-			if (special is Food) { return; }
-			if (special is Chain) { return; }
-			if (special is GlassPanel) { return; }
-			if (special is DinnerTable) { return; }
-			if (special is Chair) { return; }
-			if (special is Bottle) { return; }
-			if (special is Television) { return; }
-			if (special is Boombox) { return; }
-			if (special is Van) { return; }
-			if (special is TrashCan) { return; }
-			if (special is Toilet) { return; }
-		}
-		throw new LevelXMLException(exceptionMessage);
-	}
 	/// <summary>
 	///  The first Entity this Joint is jointed to.
 	///  Null means it's jointed to the background.
@@ -53,7 +20,6 @@ public abstract class Joint : Entity
 		get { return first;}
 		set
 		{
-			checkIfCanBeJointed(value);
 			first = value;
 		}
 	}
@@ -67,7 +33,6 @@ public abstract class Joint : Entity
 		get { return second;}
 		set
 		{
-			checkIfCanBeJointed(value);
 			second = value;
 		}
 	}

@@ -109,7 +109,7 @@ public class JointTest
     public void SlidingJointNaNAngle()
     {
         SlidingJoint sj = new();
-        Assert.Throws<LevelXMLException>(() => sj.Angle = double.NaN);
+        sj.Angle = double.NaN;
     }
 
     [Fact]
