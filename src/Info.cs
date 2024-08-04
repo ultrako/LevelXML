@@ -10,15 +10,6 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	internal const string LevelXMLVersion = "1.95";
 	public const string EditorDefault = @"<info v=""" + LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
 
-	internal string Version
-	{
-		get { return GetString("v"); }
-		set
-		{
-			Elt.SetAttributeValue("v", value);
-		}
-	}
-
 	public string ToXML() { return ToXML(mapper: default!); }
 
 	public double X
@@ -94,17 +85,9 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 		}
 	}
 
-	internal double E
-	{
-		set
-		{
-			Elt.SetAttributeValue("e", value);
-		}
-	}
-
 	protected void SetParams(XElement e)
 	{
-		Version = Info.LevelXMLVersion;
+		Elt.SetAttributeValue("v", LevelXMLVersion);
 		X = GetDoubleOrNull(e, "x") ?? double.NaN;
 		Y = GetDoubleOrNull(e, "y") ?? double.NaN;
 		Character = GetDoubleOrNull(e, "c") ?? double.NaN;
@@ -112,7 +95,7 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 		VehicleHidden = GetBoolOrNull(e, "h") ?? false;
 		Background = GetDoubleOrNull(e, "bg") ?? Background.Buggy;
 		BackgroundColor = GetDoubleOrNull(e, "bgc") ?? 16777215;
-		E = 1;
+		Elt.SetAttributeValue("e", 1);
 	}
 
 	public Info(string xml=EditorDefault) : this (StrToXElement(xml)) {}
