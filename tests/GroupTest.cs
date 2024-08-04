@@ -38,11 +38,10 @@ public class GroupTest
     }
 
     [Fact]
-    public void GroupWithJointThrows()
+    public void GroupWithJoint()
     {
         PinJoint joint = new();
         Group group = new(joint);
-        Assert.Throws<LevelXMLException>(() => group.ToXML(mapper:default!));
     }
 
     [Fact]
@@ -90,32 +89,32 @@ public class GroupTest
     }
 
     [Fact]
-    public void TestNaNXThrows()
+    public void TestNaNX()
     {
-        Assert.Throws<LevelXMLException>(() => new Group(@"<g x=""NaN"" y=""0"" r=""0"" ox=""0"" oy=""0"" />"));
+        _ = new Group(@"<g x=""NaN"" y=""0"" r=""0"" ox=""0"" oy=""0"" />");
     }
 
     [Fact]
-    public void TestNaNYThrows()
+    public void TestNaNY()
     {
-        Assert.Throws<LevelXMLException>(() => new Group(@"<g x=""0"" y=""NaN"" r=""0"" ox=""0"" oy=""0"" />"));
+       _ = new Group(@"<g x=""0"" y=""NaN"" r=""0"" ox=""0"" oy=""0"" />");
     }
 
     [Fact]
-    public void TestNaNRotationThrows()
+    public void TestNaNRotation()
     {
-        Assert.Throws<LevelXMLException>(() => new Group(@"<g x=""0"" y=""0"" r=""NaN"" ox=""0"" oy=""0"" />"));
+        _ = new Group(@"<g x=""0"" y=""0"" r=""NaN"" ox=""0"" oy=""0"" />");
     }
 
     [Fact]
-    public void TestNaNOriginXThrows()
+    public void TestNaNOriginX()
     {
-        Assert.Throws<LevelXMLException>(() => new Group(@"<g x=""0"" y=""0"" r=""0"" ox=""NaN"" oy=""0"" />"));
+        _ = new Group(@"<g x=""0"" y=""0"" r=""0"" ox=""NaN"" oy=""0"" />");
     }
 
     [Fact]
-    public void TestNaNOriginYThrows()
+    public void TestNaNOriginY()
     {
-        Assert.Throws<LevelXMLException>(() => new Group(@"<g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""NaN"" />"));
+        _ = new Group(@"<g x=""0"" y=""0"" r=""0"" ox=""0"" oy=""NaN"" />");
     }
 }

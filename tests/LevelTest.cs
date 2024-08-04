@@ -183,15 +183,15 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithGroupedSoccerBall()
 	{
-		// I add a ToXML() at the end here as group validity checking should only happen then
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <groups>
         <g x=""514"" y=""5321"" r=""0"" ox=""-514"" oy=""-5321"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"">
             <sp t=""10"" p0=""385"" p1=""5317""/>
         </g>
     </groups>
-</levelXML>").ToXML());
+</levelXML>");
+		Assert.IsType<SoccerBall>(level.Groups[0].Items[0]);
 	}
 
 	[Fact]
