@@ -8,7 +8,7 @@ namespace LevelXML;
 /// Shapes are simple entities that can have collision and they can be a part of groups.
 /// Shapes are either rectangles, triangles, circles, polygons, or art.
 /// </summary>
-public abstract class Shape : Entity
+public abstract class Shape : Entity, IConvertibleToXML
 {
 	internal abstract uint Type {get;}
 	
@@ -142,6 +142,8 @@ public abstract class Shape : Entity
 		get { return (Collision)GetDouble("p11");}
 		set { Elt.SetAttributeValue("p11", value);}
 	}
+
+	public string ToXML() { return ToXML(mapper: entity => 0); }
 	
 	// Had to split this out into two because the order of setting these properties matters
 	protected void SetFirstParams(XElement e)
@@ -151,6 +153,7 @@ public abstract class Shape : Entity
         X = GetDoubleOrNull(e, "p0") ?? double.NaN;
         Y = GetDoubleOrNull(e, "p1") ?? double.NaN;
 	}
+
 	protected void SetLastParams(XElement e)
 	{
         Rotation = GetDoubleOrNull(e, "p4") ?? 0;
@@ -162,7 +165,8 @@ public abstract class Shape : Entity
         Opacity = GetDoubleOrNull(e, "p10") ?? 100;
         Collision = (Collision?)GetDoubleOrNull(e, "p11") ?? Collision.Everything;
 	}
-	internal Shape(XElement e) : base("sh") 
+
+    internal Shape(XElement e) : base("sh") 
 	{
 		Elt = new XElement(e.Name.ToString());
 	}
