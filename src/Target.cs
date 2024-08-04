@@ -75,7 +75,8 @@ public abstract class Target : LevelXMLTag
 				Food => new Target<Food>(e, ReverseTargetMapper),
 				Bottle => new Target<Bottle>(e, ReverseTargetMapper),
 				Meteor => new Target<Meteor>(e, ReverseTargetMapper),
-				_ => throw new LevelXMLException("Special type cannot be pointed to by a trigger!"),
+				Special => new Target<Special>(e, ReverseTargetMapper),
+				_ => throw new LevelXMLException("Invalid special type pointed to by trigger!")
 			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),
 			"j" => new Target<Joint>(e, ReverseTargetMapper),

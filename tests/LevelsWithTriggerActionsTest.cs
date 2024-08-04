@@ -156,7 +156,7 @@ public class LevelsWithTriggerActionsTest
     [Fact]
     public void ParseLevelWithInvalidShapeActionID()
     {
-        Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+        Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <shapes>
         <sh t=""0"" p0=""542"" p1=""5338"" p2=""300"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1""/>
@@ -168,7 +168,8 @@ public class LevelsWithTriggerActionsTest
             </sh>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+        Assert.IsType<AwakeFromSleep<Shape>>(level.Triggers[0].Targets[0].Actions[0]);
     }
 
     [Fact]
@@ -195,7 +196,7 @@ public class LevelsWithTriggerActionsTest
     [Fact]
     public void ParseLevelWithInvalidSpecialActionID()
     {
-        Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+        Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""0"" p0=""483"" p1=""5312"" p2=""0"" p3=""f"" p4=""t""/>
@@ -207,7 +208,8 @@ public class LevelsWithTriggerActionsTest
             </sp>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+        Assert.IsType<AwakeFromSleep<Van>>(level.Triggers[0].Targets[0].Actions[0]);
     }
 
     [Fact]
@@ -374,7 +376,7 @@ public class LevelsWithTriggerActionsTest
     [Fact]
     public void ParseLevelWithInvalidGroupActionID()
     {
-        Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+        Level level= new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <groups>
         <g x=""519"" y=""5330"" r=""0"" ox=""-488"" oy=""-5344"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"">
@@ -388,7 +390,8 @@ public class LevelsWithTriggerActionsTest
             </g>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+        Assert.IsType<AwakeFromSleep<Group>>(level.Triggers[0].Targets[0].Actions[0]);
     }
 
     [Fact]
@@ -490,7 +493,7 @@ public class LevelsWithTriggerActionsTest
     [Fact]
     public void ParseLevelWithInvalidJointActionID()
     {
-        Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+        Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <shapes>
         <sh t=""0"" p0=""519"" p1=""5330"" p2=""300"" p3=""100"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1""/>
@@ -505,7 +508,8 @@ public class LevelsWithTriggerActionsTest
             </j>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+        Assert.IsType<DisableMotor>(level.Triggers[0].Targets[0].Actions[0]);
     }
 
     [Fact]
@@ -549,7 +553,7 @@ public class LevelsWithTriggerActionsTest
     [Fact]
     public void ParseLevelWithInvalidTriggerActionID()
     {
-        Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+        Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <triggers>
         <t x=""385"" y=""5170"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
@@ -559,6 +563,7 @@ public class LevelsWithTriggerActionsTest
         </t>
         <t x=""496"" y=""5325"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0""/>
     </triggers>
-</levelXML>"));
+</levelXML>");
+        Assert.IsType<Activate>(level.Triggers[0].Targets[0].Actions[0]);
     }
 }

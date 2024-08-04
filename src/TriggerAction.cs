@@ -36,7 +36,7 @@ public interface ITriggerAction<in T> : ITriggerAction
 				5 => (new DeleteShapes<Shape>() as ITriggerAction<T>)!,
 				6 => (new DeleteSelf<Shape>() as ITriggerAction<T>)!,
 				7 => (new ChangeCollision<Shape>(element) as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a shape!"),
+				_ => (new AwakeFromSleep<Shape>() as ITriggerAction<T>)!,
 			},
 			nameof(Group) => ActionType switch
 			{
@@ -48,7 +48,7 @@ public interface ITriggerAction<in T> : ITriggerAction
 				5 => (new DeleteShapes<Group>() as ITriggerAction<T>)!,
 				6 => (new DeleteSelf<Group>() as ITriggerAction<T>)!,
 				7 => (new ChangeCollision<Group>(element) as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a group!"),
+				_ => (new AwakeFromSleep<Group>() as ITriggerAction<T>)!,
 			},
 			nameof(Joint) => ActionType switch
 			{
@@ -57,21 +57,21 @@ public interface ITriggerAction<in T> : ITriggerAction
 				2 => (new DeleteSelfJoint() as ITriggerAction<T>)!,
 				3 => (new DisableLimits() as ITriggerAction<T>)!,
 				4 => (new ChangeLimits(element) as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a joint!"),
+				_ => (new DisableMotor() as ITriggerAction<T>)!,
 			},
 			nameof(Trigger) => ActionType switch 
 			{
 				0 => (new Activate() as ITriggerAction<T>)!,
 				1 => (new Disable() as ITriggerAction<T>)!,
 				2 => (new Enable() as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a trigger!"),
+				_ => (new Activate() as ITriggerAction<T>)!,
 			},
 			nameof(Harpoon) => ActionType switch
 			{
 				0 => (new FireHarpoon() as ITriggerAction<T>)!,
 				1 => (new DeactivateHarpoon() as ITriggerAction<T>)!,
 				2 => (new ActivateHarpoon() as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a harpoon!"),
+				_ => (new FireHarpoon() as ITriggerAction<T>)!,
 			},
 			nameof(Rail) or 
 			nameof(SpikeSet) or
@@ -90,13 +90,13 @@ public interface ITriggerAction<in T> : ITriggerAction
 			{
 				0 => new AwakeFromSleep<T>(),
 				1 => new Impulse<T>(),
-				_ => throw new LevelXMLException("Invalid id for an action")
+				_ => new AwakeFromSleep<T>()
 			},
 			nameof(TextBox) => ActionType switch
 			{
 				0 => (new ChangeOpacity<TextBox>(element) as ITriggerAction<T>)!,
 				1 => (new Slide(element) as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a textbox!"),
+				_ => (new ChangeOpacity<TextBox>(element) as ITriggerAction<T>)!,
 			},
 			nameof(NonPlayerCharacter) => ActionType switch
 			{
@@ -104,14 +104,14 @@ public interface ITriggerAction<in T> : ITriggerAction
 				1 => (new Impulse<NonPlayerCharacter>(element) as ITriggerAction<T>)!,
 				2 => (new HoldPose() as ITriggerAction<T>)!,
 				3 => (new ReleasePose() as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting an NPC!"),
+				_ => (new AwakeFromSleep<NonPlayerCharacter>() as ITriggerAction<T>)!,
 			},
 			nameof(GlassPanel) => ActionType switch
 			{
 				0 => (new Shatter() as ITriggerAction<T>)!,
 				1 => (new AwakeFromSleep<GlassPanel>() as ITriggerAction<T>)!,
 				2 => (new Impulse<GlassPanel>(element) as ITriggerAction<T>)!,
-				_ => throw new LevelXMLException("Invalid id for an action targeting a glass panel!"),
+				_ => (new Shatter() as ITriggerAction<T>)!,
 			},
 			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} cannot have trigger actions!"),
 		};
