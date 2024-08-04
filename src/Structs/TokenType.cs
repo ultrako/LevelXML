@@ -12,13 +12,10 @@ public struct TokenType
     public static readonly TokenType Axe = 4;
     public static readonly TokenType Bowling = 5;
     public static readonly TokenType Peace = 6;
+    public static readonly TokenType HalfToken = double.NaN;
 
     private TokenType(double val)
     {
-        if (double.IsNaN(val))
-        {
-            throw new LevelXMLException("This would make the token disappear!");
-        }
         this.val = Math.Clamp(val, 1, 6);
     }
     public static implicit operator TokenType(double val)

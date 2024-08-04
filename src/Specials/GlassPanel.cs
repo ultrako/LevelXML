@@ -13,10 +13,6 @@ public class GlassPanel : Special
         get { return GetDouble("p2"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the width to NaN would make this glass panel disappear!");
-            }
             SetDouble("p2", Math.Clamp(value, 5, 50));
         }
     }
@@ -26,10 +22,6 @@ public class GlassPanel : Special
         get { return GetDouble("p3"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the height to NaN would make this glass panel disappear!");
-            }
             SetDouble("p3", Math.Clamp(value, 50, 500));
         }
     }
@@ -38,11 +30,7 @@ public class GlassPanel : Special
 	{
 		get { return GetDouble("p4"); }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
+		{
 			SetDouble("p4", value); 
 		}
 	}

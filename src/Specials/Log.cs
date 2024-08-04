@@ -13,10 +13,6 @@ public class Log : Special
         get { return GetDouble("p2"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the width to NaN would make the special disappear!");
-            }
             SetDouble("p2", Math.Clamp(value, 36, 54));
         }
     }
@@ -26,10 +22,6 @@ public class Log : Special
         get { return GetDouble("p3"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the height to NaN would make the special disappear!");
-            }
             SetDouble("p3", Math.Clamp(value, 200, 600));
         }
     }
@@ -38,11 +30,7 @@ public class Log : Special
 	{
 		get { return GetDoubleOrNull("p4") ?? 0; }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("Setting the rotation to NaN would make the special disappear!");
-			}
+		{
 			SetDouble("p4", value); 
 		}
 	}

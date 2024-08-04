@@ -17,6 +17,6 @@ public class SpringPlatformTest
     public void TestSettingRotationAsNaN()
     {
         SpringPlatform springPlatform = new();
-        Assert.Throws<LevelXMLException>(() => springPlatform.Rotation = double.NaN);
+        springPlatform.Rotation = double.NaN;
     }
 }

@@ -13,10 +13,6 @@ public class NonPlayerCharacter : Special
 		get { return GetDouble("p2"); }
 		set 
 		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
 			SetDouble("p2", value); 
 		}
 	}
@@ -65,10 +61,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p8"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p8", Math.Clamp(value, -20, 20));
         }
     }
@@ -78,10 +70,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p9"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p9", Math.Clamp(value, -180, 60));
         }
     }
@@ -91,10 +79,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p10"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p10", Math.Clamp(value, -180, 60));
         }
     }
@@ -104,10 +88,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p11"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p11", Math.Clamp(value, -160, 0));
         }
     }
@@ -117,10 +97,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p12"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p12", Math.Clamp(value, -160, 0));
         }
     }
@@ -130,10 +106,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p13"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p13", Math.Clamp(value, -160, 10));
         }
     }
@@ -143,10 +115,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p14"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p14", Math.Clamp(value, -160, 10));
         }
     }
@@ -156,10 +124,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p15"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p15", Math.Clamp(value, -0, 150));
         }
     }
@@ -169,10 +133,6 @@ public class NonPlayerCharacter : Special
         get { return GetDouble("p16"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting any pose angle to NaN would make this NPC disappear!");
-            }
             SetDouble("p16", Math.Clamp(value, -0, 150));
         }
     }
@@ -190,7 +150,7 @@ public class NonPlayerCharacter : Special
     {
         base.SetParams(e);
         Rotation = GetDoubleOrNull(e, "p2") ?? 0;
-        NPCType = GetDoubleOrNull(e, "p3") ?? LevelXML.NPCType.WheelchairGuy;
+        NPCType = GetDoubleOrNull(e, "p3") ?? NPCType.WheelchairGuy;
         Sleeping = GetBoolOrNull(e, "p4") ?? false;
         Reverse = GetBoolOrNull(e, "p5") ?? false;
         HoldPose = GetBoolOrNull(e, "p6") ?? false;

@@ -20,20 +20,20 @@ public class LogTest
     public void TestSettingRotationAsNaN()
     {
         Log log = new();
-        Assert.Throws<LevelXMLException>(() => log.Rotation = double.NaN);
+        log.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingWidthAsNaN()
     {
         Log log = new();
-        Assert.Throws<LevelXMLException>(() => log.Width = double.NaN);
+        log.Width = double.NaN;
     }
 
     [Fact]
     public void TestSettingHeightAsNaN()
     {
         Log log = new();
-        Assert.Throws<LevelXMLException>(() => log.Height = double.NaN);
+        log.Height = double.NaN;
     }
 }

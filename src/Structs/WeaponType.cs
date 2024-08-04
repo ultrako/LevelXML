@@ -18,13 +18,10 @@ public struct WeaponType
     public static readonly WeaponType Javelin = 10;
     public static readonly WeaponType Sai = 11;
     public static readonly WeaponType Trident = 12;
+    public static readonly WeaponType Invisible = double.NaN;
 
     private WeaponType(double val)
     {
-        if (double.IsNaN(val))
-        {
-            throw new LevelXMLException("That would make the blade weapon disappear!");
-        }
         this.val = Math.Clamp(val, 1, 12);
     }
     public static implicit operator WeaponType(double val)

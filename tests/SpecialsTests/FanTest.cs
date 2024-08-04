@@ -16,6 +16,6 @@ public class FanTest
     public void TestSettingRotationAsNaN()
     {
         Fan fan = new();
-        Assert.Throws<LevelXMLException>(() => fan.Rotation = double.NaN);
+        fan.Rotation = double.NaN;
     }
 }

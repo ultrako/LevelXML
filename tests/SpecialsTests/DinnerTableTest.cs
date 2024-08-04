@@ -18,6 +18,6 @@ public class DinnerTableTest
     public void TestSettingRotationAsNaN()
     {
         DinnerTable table = new();
-        Assert.Throws<LevelXMLException>(() => table.Rotation = double.NaN);
+        table.Rotation = double.NaN;
     }
 }

@@ -18,13 +18,13 @@ public class FoodTest
     public void TestSettingRotationAsNaN()
     {
         Food food = new();
-        Assert.Throws<LevelXMLException>(() => food.Rotation = double.NaN);
+        food.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingFoodTypeAsNaN()
     {
         Food food = new();
-        Assert.Throws<LevelXMLException>(() => food.FoodType = double.NaN);
+        food.FoodType = double.NaN;
     }
 }

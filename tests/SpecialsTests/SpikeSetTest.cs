@@ -19,13 +19,13 @@ public class SpikeSetTest
     public void TestSettingRotationAsNaN()
     {
         SpikeSet spikes = new();
-        Assert.Throws<LevelXMLException>(() => spikes.Rotation = double.NaN);
+        spikes.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingSpikesAsNaN()
     {
         SpikeSet spikes = new();
-        Assert.Throws<LevelXMLException>(() => spikes.Spikes = double.NaN);
+        spikes.Spikes = double.NaN;
     }
 }

@@ -55,7 +55,7 @@ public class LevelTest
 	public void TestLevelWithNaNCharacter()
 	{
 		Level level = new();
-		Assert.Throws<LevelXMLException>(() => level.Character = double.NaN);
+		level.Character = double.NaN;
 	}
 
 	[Fact]

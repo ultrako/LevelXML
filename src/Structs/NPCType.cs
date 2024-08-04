@@ -25,6 +25,8 @@ public struct NPCType
 
     private NPCType(double val)
     {
+        // Yes, it specifically no longer stays in the LevelXML in import,
+        // if I don't throw here it's hard to debug
         if (double.IsNaN(val))
         {
             throw new LevelXMLException("This would make the NPC disappear!");

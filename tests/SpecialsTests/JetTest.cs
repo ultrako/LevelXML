@@ -21,13 +21,13 @@ public class JetTest
     public void TestSettingRotationAsNaN()
     {
         Jet jet = new();
-        Assert.Throws<LevelXMLException>(() => jet.Rotation = double.NaN);
+        jet.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingPowerAsNaN()
     {
         Jet jet = new();
-        Assert.Throws<LevelXMLException>(() => jet.Power = double.NaN);
+        jet.Power = double.NaN;
     }
 }

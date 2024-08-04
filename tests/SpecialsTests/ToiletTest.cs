@@ -19,6 +19,6 @@ public class ToiletTest
     public void TestSettingRotationAsNaN()
     {
         Toilet toilet = new();
-        Assert.Throws<LevelXMLException>(() => toilet.Rotation = double.NaN);
+        toilet.Rotation = double.NaN;
     }
 }

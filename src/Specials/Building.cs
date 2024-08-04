@@ -11,11 +11,7 @@ public abstract class Building : Special
 	{
 		get { return GetDouble("p2"); }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
+		{
 			SetDouble("p2", Math.Clamp(value, 1, 10)); 
 		}
 	}

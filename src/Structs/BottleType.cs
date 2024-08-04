@@ -10,13 +10,10 @@ public struct BottleType
     public static readonly BottleType Blue = 2;
     public static readonly BottleType Red = 3;
     public static readonly BottleType Yellow = 4;
+    public static readonly BottleType None = double.NaN;
 
     private BottleType(double val)
     {
-        if (double.IsNaN(val))
-        {
-            throw new LevelXMLException("This would make the level freeze on start!");
-        }
         this.val = Math.Clamp(val, 1, 4);
     }
     public static implicit operator BottleType(double val)

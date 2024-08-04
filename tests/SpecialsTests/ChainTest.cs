@@ -20,20 +20,20 @@ public class ChainTest
     public void TestSettingRotationAsNaN()
     {
         Chain chain = new();
-        Assert.Throws<LevelXMLException>(() => chain.Rotation = double.NaN);
+        chain.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingLinkScaleAsNaN()
     {
         Chain chain = new();
-        Assert.Throws<LevelXMLException>(() => chain.LinkScale = double.NaN);
+        chain.LinkScale = double.NaN;
     }
 
     [Fact]
     public void TestSettingCurveAsNaN()
     {
         Chain chain = new();
-        Assert.Throws<LevelXMLException>(() => chain.Curve = double.NaN);
+        chain.Curve = double.NaN;
     }
 }

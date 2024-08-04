@@ -22,7 +22,7 @@ public class TextBoxTest
     public void TestNaNRotation()
     {
         TextBox textbox = new();
-        Assert.Throws<LevelXMLException>(() => textbox.Rotation = double.NaN);
+        textbox.Rotation = double.NaN;
     }
 
     [Fact]

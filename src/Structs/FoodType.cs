@@ -9,13 +9,10 @@ public struct FoodType
     public static readonly FoodType Watermelon = 1;
     public static readonly FoodType Pumpkin = 2;
     public static readonly FoodType Pineapple = 3;
+    public static readonly FoodType None = double.NaN;
 
     private FoodType(double val)
     {
-        if (double.IsNaN(val))
-        {
-            throw new LevelXMLException("This would make the food disappear!");
-        }
         this.val = Math.Clamp(val, 1, 3);
     }
     public static implicit operator FoodType(double val)

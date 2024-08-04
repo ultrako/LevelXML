@@ -30,21 +30,21 @@ public class NonPlayerCharacterTest
     public void TestSettingRotationAsNaN()
     {
         NonPlayerCharacter npc = new();
-        Assert.Throws<LevelXMLException>(() => npc.Rotation = double.NaN);
+        npc.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingPoseAnglesAsNaN()
     {
         NonPlayerCharacter npc = new();
-        Assert.Throws<LevelXMLException>(() => npc.NeckAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.FrontArmAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.BackArmAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.FrontElbowAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.BackElbowAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.FrontLegAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.BackLegAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.FrontKneeAngle = double.NaN);
-        Assert.Throws<LevelXMLException>(() => npc.BackKneeAngle = double.NaN);
+        npc.NeckAngle = double.NaN;
+        npc.FrontArmAngle = double.NaN;
+        npc.BackArmAngle = double.NaN;
+        npc.FrontElbowAngle = double.NaN;
+        npc.BackElbowAngle = double.NaN;
+        npc.FrontLegAngle = double.NaN;
+        npc.BackLegAngle = double.NaN;
+        npc.FrontKneeAngle = double.NaN;
+        npc.BackKneeAngle = double.NaN;
     }
 }

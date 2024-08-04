@@ -17,7 +17,7 @@ public class Token : Special
     protected override void SetParams(XElement e)
     {
         base.SetParams(e);
-        TokenType = GetDoubleOrNull(e, "p2") ?? LevelXML.TokenType.Skull;
+        TokenType = GetDoubleOrNull(e, "p2") ?? TokenType.Skull;
     }
 
     public Token(string xml=EditorDefault) : this(StrToXElement(xml)) {}

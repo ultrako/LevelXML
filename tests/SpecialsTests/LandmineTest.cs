@@ -16,6 +16,6 @@ public class LandmineTest
     public void TestSettingRotationAsNaN()
     {
         Landmine landmine = new();
-        Assert.Throws<LevelXMLException>(() => landmine.Rotation = double.NaN);
+        landmine.Rotation = double.NaN;
     }
 }

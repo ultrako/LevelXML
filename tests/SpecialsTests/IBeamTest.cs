@@ -20,20 +20,20 @@ public class IBeamTest
     public void TestSettingRotationAsNaN()
     {
         IBeam iBeam = new();
-        Assert.Throws<LevelXMLException>(() => iBeam.Rotation = double.NaN);
+        iBeam.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingWidthAsNaN()
     {
         IBeam iBeam = new();
-        Assert.Throws<LevelXMLException>(() => iBeam.Width = double.NaN);
+        iBeam.Width = double.NaN;
     }
 
     [Fact]
     public void TestSettingHeightAsNaN()
     {
         IBeam iBeam = new();
-        Assert.Throws<LevelXMLException>(() => iBeam.Height = double.NaN);
+        iBeam.Height = double.NaN;
     }
 }

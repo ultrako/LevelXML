@@ -12,11 +12,7 @@ public class Sign : Special
 	{
 		get { return GetDouble("p2"); }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
+		{
 			SetDouble("p2", value); 
 		}
 	}
@@ -37,7 +33,7 @@ public class Sign : Special
     {
         base.SetParams(e);
         Rotation = GetDoubleOrNull(e, "p2") ?? 0;
-        SignType = GetDoubleOrNull(e, "p3") ?? LevelXML.SignType.RightArrow;
+        SignType = GetDoubleOrNull(e, "p3") ?? SignType.RightArrow;
         ShowSignPost = GetBoolOrNull(e, "p4") ?? true;
     }
 
