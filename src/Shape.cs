@@ -146,10 +146,6 @@ public abstract class Shape : Entity
 	// Had to split this out into two because the order of setting these properties matters
 	protected void SetFirstParams(XElement e)
 	{
-		if (e.Name != "sh")
-		{
-			throw new LevelXMLException("Shape xml string was not passed to the Shape constructor!");
-		}
 		Elt.SetAttributeValue("t", Type);
 		Interactive = GetBoolOrNull(e, "i");
         X = GetDoubleOrNull(e, "p0") ?? double.NaN;

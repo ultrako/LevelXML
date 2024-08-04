@@ -250,12 +250,6 @@ public class ShapeTest
 		Assert.Equal(expectedHeight, art.Height);
 	}
 
-	[Fact]
-	public void ArtTestInvalidXml()
-	{
-		Assert.Throws<LevelXMLException>(() => new Art("<art />"));
-	}
-
 	// Yes, the happy wheels import box also supports this way of formatting vertices.
 	// No idea why, but I'm mad about it.
 	[Fact]

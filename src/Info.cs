@@ -94,19 +94,15 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 		}
 	}
 
-	internal double? E
+	internal double E
 	{
 		set
 		{
-			if (value != 1)
-			{
-				throw new LevelXMLException("This would make the level not import!");
-			}
-			Elt.SetAttributeValue("e", value!);
+			Elt.SetAttributeValue("e", value);
 		}
 	}
 
-	protected void setParams(XElement e)
+	protected void SetParams(XElement e)
 	{
 		Version = Info.LevelXMLVersion;
 		X = GetDoubleOrNull(e, "x") ?? double.NaN;
@@ -114,11 +110,9 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 		Character = GetDoubleOrNull(e, "c") ?? double.NaN;
 		ForcedCharacter = GetBoolOrNull(e, "f") ?? false;
 		VehicleHidden = GetBoolOrNull(e, "h") ?? false;
-		Background = GetDoubleOrNull(e, "bg") ?? LevelXML.Background.Buggy;
+		Background = GetDoubleOrNull(e, "bg") ?? Background.Buggy;
 		BackgroundColor = GetDoubleOrNull(e, "bgc") ?? 16777215;
-		// Unfortunate naming here
-		// idk what Jim Bonacci meant by "e"
-		this.E = GetDoubleOrNull(e, "e");
+		E = 1;
 	}
 
 	public Info(string xml=EditorDefault) : this (StrToXElement(xml)) {}
@@ -126,6 +120,6 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	internal Info(XElement e) : base("info")
 	{
 		Elt = new XElement(e.Name.ToString());
-		setParams(e);
+		SetParams(e);
 	}
 }

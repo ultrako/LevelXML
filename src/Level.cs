@@ -244,7 +244,7 @@ public class Level : LevelXMLTag, IConvertibleToXML
 	{
 		if (e.Name.ToString() != "levelXML")
 		{
-			throw new LevelXMLException("You didn't give me a LevelXML tag!");
+			throw new LevelXMLException("Xml is missing a LevelXML Tag!");
 		}
 		XElement? InfoTag = e.Element("info");
 		if (InfoTag is null) { 

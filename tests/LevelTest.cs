@@ -98,9 +98,14 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidE()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
-    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""2""/>
-</levelXML>"));
+		string input = @"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""2"" />
+</levelXML>";
+		Level level = new (input);
+		string expected = @"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+</levelXML>";
+		Assert.Equal(expected, level.ToXML());
 	}
 
 	[Fact]
