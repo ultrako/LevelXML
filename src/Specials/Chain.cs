@@ -12,11 +12,7 @@ public class Chain : Special
 	{
 		get { return GetDouble("p2"); }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
+		{
 			SetDouble("p2", value); 
 		}
 	}
@@ -50,10 +46,6 @@ public class Chain : Special
         get { return GetDouble("p6"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the Link Scale to NaN would make the chain disappear!");
-            }
             SetDouble("p6", Math.Clamp(value, 1, 10));
         }
     }
@@ -66,10 +58,6 @@ public class Chain : Special
         get { return GetDouble("p7"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the Curve to NaN would make the chain disappear!");
-            }
             SetDouble("p7", Math.Clamp(value, -10, 10));
         }
     }

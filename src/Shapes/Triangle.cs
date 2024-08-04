@@ -18,22 +18,18 @@ public class Triangle : Shape, IConvertibleToXML
 		get { return GetDouble("p2"); }
 		set
 		{
-			if (double.IsNaN(value)) 
-			{
-                throw new LevelXMLException("This would make the triangle disappear!");
-			} 
+
 			SetDouble("p2", Math.Clamp(value, 5, 5000));
 		}
 	}
 
+	// Should I consider clamping height based on Width?
+	// Or should I just let the game do that for me?
 	public override double Height
 	{
 		get { return GetDouble("p3"); }
 		set
 		{
-			if (double.IsNaN(value)) {
-				throw new LevelXMLException("This would make the triangle disappear!");
-			} 
 			SetDouble("p3", Math.Clamp(value, 15, 5000));
 		}
 	}

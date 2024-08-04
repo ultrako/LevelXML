@@ -21,20 +21,20 @@ public class GlassPanelTest
     public void TestSettingWidthAsNaN()
     {
         GlassPanel glassPanel = new();
-        Assert.Throws<LevelXMLException>(() => glassPanel.Width = double.NaN);
+        glassPanel.Width = double.NaN;
     }
 
     [Fact]
     public void TestSettingHeightAsNaN()
     {
         GlassPanel glassPanel = new();
-        Assert.Throws<LevelXMLException>(() => glassPanel.Height = double.NaN);
+        glassPanel.Height = double.NaN;
     }
 
     [Fact]
     public void TestSettingRotationAsNaN()
     {
         GlassPanel glassPanel = new();
-        Assert.Throws<LevelXMLException>(() => glassPanel.Rotation = double.NaN);
+        glassPanel.Rotation = double.NaN;
     }
 }

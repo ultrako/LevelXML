@@ -18,6 +18,6 @@ public class BoomboxTest
     public void TestSettingRotationAsNaN()
     {
         Boombox boombox = new();
-        Assert.Throws<LevelXMLException>(() => boombox.Rotation = double.NaN);
+        boombox.Rotation = double.NaN;
     }
 }

@@ -13,10 +13,6 @@ public class Meteor : Special
         get { return GetDouble("p2"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the width or height to NaN would make the special disappear!");
-            }
             double clamped = Math.Clamp(value, 200, 600);
             SetDouble("p2", clamped);
             SetDouble("p3", clamped);

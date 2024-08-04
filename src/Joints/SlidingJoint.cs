@@ -54,10 +54,6 @@ public class SlidingJoint : Joint
         get { return GetDoubleOrNull("a") ?? double.NaN; }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the angle to NaN on a sliding joint makes a black hole!");
-            }
             SetDouble("a", value);
         }
     }

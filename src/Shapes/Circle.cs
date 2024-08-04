@@ -15,9 +15,6 @@ public class Circle : Shape, IConvertibleToXML
 		get { return GetDouble("p2"); }
 		set
 		{
-			if (double.IsNaN(value)) {
-				throw new LevelXMLException("This would make the circle disappear!");
-			}
             double clamped = Math.Clamp(value, 5, 5000);
 			Elt.SetAttributeValue("p2", clamped);
             Elt.SetAttributeValue("p3", clamped);

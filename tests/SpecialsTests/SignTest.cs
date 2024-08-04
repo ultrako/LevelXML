@@ -18,6 +18,6 @@ public class SignTest
     public void TestSettingRotationAsNaN()
     {
         Sign sign = new();
-        Assert.Throws<LevelXMLException>(() => sign.Rotation = double.NaN);
+        sign.Rotation = double.NaN;
     }
 }

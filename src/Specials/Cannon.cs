@@ -13,10 +13,6 @@ public class Cannon : Special
 		get { return GetDouble("p2"); }
 		set 
 		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
 			SetDouble("p2", value); 
 		}
 	}
@@ -81,7 +77,7 @@ public class Cannon : Special
         Rotation = GetDoubleOrNull(e, "p2") ?? 0;
         StartRotation = GetDoubleOrNull(e, "p3") ?? 0;
         FiringRotation = GetDoubleOrNull(e, "p4") ?? 0;
-        CannonType = GetDoubleOrNull(e, "p5") ?? LevelXML.CannonType.Circus;
+        CannonType = GetDoubleOrNull(e, "p5") ?? CannonType.Circus;
         Delay = GetDoubleOrNull(e, "p6") ?? 1;
         MuzzleScale = GetDoubleOrNull(e, "p7") ?? 1;
         Power = GetDoubleOrNull(e, "p8") ?? 5;

@@ -35,11 +35,7 @@ public abstract class Shape : Entity
 		get { return GetDouble("p0"); }
 		set
 		{
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the shape disappear!");
-			}
-			else { Elt.SetAttributeValue("p0", value); }
+			Elt.SetAttributeValue("p0", value);
 		}
 	}
 	public override double Y
@@ -47,11 +43,7 @@ public abstract class Shape : Entity
 		get { return GetDouble("p1"); }
 		set
 		{
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the shape disappear!");
-			}
-			else { Elt.SetAttributeValue("p1", value); }
+			Elt.SetAttributeValue("p1", value);
 		}
 	}
 
@@ -65,10 +57,6 @@ public abstract class Shape : Entity
 		get { return GetDouble("p4"); }
 		set 
 		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the shape disappear!");
-			}
 			Elt.SetAttributeValue("p4", Math.Clamp(value,-180,180)); 
 		}
 	}

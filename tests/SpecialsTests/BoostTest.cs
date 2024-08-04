@@ -18,13 +18,13 @@ public class BoostTest
     public void TestSettingRotationAsNaN()
     {
         Boost boost = new();
-        Assert.Throws<LevelXMLException>(() => boost.Rotation = double.NaN);
+        boost.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingPanelsAsNaN()
     {
         Boost boost = new();
-        Assert.Throws<LevelXMLException>(() => boost.Panels = double.NaN);
+        boost.Panels = double.NaN;
     }
 }

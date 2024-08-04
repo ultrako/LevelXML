@@ -15,6 +15,6 @@ public class TokenTest
     public void TestSettingTokenTypeAsNaN()
     {
         Token token = new();
-        Assert.Throws<LevelXMLException>(() => token.TokenType = double.NaN);
+        token.TokenType = double.NaN;
     }
 }

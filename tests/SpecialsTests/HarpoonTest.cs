@@ -21,6 +21,6 @@ public class HarpoonTest
     public void TestSettingRotationAsNaN()
     {
         Harpoon harpoon = new();
-        Assert.Throws<LevelXMLException>(() => harpoon.Rotation = double.NaN);
+        harpoon.Rotation = double.NaN;
     }
 }

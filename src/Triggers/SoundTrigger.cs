@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using System.Collections;
 
 namespace LevelXML;
 /// <summary>
@@ -21,10 +20,6 @@ public class SoundTrigger : Trigger, IConvertibleToXML
 		get { return GetDoubleOrNull("s") ?? 0; }
 		set
 		{
-			if (value < 0 || value > 325)
-			{
-				throw new LevelXMLException("Sound number is invalid! This trigger would freeze the level!");
-			}
 			SetDouble("s", value);
 		}
 	}

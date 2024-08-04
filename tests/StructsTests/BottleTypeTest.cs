@@ -44,6 +44,6 @@ public class BottleTypeTest
     public void BottleTypeAsNaN()
     {
         BottleType bType;
-        Assert.Throws<LevelXMLException>(() => bType = double.NaN);
+        bType = double.NaN;
     }
 }

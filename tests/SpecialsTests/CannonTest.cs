@@ -21,6 +21,6 @@ public class CannonTest
     public void TestSettingRotationAsNaN()
     {
         Cannon cannon = new();
-        Assert.Throws<LevelXMLException>(() => cannon.Rotation = double.NaN);
+        cannon.Rotation = double.NaN;
     }
 }

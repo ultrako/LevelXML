@@ -7,13 +7,13 @@ public class SpecialTest
     [Fact]
     public void TestSpecialNaNX()
     {
-        Assert.Throws<LevelXMLException>(() => new TextBox(@"<sp t=""16"" p0=""NaN"" p1=""0"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"" />"));
+        _ = new TextBox(@"<sp t=""16"" p0=""NaN"" p1=""0"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"" />");
     }
 
     [Fact]
     public void TestSpecialNaNY()
     {
-        Assert.Throws<LevelXMLException>(() => new TextBox(@"<sp t=""16"" p0=""0"" p1=""NaN"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"" />"));
+        _ = new TextBox(@"<sp t=""16"" p0=""0"" p1=""NaN"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"" />");
     }
 
     [Fact]

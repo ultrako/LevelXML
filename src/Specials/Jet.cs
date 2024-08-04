@@ -12,11 +12,7 @@ public class Jet : Special
 	{
 		get { return GetDouble("p2"); }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("That would make the special disappear!");
-			}
+		{
 			SetDouble("p2", value); 
 		}
 	}
@@ -35,10 +31,6 @@ public class Jet : Special
         get { return GetDouble("p4"); }
         set 
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the power to NaN would make the jet disappear!");
-            }
             SetDouble("p4", Math.Clamp(value, 1, 10));
         }
     }

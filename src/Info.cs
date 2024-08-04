@@ -10,15 +10,6 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	internal const string LevelXMLVersion = "1.95";
 	public const string EditorDefault = @"<info v=""" + LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>";
 
-	internal string Version
-	{
-		get { return GetString("v"); }
-		set
-		{
-			Elt.SetAttributeValue("v", value);
-		}
-	}
-
 	public string ToXML() { return ToXML(mapper: default!); }
 
 	public double X
@@ -94,31 +85,17 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 		}
 	}
 
-	internal double? E
+	protected void SetParams(XElement e)
 	{
-		set
-		{
-			if (value != 1)
-			{
-				throw new LevelXMLException("This would make the level not import!");
-			}
-			Elt.SetAttributeValue("e", value!);
-		}
-	}
-
-	protected void setParams(XElement e)
-	{
-		Version = Info.LevelXMLVersion;
+		Elt.SetAttributeValue("v", LevelXMLVersion);
 		X = GetDoubleOrNull(e, "x") ?? double.NaN;
 		Y = GetDoubleOrNull(e, "y") ?? double.NaN;
 		Character = GetDoubleOrNull(e, "c") ?? double.NaN;
 		ForcedCharacter = GetBoolOrNull(e, "f") ?? false;
 		VehicleHidden = GetBoolOrNull(e, "h") ?? false;
-		Background = GetDoubleOrNull(e, "bg") ?? LevelXML.Background.Buggy;
+		Background = GetDoubleOrNull(e, "bg") ?? Background.Buggy;
 		BackgroundColor = GetDoubleOrNull(e, "bgc") ?? 16777215;
-		// Unfortunate naming here
-		// idk what Jim Bonacci meant by "e"
-		this.E = GetDoubleOrNull(e, "e");
+		Elt.SetAttributeValue("e", 1);
 	}
 
 	public Info(string xml=EditorDefault) : this (StrToXElement(xml)) {}
@@ -126,6 +103,6 @@ internal class Info : LevelXMLTag, IConvertibleToXML
 	internal Info(XElement e) : base("info")
 	{
 		Elt = new XElement(e.Name.ToString());
-		setParams(e);
+		SetParams(e);
 	}
 }

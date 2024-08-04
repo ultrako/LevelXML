@@ -55,7 +55,7 @@ public class LevelTest
 	public void TestLevelWithNaNCharacter()
 	{
 		Level level = new();
-		Assert.Throws<LevelXMLException>(() => level.Character = double.NaN);
+		level.Character = double.NaN;
 	}
 
 	[Fact]
@@ -98,9 +98,14 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidE()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
-    <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""2""/>
-</levelXML>"));
+		string input = @"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""2"" />
+</levelXML>";
+		Level level = new (input);
+		string expected = @"<levelXML>
+  <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
+</levelXML>";
+		Assert.Equal(expected, level.ToXML());
 	}
 
 	[Fact]
@@ -167,7 +172,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithTriggerToSoccerBall()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""10"" p0=""457"" p1=""5199""/>
@@ -177,21 +182,22 @@ public class LevelTest
             <sp i=""0""/>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+		Assert.IsType<SoccerBall>(level.Triggers[0].Targets[0].Targeted);
 	}
 
 	[Fact]
 	public void ParseLevelWithGroupedSoccerBall()
 	{
-		// I add a ToXML() at the end here as group validity checking should only happen then
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <groups>
         <g x=""514"" y=""5321"" r=""0"" ox=""-514"" oy=""-5321"" s=""f"" f=""f"" o=""100"" im=""f"" fr=""f"">
             <sp t=""10"" p0=""385"" p1=""5317""/>
         </g>
     </groups>
-</levelXML>").ToXML());
+</levelXML>");
+		Assert.IsType<SoccerBall>(level.Groups[0].Items[0]);
 	}
 
 	[Fact]
@@ -743,7 +749,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidHarpoonActionID()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new(@"<levelXML>
     <info v=""1.95"" x=""111"" y=""39"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""15"" p0=""121"" p1=""150.0517578125"" p2=""0"" p3=""t"" p4=""t"" p5=""0"" p6=""f"" p7=""f""/>
@@ -755,7 +761,8 @@ public class LevelTest
             </sp>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+		Assert.IsType<FireHarpoon>(level.Triggers[0].Targets[0].Actions[0]);
 	}
 
 	[Fact]
@@ -807,7 +814,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidTextBoxActionID()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level= new(@"<levelXML>
     <info v=""1.95"" x=""176"" y=""5138"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""16"" p0=""248"" p1=""5152"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
@@ -821,7 +828,8 @@ public class LevelTest
             </sp>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+		Assert.IsType<ChangeOpacity<TextBox>>(level.Triggers[0].Targets[0].Actions[0]);
 	}
 
 	[Fact]
@@ -911,7 +919,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidNPCActionID()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new(@"<levelXML>
     <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""17"" p0=""105"" p1=""117"" p2=""0"" p3=""1"" p4=""f"" p5=""f"" p6=""f"" p7=""t"" p8=""0"" p9=""0"" p10=""0"" p11=""0"" p12=""0"" p13=""0"" p14=""0"" p15=""0"" p16=""0"" p17=""f""/>
@@ -923,7 +931,8 @@ public class LevelTest
             </sp>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+		Assert.IsType<AwakeFromSleep<NonPlayerCharacter>>(level.Triggers[0].Targets[0].Actions[0]);
 	}
 
 	[Fact]
@@ -992,7 +1001,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidGlassPanelActionID()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new(@"<levelXML>
     <info v=""1.95"" x=""214"" y=""5159"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""18"" p0=""80"" p1=""105"" p2=""10"" p3=""100"" p4=""0"" p5=""f"" p6=""10"" p7=""t""/>
@@ -1004,7 +1013,8 @@ public class LevelTest
             </sp>
         </t>
     </triggers>
-</levelXML>"));
+</levelXML>");
+		Assert.IsType<Shatter>(level.Triggers[0].Targets[0].Actions[0]);
 	}
 
 	[Fact]
@@ -1565,7 +1575,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithJointToSoccerBall()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Level level = new Level(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <specials>
         <sp t=""10"" p0=""586"" p1=""5249"" />
@@ -1573,7 +1583,8 @@ public class LevelTest
     <joints>
         <j t=""0"" x=""546"" y=""5223"" b1=""-1"" b2=""s0"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
     </joints>
-</levelXML>").ToXML());
+</levelXML>");
+		Assert.IsType<SoccerBall>(level.Joints[0].Second);
 	}
 
 	[Fact]
@@ -1719,7 +1730,7 @@ public class LevelTest
 	public void JointToInvalidEntity()
 	{
 		PinJoint joint = new();
-		Assert.Throws<LevelXMLException>(() => joint.First = joint);
+		joint.First = joint;
 	}
 
 	[Fact]

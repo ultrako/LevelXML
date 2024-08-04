@@ -18,6 +18,6 @@ public class TelevisionTest
     public void TestSettingRotationAsNaN()
     {
         Television television = new();
-        Assert.Throws<LevelXMLException>(() => television.Rotation = double.NaN);
+        television.Rotation = double.NaN;
     }
 }

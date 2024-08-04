@@ -13,11 +13,7 @@ public class SpikeSet : Special
 	{
 		get { return GetDouble("p2"); }
 		set 
-		{ 
-			if (double.IsNaN(value)) 
-			{
-				throw new LevelXMLException("Setting the rotation to NaN would make the special disappear!");
-			}
+		{
 			SetDouble("p2", value); 
 		}
 	}
@@ -36,10 +32,6 @@ public class SpikeSet : Special
         get { return GetDouble("p4"); }
         set
         {
-            if (double.IsNaN(value))
-            {
-                throw new LevelXMLException("Setting the number of spikes to NaN would cause the spike set to disappear!");
-            }
             SetDouble("p4", value);
         }
     }

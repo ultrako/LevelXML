@@ -17,13 +17,10 @@ public struct Character
     public static readonly Character PogostickMan = 9;
     public static readonly Character IrresponsibleMom = 10;
     public static readonly Character HelicopterMan = 11;
+    public static readonly Character None = double.NaN;
 
     private Character(double val)
     {
-        if (double.IsNaN(val))
-        {
-            throw new LevelXMLException("This would make the level freeze at start!");
-        }
         this.val = Math.Clamp(val, 1, 11);
     }
     public static implicit operator Character(double val)

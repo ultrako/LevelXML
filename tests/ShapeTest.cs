@@ -9,17 +9,17 @@ public class ShapeTest
     [Fact]
     public void ShapeMissingX()
     {
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p1=""0"" p2=""0""/>"));
+		_ = new Rectangle(@"<sh t=""0"" p1=""0"" p2=""0""/>");
     }
 	[Fact]
 	public void ShapeMissingY()
     {
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p2=""0""/>"));
+		_ = new Rectangle(@"<sh t=""0"" p0=""0"" p2=""0""/>");
     }
 	[Fact]
 	public void ShapeNaNRotation()
     {
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p4=""NaN""/>"));
+		_ = new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p4=""NaN""/>");
     }
 	[Fact]
 	public void ShapeTestDefaultValues()
@@ -96,13 +96,13 @@ public class ShapeTest
 	[Fact]
 	public void RectangleTestNaNWidth()
 	{
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""NaN"" />"));
+		_ = new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p2=""NaN"" />");
 	}
 
 	[Fact]
 	public void RectangleTestNaNHeight()
 	{
-		Assert.Throws<LevelXMLException>(() => new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p3=""NaN"" />"));
+		_ = new Rectangle(@"<sh t=""0"" p0=""0"" p1=""0"" p3=""NaN"" />");
 	}
 
 	[Fact]
@@ -138,13 +138,13 @@ public class ShapeTest
 	[Fact]
 	public void TriangleTestNaNWidth()
 	{
-		Assert.Throws<LevelXMLException>(() => new Triangle(@"<sh t=""2"" p0=""0"" p1=""0"" p2=""NaN"" />"));
+		_ = new Triangle(@"<sh t=""2"" p0=""0"" p1=""0"" p2=""NaN"" />");
 	}
 
 	[Fact]
 	public void TriangleTestNaNHeight()
 	{
-		Assert.Throws<LevelXMLException>(() => new Triangle(@"<sh t=""2"" p0=""0"" p1=""0"" p3=""NaN"" />"));
+		_ = new Triangle(@"<sh t=""2"" p0=""0"" p1=""0"" p3=""NaN"" />");
 	}
 
 	[Fact]
@@ -169,13 +169,13 @@ public class ShapeTest
 	[Fact]
 	public void CircleTestNaNWidth()
 	{
-		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p2=""NaN"" />"));
+		_ = new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p2=""NaN"" />");
 	}
 
 	[Fact]
 	public void CircleTestNaNHeight()
 	{
-		Assert.Throws<LevelXMLException>(() => new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p3=""NaN"" />"));
+		_ = new Circle(@"<sh t=""1"" p0=""0"" p1=""0"" p3=""NaN"" />");
 	}
 
 	[Fact]
@@ -248,12 +248,6 @@ public class ShapeTest
 </sh>");
 		Assert.Equal(expectedWidth, art.Width);
 		Assert.Equal(expectedHeight, art.Height);
-	}
-
-	[Fact]
-	public void ArtTestInvalidXml()
-	{
-		Assert.Throws<LevelXMLException>(() => new Art("<art />"));
 	}
 
 	// Yes, the happy wheels import box also supports this way of formatting vertices.

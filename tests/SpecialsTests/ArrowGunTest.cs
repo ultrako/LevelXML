@@ -18,6 +18,6 @@ public class ArrowGunTest
     public void TestSettingRotationAsNaN()
     {
         ArrowGun arrowGun = new();
-        Assert.Throws<LevelXMLException>(() => arrowGun.Rotation = double.NaN);
+        arrowGun.Rotation = double.NaN;
     }
 }

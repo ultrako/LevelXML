@@ -41,7 +41,6 @@ public class InfoTest
 	public void TestDefaultValues()
 	{
 		Info info = new();
-		Assert.Equal(Info.LevelXMLVersion, info.Version);
 		Assert.Equal(300, info.X);
 		Assert.Equal(5100, info.Y);
 	}

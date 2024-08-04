@@ -19,13 +19,13 @@ public class MeteorTest
     public void TestSettingWidthAsNaN()
     {
         Meteor meteor = new();
-        Assert.Throws<LevelXMLException>(() => meteor.Width = double.NaN);
+        meteor.Width = double.NaN;
     }
 
     [Fact]
     public void TestSettingHeightAsNaN()
     {
         Meteor meteor = new();
-        Assert.Throws<LevelXMLException>(() => meteor.Height = double.NaN);
+        meteor.Height = double.NaN;
     }
 }

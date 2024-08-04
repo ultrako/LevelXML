@@ -16,11 +16,7 @@ public abstract class Special : Entity, IConvertibleToXML
 		get { return GetDouble("p0"); }
 		set
 		{
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the special disappear!");
-			}
-			else { Elt.SetAttributeValue("p0", value); }
+			Elt.SetAttributeValue("p0", value);
 		}
 	}
 
@@ -29,11 +25,7 @@ public abstract class Special : Entity, IConvertibleToXML
 		get { return GetDouble("p1"); }
 		set
 		{
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the special disappear!");
-			}
-			else { Elt.SetAttributeValue("p1", value); }
+			Elt.SetAttributeValue("p1", value);
 		}
 	}
 

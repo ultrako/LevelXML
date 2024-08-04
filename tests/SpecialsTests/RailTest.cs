@@ -18,20 +18,20 @@ public class RailTest
     public void TestSettingRotationAsNaN()
     {
         Rail rail = new();
-        Assert.Throws<LevelXMLException>(() => rail.Rotation = double.NaN);
+        rail.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingWidthAsNaN()
     {
         Rail rail = new();
-        Assert.Throws<LevelXMLException>(() => rail.Width = double.NaN);
+        rail.Width = double.NaN;
     }
 
     [Fact]
     public void TestSettingHeightAsNaN()
     {
         Rail rail = new();
-        Assert.Throws<LevelXMLException>(() => rail.Height = double.NaN);
+        rail.Height = double.NaN;
     }
 }

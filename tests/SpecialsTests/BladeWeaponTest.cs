@@ -19,13 +19,13 @@ public class BladeWeaponTest
     public void TestSettingRotationAsNaN()
     {
         BladeWeapon weapon = new();
-        Assert.Throws<LevelXMLException>(() => weapon.Rotation = double.NaN);
+        weapon.Rotation = double.NaN;
     }
 
     [Fact]
     public void TestSettingWeaponTypeAsNaN()
     {
         BladeWeapon weapon = new();
-        Assert.Throws<LevelXMLException>(() => weapon.WeaponType = double.NaN);
+        weapon.WeaponType = double.NaN;
     }
 }

@@ -19,6 +19,6 @@ public class PaddlePlatformTest
     public void TestSettingRotationAsNaN()
     {
         PaddlePlatform platform = new();
-        Assert.Throws<LevelXMLException>(() => platform.Rotation = double.NaN);
+        platform.Rotation = double.NaN;
     }
 }

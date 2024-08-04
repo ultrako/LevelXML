@@ -14,43 +14,12 @@ public class Group : Entity
 	private List<Entity> items;
 	public IList<Entity> Items { get { return items;}}
 	
-	// We need to make sure only non fixed shapes, or certain specials are grouped.
-	// This function will throw an exception if that isn't the case.
-	private void checkGroupableEntity(Entity entity)
-	{
-		if (entity is Shape ||
-			entity is Van ||
-			entity is DinnerTable ||
-			entity is IBeam ||
-			entity is SpikeSet ||
-			entity is TextBox ||
-			entity is NonPlayerCharacter ||
-			entity is Chair ||
-			entity is Bottle ||
-			entity is Television ||
-			entity is Boombox ||
-			entity is Sign ||
-			entity is Toilet ||
-			entity is TrashCan ||
-			entity is ArrowGun ||
-			entity is Food ||
-			entity is BladeWeapon) 
-		{
-			return;
-		}
-		throw new LevelXMLException("{nameof(entity)} are not allowed in groups.");
-	}
-	
 	public override double X
 	{
 		get { return GetDoubleOrNull("x") ?? 0; }
 		set
 		{
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the group disappear!");
-			}
-			else { SetDouble("x", value); }
+			SetDouble("x", value);
 		}
 	}
 
@@ -59,11 +28,7 @@ public class Group : Entity
 		get { return GetDouble("y"); }
 		set
 		{
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the group disappear!");
-			}
-			else { SetDouble("y", value); }
+			SetDouble("y", value);
 		}
 	}
 
@@ -72,11 +37,7 @@ public class Group : Entity
 		get { return GetDouble("r"); }
 		set 
 		{ 
-			if (double.IsNaN(value))
-			{
-				throw new LevelXMLException("This would make the group disappear!");
-			}
-			else { SetDouble("r", value); }
+			SetDouble("r", value);
 		}
 	}
 
@@ -85,11 +46,7 @@ public class Group : Entity
 		get { return GetDouble("ox");}
 		set
 		{
-			if (double.IsNaN((double)value!))
-			{
-				throw new LevelXMLException("This would make the group disappear!");
-			}
-			else { SetDouble("ox", value); }
+			SetDouble("ox", value);
 		}
 	}
 
@@ -98,11 +55,7 @@ public class Group : Entity
 		get { return GetDouble("oy");}
 		set
 		{
-			if (double.IsNaN((double)value!))
-			{
-				throw new LevelXMLException("This would make the group disappear!");
-			}
-			else { SetDouble("oy", value); }
+			SetDouble("oy", value);
 		}
 	}
 
@@ -158,7 +111,6 @@ public class Group : Entity
 		Elt.RemoveNodes();
 		foreach (Entity entity in items)
 		{
-			checkGroupableEntity(entity);
 			entity.PlaceInLevel(mapper);
 			Elt.Add(entity.Elt);
 		}

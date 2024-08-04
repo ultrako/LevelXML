@@ -17,6 +17,6 @@ public class VanTest
     public void TestSettingRotationAsNaN()
     {
         Van van = new();
-        Assert.Throws<LevelXMLException>(() => van.Rotation = double.NaN);
+        van.Rotation = double.NaN;
     }
 }
