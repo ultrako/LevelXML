@@ -96,21 +96,25 @@ public abstract class LevelXMLTag
 		/// then use this static constant.
 		///</summary>
 		public static readonly HWBool NaN = double.NaN;
+
 		private HWBool(bool b) { this.val = b; }
-		//private HWBool(double f) { this.val = f; }
+
 		public static implicit operator bool(HWBool hwb)
 		{
 			if (hwb == HWBool.True) { return true; }
 			else { return false; }
 		}
+
 		public static implicit operator HWBool(bool b)
 		{
 			return new HWBool(b);
 		}
-		public static implicit operator HWBool(double f)
+		
+		public static implicit operator HWBool(double _)
 		{
 			return NaN;
 		}
+
 		public static bool operator ==(HWBool lhs, HWBool rhs) 
 		{ 
 			if (lhs.val is bool lval)
@@ -120,12 +124,21 @@ public abstract class LevelXMLTag
 			} else if (rhs.val is bool _) { return false; }
 			else { return true; }
 		}
+
 		public static bool operator !=(HWBool lhs, HWBool rhs)
 		{
 			return !(lhs == rhs);
 		}
+
+		public static HWBool operator!(HWBool hwb)
+		{
+			if (hwb == NaN) { return hwb; }
+			else { return (HWBool)!(bool)hwb.val; }
+		}
+
 		public override int GetHashCode() { return val.GetHashCode(); }
-		public override bool Equals(Object? that)
+
+		public override bool Equals(object? that)
 		{
 			if (that is HWBool t) 
 			{
@@ -136,7 +149,8 @@ public abstract class LevelXMLTag
 			}
 			else { return false; }
 		}
-		public override string ToString()
+
+		public override readonly string ToString()
 		{
 			if (this == true) { return "t"; }
 			else if (this == false) { return "f"; }

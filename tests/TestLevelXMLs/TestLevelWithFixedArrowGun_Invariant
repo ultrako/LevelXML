@@ -1,0 +1,6 @@
+<levelXML>
+    <info v="1.96" x="300" y="5100" c="3" f="t" h="f" bg="0" bgc="12644078" e="1"/>
+    <specials>
+        <sp t="29" p0="432" p1="5215" p2="0" p3="t" p4="5" p5="f"/>
+    </specials>
+</levelXML>

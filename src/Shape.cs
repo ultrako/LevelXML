@@ -27,7 +27,10 @@ public abstract class Shape : Entity, IConvertibleToXML
 	{
 		// If Interactive is true, then the XAttribute isn't set
 		get { return GetBoolOrNull("i") ?? true; }
-		set { if (value == false) { Elt.SetAttributeValue("i", value); }; }
+		set 
+		{
+			 if (value == false) { Elt.SetAttributeValue("i", value); }
+		}
 	}
 	
 	public override double X

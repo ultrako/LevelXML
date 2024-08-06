@@ -39,8 +39,11 @@ public class ArrowGun : Special
     {
         // The inversion is here because ingame the parameter is called,
         // "don't shoot player"
-        get { return !GetBoolOrNull("p3") ?? true; }
-		set { Elt.SetAttributeValue("p3", !value); }
+        get { return !GetBoolOrNull("p5") ?? true; }
+		set 
+        {
+            Elt.SetAttributeValue("p5", !value);
+        }
     }
 
     protected override void SetParams(XElement e)

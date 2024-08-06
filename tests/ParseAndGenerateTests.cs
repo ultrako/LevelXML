@@ -13,9 +13,12 @@ public class ParseAndGenerateTests
     {
         string levelXML = File.ReadAllText(inputFilePath);
 
-        string pattern = @"info v=""[^""]*""";
-        string replacement = $"info v=\"{Info.LevelXMLVersion}\"";
-        return Regex.Replace(levelXML, pattern, replacement);
+        string versionPattern = @"info v=""[^""]*""";
+        string versionReplacement = $"info v=\"{Info.LevelXMLVersion}\"";
+        string selfClosingTagPattern = "\"/>";
+        string selfClosingTagReplacement = "\" />";
+        return Regex.Replace(Regex.Replace(levelXML, versionPattern, versionReplacement), 
+            selfClosingTagPattern, selfClosingTagReplacement);
     }
 
     public static TheoryData<string, string> InputAndExpectedTestData()
