@@ -22,6 +22,10 @@ public struct BottleType
 	}
     public static bool operator ==(BottleType lhs, BottleType rhs)
     {
+        if (double.IsNaN(lhs.val))
+        {
+            return double.IsNaN(rhs.val);
+        }
         return lhs.val == rhs.val;
     }
     public static bool operator !=(BottleType lhs, BottleType rhs)

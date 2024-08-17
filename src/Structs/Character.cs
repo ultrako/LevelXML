@@ -29,6 +29,10 @@ public struct Character
 	}
     public static bool operator ==(Character lhs, Character rhs)
     {
+        if (double.IsNaN(lhs.val))
+        {
+            return double.IsNaN(rhs.val);
+        }
         return lhs.val == rhs.val;
     }
     public static bool operator !=(Character lhs, Character rhs)

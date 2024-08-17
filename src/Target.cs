@@ -31,7 +31,7 @@ public abstract class Target : LevelXMLTag
 
 	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
 
-	private Task? setTargeted;
+	private readonly Task? setTargeted;
 
 	protected Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) : base(e.Name)
 	{

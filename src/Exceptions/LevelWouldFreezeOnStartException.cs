@@ -5,7 +5,9 @@ namespace LevelXML;
 /// </summary>
 public class LevelWouldFreezeOnStartException : LevelXMLException
 {
-    public LevelWouldFreezeOnStartException() {}
-    public LevelWouldFreezeOnStartException(string message) : base(message) {}
-    public LevelWouldFreezeOnStartException(string message, Exception innerException) : base(message, innerException) {}
+    public LevelXMLTag FaultyTag { get; private set; }
+    public LevelWouldFreezeOnStartException(string message, LevelXMLTag faultyTag) : base(message) 
+    {
+        FaultyTag = faultyTag;
+    }
 }
