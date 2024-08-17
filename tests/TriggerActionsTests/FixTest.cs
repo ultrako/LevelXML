@@ -7,6 +7,6 @@ public class FixTest
     [Fact]
     public void FixInvalidEntity()
     {
-        Assert.Throws<LevelXMLException>(() => new Fix<Joint>());
+        Assert.Throws<LevelInvalidException>(() => new Fix<Joint>());
     }
 }

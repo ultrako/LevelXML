@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using System.Collections;
 namespace LevelXML;
 /// <summary>
 /// This kind of shape is defined by a list of vertices (Polygons and Art)
@@ -44,7 +43,7 @@ public abstract class CustomShape : Shape
 			CopiedShape = parentLocator(verticesTag.originalIndex);
 		} catch (InvalidOperationException)
 		{
-			throw new LevelXMLException("Empty custom shape with invalid ID!");
+			throw new InvalidImportException("Empty custom shape with invalid ID!", string.Empty);
 		}
 	}
 

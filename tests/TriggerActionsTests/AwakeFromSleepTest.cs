@@ -7,6 +7,6 @@ public class AwakeFromSleepTest
     [Fact]
     public void AwakeFromSleepInvalidEntity()
     {
-        Assert.Throws<LevelXMLException>(() => new AwakeFromSleep<Joint>());
+        Assert.Throws<LevelInvalidException>(() => new AwakeFromSleep<Joint>());
     }
 }

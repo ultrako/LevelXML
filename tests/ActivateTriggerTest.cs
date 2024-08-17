@@ -74,7 +74,7 @@ public class ActivateTriggerTest
 		ActivateTrigger trigger = new();
 		ActivateTrigger otherTrigger = new();
 		trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable()));
-		Assert.Throws<LevelXMLException>(() => trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable())));
+		Assert.Throws<LevelInvalidException>(() => trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable())));
 	}
 	
 	[Fact]

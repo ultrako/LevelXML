@@ -29,7 +29,7 @@ public struct NPCType
         // if I don't throw here it's hard to debug
         if (double.IsNaN(val))
         {
-            throw new LevelXMLException("This would make the NPC disappear!");
+            throw new LevelInvalidException("This would make the NPC disappear!");
         }
         this.val = Math.Clamp(val, 1, 16);
     }

@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using System.Collections;
 namespace LevelXML;
 /// <summary>
 /// Art Shapes have no collision, and their edges are defined with a list of Vertices

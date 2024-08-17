@@ -7,6 +7,6 @@ public class DeleteSelfTest
     [Fact]
     public void DeleteSelfInvalidEntity()
     {
-        Assert.Throws<LevelXMLException>(() => new DeleteSelf<Joint>());
+        Assert.Throws<LevelInvalidException>(() => new DeleteSelf<Joint>());
     }
 }

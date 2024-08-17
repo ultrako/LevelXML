@@ -132,20 +132,20 @@ public abstract class Joint : Entity
 
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
-		Elt.SetAttributeValue("b1", getIndexString(mapper, First));
-		Elt.SetAttributeValue("b2", getIndexString(mapper, Second));
+		Elt.SetAttributeValue("b1", GetIndexString(mapper, First));
+		Elt.SetAttributeValue("b2", GetIndexString(mapper, Second));
 	}
 
-	private string getIndexString(Func<Entity, int> mapper, Entity? entity)
+	private string GetIndexString(Func<Entity, int> mapper, Entity? entity)
 	{
-		string prependType = String.Empty;
+		string prependType = string.Empty;
 		if (entity is null)
 		{
 			return "-1";
 		}
 		else if (entity is Shape)
 		{
-			prependType = String.Empty;
+			prependType = string.Empty;
 		} 
 		else if (entity is Special)
 		{
@@ -155,19 +155,27 @@ public abstract class Joint : Entity
 		{
 			prependType = "g";
 		}
-		int index = mapper(entity);
-		return prependType + index.ToString();
+		try
+		{
+			int index = mapper(entity);
+			return prependType + index.ToString();
+		}
+		catch (LevelInvalidException e)
+		{
+			LevelInvalidException newException = new(e.Message, this, entity);
+			throw newException;
+		}
 	}
 
-	protected bool isNotJointed(XElement e)
+	protected static bool IsNotJointed(XElement e)
     {
         string? entityOne = GetStringOrNull(e, "b1");
         string? entityTwo = GetStringOrNull(e, "b2");
-        return !(couldPointToAnElement(entityOne)
-            || couldPointToAnElement(entityTwo));
+        return !(CouldPointToAnElement(entityOne)
+            || CouldPointToAnElement(entityTwo));
     }
 
-	private bool couldPointToAnElement(string? jointIndex)
+	private static bool CouldPointToAnElement(string? jointIndex)
 	{
 		return !(jointIndex == null || jointIndex.Equals("-1"));
 	}
@@ -179,7 +187,7 @@ public abstract class Joint : Entity
 		Second = reverseMapper(GetStringOrNull(e, "b2"));
         X = GetDoubleOrNull(e, "x") ?? double.NaN;
         Y = GetDoubleOrNull(e, "y") ?? double.NaN;
-		// Setting these two now just to make sure that b1 and b2 are in the correct place
+		// Setting these two now just to make sure that b1 and b2 are in the correct order
 		Elt.SetAttributeValue("b1", "-1");
 		Elt.SetAttributeValue("b2", "-1");
 		Limit = GetBoolOrNull(e, "l") ?? false;

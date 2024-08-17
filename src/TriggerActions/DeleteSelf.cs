@@ -20,6 +20,6 @@ public class DeleteSelf<T> : DeleteSelf, ITriggerAction<T>
     {
         nameof(Shape) => 6,
         nameof(Group) => 6,
-        _ => throw new LevelXMLException($"Cannot have a Delete Shapes action on a {typeof(T).Name}!"),
+        _ => throw new LevelInvalidException($"Cannot have a Delete Shapes action on a {typeof(T).Name}!", this),
     };
 }

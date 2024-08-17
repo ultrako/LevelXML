@@ -94,7 +94,7 @@ public class PinJoint : Joint
     
     internal PinJoint(XElement e, Func<string?, Entity?> reverseJointMapper = default!) : base(e)
     {
-        if (isNotJointed(e))
+        if (IsNotJointed(e))
         {
             reverseJointMapper = (any) => null;
         }

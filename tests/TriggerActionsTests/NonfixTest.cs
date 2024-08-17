@@ -7,6 +7,6 @@ public class NonfixTest
     [Fact]
     public void NonfixInvalidEntity()
     {
-        Assert.Throws<LevelXMLException>(() => new Nonfix<Joint>());
+        Assert.Throws<LevelInvalidException>(() => new Nonfix<Joint>());
     }
 }

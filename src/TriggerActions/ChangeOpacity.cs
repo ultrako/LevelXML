@@ -48,7 +48,7 @@ public class ChangeOpacity<T> : ChangeOpacity, ITriggerAction<T>
 			nameof(Shape) => 3,
 			nameof(Group) => 1,
 			nameof(TextBox) => 0,
-			_ => throw new LevelXMLException($"You cannot have a trigger action changing the opacity of a {typeof(T).Name}!"),
+			_ => throw new LevelInvalidException($"You cannot have a trigger action changing the opacity of a {typeof(T).Name}!", this),
 		};
 		
 	public ChangeOpacity(double Opacity, double Duration) : base(Opacity, Duration) {}

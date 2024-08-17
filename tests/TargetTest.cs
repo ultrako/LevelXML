@@ -20,7 +20,7 @@ public class TargetTest {
 	public void TestAddWrongEntityTypeActionToTarget()
 	{
 		Target<Shape> target = new(new Rectangle());
-		Assert.Throws<LevelXMLException>(() => target.AddAction(new AwakeFromSleep<Group>()));
+		Assert.Throws<LevelInvalidException>(() => target.AddAction(new AwakeFromSleep<Group>()));
 	}
 
 	[Fact]
@@ -35,7 +35,7 @@ public class TargetTest {
 	[Fact]
 	public void TestConstructTriggerTargetWithTwoActions()
 	{
-		Assert.Throws<LevelXMLException>(() => new Target<Trigger>(new ActivateTrigger(), new Enable(), new Disable()));
+		Assert.Throws<LevelInvalidException>(() => new Target<Trigger>(new ActivateTrigger(), new Enable(), new Disable()));
 	}
 
 	[Fact]
