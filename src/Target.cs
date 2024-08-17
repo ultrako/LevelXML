@@ -41,7 +41,7 @@ public abstract class Target : LevelXMLTag
 	// This following function is only called if this object is constructed with a string
 	// In LevelXML, targets are set via indexes - but we can only go from index to entity
 	// in the context of an entire level.
-	internal void finishConstruction() { setTargeted!.Wait(); }
+	internal void FinishConstruction() { setTargeted!.Wait(); }
 	
 	internal static Target FromXElement(XElement e, Func<XElement, Entity> ReverseTargetMapper)
 	{
@@ -77,11 +77,7 @@ public abstract class Target : LevelXMLTag
 				Bottle => new Target<Bottle>(e, ReverseTargetMapper),
 				Meteor => new Target<Meteor>(e, ReverseTargetMapper),
 				Special => new Target<Special>(e, ReverseTargetMapper),
-<<<<<<< Updated upstream
 				_ => throw new InvalidImportException("Invalid special type pointed to by trigger!", e.ToString())
-=======
-				_ => throw new LevelXMLException("Invalid special type pointed to by trigger!")
->>>>>>> Stashed changes
 			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),
 			"j" => new Target<Joint>(e, ReverseTargetMapper),

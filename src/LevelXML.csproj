@@ -21,11 +21,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-<<<<<<< Updated upstream
     <Version>4.0.2</Version>
-=======
-    <Version>4.0.0</Version>
->>>>>>> Stashed changes
+
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/ultrako/LevelXML</RepositoryUrl> 

@@ -253,11 +253,7 @@ public class Level : LevelXMLTag, IConvertibleToXML
 	{
 		if (e.Name.ToString() != "levelXML")
 		{
-<<<<<<< Updated upstream
 			throw new InvalidImportException("Xml is missing a LevelXML Tag!", e.ToString());
-=======
-			throw new LevelXMLException("Xml is missing a LevelXML Tag!");
->>>>>>> Stashed changes
 		}
 		XElement? InfoTag = e.Element("info") ?? throw new InvalidImportException("Level is missing an info tag!", e.ToString());
         info = new(InfoTag);

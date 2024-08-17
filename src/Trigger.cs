@@ -171,7 +171,7 @@ public abstract class Trigger : Entity
 
 	internal override void FinishConstruction()
 	{
-		lst.ForEach(target => target.finishConstruction());
+		lst.ForEach(target => target.FinishConstruction());
 	}
 
 	protected virtual void SetParams(XElement e)
