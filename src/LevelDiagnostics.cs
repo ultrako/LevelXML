@@ -15,7 +15,7 @@ public static class LevelDiagnostics
         if (level.Character == Character.None)
         {
             exceptions.Add(new LevelWouldFreezeOnStartException(
-                "Level cannot have a NaN character type!", 
+                "Level cannot have a NaN character type.", 
                 level));
         }
         GetExceptionsBase(level.Entities, exceptions);
@@ -24,6 +24,11 @@ public static class LevelDiagnostics
 
     private static void GetExceptionsBase(IEnumerable<Entity> entities, IList<LevelXMLException> exceptions)
     {
+        foreach (Shape shape in entities.OfType<Shape>()
+            .Concat(entities.OfType<Group>().SelectMany(group => group.Items).OfType<Shape>()))
+        {
+            CheckNaNDensityNonFixedShape(shape, exceptions);
+        }
         foreach (Group group in entities.OfType<Group>())
         {
             CheckGroupHasOnlyGroupableEntities(group, exceptions);
@@ -41,6 +46,12 @@ public static class LevelDiagnostics
         {
             CheckIfIsBottleWithInvalidType(special, exceptions);
             CheckIfIsFoodWithInvalidType(special, exceptions);
+            CheckIfIsJetWithNaNPower(special, exceptions);
+            CheckIfNonfixedNanLengthSpikeSet(special, exceptions);
+        }
+        foreach (Joint joint in entities.OfType<Joint>())
+        {
+            CheckIfNaNAngleSlidingJoint(joint, exceptions);
         }
     }
 
@@ -184,7 +195,7 @@ public static class LevelDiagnostics
         if (!canBeTargeted)
         {
             exceptions.Add(new LevelWouldFreezeOnStartException(
-                $"{special.GetType().Name} cannot be pointed to by triggers!",
+                $"{special.GetType().Name} cannot be pointed to by triggers.",
                 target));
         }
     }
@@ -195,7 +206,7 @@ public static class LevelDiagnostics
         {
             if (bottle.BottleType == BottleType.None)
             {
-                exceptions.Add(new LevelWouldFreezeOnStartException("Bottle cannot have a NaN type!", bottle));
+                exceptions.Add(new LevelWouldFreezeOnStartException("Bottle cannot have a NaN type.", bottle));
             }
         }
     }
@@ -206,7 +217,51 @@ public static class LevelDiagnostics
         {
             if (food.FoodType == FoodType.None)
             {
-                exceptions.Add(new LevelWouldFreezeOnStartException("Food cannot have a NaN type!", food));
+                exceptions.Add(new LevelWouldFreezeOnStartException("Food cannot have a NaN type.", food));
+            }
+        }
+    }
+
+    private static void CheckIfIsJetWithNaNPower(Special special, IList<LevelXMLException> exceptions)
+    {
+        if (special is Jet jet)
+        {
+            if (double.IsNaN(jet.Power))
+            {
+                exceptions.Add(new EntityWouldBeBlackHoleException("Jet cannot have NaN power.", jet));
+            }
+        }
+    }
+
+    private static void CheckIfNonfixedNanLengthSpikeSet(Special special, IList<LevelXMLException> exceptions)
+    {
+        if (special is SpikeSet spikes)
+        {
+            if (double.IsNaN(spikes.Spikes) && !spikes.Fixed)
+            {
+                exceptions.Add(new EntityWouldBeBlackHoleException("Nonfixed spike sets cannot have NaN spikes.", spikes));
+            }
+        }
+    }
+
+    private static void CheckIfNaNAngleSlidingJoint(Joint joint, IList<LevelXMLException> exceptions)
+    {
+        if (joint is SlidingJoint slidingJoint)
+        {
+            if (double.IsNaN(slidingJoint.Angle))
+            {
+                exceptions.Add(new EntityWouldBeBlackHoleException("A NaN angle in a sliding joint would black hole the attached entities.", slidingJoint));
+            }
+        }
+    }
+
+    private static void CheckNaNDensityNonFixedShape(Shape shape, IList<LevelXMLException> exceptions)
+    {
+        if (!shape.Fixed)
+        {
+            if (double.IsNaN(shape.Density))
+            {
+                exceptions.Add(new EntityWouldBeBlackHoleException("A NaN density in a non fixed shape makes it a black hole.", shape));
             }
         }
     }
