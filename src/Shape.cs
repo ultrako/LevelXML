@@ -3,12 +3,13 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 namespace LevelXML;
 /// <summary>
 /// Shapes are simple entities that can have collision and they can be a part of groups.
 /// Shapes are either rectangles, triangles, circles, polygons, or art.
 /// </summary>
-public abstract class Shape : Entity, IConvertibleToXML
+public abstract class Shape : Entity, IConvertibleToXML, IRotatable, IScaleable, IGroupable
 {
 	internal abstract uint Type {get;}
 	

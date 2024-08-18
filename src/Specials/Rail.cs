@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Rail : Special
+public class Rail : Special, IRotatable, IScaleable
 {
     internal override uint Type => 4;
     public const string EditorDefault = 

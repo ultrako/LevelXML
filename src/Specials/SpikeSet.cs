@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class SpikeSet : Special
+public class SpikeSet : Special, IRotatable, IGroupable
 {
     internal override uint Type => 6;
     public const string EditorDefault = 

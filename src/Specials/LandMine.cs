@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Landmine : Special
+public class Landmine : Special, IRotatable
 {
     internal override uint Type => 2;
     public const string EditorDefault = 

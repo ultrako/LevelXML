@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Toilet : Special
+public class Toilet : Special, IRotatable, IGroupable
 {
     internal override uint Type => 0;
     public const string EditorDefault = 

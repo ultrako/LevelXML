@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Harpoon : Special
+public class Harpoon : Special, IRotatable
 {
     internal override uint Type => 15;
     public const string EditorDefault = 

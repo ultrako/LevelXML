@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Chair : Special
+public class Chair : Special, IRotatable, IGroupable
 {
     internal override uint Type => 19;
     public const string EditorDefault = 

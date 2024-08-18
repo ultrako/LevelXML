@@ -4,14 +4,14 @@ namespace LevelXML;
 /// <summary>
 /// This is a non interactive Special that displays text.
 /// </summary>
-public class TextBox : Special
+public class TextBox : Special, IRotatable, IGroupable
 {
     internal override uint Type => 16;
     public static string EditorDefault =
         @"<sp t=""16"" p0=""0"" p1=""0"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
             <p7><![CDATA[HERE'S SOME TEXT]]></p7>
         </sp>";
-    private XElement contentElement;
+    private readonly XElement contentElement;
 
     public double Rotation
 	{

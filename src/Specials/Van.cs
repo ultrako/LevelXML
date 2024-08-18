@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Van : Special
+public class Van : Special, IRotatable, IGroupable
 {
     internal override uint Type => 0;
     public const string EditorDefault = 

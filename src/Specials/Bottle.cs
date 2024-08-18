@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Bottle : Special
+public class Bottle : Special, IRotatable, IGroupable
 {
     internal override uint Type => 20;
     public const string EditorDefault = 

@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Boombox : Special
+public class Boombox : Special, IRotatable, IGroupable
 {
     internal override uint Type => 22;
     public const string EditorDefault = 

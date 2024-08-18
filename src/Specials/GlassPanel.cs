@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class GlassPanel : Special
+public class GlassPanel : Special, IRotatable, IScaleable
 {
     internal override uint Type => 18;
     public const string EditorDefault = 

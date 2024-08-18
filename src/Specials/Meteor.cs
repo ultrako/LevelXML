@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Meteor : Special
+public class Meteor : Special, IScaleable
 {
     internal override uint Type => 11;
     public const string EditorDefault = 

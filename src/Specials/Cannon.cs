@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Cannon : Special
+public class Cannon : Special, IRotatable
 {
     internal override uint Type => 33;
     public const string EditorDefault = 
