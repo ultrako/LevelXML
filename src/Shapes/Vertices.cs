@@ -81,7 +81,7 @@ internal class Vertices : LevelXMLTag
 		}
 		else
 		{
-			throw new LevelXMLException("<v> tag did not have an id!");
+			throw new InvalidImportException("<v> tag did not have an id!", e.ToString());
 		}
 		foreach (XAttribute vertex in vertices)
 		{
@@ -103,7 +103,7 @@ internal class Vertices : LevelXMLTag
 			}
 			if (coords.Count < 2)
 			{
-				throw new LevelXMLException("Failed to process vertex or vertex had fewer than 2 coordinates!");
+				throw new InvalidImportException("Failed to process vertex or vertex had fewer than 2 coordinates!", e.ToString());
 			}
 			Point position = new(coords[0], coords[1]);
 			Point? handle1 = null;

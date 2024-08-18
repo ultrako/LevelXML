@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class PaddlePlatform : Special
+public class PaddlePlatform : Special, IRotatable
 {
     internal override uint Type => 35;
     public const string EditorDefault = 

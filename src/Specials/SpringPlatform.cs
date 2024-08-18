@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class SpringPlatform : Special
+public class SpringPlatform : Special, IRotatable
 {
     internal override uint Type => 5;
     public const string EditorDefault = 

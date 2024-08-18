@@ -7,6 +7,6 @@ public class ChangeCollisionTest
     [Fact]
     public void ChangeCollisionInvalidEntity()
     {
-        Assert.Throws<LevelXMLException>(() => new ChangeCollision<Joint>(Collision.Everything));
+        Assert.Throws<LevelInvalidException>(() => new ChangeCollision<Joint>(Collision.Everything));
     }
 }

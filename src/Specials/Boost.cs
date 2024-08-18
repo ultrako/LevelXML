@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Boost : Special
+public class Boost : Special, IRotatable
 {
     internal override uint Type => 12;
     public const string EditorDefault = 

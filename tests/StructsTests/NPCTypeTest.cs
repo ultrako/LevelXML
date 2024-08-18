@@ -44,6 +44,6 @@ public class NPCTypeTest
     public void NPCTypeAsNaN()
     {
         NPCType character;
-        Assert.Throws<LevelXMLException>(() => character = double.NaN);
+        Assert.Throws<LevelInvalidException>(() => character = double.NaN);
     }
 }

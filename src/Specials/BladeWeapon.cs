@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class BladeWeapon : Special
+public class BladeWeapon : Special, IRotatable, IGroupable
 {
     internal override uint Type => 34;
     public const string EditorDefault = 

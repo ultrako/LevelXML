@@ -7,7 +7,7 @@ public class SpecialActionsTest
     [Fact]
     public void ImpulseInvalidSpecialType()
     {
-        Assert.Throws<LevelXMLException>(() => new Impulse<Fan>());
+        Assert.Throws<LevelInvalidException>(() => new Impulse<Fan>());
     }
     
     [Fact]

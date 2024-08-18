@@ -21,15 +21,8 @@ public abstract class ChangeCollision : TriggerAction
 
 	internal ChangeCollision(XElement e) {
         Elt.SetAttributeValue("i", Type);
-		Collision? collision = (Collision?)GetDoubleOrNull(e, "p0");
-		if (collision is null)
-		{
-			throw new LevelXMLException("No collision type on change collision trigger action!");
-		}
-		else
-		{
-			Elt.SetAttributeValue("p0", collision);
-		}
+		Collision collision = GetDoubleOrNull(e, "p0") ?? 1;
+		Elt.SetAttributeValue("p0", collision);
 	}
 }
 
@@ -43,7 +36,7 @@ public class ChangeCollision<T> : ChangeCollision, ITriggerAction<T>
     {
         nameof(Shape) => 7,
         nameof(Group) => 7,
-        _ => throw new LevelXMLException($"You can't have a trigger action changing the collision of a {typeof(T).Name}!"),
+        _ => throw new LevelInvalidException($"You can't have a trigger action changing the collision of a {typeof(T).Name}!", this),
     };
 
     public ChangeCollision(Collision collision) : base(collision) {}

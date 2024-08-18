@@ -19,6 +19,6 @@ public class DeleteShapes<T> : DeleteShapes, ITriggerAction<T>
     {
         nameof(Shape) => 5,
         nameof(Group) => 5,
-        _ => throw new LevelXMLException($"Cannot have a Delete Shapes action on a {typeof(T).Name}!"),
+        _ => throw new LevelInvalidException($"Cannot have a Delete Shapes action on a {typeof(T).Name}!", this),
     };
 }

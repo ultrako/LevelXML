@@ -61,13 +61,13 @@ public class LevelTest
 	[Fact]
 	public void TestParseLevelWithNoInfoTag()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level("<levelXML />"));
+		Assert.Throws<InvalidImportException>(() => new Level("<levelXML />"));
 	}
 
 	[Fact]
 	public void TestParseLevelWithWrongLevelXMLTag()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<level>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<level>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
 </level>"));
 	}
@@ -250,7 +250,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidTriggerTarget()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <triggers>
         <t x=""313"" y=""5176"" w=""100"" h=""100"" a=""0"" b=""1"" t=""1"" r=""1"" sd=""f"" d=""0"">
@@ -304,7 +304,7 @@ public class LevelTest
 		ActivateTrigger trigger = new();
 		trigger.AddTarget(new Target<Shape>(rect, new AwakeFromSleep<Shape>()));
 		Level level = new(trigger);
-		Assert.Throws<LevelXMLException>(() => level.ToXML());
+		Assert.Throws<LevelInvalidException>(() => level.ToXML());
 	}
 
 	[Fact]
@@ -411,7 +411,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidEntity()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <joints>
         <john t=""1"" x=""603"" y=""5263"" b1=""1"" b2=""0"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
@@ -494,7 +494,7 @@ public class LevelTest
 	[Fact]
 	public void TestArtShapeWithNoVertexId()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <shapes>
         <sh t=""4"" i=""f"" p0=""466"" p1=""5200"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
@@ -510,7 +510,7 @@ public class LevelTest
 	[Fact]
 	public void TestArtShapeWithInvalidVertex()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <shapes>
         <sh t=""4"" i=""f"" p0=""537"" p1=""5151"" p2=""56"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
@@ -541,7 +541,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithOneBlankArtShapeWithInvalidID()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
     <shapes>
         <sh t=""4"" i=""f"" p0=""358.50"" p1=""5339"" p2=""83"" p3=""106"" p4=""0"" p5=""f"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
@@ -590,7 +590,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidJointType()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <joints>
         <j t=""2"" x=""603"" y=""5263"" b1=""1"" b2=""0"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f"" />
@@ -640,7 +640,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidShapeType()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <shapes>
         <sh t=""5"" p0=""425.50"" p1=""5321"" p2=""207"" p3=""158"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"" />
@@ -675,7 +675,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidTriggerAction()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/>
     <triggers>
         <t x=""596"" y=""5264"" w=""100"" h=""100"" a=""0"" b=""1"" t=""4"" r=""1"" sd=""f"" s=""0"" d=""0"" l=""1"" p=""0"" v=""1""/>
@@ -1547,7 +1547,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithInvalidSpecialType()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<InvalidImportException>(() => new Level(@"<levelXML>
     <info v=""" + Info.LevelXMLVersion + @""" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1"" />
     <specials>
         <sp t=""36"" p0=""553"" p1=""5320"" p2=""0"" p3=""0"" p4=""2"" p5=""15"" p6=""1"" p8=""100"">
@@ -1707,7 +1707,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithJointWithInvalidPrefixToIndex()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<LevelInvalidException>(() => new Level(@"<levelXML>
     <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
     <joints>
         <j t=""0"" x=""555"" y=""5372"" b1=""t0"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
@@ -1718,7 +1718,7 @@ public class LevelTest
 	[Fact]
 	public void ParseLevelWithJointWithInvalidTargetID()
 	{
-		Assert.Throws<LevelXMLException>(() => new Level(@"<levelXML>
+		Assert.Throws<LevelInvalidException>(() => new Level(@"<levelXML>
     <info v=""1.95"" x=""309"" y=""5168"" c=""1"" f=""t"" h=""t"" bg=""0"" bgc=""16777215"" e=""1""/>
     <joints>
         <j t=""0"" x=""555"" y=""5372"" b1=""abcdef"" b2=""-1"" l=""f"" ua=""90"" la=""-90"" m=""f"" tq=""50"" sp=""3"" c=""f""/>
@@ -1751,7 +1751,7 @@ public class LevelTest
 </levelXML>").ToXML();
 		} catch (AggregateException e)
 		{
-			Assert.IsType<LevelXMLException>(e.InnerException);
+			Assert.IsType<LevelInvalidException>(e.InnerException);
 		}
 	}
 
@@ -1762,6 +1762,6 @@ public class LevelTest
 		ActivateTrigger trigger = new();
 		trigger.AddTarget(target);
 		Level level = new(trigger);
-		Assert.Throws<LevelXMLException>(() => level.ToXML());
+		Assert.Throws<LevelInvalidException>(() => level.ToXML());
 	}
 }

@@ -6,7 +6,7 @@ namespace LevelXML;
 /// A trigger is an entity that under certain circumstances can be activated,
 /// and when it does, it does its particular Action.
 /// </summary>
-public abstract class Trigger : Entity
+public abstract class Trigger : Entity, IRotatable, IScaleable
 {
 	internal abstract uint Type {get;}
 
@@ -171,7 +171,7 @@ public abstract class Trigger : Entity
 
 	internal override void FinishConstruction()
 	{
-		lst.ForEach(target => target.finishConstruction());
+		lst.ForEach(target => target.FinishConstruction());
 	}
 
 	protected virtual void SetParams(XElement e)

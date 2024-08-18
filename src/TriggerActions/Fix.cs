@@ -19,6 +19,6 @@ public class Fix<T> : Fix , ITriggerAction<T>
     {
         nameof(Shape) => 1,
         nameof(Group) => 3,
-        _ => throw new LevelXMLException($"You cannot have a trigger action fixing a {typeof(T).Name}!"),
+        _ => throw new LevelInvalidException($"You cannot have a trigger action fixing a {typeof(T).Name}!", this),
     };
 }

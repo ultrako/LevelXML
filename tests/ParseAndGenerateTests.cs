@@ -79,6 +79,6 @@ public class ParseAndGenerateTests
     [MemberData(nameof(ImportThrowsTestData))]
     public void ImportThrowsTests(string levelXML)
     {
-        Assert.Throws<LevelXMLException>(() => new Level(ReadLevelHelper(levelXML)));
+        Assert.Throws<InvalidImportException>(() => new Level(ReadLevelHelper(levelXML)));
     }
 }

@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Chain : Special
+public class Chain : Special, IRotatable
 {
     internal override uint Type => 30;
     public const string EditorDefault = 

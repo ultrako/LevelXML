@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class DinnerTable : Special
+public class DinnerTable : Special, IRotatable, IGroupable
 {
     internal override uint Type => 1;
     public const string EditorDefault = 

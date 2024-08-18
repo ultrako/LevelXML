@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Log : Special
+public class Log : Special, IRotatable, IScaleable
 {
     internal override uint Type => 4;
     public const string EditorDefault = 

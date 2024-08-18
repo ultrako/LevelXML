@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class NonPlayerCharacter : Special
+public class NonPlayerCharacter : Special, IRotatable, IGroupable
 {
     internal override uint Type => 17;
     public const string EditorDefault =

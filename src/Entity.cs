@@ -26,7 +26,7 @@ public abstract class Entity : LevelXMLTag
 				2 => new Triangle(element),
 				3 => new Polygon(element, vertMapper),
 				4 => new Art(element, vertMapper),
-				_ => throw new LevelXMLException("Shape type doesn't exist!"),
+				_ => throw new InvalidImportException("Shape type doesn't exist!", element.ToString()),
 			},
 			"sp" => GetDoubleOrNull(element, "t") switch 
 			{
@@ -66,7 +66,7 @@ public abstract class Entity : LevelXMLTag
 				33 => new Cannon(element),
 				34 => new BladeWeapon(element),
 				35 => new PaddlePlatform(element),
-				_ => throw new LevelXMLException("Special type doesn't exist!")
+				_ => throw new InvalidImportException("Special type doesn't exist!", element.ToString())
 			},
 			"g" => (bool?)GetBoolOrNull(element, "v") switch
 			{
@@ -77,16 +77,16 @@ public abstract class Entity : LevelXMLTag
 			{
 				0 => new PinJoint(element, ReverseJointMapper),
 				1 => new SlidingJoint(element, ReverseJointMapper),
-				_ => throw new LevelXMLException("Joint type doesn't exist!")
+				_ => throw new InvalidImportException("Joint type doesn't exist!", element.ToString())
 			},
 			"t" => GetDoubleOrNull(element, "t") switch
 			{
 				1 => new ActivateTrigger(element, ReverseTargetMapper),
 				2 => new SoundTrigger(element, ReverseTargetMapper),
 				3 => new VictoryTrigger(element, ReverseTargetMapper),
-				_ => throw new LevelXMLException("Trigger has an invalid action type!"),
+				_ => throw new InvalidImportException("Trigger has an invalid action type!", element.ToString()),
 			},
-			_ => throw new LevelXMLException("XML tag type isn't an entity!"),
+			_ => throw new InvalidImportException("XML tag type isn't an entity!", element.ToString()),
 		};
     }
 	internal virtual void FinishConstruction() {}

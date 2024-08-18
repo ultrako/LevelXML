@@ -7,6 +7,6 @@ public class DeleteShapesTest
     [Fact]
     public void DeleteShapesInvalidEntity()
     {
-        Assert.Throws<LevelXMLException>(() => new DeleteShapes<Joint>());
+        Assert.Throws<LevelInvalidException>(() => new DeleteShapes<Joint>());
     }
 }

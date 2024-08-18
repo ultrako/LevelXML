@@ -67,7 +67,7 @@ public class Impulse<T> : Impulse, ITriggerAction<T>
 			nameof(Bottle) => 1,
 			nameof(Meteor) => 1,
 			nameof(GlassPanel) => 2,
-			_ => throw new LevelXMLException($"You cannot have a trigger action impulsing a {typeof(T).Name}!"),
+			_ => throw new LevelInvalidException($"You cannot have a trigger action impulsing a {typeof(T).Name}!", this),
 		};
 
 	public Impulse(double x, double y, double spin) : base(x, y, spin) {}

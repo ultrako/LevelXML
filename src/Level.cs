@@ -171,15 +171,15 @@ public class Level : LevelXMLTag, IConvertibleToXML
 			Group s => (groupsTag ?? new DepthOneTag<Group>()).lst.IndexOf(s),
 			Joint s => (jointsTag ?? new DepthOneTag<Joint>()).lst.IndexOf(s),
 			Trigger s => (triggersTag ?? new DepthOneTag<Trigger>()).lst.IndexOf(s),
-			_ => throw new LevelXMLException("Gave an invalid kind of Entity as a Target!"),
+			_ => throw new LevelInvalidException("Gave an invalid kind of Entity as a Target!", e),
 		};
 		if (index < 0)
 		{
-			throw new LevelXMLException($"Entity {e.GetHashCode()} pointed to something that wasn't in the level!");
+			throw new LevelInvalidException($"Entity pointed to something that wasn't in the level!", e);
 		}
 		return index;
 	}
-	private ManualResetEvent depthOneTagsReady = new(false);
+	private readonly ManualResetEvent depthOneTagsReady = new(false);
 	private Entity ReverseTargetMapper(XElement e)
 	{
 		int index = int.Parse(e.Attribute("i")!.Value)!;
@@ -195,33 +195,42 @@ public class Level : LevelXMLTag, IConvertibleToXML
 			depthOneTagsReady.WaitOne();
 		}
 		DepthOneTag lst = NameToDepthOneTag(tagName);
-		return lst.GetEntityAt(index);
+		try
+		{
+			return lst.GetEntityAt(index);
+		} catch (InvalidImportException exception)
+		{
+			InvalidImportException newException = new(exception.Message, e.ToString());
+			throw newException;
+		}
+		
 	}
 	private Entity? ReverseJointMapper(string? entityIndex)
 	{
 		// This is the only valid way to represent being jointed to nothing
 		if (entityIndex is null || entityIndex.Equals("-1")) { return null; }
-		string indexTail = entityIndex.Substring(1);
-		int index;
-		if (int.TryParse(entityIndex, out index))
-		{
-			return Shapes[index];
-		}
-		// Consider carefully whether we want to set to -1 or throw when we get invalid joint indexes in levels
-		// Import box behavior is to make the joint be jointed to nothing, but this is a silent failure
-		else if (int.TryParse(indexTail, out index))
-		{
-			
-			return entityIndex[0] switch
-			{
-				's' => Specials[index],
-				'g' => Groups[index],
-				_ => throw new LevelXMLException("Invalid joint index!")
-			};
-		} else {
-			throw new LevelXMLException("Invalid joint index!");
-		}
-	}
+		string indexTail = entityIndex[1..];
+        if (int.TryParse(entityIndex, out int index))
+        {
+            return Shapes[index];
+        }
+        // Consider carefully whether we want to set to -1 or throw when we get invalid joint indexes in levels
+        // Import box behavior is to make the joint be jointed to nothing, but this is a silent failure
+        else if (int.TryParse(indexTail, out index))
+        {
+
+            return entityIndex[0] switch
+            {
+                's' => Specials[index],
+                'g' => Groups[index],
+                _ => throw new LevelInvalidException("Invalid joint index!")
+            };
+        }
+        else
+        {
+            throw new LevelInvalidException("Invalid joint index!");
+        }
+    }
 
 	private Level(Info info, 
 		Shape[] shapes,
@@ -244,13 +253,10 @@ public class Level : LevelXMLTag, IConvertibleToXML
 	{
 		if (e.Name.ToString() != "levelXML")
 		{
-			throw new LevelXMLException("Xml is missing a LevelXML Tag!");
+			throw new InvalidImportException("Xml is missing a LevelXML Tag!", e.ToString());
 		}
-		XElement? InfoTag = e.Element("info");
-		if (InfoTag is null) { 
-			throw new LevelXMLException("Level is missing an info tag!"); 
-		}
-		info = new(InfoTag);
+		XElement? InfoTag = e.Element("info") ?? throw new InvalidImportException("Level is missing an info tag!", e.ToString());
+        info = new(InfoTag);
 		XElement? ShapesElement = e.Element("shapes");
 		shapesTag = new DepthOneTag<Shape>(ShapesElement, vertMapper: VertMapper);
 		XElement? SpecialsElement = e.Element("specials");
@@ -266,11 +272,25 @@ public class Level : LevelXMLTag, IConvertibleToXML
 		triggersTag.FinishConstruction();
 		foreach (Art art in allArts)
 		{
-			art.LocateParent(index => allNonemptyArts.Where(art => art.originalIndex == index).First());
+			try
+			{
+				art.LocateParent(index => allNonemptyArts.Where(art => art.originalIndex == index).First());
+			} catch (InvalidImportException exception)
+			{
+				InvalidImportException newException = new(exception.Message, art.ToXML());
+				throw newException;
+			}
 		}
 		foreach (Polygon poly in allPolys)
 		{
-			poly.LocateParent(index => allNonemptyPolys.Where(poly => poly.originalIndex == index).First());
+			try
+			{
+				poly.LocateParent(index => allNonemptyPolys.Where(poly => poly.originalIndex == index).First());
+			} catch (InvalidImportException exception)
+			{
+				InvalidImportException newException = new(exception.Message, poly.ToXML());
+			}
 		}
-	}
+	} 
 }
+

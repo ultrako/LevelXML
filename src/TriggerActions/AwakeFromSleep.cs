@@ -15,7 +15,7 @@ public abstract class AwakeFromSleep : TriggerAction
 /// <summary>
 /// If the Entity is sleeping, this awakes it from sleep.
 /// </summary>
-public class  AwakeFromSleep<T> : AwakeFromSleep, ITriggerAction<T>
+public class AwakeFromSleep<T> : AwakeFromSleep, ITriggerAction<T>
 {
     internal override uint Type => 
 		typeof(T).Name switch
@@ -41,6 +41,6 @@ public class  AwakeFromSleep<T> : AwakeFromSleep, ITriggerAction<T>
 			nameof(Bottle) => 0,
 			nameof(Meteor) => 0,
 			nameof(GlassPanel) => 1,
-			_ => throw new LevelXMLException($"You cannot have a trigger action awaking a {typeof(T).Name}!"),
+			_ => throw new LevelInvalidException($"You cannot have a trigger action awaking a {typeof(T).Name}!", this),
 		};
 }

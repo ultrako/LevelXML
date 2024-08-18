@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Television : Special
+public class Television : Special, IRotatable, IGroupable
 {
     internal override uint Type => 21;
     public const string EditorDefault = 

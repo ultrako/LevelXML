@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Fan : Special
+public class Fan : Special, IRotatable
 {
     internal override uint Type => 8;
     public const string EditorDefault = 

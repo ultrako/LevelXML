@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class IBeam : Special
+public class IBeam : Special, IRotatable, IScaleable, IGroupable
 {
     internal override uint Type => 3;
     public const string EditorDefault = 

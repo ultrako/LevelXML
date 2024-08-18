@@ -20,7 +20,7 @@ public interface ITriggerAction<in T> : ITriggerAction
 	{
 		if (element.Name.ToString() != "a")
 		{
-			throw new LevelXMLException("Did not give a trigger action!");
+			throw new InvalidImportException("Did not give a trigger action!", element.ToString());
 		}
 		double? ActionType = LevelXMLTag.GetDoubleOrNull(element, "i");
 		// Why am I switching on nameof(T) ?
@@ -113,7 +113,8 @@ public interface ITriggerAction<in T> : ITriggerAction
 				2 => (new Impulse<GlassPanel>(element) as ITriggerAction<T>)!,
 				_ => (new Shatter() as ITriggerAction<T>)!,
 			},
-			_ => throw new LevelXMLException($"Entity type {typeof(T).Name} cannot have trigger actions!"),
+			_ => throw new InvalidImportException($"Entity type {typeof(T).Name} cannot have trigger actions!",
+				element.ToString()),
 		};
 	}
 }

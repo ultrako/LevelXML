@@ -19,6 +19,6 @@ public class Nonfix<T> : Nonfix , ITriggerAction<T>
     {
         nameof(Shape) => 2,
         nameof(Group) => 4,
-        _ => throw new LevelXMLException($"You cannot have a trigger action fixing a {typeof(T).Name}!"),
+        _ => throw new LevelInvalidException($"You cannot have a trigger action nonfixing a {typeof(T).Name}!", this),
     };
 }

@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class TrashCan : Special
+public class TrashCan : Special, IRotatable, IGroupable
 {
     internal override uint Type => 26;
     public const string EditorDefault = 

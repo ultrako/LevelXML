@@ -1,5 +1,4 @@
 using Xunit;
-using System;
 
 namespace LevelXML.Test;
 
@@ -80,7 +79,8 @@ public class ShapeActionsTest
     [Fact]
     public void TestChangeShapeCollisionLackOfCollision()
     {
-        Assert.Throws<LevelXMLException>(() => new ChangeCollision<Shape>(@"<a i=""7"" />"));
+        ChangeCollision<Shape> action = new(@"<a i=""7"" />");
+        Assert.Equal(Collision.Everything, action.Collision);
     }
 
     [Fact]

@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class Sign : Special
+public class Sign : Special, IRotatable, IGroupable
 {
     internal override uint Type => 23;
     public const string EditorDefault = 

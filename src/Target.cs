@@ -1,4 +1,5 @@
 using System.Xml.Linq;
+using System.Linq;
 using System.Collections;
 namespace LevelXML;
 
@@ -30,7 +31,7 @@ public abstract class Target : LevelXMLTag
 
 	protected Target(Entity e) : base(e.Elt.Name) { Targeted = e; }
 
-	private Task? setTargeted;
+	private readonly Task? setTargeted;
 
 	protected Target(XElement e, Func<XElement, Entity> ReverseTargetMapper) : base(e.Name)
 	{
@@ -40,7 +41,7 @@ public abstract class Target : LevelXMLTag
 	// This following function is only called if this object is constructed with a string
 	// In LevelXML, targets are set via indexes - but we can only go from index to entity
 	// in the context of an entire level.
-	internal void finishConstruction() { setTargeted!.Wait(); }
+	internal void FinishConstruction() { setTargeted!.Wait(); }
 	
 	internal static Target FromXElement(XElement e, Func<XElement, Entity> ReverseTargetMapper)
 	{
@@ -76,12 +77,12 @@ public abstract class Target : LevelXMLTag
 				Bottle => new Target<Bottle>(e, ReverseTargetMapper),
 				Meteor => new Target<Meteor>(e, ReverseTargetMapper),
 				Special => new Target<Special>(e, ReverseTargetMapper),
-				_ => throw new LevelXMLException("Invalid special type pointed to by trigger!")
+				_ => throw new InvalidImportException("Invalid special type pointed to by trigger!", e.ToString())
 			},
 			"g" => new Target<Group>(e, ReverseTargetMapper),
 			"j" => new Target<Joint>(e, ReverseTargetMapper),
 			"t" => new Target<Trigger>(e, ReverseTargetMapper),
-			_ => throw new LevelXMLException("Invalid name for a trigger target!"),
+			_ => throw new InvalidImportException("Invalid name for a trigger target!", e.ToString()),
 		};
 	}
 }
@@ -98,7 +99,7 @@ public class Target<T> : Target where T : Entity
 		{
 			if (lst.Count > 0)
 			{
-				throw new LevelXMLException("Tried to add a second action to a trigger!");
+				throw new LevelInvalidException("Tried to add a second action to a trigger!", action, this);
 			}
 		}
 		if (action is ITriggerAction<T> act)
@@ -106,7 +107,7 @@ public class Target<T> : Target where T : Entity
 			lst.Add(act); 
 		} else
 		{
-			throw new LevelXMLException("Tried to add an action of the wrong Entity type!");
+			throw new LevelInvalidException("Tried to add an action of the wrong Entity type!", action, this);
 		}
 	}
 	public override bool RemoveAction(TriggerAction action) 
@@ -147,7 +148,15 @@ public class Target<T> : Target where T : Entity
 			// The import box allows this, but it makes a really confusing double action,
 			// and you can only change them together and it only activates once so it's
 			// the same as just setting one action
-			throw new LevelXMLException("Triggers can only have one action applied to them per source trigger!");
+			List<LevelXMLTag> faultyParties = new()
+            {
+                this
+            };
+			foreach (ITriggerAction action in actions)
+			{
+				faultyParties.Add((LevelXMLTag)action);
+			}
+			throw new LevelInvalidException("Triggers can only have one action applied to them per source trigger!", faultyParties.ToArray());
 		}
 		lst = new(actions);
 	}

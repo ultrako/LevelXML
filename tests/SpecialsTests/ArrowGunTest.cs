@@ -19,6 +19,7 @@ public class ArrowGunTest
     {
         ArrowGun arrowGun = new();
         arrowGun.Rotation = double.NaN;
+
     }
 
     [Fact]

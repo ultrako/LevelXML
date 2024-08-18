@@ -4,7 +4,7 @@ namespace LevelXML;
 /// <summary>
 /// A group is a collection of Shapes and non interactive Specials that all move together.
 /// </summary>
-public class Group : Entity
+public class Group : Entity, IRotatable
 {
 	// So there's no such thing as a "make new empty group" button in the editor,
 	// but it would be useful to have an empty group with the default properties

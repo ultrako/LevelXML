@@ -2,7 +2,7 @@ using System.Xml.Linq;
 
 namespace LevelXML;
 
-public class ArrowGun : Special
+public class ArrowGun : Special, IRotatable, IGroupable
 {
     internal override uint Type => 29;
     public const string EditorDefault = 
