@@ -10,6 +10,7 @@ public abstract class Joint : Entity
 	internal abstract uint Type {get;}
 	private Entity? first;
 	private Entity? second;
+	private bool originallyVehicleControlled;
 
 	/// <summary>
 	///  The first Entity this Joint is jointed to.
@@ -130,10 +131,29 @@ public abstract class Joint : Entity
 		}
 	}
 
+	public HWBool VehicleControlled
+	{
+		get
+		{
+			// Null coalesced because this could be null before we PlaceInLevel
+			return GetBoolOrNull("v") ?? true;
+		}
+		set
+		{
+			HWBool val = value;
+			if (val == HWBool.NaN) { val = HWBool.True;}
+			Elt.SetAttributeValue("v", val);
+		}
+	}
+
 	internal override void PlaceInLevel(Func<Entity, int> mapper)
 	{
 		Elt.SetAttributeValue("b1", GetIndexString(mapper, First));
 		Elt.SetAttributeValue("b2", GetIndexString(mapper, Second));
+		if (First is Vehicle || Second is Vehicle)
+		{
+			VehicleControlled = originallyVehicleControlled;
+		}
 	}
 
 	private string GetIndexString(Func<Entity, int> mapper, Entity? entity)
@@ -198,6 +218,7 @@ public abstract class Joint : Entity
 		UpperLimit = GetDoubleOrNull(e, upperLim) ?? lim;
 		LowerLimit = GetDoubleOrNull(e, lowerLim) ?? -lim;
 		Motorized = GetBoolOrNull(e, "m") ?? false;
+		originallyVehicleControlled = GetBoolOrNull(e, "v") ?? true;
 	}
 	
 	protected Joint(XElement e) : base("j") 

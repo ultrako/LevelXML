@@ -1,9 +1,5 @@
-using System;
-using System.Xml;
 using System.Xml.Linq;
-using System.Linq;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
+
 namespace LevelXML;
 /// <summary>
 /// Shapes are simple entities that can have collision and they can be a part of groups.
