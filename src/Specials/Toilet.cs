@@ -4,7 +4,7 @@ namespace LevelXML;
 
 public class Toilet : Special, IRotatable, IGroupable
 {
-    internal override uint Type => 0;
+    internal override uint Type => 24;
     public const string EditorDefault = 
     @"<sp t=""24"" p0=""0"" p1=""0"" p2=""0"" p3=""f"" p4=""f"" p5=""t""/>";
 
