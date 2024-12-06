@@ -142,7 +142,7 @@ public abstract class Trigger : Entity, IRotatable, IScaleable
 			.FirstOrDefault();
 		if (sameTarget is not null)
 		{
-			foreach (TriggerAction action in target.Actions)
+			foreach (ITriggerAction action in target.Actions)
 			{
 				sameTarget.AddAction(action);
 			}
