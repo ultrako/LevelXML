@@ -18,11 +18,11 @@ public abstract class Target : LevelXMLTag
 			 
 	public Entity Targeted {get; set;} = default!;
 
-	public abstract void AddAction(TriggerAction action);
+	public abstract void AddAction(ITriggerAction action);
 
-	public abstract bool RemoveAction(TriggerAction action);
+	public abstract bool RemoveAction(ITriggerAction action);
 
-	public abstract int IndexOfAction(TriggerAction action);
+	public abstract int IndexOfAction(ITriggerAction action);
 
 	/// <summary>
 	/// The actions that will happen to the Target Entity.
@@ -93,13 +93,13 @@ public class Target<T> : Target where T : Entity
 
 	public override IReadOnlyList<ITriggerAction<T>> Actions => lst;
 
-	public override void AddAction(TriggerAction action) {
+	public override void AddAction(ITriggerAction action) {
 		// A trigger can only do one thing to another trigger
 		if (typeof(T) == typeof(Trigger))
 		{
 			if (lst.Count > 0)
 			{
-				throw new LevelInvalidException("Tried to add a second action to a trigger!", action, this);
+				throw new LevelInvalidException("Tried to add a second action to a trigger!", this);
 			}
 		}
 		if (action is ITriggerAction<T> act)
@@ -107,10 +107,10 @@ public class Target<T> : Target where T : Entity
 			lst.Add(act); 
 		} else
 		{
-			throw new LevelInvalidException("Tried to add an action of the wrong Entity type!", action, this);
+			throw new LevelInvalidException("Tried to add an action of the wrong Entity type " + nameof(T), this);
 		}
 	}
-	public override bool RemoveAction(TriggerAction action) 
+	public override bool RemoveAction(ITriggerAction action) 
 	{
 		if (action is ITriggerAction<T> act)
 		{
@@ -118,7 +118,7 @@ public class Target<T> : Target where T : Entity
 		}
 		return false;
 	}
-	public override int IndexOfAction(TriggerAction action) 
+	public override int IndexOfAction(ITriggerAction action) 
 	{ 
 		if (action is ITriggerAction<T> act)
 		{
