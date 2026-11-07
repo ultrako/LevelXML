@@ -135,13 +135,15 @@ public abstract class Joint : Entity
 	{
 		get
 		{
-			// Null coalesced because this could be null before we PlaceInLevel
-			return GetBoolOrNull("v") ?? true;
+			// The attribute is only written once the joint is placed in a level; until then it is what was imported or set
+			return GetBoolOrNull("v") ?? originallyVehicleControlled;
 		}
 		set
 		{
 			HWBool val = value;
 			if (val == HWBool.NaN) { val = HWBool.True;}
+			// Kept for PlaceInLevel, which writes it on joints attached to a vehicle
+			originallyVehicleControlled = val;
 			Elt.SetAttributeValue("v", val);
 		}
 	}

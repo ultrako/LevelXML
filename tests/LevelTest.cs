@@ -1669,6 +1669,17 @@ public class LevelTest
 	}
 
 	[Fact]
+	public void CreateLevelWithJointToVehicleNotVehicleControlled()
+	{
+		Vehicle vehicle = new();
+		vehicle.Fixed = false;
+		PinJoint joint = new(vehicle) { VehicleControlled = false };
+		Level level = new(new Entity[] {vehicle, joint});
+		Assert.Contains(@"v=""f""", level.ToXML().Split('\n').Single(line => line.Contains("<j ")));
+		Assert.False(new Level(level.ToXML()).Joints.Single().VehicleControlled);
+	}
+
+	[Fact]
 	public void CreateLevelWithJointToVehicle()
 	{
 		Vehicle vehicle = new();
