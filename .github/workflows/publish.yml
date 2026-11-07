@@ -6,15 +6,21 @@ on:
     branches:
       - master 
 
+# Trusted Publishing: NuGet/login exchanges this workflow's GitHub OIDC token for a short-lived API key, so no key is stored
+# in the repo's secrets. Needs a matching policy on nuget.org (owner ultrako, repository ultrako/LevelXML, workflow publish.yml).
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '6.x'
       - name: Restore dependencies
@@ -26,5 +32,12 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release --no-build --output ./artifacts
 
+      - name: NuGet login
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ultrako
+
+      # --skip-duplicate: a merge that doesn't change the version has nothing new to publish, and shouldn't fail
       - name: Push to NuGet
-        run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./artifacts/*.nupkg --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
