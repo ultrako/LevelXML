@@ -94,7 +94,7 @@ public class Target<T> : Target where T : Entity
 	public override IReadOnlyList<ITriggerAction<T>> Actions => lst;
 
 	public override void AddAction(ITriggerAction action) {
-		// A trigger can only do one thing to another trigger
+		// A trigger target has one action: the game only performs the first action listed for a trigger
 		if (typeof(T) == typeof(Trigger))
 		{
 			if (lst.Count > 0)

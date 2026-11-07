@@ -133,6 +133,19 @@ public abstract class Trigger : Entity, IRotatable, IScaleable
 	/// Insert a target into the list of targets at a particular index.
 	/// The position indicates the order in which the actions fire ingame.
 	/// </summary>
+	/// <remarks>
+	/// Every entry of a trigger's target list runs in the game, in order. Listing the same entity more than once
+	/// behaves differently depending on what it is:
+	/// <list type="bullet">
+	/// <item>A trigger can be listed more than once with the same action (activate it three times, say), and each
+	/// listing is its own entry here. A trigger listed again with a different action would perform its first action
+	/// again in the game, so that throws.</item>
+	/// <item>Anything else (shapes, groups, joints, specials) listed again in the game runs every action listed for
+	/// it, and the later entries' actions lose their parameters. So a target for an entity that is already listed
+	/// adds its actions to that entity's existing entry instead, and they run where that entry is, not at
+	/// <paramref name="index"/>.</item>
+	/// </list>
+	/// </remarks>
 	/// <param name="index"></param>
 	/// <param name="target"></param>
 	public void InsertTarget(int index, Target target) 
@@ -140,15 +153,30 @@ public abstract class Trigger : Entity, IRotatable, IScaleable
 		Target? sameTarget = lst
 			.Where(other => other.Targeted == target.Targeted)
 			.FirstOrDefault();
-		if (sameTarget is not null)
+		if (sameTarget is null)
+		{
+			lst.Insert(index, target);
+		}
+		else if (target.Targeted is Trigger)
+		{
+			if (target.Actions.Count == 0) { return; }
+			if (target.Actions.Count == 1 && sameTarget.Actions.Count == 1
+				&& target.Actions[0].GetType() == sameTarget.Actions[0].GetType())
+			{
+				lst.Insert(index, target);
+			}
+			else
+			{
+				throw new LevelInvalidException("A trigger listed more than once performs its first action every time; "
+					+ "it can only be listed again with that same action", target);
+			}
+		}
+		else
 		{
 			foreach (ITriggerAction action in target.Actions)
 			{
 				sameTarget.AddAction(action);
 			}
-		} else
-		{
-			lst.Insert(index, target); 
 		}
 	}
 	public bool RemoveTarget(Target target) { return lst.Remove(target); }

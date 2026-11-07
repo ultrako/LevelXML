@@ -1,3 +1,4 @@
+using System.Linq;
 using Xunit;
 using System;
 namespace LevelXML.Test;
@@ -69,14 +70,43 @@ public class ActivateTriggerTest
 		Assert.IsType<ChangeOpacity<Shape>>(trigger.Targets[0].Actions[1]);
 	}
 	[Fact]
-	public void AddTwoTargetsToSameTrigger()
+	public void AddSameTriggerTwiceWithTheSameAction_AddsTwoEntries()
+	{
+		ActivateTrigger trigger = new();
+		ActivateTrigger otherTrigger = new();
+		Rectangle rect = new();
+		trigger.AddTarget(new Target<Trigger>(otherTrigger, new Activate()));
+		trigger.AddTarget(new Target<Shape>(rect, new AwakeFromSleep<Shape>()));
+		trigger.InsertTarget(1, new Target<Trigger>(otherTrigger, new Activate()));
+		Assert.Equal(3, trigger.TargetCount);
+		Assert.Same(otherTrigger, trigger.Targets[0].Targeted);
+		Assert.Same(otherTrigger, trigger.Targets[1].Targeted);
+		Assert.Same(rect, trigger.Targets[2].Targeted);
+		Assert.All(trigger.Targets.Take(2), target => Assert.IsType<Activate>(Assert.Single(target.Actions)));
+	}
+
+	[Fact]
+	public void AddSameTriggerTwiceWithADifferentAction_Throws()
 	{
 		ActivateTrigger trigger = new();
 		ActivateTrigger otherTrigger = new();
 		trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable()));
-		Assert.Throws<LevelInvalidException>(() => trigger.AddTarget(new Target<Trigger>(otherTrigger, new Enable())));
+		Assert.Throws<LevelInvalidException>(() => trigger.AddTarget(new Target<Trigger>(otherTrigger, new Activate())));
+		Assert.Equal(1, trigger.TargetCount);
 	}
-	
+
+	[Fact]
+	public void SameTriggerListedThreeTimes_IsWrittenThreeTimes()
+	{
+		ActivateTrigger trigger = new();
+		ActivateTrigger otherTrigger = new();
+		for (int i = 0; i < 3; i++) { trigger.AddTarget(new Target<Trigger>(otherTrigger, new Activate())); }
+		string xml = new Level(trigger, otherTrigger).ToXML();
+		Assert.Equal(3, System.Text.RegularExpressions.Regex.Matches(xml, @"<t i=""1"">\s*<a i=""0"" />\s*</t>").Count);
+		// and it reads back the same
+		Assert.Equal(3, new Level(xml).Triggers.OfType<ActivateTrigger>().First().TargetCount);
+	}
+
 	[Fact]
 	public void TestTriggerListOperations()
 	{
