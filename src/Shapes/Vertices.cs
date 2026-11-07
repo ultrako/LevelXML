@@ -29,6 +29,7 @@ internal class Vertices : LevelXMLTag
 
 	public HWBool? Connected
 	{
+		get { return GetBoolOrNull("f") ?? true; }
 		set
 		{
 			HWBool val = value ?? true;
