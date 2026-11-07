@@ -214,6 +214,34 @@ public class ShapeTest
 	}
 	
 	[Fact]
+	public void CustomShapes_AreClosedByDefault()
+	{
+		Assert.True(new Art(new Vertex(new(0, 0)), new Vertex(new(100, 0)), new Vertex(new(0, 100))).Closed);
+		Assert.True(new Polygon().Closed);
+	}
+
+	[Fact]
+	public void AnOpenArtShape_IsWrittenWithFFalse_AndReadBack()
+	{
+		Art art = new(new Vertex(new(0, 0)), new Vertex(new(100, 0)), new Vertex(new(0, 100))) { Closed = false };
+		string xml = new Level(art).ToXML();
+		Assert.Matches(@"<v f=""f""", xml);
+		Assert.False(new Level(xml).Shapes.OfType<Art>().Single().Closed);
+	}
+
+	[Fact]
+	public void AnImportedOpenPolygon_CanBeClosed()
+	{
+		Level level = new(@"<levelXML><info v=""1.95"" x=""300"" y=""5100"" c=""1"" f=""f"" h=""f"" bg=""0"" bgc=""16777215"" e=""1""/><shapes>
+			<sh t=""3"" p0=""0"" p1=""0"" p2=""100"" p3=""100"" p4=""0"" p5=""t"" p6=""f"" p7=""1"" p8=""4032711"" p9=""-1"" p10=""100"" p11=""1"">
+			<v f=""f"" id=""0"" v0=""0_0"" v1=""100_0"" v2=""0_100"" n=""3""/></sh></shapes></levelXML>");
+		Polygon polygon = level.Shapes.OfType<Polygon>().Single();
+		Assert.False(polygon.Closed);
+		polygon.Closed = true;
+		Assert.Matches(@"<v f=""t""", level.ToXML());
+	}
+
+	[Fact]
 	public void ArtTestWithVerticesInConstructor()
 	{
 		Art art = new(Art.EditorDefault, new(new(0, 0)), new(new(0, 100)));

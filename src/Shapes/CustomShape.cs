@@ -13,6 +13,20 @@ public abstract class CustomShape : Shape
 	{
 		get { return verticesTag.verts;}
 	}
+	/// <summary>
+	/// Whether the outline is closed, its last vertex joined back to the first (f="t" on the vertex list).
+	/// An open outline (false) is drawn as a line through the vertices. Defaults to true.
+	/// </summary>
+	public HWBool Closed
+	{
+		get { return verticesTag.Connected ?? true; }
+		set
+		{
+			HWBool val = value;
+			if (val == HWBool.NaN) { val = HWBool.True; }
+			verticesTag.Connected = val;
+		}
+	}
 	public override double Width
 	{
 		get 
